@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Satu Yang Terpenting - Tips Asuransi, Investasi, dan Peluang Bisnis Manulife bersama Petrus Jakub">
+    <meta name="keywords" content="asuransi manulife, unit link, asuransi kesehatan, bisnis manulife, agen asuransi, investasi, proteksi keluarga">
+    <meta name="author" content="Petrus Jakub">
+    <title>Satu Yang Terpenting - Blog Asuransi & Bisnis Manulife</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+
+        /* Header */
+        .site-header {
+            background: linear-gradient(135deg, #00a651 0%, #004d2b 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,77,43,0.3);
+        }
+
+        .site-header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .site-header .author-info {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        .site-header .author-ig {
+            font-size: 0.95em;
+            opacity: 0.85;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .header-cta a {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .header-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-web {
+            background: #fff;
+            color: #00a651;
+        }
+
+        .btn-wa {
+            background: #25d366;
+            color: white;
+        }
+
+        /* Schedule Badge */
+        .schedule-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .schedule-badge.pagi {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .schedule-badge.siang {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #003;
+        }
+
+        .schedule-badge.sore {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: #333;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .accordion-header h2 {
+            font-size: 1.15em;
+            color: #1a1a1a;
+            padding-right: 30px;
+            line-height: 1.4;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #00a651;
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            content: '-';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 5000px;
+        }
+
+        .accordion-body {
+            padding: 0 20px 20px;
+        }
+
+        .accordion-body p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00a651, #004d2b);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 15px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,166,81,0.4);
+        }
+
+        .cta-wa {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            color: #555;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .copy-btn:hover {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .copy-btn.copied {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        /* Hashtags */
+        .hashtags {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .hashtags span {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.78em;
+            margin: 3px 4px 3px 0;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        .site-footer a {
+            color: #00a651;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .site-header h1 {
+                font-size: 1.6em;
+            }
+
+            .site-header {
+                padding: 30px 15px;
+            }
+
+            .accordion-header {
+                padding: 15px;
+            }
+
+            .accordion-header h2 {
+                font-size: 1em;
+            }
+
+            .accordion-body {
+                padding: 0 15px 15px;
+            }
+
+            .header-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header-cta a {
+                width: 80%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1>Satu Yang Terpenting</h1>
+        <p class="author-info">Petrus Jakub | Partner Bisnis Manulife</p>
+        <p class="author-ig">IG: @petrusjakub</p>
+        <div class="header-cta">
+            <a href="https://projectcuan.petrusjakub.workers.dev/" class="btn-web" target="_blank">Pelajari Lebih Lanjut</a>
+            <a href="https://wa.me/6287781896087" class="btn-wa" target="_blank">WA 087781896087</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ARTICLE 1 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge pagi">Hari 1 | Jam 07:00</span>
+                <h2>"Dokter Bilang Harus Operasi, Tapi Rekening Gue Cuma Sisa 200 Ribu..."</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Gue masih inget banget momen itu. Tahun 2019, seorang teman baik gue, sebut aja namanya Andi, tiba-tiba nelpon tengah malem. Suaranya gemetar. Istrinya baru aja didiagnosa kena tumor dan dokter bilang harus segera operasi. Biayanya? Kurang lebih 150 juta. Dan Andi, dia cuma pekerja swasta biasa dengan gaji UMR Jakarta.</p>
+
+                    <p>Lu bayangin ga sih posisi itu? Orang yang paling lu sayang di dunia butuh pertolongan medis SEGERA, tapi rekening lu kering kerontang. Mau pinjam ke siapa? Mau jual apa? Rumah aja masih ngontrak. Mobil ga punya. Tabungan? Habis buat bayar sekolah anak.</p>
+
+                    <p>Waktu itu gue cuma bisa nemenin Andi. Gue ga bisa bantu secara finansial karena jujur, kondisi gue juga pas-pasan. Yang bikin gue sakit hati adalah melihat seorang kepala keluarga, laki-laki yang biasanya kuat dan tegar, nangis sambil pegang tangan istrinya di lorong rumah sakit. Dia nangis bukan karena takut istrinya ga sembuh. Dia nangis karena dia ga bisa bayar biaya pengobatannya.</p>
+
+                    <p>Andi akhirnya harus jual motor, pinjam sana sini, bahkan sampai bikin crowdfunding online. Operasinya berhasil, tapi setelah itu hidupnya berantakan. Hutang di mana-mana. Cicilan ga kebayar. Debt collector mulai dateng. Keluarga yang tadinya harmonis jadi sering ribut soal uang.</p>
+
+                    <p>Dan lu tau apa yang paling nyesek? Setahun sebelumnya, gue pernah nawarin Andi asuransi kesehatan. Preminya cuma 500 ribu sebulan. Dia bilang, "Ntar aja deh, gue masih sehat kok. Lagian uangnya mending buat kebutuhan lain." Ntar aja. Dua kata yang akhirnya bikin hidupnya jungkir balik.</p>
+
+                    <p>Sejak kejadian Andi, gue jadi sangat serius soal proteksi kesehatan. Bukan karena gue mau jualan. Tapi karena gue udah lihat sendiri apa yang terjadi kalau kita ga punya persiapan. Sakit itu ga kirim undangan, bro. Ga ada notifikasi "Bulan depan lu bakal kena stroke ya." Engga. Dia dateng tiba-tiba, dan kalau kita ga siap, yang hancur bukan cuma badan kita. Tapi seluruh keluarga.</p>
+
+                    <p>Asuransi kesehatan itu bukan pengeluaran. Itu adalah jaminan bahwa kalau sesuatu terjadi, kita dan keluarga kita ga akan jatuh miskin karena sakit. Preminya mungkin terasa berat sekarang, tapi percaya sama gue, itu ga ada apa-apanya dibanding biaya rumah sakit yang bisa ratusan juta bahkan miliaran.</p>
+
+                    <p>Gue sekarang di Manulife, dan salah satu hal yang bikin gue bangga adalah produk kesehatan mereka yang beneran komprehensif. Rawat inap, rawat jalan, operasi, bahkan perawatan kanker, semua di-cover. Dan yang paling penting, proses klaimnya ga ribet. Karena percuma punya asuransi kalau klaimnya dipersulit, kan?</p>
+
+                    <p>Jadi gue mau tanya sama lu: kalau besok, iya BESOK, tiba-tiba lu atau orang yang lu sayang harus masuk rumah sakit, lu udah siap belum? Kalau jawabannya belum, yuk kita ngobrol. Ga ada yang maksa, ga ada yang pressure. Gue cuma mau bantu lu punya persiapan yang bener.</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Konsultasi Gratis Sekarang</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Chat WA Saya</a>
+
+                    <div class="hashtags">
+                        <span>#AsuransiKesehatan</span>
+                        <span>#Manulife</span>
+                        <span>#ProteksiKeluarga</span>
+                        <span>#HealthInsurance</span>
+                        <span>#JaminanKesehatan</span>
+                        <span>#HidupTanpaKhawatir</span>
+                        <span>#PetrusJakub</span>
+                        <span>#ManulifeIndonesia</span>
+                        <span>#AsuransiJiwa</span>
+                        <span>#FinancialPlanning</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 2 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge siang">Hari 1 | Jam 12:00</span>
+                <h2>"Gaji 5 Juta Sebulan Cukup? Temen Gue Sekarang Income 50 Juta dari Bisnis Ini..."</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Jujur ya, dulu gue itu tipikal orang yang mikir kerja kantoran itu segalanya. Bangun pagi, macet-macetan, kerja 9 to 5, pulang malem, gaji masuk tanggal 25, habis tanggal 5. Repeat. Setiap bulan kayak hamster yang lari di roda putar. Capek, tapi ga kemana-mana.</p>
+
+                    <p>Sampai suatu hari gue ketemu lagi sama temen SMA gue, Rio. Terakhir ketemu dia kerja di pabrik dengan gaji UMR. Eh pas ketemu lagi, dia udah pake mobil baru, rumahnya udah renovasi, dan yang bikin gue shock, dia bilang penghasilannya sebulan udah tembus 50 juta. LIMA PULUH JUTA. Dari bisnis asuransi.</p>
+
+                    <p>Gue langsung mikir, "Ini orang nipu kali ya?" Serius, itu pikiran pertama gue. Karena gue punya stigma bahwa agen asuransi itu kerjanya ganggu orang, maksa-maksa, dan penghasilannya ga jelas. Tapi Rio duduk sama gue, buka-bukaan semua income-nya, bonus-nya, trip gratisnya ke luar negeri. Semua real. Semua bisa dibuktiin.</p>
+
+                    <p>Yang bikin gue tertarik bukan cuma soal uangnya. Tapi soal KEBEBASAN-nya. Rio kerja dari mana aja. Dia bisa anter anak sekolah, bisa jemput istri, bisa olahraga siang. Ga ada bos yang marah-marah, ga ada meeting ga penting, ga ada politik kantor. Dan yang paling keren, income-nya ga ada batasnya. Kalau kerja kantoran, mau sepinter apapun lu, gajinya ya segitu-gitu aja. Naik setahun berapa persen? 5%? 10%? Itu pun kalau company-nya baik.</p>
+
+                    <p>Di Manulife, sistemnya jelas. Lu ditraining, lu dikasih tools, lu dikasih support. Komisi dari hari pertama. Bonus bulanan, bonus tahunan, trip ke luar negeri kalau target tercapai. Dan yang paling penting, lu membangun ASET. Karena setiap nasabah yang lu handle, mereka akan bayar premi bertahun-tahun, dan lu dapet renewal income dari situ. Bayangin punya 100 nasabah yang semuanya bayar premi tiap bulan. Itu passive income, bro.</p>
+
+                    <p>Gue ga bilang ini gampang ya. Karena semua bisnis itu butuh kerja keras di awal. Tapi bedanya, kalau di bisnis ini lu kerja keras, hasilnya buat LU SENDIRI. Bukan buat bos lu. Bukan buat perusahaan yang bisa pecat lu kapan aja. Setiap tetes keringat lu, hasilnya masuk ke kantong lu.</p>
+
+                    <p>Dan satu hal lagi yang jarang orang tau. Jadi agen asuransi itu BUKAN cuma jualan. Lu jadi financial advisor. Lu bantu orang merencanakan masa depan mereka. Lu jadi orang yang mereka telpon pertama kali waktu ada musibah. Lu jadi pahlawan tanpa cape buat keluarga-keluarga yang lu proteksi. Itu kepuasan yang ga bisa dibeli sama gaji berapapun.</p>
+
+                    <p>Sekarang gue udah di Manulife dan gue bersyukur banget Rio ngajak gue waktu itu. Hidup gue berubah total. Dan sekarang gue mau nawarin hal yang sama ke lu. Bukan nawarin mimpi kosong, tapi nawarin PELUANG nyata yang udah terbukti mengubah hidup banyak orang.</p>
+
+                    <p>Kalau lu merasa stuck di karir lu sekarang, kalau lu ngerasa gaji lu ga cukup, kalau lu pengen punya penghasilan yang ga ada batasnya, yuk kita ngobrol. Siapa tau ini jalan yang selama ini lu cari.</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Lihat Peluang Bisnisnya</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Tanya Langsung via WA</a>
+
+                    <div class="hashtags">
+                        <span>#BisnisAsuransi</span>
+                        <span>#ManulifeBusiness</span>
+                        <span>#PeluangBisnis</span>
+                        <span>#FinancialFreedom</span>
+                        <span>#AgenAsuransi</span>
+                        <span>#PassiveIncome</span>
+                        <span>#KarirManulife</span>
+                        <span>#PetrusJakub</span>
+                        <span>#BisnisOnline</span>
+                        <span>#SuksesFinansial</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 3 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge sore">Hari 1 | Jam 19:00</span>
+                <h2>"Nabung di Bank 10 Tahun Cuma Dapet Segitu? Ini Cara Uang Gue Kerja 2x Lebih Keras"</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Coba gue tanya. Lu udah nabung berapa lama? 5 tahun? 10 tahun? Sekarang cek deh, bunga yang lu dapet setahun berapa? 2%? 3%? Terus inflasi berapa? 5-6% setahun. Artinya apa? Artinya uang lu di tabungan itu MENGECIL nilainya setiap tahun. Lu pikir lu nabung, padahal daya beli lu makin turun. Sakit ga tuh?</p>
+
+                    <p>Gue dulu juga gitu. Rajin nabung di bank, bangga liat saldo nambah. Tapi waktu gue hitung beneran, nilai uang gue setelah 10 tahun itu ternyata ga nambah signifikan kalau disesuaikan sama inflasi. Nasi padang yang dulu 15 ribu sekarang 35 ribu. Ini baru 5 tahun. Bayangin 20 tahun lagi.</p>
+
+                    <p>Nah, waktu gue pertama kali denger soal unit link, jujur gue skeptis. "Asuransi kok ada investasinya? Pasti ada yang ga bener nih." Itu pikiran awal gue. Tapi setelah gue pelajari dan gue alami sendiri, pandangan gue berubah total.</p>
+
+                    <p>Unit link itu konsepnya simpel: lu bayar premi, sebagian buat proteksi asuransi jiwa dan kesehatan lu, sebagian lagi diinvestasikan di instrumen keuangan kayak reksa dana saham, obligasi, atau campuran. Jadi lu dapet DUA manfaat sekaligus: proteksi DAN pertumbuhan uang.</p>
+
+                    <p>Gue mulai ambil unit link di Manulife sekitar 3 tahun lalu. Preminya 1 juta per bulan. Ga besar-besar amat buat gue saat itu. Tapi coba gue liat hasilnya sekarang. Nilai investasi gue udah tumbuh lebih dari 25% di dana campuran. Bandingkan sama tabungan bank yang 3 tahun mungkin cuma nambah 6-9% total. Jauh banget bedanya.</p>
+
+                    <p>Yang gue suka dari unit link Manulife adalah fleksibilitasnya. Gue bisa pilih mau taruh di dana agresif (saham) kalau mau return tinggi tapi siap dengan risiko. Atau dana konservatif (obligasi) kalau mau aman. Atau campuran. Dan gue bisa switch antar dana kapan aja tanpa biaya tambahan. Ini kayak punya financial advisor pribadi tapi ga perlu bayar fee konsultasi mahal.</p>
+
+                    <p>Plus, ingat ya, ini tetap ASURANSI. Jadi kalau terjadi sesuatu sama gue, misalnya sakit kritis atau kecelakaan, keluarga gue tetap terproteksi. Uang pertanggungannya tetap cair. Jadi ini bukan cuma investasi doang, tapi juga jaring pengaman buat keluarga.</p>
+
+                    <p>Banyak orang bilang, "Mending investasi sendiri aja langsung ke reksa dana." Boleh, ga salah. Tapi pertanyaannya: lu DISIPLIN ga? Berapa banyak orang yang bilang mau investasi rutin tapi setelah 3 bulan udah lupa atau uangnya kepake buat yang lain? Di unit link, karena berbentuk premi yang harus dibayar, lu jadi TERPAKSA disiplin. Dan kedisiplinan itu yang bikin lu kaya di masa depan.</p>
+
+                    <p>Kalau lu pengen uang lu kerja lebih keras dari sekedar nganggur di tabungan, dan sekaligus punya proteksi buat keluarga, unit link ini worth it banget buat dipertimbangkan. Gue bisa bantu jelasin lebih detail sesuai kondisi keuangan dan tujuan finansial lu.</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Hitung Potensi Investasi Lu</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Konsultasi via WA</a>
+
+                    <div class="hashtags">
+                        <span>#UnitLink</span>
+                        <span>#InvestasiAsuransi</span>
+                        <span>#ManulifeInvestasi</span>
+                        <span>#ReksaDana</span>
+                        <span>#FinancialPlanning</span>
+                        <span>#InvestasiCerdas</span>
+                        <span>#PetrusJakub</span>
+                        <span>#UangBekerja</span>
+                        <span>#MasaDepanCerah</span>
+                        <span>#ProteksiInvestasi</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 4 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge pagi">Hari 2 | Jam 07:00</span>
+                <h2>"Suaminya Meninggal Mendadak, Tapi Keluarganya Malah Dapet 1 Miliar. Ini Ceritanya..."</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Ini cerita nyata yang ga akan pernah gue lupa. Tahun lalu, salah satu nasabah gue, Pak Hendra, meninggal dunia karena serangan jantung mendadak. Umurnya baru 42 tahun. Sehat, aktif, rajin olahraga. Ga ada tanda-tanda apapun. Sore itu dia main badminton sama temen-temennya, malemnya dia udah ga ada.</p>
+
+                    <p>Gue dapet kabar dari istrinya, Bu Rina, yang nelpon gue sambil nangis. Saat itu gue langsung ke rumah duka. Dan lu tau apa yang gue rasain? Campuran antara sedih kehilangan nasabah yang udah gue anggap teman, tapi juga LEGA. Karena gue tau, Pak Hendra punya polis asuransi jiwa yang cukup besar.</p>
+
+                    <p>Tiga bulan sebelum meninggal, Pak Hendra sempat ragu mau perpanjang polisnya atau engga. Dia bilang preminya lumayan dan dia ngerasa sehat-sehat aja. Gue bilang ke dia, "Pak, asuransi itu bukan buat orang sakit. Asuransi itu buat orang yang SAYANG sama keluarganya." Alhamdulillah dia tetap lanjut.</p>
+
+                    <p>Dua minggu setelah pemakaman, klaim asuransi jiwa Pak Hendra cair. 1 MILIAR RUPIAH. Masuk ke rekening Bu Rina. Gue masih inget wajah Bu Rina waktu gue kasih tau klaimnya disetujui. Dia nangis lagi, tapi kali ini bukan nangis sedih doang. Dia nangis karena LEGA. Karena dia tau, meskipun suaminya udah ga ada, anak-anaknya masih bisa sekolah. Cicilan rumah masih bisa dibayar. Hidup masih bisa berjalan.</p>
+
+                    <p>Coba bayangin kalau Pak Hendra GA PUNYA asuransi jiwa. Bu Rina, yang selama ini ibu rumah tangga, tiba-tiba harus menanggung semua beban finansial sendirian. Dengan 2 anak yang masih kecil. Cicilan rumah 5 juta per bulan. Biaya hidup. Biaya sekolah. Dari mana uangnya? Mau kerja apa dengan skill yang terbatas karena selama ini fokus urus rumah tangga?</p>
+
+                    <p>Ini bukan cerita untuk nakut-nakutin. Ini REALITA. Setiap hari ada kepala keluarga yang pergi dan ga pulang. Kecelakaan, sakit mendadak, bencana. Kita ga bisa kontrol kapan kita pergi. Tapi kita BISA kontrol apakah keluarga kita akan baik-baik aja setelah kita pergi.</p>
+
+                    <p>Asuransi jiwa itu bukan buat kita yang bayar. Itu buat orang-orang yang kita tinggalin. Itu surat cinta terakhir kita buat keluarga. Pesan yang bilang, "Gue udah ga ada, tapi gue udah siapin semuanya buat kalian."</p>
+
+                    <p>Di Manulife, uang pertanggungan asuransi jiwa bisa sampai miliaran, tergantung kebutuhan dan kemampuan premi. Prosesnya juga ga ribet. Dan yang paling penting, klaim dibayar CEPAT. Karena di saat keluarga sedang berduka, hal terakhir yang mereka butuhkan adalah birokrasi yang ribet.</p>
+
+                    <p>Gue selalu bilang ke calon nasabah gue: "Kalau lu meninggal besok, keluarga lu bisa survive berapa lama?" Kalau jawabannya bikin lu ga nyaman, berarti lu butuh ngobrol sama gue sekarang. Bukan besok. Bukan minggu depan. SEKARANG. Karena kita ga pernah tau kapan besok itu dateng.</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Hitung Kebutuhan Proteksi Keluarga Lu</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Chat WA Sekarang</a>
+
+                    <div class="hashtags">
+                        <span>#AsuransiJiwa</span>
+                        <span>#ProteksiKeluarga</span>
+                        <span>#LifeInsurance</span>
+                        <span>#Manulife</span>
+                        <span>#CintaKeluarga</span>
+                        <span>#WarisanCinta</span>
+                        <span>#PetrusJakub</span>
+                        <span>#PerencanaanKeuangan</span>
+                        <span>#JaminanMasaDepan</span>
+                        <span>#KlaimAsuransi</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 5 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge siang">Hari 2 | Jam 12:00</span>
+                <h2>"Kenapa Gue Pilih Manulife, Bukan yang Lain? Ini Fakta yang Bikin Gue Yakin 100%"</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Sebelum gue gabung jadi partner Manulife, gue riset dulu dong. Ga mungkin gue mau naruh nama baik gue, naruh reputasi gue, di perusahaan yang abal-abal. Gue cek track record-nya, keuangannya, reputasinya. Dan hasilnya? Gue makin yakin bahwa Manulife itu bukan sembarang perusahaan asuransi.</p>
+
+                    <p>Pertama, soal SEJARAH. Manulife itu berdiri sejak tahun 1887 di Kanada. Itu artinya perusahaan ini udah bertahan lebih dari 135 TAHUN. Bayangin, 135 tahun. Dua Perang Dunia, Great Depression, krisis finansial 2008, pandemi COVID. Semua itu dilalui dan Manulife masih berdiri kokoh. Kalau perusahaan bisa survive selama itu, artinya fundamental bisnisnya kuat banget.</p>
+
+                    <p>Di Indonesia sendiri, Manulife udah beroperasi sejak 1985. Hampir 40 tahun melayani masyarakat Indonesia. Bukan pemain baru yang besok lusa bisa tutup. Ini perusahaan yang udah terbukti dan teruji di pasar Indonesia.</p>
+
+                    <p>Kedua, soal KEKUATAN FINANSIAL. Manulife Financial Corporation itu salah satu grup jasa keuangan terbesar di dunia. Total aset kelolaan mereka lebih dari 800 miliar dollar AS. Lu bisa bayangin angka itu? Itu artinya perusahaan ini PUNYA UANG buat bayar klaim nasabahnya. Ga ada cerita ga bisa bayar klaim karena ga punya duit.</p>
+
+                    <p>Ketiga, soal PENGHARGAAN. Manulife Indonesia udah dapet segudang award. Best Life Insurance Company, Best Unit Link, Best Customer Service. Dari berbagai lembaga independen. Ini bukan penghargaan yang bisa dibeli. Ini penghargaan berdasarkan performa nyata.</p>
+
+                    <p>Keempat, soal KLAIM. Ini yang paling penting. Percuma perusahaan gede, percuma udah lama beroperasi, kalau waktu klaim dipersulit. Nah, di Manulife, rasio pembayaran klaim itu sangat tinggi. Dalam setahun, Manulife Indonesia membayar triliunan rupiah klaim ke nasabahnya. Dan prosesnya? Ada yang cuma butuh beberapa hari kerja aja.</p>
+
+                    <p>Kelima, soal INOVASI. Manulife itu bukan perusahaan jadul yang stuck. Mereka terus berinovasi. Aplikasi digital buat nasabah, proses pendaftaran online, e-policy, pembayaran premi digital. Semua serba mudah dan modern. Lu ga perlu lagi ke kantor cabang buat urus ini itu. Semua bisa dari HP.</p>
+
+                    <p>Keenam, soal JARINGAN. Manulife beroperasi di Asia, Kanada, dan Amerika. Dengan jaringan global kayak gitu, standar pelayanan mereka world-class. Lu dapet service yang setara dengan standar internasional.</p>
+
+                    <p>Jadi waktu orang tanya ke gue, "Kenapa Manulife?" gue jawab: "Karena gue ga mau naruh masa depan keluarga gue di perusahaan yang belum terbukti." Gue pilih yang udah 135 tahun berdiri. Yang asetnya ratusan miliar dollar. Yang bayar klaim triliunan setiap tahun. Yang punya reputasi dunia.</p>
+
+                    <p>Kalau lu juga mau proteksi dari perusahaan yang TERBUKTI dan TERPERCAYA, bukan perusahaan yang baru kemarin berdiri, yuk kita ngobrol. Gue kasih liat kenapa Manulife itu pilihan terbaik buat lu dan keluarga lu.</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Kenali Manulife Lebih Dekat</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Tanya Jawab via WA</a>
+
+                    <div class="hashtags">
+                        <span>#ManulifeIndonesia</span>
+                        <span>#PerusahaanAsuransi</span>
+                        <span>#TerpercayaSejak1887</span>
+                        <span>#AsuransiTerbaik</span>
+                        <span>#FinancialStrength</span>
+                        <span>#KlaimCepat</span>
+                        <span>#PetrusJakub</span>
+                        <span>#AsuransiManulife</span>
+                        <span>#InvestasiAman</span>
+                        <span>#BisnisAsuransi</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 6 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge sore">Hari 2 | Jam 19:00</span>
+                <h2>"Biaya Kuliah Anak Lu 10 Tahun Lagi Bisa 500 Juta. Udah Siapin Belum?"</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Lu punya anak? Atau rencana punya anak? Kalau iya, gue mau kasih satu fakta yang mungkin bikin lu ga bisa tidur malem ini: biaya pendidikan di Indonesia naik rata-rata 10-15% SETIAP TAHUN. Iya, setiap tahun. Bukan 5 tahun sekali. SETIAP TAHUN.</p>
+
+                    <p>Sekarang aja biaya masuk SD swasta bagus di Jakarta udah 30-50 juta. SMP bisa 50-80 juta. SMA? 80-100 juta. Dan kuliah? Universitas swasta top bisa 200-400 juta untuk 4 tahun. Itu harga SEKARANG. Kalau anak lu masih balita, bayangin 15 tahun lagi harga-harga ini udah naik berapa kali lipat.</p>
+
+                    <p>Gue jadi mikir keras waktu anak pertama gue lahir. Semua orang ngucapin selamat, bawa kado, foto-foto. Tapi di balik kebahagiaan itu, ada satu pertanyaan yang terus menghantui gue: "Gue bisa kasih masa depan yang layak buat anak ini ga?"</p>
+
+                    <p>Gue ga mau anak gue nanti harus pilih universitas bukan berdasarkan passion-nya, tapi berdasarkan yang mampu dibayar. Gue ga mau anak gue harus kerja sambilan berat di masa kuliahnya karena orang tuanya ga sanggup bayar. Gue ga mau impian anak gue terhambat cuma karena masalah uang.</p>
+
+                    <p>Makanya gue cari solusi yang realistis. Dan gue nemuin jawabannya di asuransi pendidikan Manulife. Konsepnya gini: gue bayar premi setiap bulan sekarang, dan nanti di waktu-waktu yang gue tentuin (misalnya masuk SD, SMP, SMA, kuliah), dananya cair otomatis sesuai kebutuhan.</p>
+
+                    <p>Yang bikin gue tenang, ini bukan cuma tabungan biasa. Ada komponen investasi di dalamnya, jadi uang gue tumbuh. Plus, ada proteksi. Kalau sesuatu terjadi sama gue sebagai pencari nafkah, anak gue TETAP dapet dana pendidikannya. Preminya di-waive, tapi manfaatnya tetap jalan. Jadi mau gue ada atau ga ada, pendidikan anak gue terjamin.</p>
+
+                    <p>Gue mulai dari 2 juta per bulan. Kedengeran banyak? Mungkin. Tapi gue potong dari pengeluaran-pengeluaran ga penting. Kurangin nongkrong, kurangin beli barang-barang yang sebenarnya ga butuh. Dan gue inget, setiap rupiah yang gue bayar itu bukan buat gue. Itu buat masa depan anak gue.</p>
+
+                    <p>Sekarang anak gue udah 5 tahun, dan dana pendidikannya udah terkumpul dengan pertumbuhan yang sangat baik. Gue tinggal santai aja tau bahwa kapanpun anak gue butuh biaya sekolah, dananya udah READY. Ga perlu pusing, ga perlu hutang, ga perlu jual aset.</p>
+
+                    <p>Buat lu yang punya anak atau rencana punya anak, saran gue cuma satu: MULAI SEKARANG. Jangan tunggu anak lu udah mau masuk kuliah baru panik. Semakin cepat lu mulai, semakin ringan preminya dan semakin besar dana yang terkumpul. Waktu itu teman terbaik lu kalau lu mulai hari ini, tapi jadi musuh terburuk kalau lu terus menunda.</p>
+
+                    <p>Yuk kita hitung bareng-bareng berapa yang lu butuhkan buat dana pendidikan anak lu. Gratis, ga ada biaya konsultasi. Gue seneng banget bisa bantu sesama orang tua yang pengen yang terbaik buat anaknya.</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Rencanakan Dana Pendidikan Anak</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Konsultasi Gratis via WA</a>
+
+                    <div class="hashtags">
+                        <span>#AsuransiPendidikan</span>
+                        <span>#DanaPendidikan</span>
+                        <span>#MasaDepanAnak</span>
+                        <span>#Manulife</span>
+                        <span>#TabunganPendidikan</span>
+                        <span>#InvestasiAnak</span>
+                        <span>#PetrusJakub</span>
+                        <span>#OrangTuaCerdas</span>
+                        <span>#PerencanaanPendidikan</span>
+                        <span>#BiayaKuliah</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLE 7 -->
+        <article class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span class="schedule-badge pagi">Hari 3 | Jam 07:00</span>
+                <h2>"Pensiun Usia 55 Tapi Uang Habis di Usia 60? Ini Nightmare yang Bisa Lu Hindari"</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p>Gue pernah ketemu seorang bapak-bapak di sebuah acara keluarga. Umurnya udah 68 tahun. Dulu dia pejabat di sebuah BUMN cukup besar. Pensiun dengan pesangon yang lumayan. Tapi waktu gue ngobrol, dia cerita bahwa pesangonnya udah habis di tahun kelima setelah pensiun. HABIS. Dan sekarang dia harus bergantung sama anak-anaknya yang juga punya beban hidup sendiri.</p>
+
+                    <p>Lu tau apa yang paling menyakitkan dari cerita itu? Bukan soal uangnya habis. Tapi soal DIA MERASA JADI BEBAN. Orang yang dulunya disegani, punya jabatan, punya penghasilan besar, sekarang harus minta uang ke anak buat beli obat. Itu bukan hidup yang dia bayangkan di masa tua.</p>
+
+                    <p>Dan inilah kenyataan yang banyak orang ga mau hadapi: kita semua akan pensiun. Entah usia 55, 56, atau 60. Suatu hari nanti, penghasilan bulanan yang selama ini kita terima AKAN BERHENTI. Tapi pengeluaran? Ga ikut berhenti. Malah makin banyak karena biaya kesehatan di usia tua itu mahal banget.</p>
+
+                    <p>Coba gue kasih angka. Kalau sekarang pengeluaran lu 10 juta per bulan, dan lu pensiun di usia 55, dan lu hidup sampai 75 tahun, lu butuh 10 juta x 12 bulan x 20 tahun = 2,4 MILIAR RUPIAH. Dan itu belum termasuk inflasi yang bikin kebutuhan lu makin mahal setiap tahun. Realistisnya, lu butuh 3-4 miliar buat pensiun dengan layak.</p>
+
+                    <p>Sekarang tanya ke diri sendiri: lu punya rencana buat ngumpulin uang sebanyak itu? Atau lu cuma berharap "nanti ada aja rezekinya"? Berharap itu bukan strategi, bro. Berharap itu gambling.</p>
+
+                    <p>Gue pribadi mulai merencanakan pensiun dari sekarang. Dan salah satu instrumen yang gue pake adalah program pensiun dari Manulife. Konsepnya sederhana: gue nyicil sekarang, biar nanti pas pensiun gue dapet penghasilan bulanan yang cukup buat hidup layak TANPA harus bergantung sama siapapun.</p>
+
+                    <p>Yang gue suka dari program pensiun Manulife, pertama: FLEKSIBEL. Gue bisa atur sendiri mau pensiun di usia berapa dan butuh berapa per bulan. Kedua: ada komponen investasi, jadi dana gue tumbuh selama masa akumulasi. Ketiga: ada proteksi juga, jadi kalau terjadi sesuatu sebelum masa pensiun, keluarga gue tetap terproteksi.</p>
+
+                    <p>Banyak orang mikir, "Ah gue masih muda, masih lama pensiun." Justru itu POINTNYA. Semakin muda lu mulai, semakin ringan bebannya. Kalau lu mulai di usia 30, lu punya 25 tahun buat akumulasi. Preminya ringan dan hasilnya gede. Tapi kalau lu mulai di usia 45? Lu cuma punya 10 tahun dan preminya jadi sangat berat.</p>
+
+                    <p>Pensiun itu bukan akhir dari hidup. Seharusnya itu awal dari kehidupan yang lebih tenang. Waktu buat traveling, waktu buat hobi, waktu buat keluarga. Tapi semua itu cuma bisa dinikmati kalau UANGNYA ADA. Kalau uangnya ga ada, pensiun itu bukan berkah tapi beban.</p>
+
+                    <p>Gue ga mau jadi bapak-bapak yang harus minta uang ke anak di usia 70. Gue mau jadi kakek yang bisa ajak cucu jalan-jalan, yang bisa kasih THR gede ke keluarga, yang hidupnya tenang dan bermartabat di hari tua. Dan itu semua dimulai dari perencanaan yang gue lakukan HARI INI.</p>
+
+                    <p>Kalau lu juga punya visi yang sama buat masa tua lu, yuk kita duduk bareng. Gue bantu hitungin berapa yang lu butuhkan dan gimana cara nyicilnya biar ga berat. Karena pensiun itu pasti dateng, pertanyaannya: lu mau pensiun dengan TENANG atau pensiun dengan GELISAH?</p>
+
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" class="cta-button" target="_blank">Rencanakan Pensiun Sekarang</a>
+                    <a href="https://wa.me/6287781896087" class="cta-button cta-wa" target="_blank">Ngobrol soal Pensiun via WA</a>
+
+                    <div class="hashtags">
+                        <span>#DanaPensiun</span>
+                        <span>#RetirementPlanning</span>
+                        <span>#PensiunTenang</span>
+                        <span>#Manulife</span>
+                        <span>#PerencanaanPensiun</span>
+                        <span>#FinancialFreedom</span>
+                        <span>#PetrusJakub</span>
+                        <span>#MasaDepan</span>
+                        <span>#InvestasiPensiun</span>
+                        <span>#HariTuaBahagia</span>
+                    </div>
+
+                    <button class="copy-btn" onclick="copyToClipboard(this)">&#128203; Copy Artikel</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- ARTICLES CONTINUE HERE -->
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Satu Yang Terpenting | Petrus Jakub - Partner Bisnis Manulife</p>
+        <p>IG: <a href="https://instagram.com/petrusjakub" target="_blank">@petrusjakub</a> | <a href="https://wa.me/6287781896087" target="_blank">WA: 087781896087</a></p>
+    </footer>
+
+    <script>
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all other accordions
+            document.querySelectorAll('.accordion-item.active').forEach(function(activeItem) {
+                if (activeItem !== item) {
+                    activeItem.classList.remove('active');
+                }
+            });
+
+            // Toggle current
+            if (isActive) {
+                item.classList.remove('active');
+            } else {
+                item.classList.add('active');
+            }
+        }
+
+        function copyToClipboard(btn) {
+            const body = btn.closest('.accordion-body');
+            const paragraphs = body.querySelectorAll('p');
+            let text = '';
+            paragraphs.forEach(function(p) {
+                text += p.textContent + '\n\n';
+            });
+
+            // Add hashtags
+            const hashtagContainer = body.querySelector('.hashtags');
+            if (hashtagContainer) {
+                const tags = hashtagContainer.querySelectorAll('span');
+                tags.forEach(function(tag) {
+                    text += tag.textContent + ' ';
+                });
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text.trim()).then(function() {
+                    showCopied(btn);
+                }).catch(function() {
+                    fallbackCopy(text.trim(), btn);
+                });
+            } else {
+                fallbackCopy(text.trim(), btn);
+            }
+        }
+
+        function fallbackCopy(text, btn) {
+            var textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showCopied(btn);
+            } catch (e) {
+                alert('Gagal copy. Silakan copy manual.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showCopied(btn) {
+            var originalText = btn.innerHTML;
+            btn.innerHTML = '&#10003; Copied!';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.innerHTML = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
