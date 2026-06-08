@@ -1,0 +1,7 @@
+{
+  "task_id": "task-blog-html",
+  "task_description": "Create a standalone self-contained HTML file at /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html containing 21 long-form blog articles about Manulife insurance (selling + recruiting) with accordion UI, copy-to-clipboard buttons, CTA links, and emotional storytelling content scheduled across 7 days (3 per day at 07:00, 12:00, 19:00).",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003"],
+  "blocked_reason": null
+}

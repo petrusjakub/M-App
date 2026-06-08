@@ -1,0 +1,39 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Add articles 15-21 (Day 5 evening + Day 6 + Day 7) to complete all 21 blog articles. Final polish and verification of the complete file.",
+  "status": "in_progress",
+  "steps": [
+    "Open existing /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html and add remaining articles",
+    "Write Article 15 (Hari 5, 19:00 Sore) - topic: hospital bills horror story, importance of adequate coverage",
+    "Write Article 16 (Hari 6, 07:00 Pagi) - topic: success story of an agent who changed their life with Manulife",
+    "Write Article 17 (Hari 6, 12:00 Siang) - topic: Manulife ProActive Plus product features through customer testimonial",
+    "Write Article 18 (Hari 6, 19:00 Sore) - topic: insurance vs saving/deposito comparison, why insurance wins",
+    "Write Article 19 (Hari 7, 07:00 Pagi) - topic: family protection comprehensive plan story",
+    "Write Article 20 (Hari 7, 12:00 Siang) - topic: overcoming objections about insurance, addressing common myths",
+    "Write Article 21 (Hari 7, 19:00 Sore) - topic: final CTA - join the team or get protected today, inspiring closing story",
+    "Each article follows same format: clickbait title, schedule badge, accordion, 400+ words, emotional storytelling, CTA, copy button, hashtags",
+    "Verify the complete file has all 21 articles with proper structure",
+    "Ensure the closing HTML tags are properly placed after all content"
+  ],
+  "acceptance_criteria": [
+    "All 21 articles are present in the HTML file",
+    "File is valid HTML (proper opening and closing tags)",
+    "All accordions work (JS handles all 21 items)",
+    "All copy buttons are functional for all 21 articles",
+    "Topics are well-distributed: products, recruiting, company credibility, business opportunity",
+    "Schedule covers 7 days x 3 articles (07:00, 12:00, 19:00)",
+    "Every article has CTA to projectcuan link or WA number",
+    "File is completely self-contained - no external dependencies"
+  ],
+  "verification": [
+    "Run: grep -c 'class=\"accordion' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm 21 accordion elements",
+    "Run: grep -c 'Hari 7' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm Day 7 articles present",
+    "Run: grep -c 'projectcuan' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm CTAs throughout",
+    "Run: grep -c '087781896087' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm WA throughout",
+    "Run: head -5 /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm proper HTML start",
+    "Run: tail -5 /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm proper HTML end"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
