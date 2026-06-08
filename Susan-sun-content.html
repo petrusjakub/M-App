@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Susan Sun - Full Day Content Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .outfit-info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .outfit-info h3 {
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .outfit-set {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+        }
+
+        .outfit-set:last-child {
+            border-left-color: #e91e63;
+        }
+
+        .outfit-set strong {
+            color: #333;
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .label-prompt {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .label-refs {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .caption-box, .prompt-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .prompt-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ref-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px;
+            background: #f1f8e9;
+            color: #33691e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border: 1px solid #c5e1a5;
+            transition: background 0.2s;
+        }
+
+        .ref-links a:hover {
+            background: #dcedc8;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Susan Sun - Daily Content Plan</h1>
+            <p>Full Day Content Schedule | Jakarta Life | Insurance Boss + Happy Housewife</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap ~60 menit | Engagement & Follower Growth</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+                <a href="#post-2300">23:00</a>
+                <a href="#post-0000">00:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (09:00 - 17:00):</strong> Blouse putih elegan + celana palazzo cream + sling bag coklat muda + flat shoes nude. Tampilan smart casual cocok untuk meeting klien dan hangout siang.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (17:00 - 00:00):</strong> Dress midi warna dusty pink + heels strappy gold + clutch bag kecil + statement earrings. Tampilan dinner-ready dan feminin untuk evening vibes.
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 1/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Pagi Jakarta! Belum juga keluar rumah udah keringetan, tapi tetep harus on point dong ya. Namanya juga Susan, mau ke mana aja harus siap kamera. Hari ini rencananya mau selesaiin proposal asuransi sambil kulineran. Multitasking level emak-emak pebisnis!
+
+Yang masih di kasur: bangun woy, rezeki ga dateng lewat mimpi (kecuali mimpi ketemu Susan, itu sih berkah).
+
+Siapa yang hari ini juga lagi hustle? Drop emoji kopi di bawah!</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Susan pakai outfit image 2, sedang berdiri di teras rumah modern minimalis bergaya Jakarta (image 3), satu tangan memegang gelas kopi susu (image 4) dan tangan lainnya memegang kunci mobil. Background ada tanaman hijau di pot besar. Angle dari depan agak bawah, pencahayaan pagi golden hour, Susan tersenyum natural sambil menatap kamera. Style foto candid tapi aesthetic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20modern%20minimalist%20house%20terrace" target="_blank">Pinterest: Teras Rumah Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=aesthetic%20coffee%20glass%20morning" target="_blank">Pinterest: Gelas Kopi Aesthetic</a>
+                    <a href="https://www.google.com/search?q=rumah+minimalis+modern+jakarta+terrace&tbm=isch" target="_blank">Google: Teras Rumah Modern Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 2/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Meeting pagi di cafe hits Jakarta Selatan. Klien bilang: "Mbak Susan, asuransi tuh perlu ga sih?" Aku jawab: "Perlu. Sama kayak kopi pagi ini, tanpa dia hidup terasa hambar."
+
+Pantun pagi:
+Beli roti di Gang Kelinci,
+Jangan lupa proteksi diri,
+Hidup itu penuh kejutan manis,
+Asuransi bikin hati damai pasti!
+
+Agree ga? Like kalo setuju, comment kalo mau ngobrol soal proteksi!</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Susan pakai outfit image 2, sedang duduk di cafe industrial style Jakarta (image 3), di meja ada laptop terbuka dan secangkir cappuccino (image 4). Susan tersenyum ke arah seseorang di seberang meja (tidak terlihat orangnya). Background ada dinding exposed brick dan tanaman gantung. Foto diambil dari samping, angle 45 derajat, suasana hangat dan profesional.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20industrial%20cafe%20interior" target="_blank">Pinterest: Cafe Industrial Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=aesthetic%20laptop%20coffee%20table%20cafe" target="_blank">Pinterest: Laptop + Kopi di Cafe</a>
+                    <a href="https://www.google.com/search?q=cafe+instagramable+jakarta+selatan+interior&tbm=isch" target="_blank">Google: Cafe Instagramable Jaksel</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 3/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Habis meeting langsung jalan kaki ke taman kota. Iya, Susan jalan kaki. Bukan karena sehat, tapi karena parkiran penuh.
+
+Tapi ya gapapa, sekalian foto-foto. Kata orang: "Hasil terbaik datang dari hal yang tidak direncanakan." Kayak foto ini, ga sengaja tapi hasilnya chef's kiss!
+
+Fun fact: jalan kaki 15 menit setara makan satu potong tempe goreng. Worth it? Absolutely not. Tapi fotonya worth it banget.
+
+Tag temen yang suka alesan jalan kaki biar keliatan sehat!</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Susan pakai outfit image 2, sedang berjalan santai di trotoar taman kota Jakarta (image 3), di latar belakang ada beberapa orang Indonesia sedang duduk di bangku taman tidak sadar kamera. Susan memegang smartphone (image 4) seperti baru selesai selfie. Ada pepohonan rindang dan jalanan bersih. Angle wide shot dari depan, cahaya natural siang hari. Vibes candid dan cheerful.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20city%20park%20walkway%20green" target="_blank">Pinterest: Taman Kota Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman%20walking%20park%20candid%20photo" target="_blank">Pinterest: Candid Walk di Taman</a>
+                    <a href="https://www.google.com/search?q=taman+kota+jakarta+trotoar+hijau&tbm=isch" target="_blank">Google: Taman Kota Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 4/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">MAKAN SIANG DULU YA GAES. Kali ini Susan cobain nasi padang di tempat langganan. Rendangnya lumer kayak hatiku pas liat diskon end of month.
+
+Serius deh, orang bilang uang ga bisa beli kebahagiaan. BOHONG. Uang bisa beli nasi padang, dan nasi padang = kebahagiaan. Case closed.
+
+Kalian tim rendang atau tim ayam pop? Jawab jujur, no debat (bohong, ayo debat di kolom komentar)!</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Susan pakai outfit image 2, sedang selfie di rumah makan Padang Jakarta (image 3), di meja ada piring nasi padang lengkap dengan rendang dan sayur (image 4). Angle selfie dari atas, Susan senyum lebar sambil peace sign. Background interior rumah makan tradisional dengan beberapa pengunjung Indonesia di meja lain tidak sadar kamera. Suasana ramai dan hangat, lighting indoor natural.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=nasi%20padang%20aesthetic%20food%20photography" target="_blank">Pinterest: Nasi Padang Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=rumah%20makan%20padang%20interior%20indonesia" target="_blank">Pinterest: Interior RM Padang</a>
+                    <a href="https://www.google.com/search?q=rumah+makan+padang+jakarta+interior&tbm=isch" target="_blank">Google: RM Padang Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 5/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Post-makan siang mood: pengen tidur tapi invoice belum kelar. Ini namanya quarter life crisis versi emak-emak.
+
+Sambil nunggu food coma lewat, Susan mampir ke bookstore dulu. Bukan beli buku self-help ya, beli novel romansa. Karena drama di kehidupan nyata udah cukup, butuh drama fiksi yang bisa ditutup bukunya.
+
+Siapa yang relate? Yang suka ke toko buku cuma buat foto estetik angkat tangan!</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Susan pakai outfit image 2, sedang berdiri di antara rak buku di toko buku besar Jakarta (image 3), tangan memegang satu buku novel (image 4) sambil membaca cover belakangnya. Difotoin dari samping belakang agak jauh, suasana tenang dan cozy. Background rak-rak buku tinggi dengan lighting warm. Ada satu dua orang Indonesia lain di lorong buku yang tidak sadar kamera.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=aesthetic%20bookstore%20photography%20indonesia" target="_blank">Pinterest: Bookstore Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman%20reading%20bookstore%20candid" target="_blank">Pinterest: Candid di Toko Buku</a>
+                    <a href="https://www.google.com/search?q=toko+buku+besar+jakarta+interior+aesthetic&tbm=isch" target="_blank">Google: Toko Buku Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 6/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Update: Susan sekarang di coworking space. Iya, emak-emak juga bisa kerja di coworking space. Jangan diskriminasi dong.
+
+Lagi zoom call sama tim, pura-pura serius padahal sambil scroll marketplace cari diskon skincare. Namanya juga multitasking queen.
+
+Puisi siang:
+Di siang bolong Jakarta terik,
+Susan kerja penuh semangat,
+Bukan karena cinta pekerjaan,
+Tapi karena cinta sama saldo rekening.
+
+Yang lagi kerja juga: semangat! Yang lagi rebahan: semangat juga sih, tapi bangun dulu.</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Susan pakai outfit image 2, sedang duduk di coworking space modern Jakarta (image 3), di depannya ada iPad yang menampilkan video call (image 4). Susan sedang tersenyum ke layar iPad sambil bicara. Background ruangan coworking dengan meja panjang, beberapa orang Indonesia lain bekerja di laptop mereka tidak sadar kamera. Pencahayaan terang dari jendela besar, suasana produktif dan modern.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20coworking%20space%20modern%20interior" target="_blank">Pinterest: Coworking Space Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman%20working%20ipad%20video%20call%20aesthetic" target="_blank">Pinterest: Kerja dengan iPad</a>
+                    <a href="https://www.google.com/search?q=coworking+space+jakarta+modern+interior&tbm=isch" target="_blank">Google: Coworking Space Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 7/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Jam 3 sore: waktu yang sakral buat ngopi kedua. Ini bukan kecanduan ya, ini ritual. Kayak sholat tapi versi kafein.
+
+Hari ini udah: meeting klien, makan padang, ke toko buku, zoom call. Dan ini baru jam 3. Emak-emak pebisnis mah gini, schedule-nya lebih padat dari jadwal konser K-pop.
+
+Tapi alhamdulillah, semua lancar. Kuncinya? Kopi. Selalu kopi.
+
+Drop foto kopi kalian di komen! Yang paling estetik Susan like!</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Susan pakai outfit image 2, sedang difotoin dari depan duduk di outdoor area coffee shop Jakarta (image 3), memegang iced latte dalam gelas bening (image 4) dengan satu tangan, tangan lainnya menopang dagu. Ekspresi santai dan bahagia. Background ada payung-payung cafe dan pohon-pohon kecil, jalanan Jakarta terlihat di kejauhan. Cahaya sore golden hour mulai masuk, vibe relaxed dan warm.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=outdoor%20coffee%20shop%20jakarta%20afternoon" target="_blank">Pinterest: Coffee Shop Outdoor Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=iced%20latte%20aesthetic%20glass%20golden%20hour" target="_blank">Pinterest: Iced Latte Aesthetic</a>
+                    <a href="https://www.google.com/search?q=coffee+shop+outdoor+jakarta+sore+hari&tbm=isch" target="_blank">Google: Coffee Shop Jakarta Sore</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 8/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Sore ini Susan mampir ke pasar lokal buat beli bahan masak malam. YES, Susan masak sendiri. Kaget? Sama, suami juga kaget tiap hari.
+
+Belanja di pasar tuh seru, apalagi kalau udah jago nawar. "Berapa Bu cabainya?" "50 ribu." "Yah mahal, 25 ya Bu." "Ga bisa, 45." "30 terakhir." "Yaudah 35." DEAL.
+
+Itu bukan belanja, itu negosiasi level Wall Street.
+
+Yang jago nawar di pasar, kalian harus coba jadi sales asuransi deh. Bakat terpendam!</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Susan pakai outfit image 2, sedang berdiri di pasar tradisional Jakarta yang bersih dan tertata (image 3), tangan memegang kantong belanja kertas berisi sayuran segar (image 4). Susan tersenyum ke pedagang di sebelahnya. Background warna-warni buah dan sayur, ada pembeli Indonesia lain yang tidak sadar kamera. Angle dari samping, lighting natural sore hari yang masuk dari atap pasar.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=pasar%20tradisional%20jakarta%20modern%20clean" target="_blank">Pinterest: Pasar Tradisional Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=fresh%20vegetables%20paper%20bag%20market" target="_blank">Pinterest: Belanja Sayur Aesthetic</a>
+                    <a href="https://www.google.com/search?q=pasar+tradisional+modern+jakarta+bersih&tbm=isch" target="_blank">Google: Pasar Modern Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 9/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">OUTFIT CHANGE! Dari mode boss lady berubah jadi mode dinner-ready. Karena sore ini ada acara makan malam sama keluarga.
+
+Ganti baju di rumah tuh speedrun ya. 10 menit termasuk mandi, pake makeup, sama foto OOTD. Skill yang ga diajarkan di sekolah tapi paling berguna di kehidupan nyata.
+
+Transisi dari siang ke malam ala Susan: seamless. Kayak asuransi yang Susan jual, transisi dari sehat ke sakit ga perlu khawatir. Oke itu agak maksa tapi you get the point.
+
+Rate outfit malam Susan dong, 1-10!</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Susan pakai outfit image 2 (outfit malam/set kedua), sedang berdiri di depan cermin besar di kamar yang rapi dan estetik (image 3), mengambil mirror selfie dengan smartphone (image 4). Refleksi di cermin menunjukkan Susan full body dengan outfit barunya. Background kamar modern minimalis dengan pencahayaan warm dari lampu meja. Angle mirror selfie, suasana intimate dan stylish.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=mirror%20selfie%20ootd%20elegant%20dress%20evening" target="_blank">Pinterest: Mirror Selfie OOTD</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=modern%20minimalist%20bedroom%20jakarta%20warm%20lighting" target="_blank">Pinterest: Kamar Modern Minimalis</a>
+                    <a href="https://www.google.com/search?q=mirror+selfie+outfit+malam+aesthetic&tbm=isch" target="_blank">Google: Mirror Selfie Evening Outfit</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 10/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Sunset di Jakarta itu beda ya. Ada polusi sedikit, ada gedung tinggi, ada suara klakson. Tapi tetep cantik aja. Kayak Susan, ada keriput sedikit, ada uban satu dua, tapi tetep glowing dong.
+
+Sekarang lagi di rooftop waiting for dinner time. Pemandangannya kota Jakarta dari atas tuh bikin refleksi: hidup ini indah, apalagi kalau cicilan lunas.
+
+Yang lagi nikmatin sunset juga: kirim pemandangan kalian! Susan penasaran sunset di kota kalian kayak gimana.</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Susan pakai outfit image 2 (outfit malam), sedang bersandar di railing rooftop bar/lounge Jakarta (image 3), tangan memegang mocktail warna oranye di gelas tinggi (image 4). Background skyline Jakarta saat sunset dengan gedung-gedung tinggi dan langit berwarna oranye keunguan. Foto diambil dari samping, Susan menatap ke arah sunset dengan ekspresi damai dan bahagia. Suasana romantic dan cinematic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20rooftop%20sunset%20skyline" target="_blank">Pinterest: Rooftop Jakarta Sunset</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=mocktail%20orange%20sunset%20aesthetic%20glass" target="_blank">Pinterest: Mocktail Sunset</a>
+                    <a href="https://www.google.com/search?q=rooftop+bar+jakarta+sunset+view+skyline&tbm=isch" target="_blank">Google: Rooftop Jakarta View</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 11/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">DINNER TIME! Malam ini makan di restoran Jepang favorit keluarga. Anak-anak happy, suami happy, Susan paling happy karena ga masak. Bahan pasar tadi? Besok aja deh dipakenya.
+
+Menu andalan: salmon sashimi + ramen + gyoza. Basically makan buat 3 orang tapi dimakan sendiri. Ga judging ya, ini namanya self love.
+
+Pantun makan malam:
+Pergi ke Blok M naik bus,
+Makan ramen kuahnya nendang,
+Perut kenyang hati pun puas,
+Kalori? Besok aja dihitung!
+
+Yang suka Japanese food angkat sumpit!</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Susan pakai outfit image 2 (outfit malam), sedang duduk di restoran Jepang modern Jakarta (image 3), di meja ada beberapa piring sushi dan mangkok ramen yang tertata cantik (image 4). Susan sedang memegang sumpit dan tersenyum lebar ke kamera, pose fun. Background interior restoran Jepang dengan dekorasi kayu dan lampion, beberapa keluarga Indonesia lain makan di meja sebelah tidak sadar kamera. Lighting hangat restaurant.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=japanese%20restaurant%20jakarta%20modern%20interior" target="_blank">Pinterest: Restoran Jepang Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sushi%20ramen%20food%20photography%20aesthetic" target="_blank">Pinterest: Japanese Food Aesthetic</a>
+                    <a href="https://www.google.com/search?q=restoran+jepang+jakarta+modern+suasana&tbm=isch" target="_blank">Google: Restoran Jepang Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 12/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Habis makan langsung healing ke area pedestrian yang rame. Jakarta malam itu punya vibe berbeda ya. Lampu-lampu kota, orang-orang jalan santai, abang-abang jualan gorengan (yang susah ditolak).
+
+Kata siapa Jakarta ga bisa romantis? Bisa kok. Asal ada duit parkir dan ga macet.
+
+Momen kayak gini nih yang bikin Susan bersyukur. Sehat, keluarga lengkap, kerjaan lancar, dan masih bisa jalan malam nikmatin kota. Simple happiness.
+
+Apa simple happiness kalian hari ini? Share dong!</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Susan pakai outfit image 2 (outfit malam), sedang berjalan di pedestrian area Jakarta malam hari (image 3), tangan memegang es krim cone (image 4). Background ada lampu-lampu string lights, orang-orang Indonesia berjalan-jalan di sekitar tidak sadar kamera, ada beberapa street vendor. Foto diambil dari depan angle rendah, lampu bokeh di background. Suasana cheerful, night life Jakarta yang hidup. Susan tertawa natural.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20night%20pedestrian%20street%20lights" target="_blank">Pinterest: Jakarta Night Pedestrian</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=night%20city%20walk%20string%20lights%20aesthetic" target="_blank">Pinterest: City Walk Malam</a>
+                    <a href="https://www.google.com/search?q=pedestrian+jakarta+malam+lampu+string+lights&tbm=isch" target="_blank">Google: Pedestrian Jakarta Malam</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 13/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Pulang ke rumah, anak-anak udah siap bobo. Ini waktu favorit Susan: story time. Malam ini bacain cerita tentang princess yang jadi CEO. Biar dari kecil udah tau kalau perempuan bisa jadi apa aja.
+
+Sebelum tidur, sempet ngobrol sama suami: "Hari ini capek ga?" "Capek. Tapi happy." Ini definisi hari yang sempurna menurut Susan.
+
+Buat semua ibu di luar sana yang hari ini udah berjuang: you're doing amazing. Seriously.
+
+Yang udah jadi ibu, komen pengalaman seru hari ini! Yang belum, simpan post ini buat reminder nanti.</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Susan pakai outfit image 2 (outfit malam, tapi lebih santai seperti sudah lepas heels), sedang duduk di sofa ruang keluarga yang nyaman (image 3), memegang buku cerita anak-anak (image 4) dengan ekspresi lembut. Background ruang keluarga modern dengan lampu redup, ada boneka dan mainan anak tertata rapi. Foto diambil dari depan agak jauh, suasana hangat dan intimate. Angle medium shot, warm tones.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy%20living%20room%20jakarta%20modern%20warm%20lighting" target="_blank">Pinterest: Ruang Keluarga Cozy</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=mother%20reading%20story%20book%20cozy%20sofa" target="_blank">Pinterest: Story Time Ibu</a>
+                    <a href="https://www.google.com/search?q=ruang+keluarga+modern+jakarta+sofa+hangat&tbm=isch" target="_blank">Google: Ruang Keluarga Modern</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 14/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Me time has started. Anak tidur, suami nonton bola, Susan? Skincare routine sambil dengerin podcast.
+
+7-step skincare ala Susan:
+1. Cuci muka
+2. Toner
+3. Serum
+4. Essence
+5. Moisturizer
+6. Eye cream
+7. Overthinking tentang besok mau masak apa
+
+Ga deng, step 7 cuma bercanda. Atau engga.
+
+Skincare routine kalian berapa step? Jangan bilang cuma cuci muka pake sabun mandi ya. Susan judge.</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Susan tanpa makeup, rambut diikat santai, pakai bathrobe putih, sedang duduk di meja rias kamar mandi yang aesthetic (image 3), di meja ada deretan produk skincare tertata rapi (image 4). Susan sedang mengaplikasikan serum ke wajah sambil melihat ke cermin, ekspresi rileks. Background kamar mandi modern dengan marmer putih dan tanaman kecil. Lighting lembut dan flattering, suasana spa-at-home.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=aesthetic%20skincare%20routine%20bathroom%20vanity" target="_blank">Pinterest: Skincare Routine Setup</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=modern%20bathroom%20vanity%20marble%20white%20aesthetic" target="_blank">Pinterest: Bathroom Modern Aesthetic</a>
+                    <a href="https://www.google.com/search?q=skincare+routine+aesthetic+vanity+table&tbm=isch" target="_blank">Google: Skincare Vanity Aesthetic</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 23:00 -->
+        <div class="post-card" id="post-2300">
+            <div class="post-header">
+                <span class="post-time">23:00 WIB</span>
+                <span class="post-number">Post 15/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Jam 11 malam dan Susan masih belum tidur. Bukan insomnia, tapi lagi bikin content plan buat besok. Hustle never stops, kata anak muda. Susan sih bilangnya: emang ga ada pilihan, namanya juga entrepreneur.
+
+Ngetik di laptop sambil minum chamomile tea. Vibe-nya kayak CEO di film-film Hollywood, padahal aslinya lagi googling "cara bikin anak mau makan sayur."
+
+Puisi tengah malam:
+Malam sunyi Jakarta tidur,
+Susan masih melek terjaga,
+Bukan hantu yang bikin takut,
+Tapi deadline besok yang bikin pucat.
+
+Night owls mana suaranya? Drop jam berapa kalian biasanya tidur!</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Susan pakai piyama sutra warna pastel, sedang duduk di tempat tidur king size yang rapi (image 3), laptop terbuka di pangkuan dan secangkir teh chamomile di meja nakas (image 4). Susan tersenyum kecil sambil mengetik, rambutnya tergerai. Background kamar tidur mewah tapi homey dengan lampu tidur menyala warm, bantal-bantal dekoratif. Foto diambil dari ujung tempat tidur, suasana cozy late night working mood.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy%20bedroom%20laptop%20night%20warm%20lighting" target="_blank">Pinterest: Cozy Bedroom Night Work</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=chamomile%20tea%20nightstand%20aesthetic" target="_blank">Pinterest: Chamomile Tea Aesthetic</a>
+                    <a href="https://www.google.com/search?q=kamar+tidur+modern+cozy+laptop+night&tbm=isch" target="_blank">Google: Kamar Cozy Night</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 00:00 -->
+        <div class="post-card" id="post-0000">
+            <div class="post-header">
+                <span class="post-time">00:00 WIB</span>
+                <span class="post-number">Post 16/16</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Dan... hari ini resmi selesai. Midnight post terakhir sebelum Susan beneran tidur.
+
+Recap hari ini: meeting klien, makan padang, ke toko buku, kerja di coworking space, ngopi, belanja di pasar, dinner Jepang, jalan-jalan malam, story time sama anak, skincare, dan sekarang finally istirahat.
+
+Hidup ini cuma sekali. Jadi Susan pilih untuk menjalaninya dengan penuh syukur, penuh tawa, dan penuh makan enak.
+
+Terima kasih yang udah ikutin hari Susan! Besok kita cerita lagi ya. Selamat tidur semua, mimpi yang indah-indah. Kalau mimpi ketemu Susan, itu artinya kalian butuh asuransi.
+
+Good night, Jakarta!
+
+PS: Follow Susan biar ga ketinggalan cerita seru setiap hari!</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Susan pakai piyama sutra, sudah berbaring di tempat tidur (image 3), selimut ditarik sampai dada, mata setengah terpejam dengan senyum kecil, satu tangan memegang handphone (image 4) seperti baru selesai posting. Background kamar gelap dengan sedikit cahaya dari lampu tidur kecil dan handphone yang menyala. Foto diambil dari atas (bird eye view), suasana peaceful, nyaman, dan sleepy. Vibe: akhir hari yang sempurna.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy%20bed%20night%20phone%20glow%20aesthetic" target="_blank">Pinterest: Cozy Bed Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bedroom%20dim%20light%20sleeping%20peaceful" target="_blank">Pinterest: Bedroom Peaceful Night</a>
+                    <a href="https://www.google.com/search?q=aesthetic+bedroom+night+sleeping+cozy+phone+glow&tbm=isch" target="_blank">Google: Aesthetic Night Sleep</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Susan Sun Content Plan - Made with love for engagement & growth</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Task (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        // Persist hidden state in localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('susan-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        // Update toggleTask to save state
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('susan-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
