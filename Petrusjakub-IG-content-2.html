@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrusjakub - Full Day IG Content Plan (Edisi 2)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #e8eaf6;
+            color: #283593;
+        }
+
+        .label-prompt {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .caption-box, .prompt-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .prompt-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>@petrusjakub - Daily IG Content Plan (Edisi 2)</h1>
+            <p>Full Day Content Schedule | Rekrut Agen Asuransi | Perspektif Pihak Ketiga</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap ~60 menit | CTA: Klik Link di Bio ke Web Asuransi</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Pak Budi kerja 20 tahun di perusahaan yang sama. Loyal. Rajin. Ga pernah bolos.
+
+Bulan lalu, dia di-PHK. Tanpa pesangon yang layak.
+
+Sekarang usia 45, punya cicilan rumah, anak 3 masih sekolah. Mau lamar kerja? Perusahaan cari yang muda.
+
+Pertanyaannya: apakah kerja keras saja benar-benar cukup?
+
+Ada orang-orang di luar sana yang incomenya jauh lebih besar, tapi mereka ga perlu macet-macetan tiap pagi. Mereka bangun ASET, bukan cuma numpuk jam kerja.
+
+Salah satu caranya? Jadi agen asuransi. Bisnis yang bisa dimulai dari nol, tanpa batasan usia.
+
+Penasaran? Klik link di bio.
+
+#KerjaKerasSajaTidakCukup #PHKIndonesia #FinancialFreedom #AgenAsuransi #PassiveIncome #BangunAset #PeluangBisnis #RekrutAgen #KarirTanpaBatasUsia #BisnisAsuransi</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Buat gambar infografis Instagram 1:1 ratio dengan background gradient gelap (navy ke hitam). Di tengah ada ilustrasi seorang pria Indonesia usia 40-an berpakaian kerja formal terlihat kelelahan, memegang kardus berisi barang-barang pribadi di depan gedung kantor. Judul besar di atas: "KERJA 20 TAHUN. LOYAL. RAJIN. TETAP DI-PHK." dalam font bold putih dengan efek glow merah. Di bawah ada teks: "Apakah kerja keras saja benar-benar cukup?" Gaya desain emosional dan dramatic. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Warna dominan gelap dengan aksen merah dan putih.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 2/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Ada seorang teman. Sebut saja Mas Andi.
+
+Tiap pagi berangkat jam 5. Pulang jam 9 malam. Sabtu masih masuk. Gaji? 6 juta.
+
+Di sisi lain, ada Mbak Rina. Kerja dari rumah. Atur waktu sendiri. Income bulan kemarin? 25 juta.
+
+Bedanya apa?
+
+Mas Andi jual WAKTU. Mbak Rina bangun SISTEM.
+
+Mbak Rina adalah agen asuransi. Dia ga perlu ngantor. Ga perlu bos. Yang dia butuhkan cuma HP, WiFi, dan kemauan belajar.
+
+Siapa yang mau hidup seperti Mbak Rina? Langkah pertamanya ada di link di bio.
+
+#JualWaktuVsBangunSistem #PassiveIncome #AgenAsuransi #KerjaDariRumah #FinancialFreedom #WorkSmartNotHard #PeluangKarir #BisnisOnline #IncomeUnlimited #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Buat gambar perbandingan Instagram 1:1 ratio. Layout split vertikal. Kiri (gelap, abu-abu): ilustrasi pria Indonesia berpakaian kantoran di dalam kemacetan pagi buta, jam menunjukkan 05:00, wajah lelah dengan teks "Jual Waktu - Rp 6 Juta/bulan". Kanan (cerah, biru-hijau): ilustrasi wanita Indonesia tersenyum di rumah dengan laptop dan kopi, jam menunjukkan 09:00, wajah bahagia dengan teks "Bangun Sistem - Rp 25 Juta/bulan". Judul besar di atas: "BEDANYA APA?" dalam font bold. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya kontras yang tajam dan eye-catching.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 3/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Yakin masih mau loyal sama perusahaan?
+
+Pak Hendra baru saja kena PHK untuk yang ke-3 kalinya dalam 10 tahun.
+
+Rajin? Sudah. Kerja keras? Sudah. Lembur tanpa dibayar? Sudah. Tetap saja kena PHK.
+
+Ingat, usia terus bertambah. Tapi perusahaan selalu mencari yang lebih muda dan lebih murah.
+
+Ada satu pertanyaan yang harus dijawab setiap orang: kalau perusahaan bisa membuang kapan saja, kenapa tidak mulai bangun bisnis sendiri dari sekarang?
+
+Bisnis agen asuransi tidak mengenal PHK. Yang ada cuma GROWTH.
+
+Info lebih lanjut? Klik link di bio.
+
+#LoyalitasSiasiaSia #PHK #KerjaKeras #UsiaTerusBertambah #BangunBisnisSendiri #AgenAsuransi #AntiPHK #KarirMandiri #FinancialFreedom #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Buat gambar storytelling Instagram 1:1 ratio. Background merah gelap dengan efek retak seperti kaca pecah. Di tengah ada ilustrasi seorang pria Indonesia usia 40-an berdiri di depan pintu kantor yang tertutup dengan tulisan "TERIMA KASIH ATAS PENGABDIAN ANDA" di kertas PHK. Di atas ada counter visual: "PHK ke-1... ke-2... ke-3..." dalam font bold merah. Judul besar: "YAKIN MASIH MAU LOYAL?" dalam font bold putih. Di bawah: "Usia bertambah. Perusahaan cari yang lebih muda." Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya emosional dan provokatif.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 4/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Cerita nyata dari seseorang yang baru gabung 6 bulan lalu.
+
+Dulu dia driver ojol. Kerja 14 jam sehari. Badan capek. Penghasilan ga pasti. Lutut mulai sakit.
+
+Sekarang? Dia agen asuransi. Income stabil. Bahkan bulan lalu tembus 15 juta. Dari rumah. Tanpa bos yang marah-marah.
+
+Yang berubah bukan orangnya. Yang berubah KENDARAAN-nya.
+
+Banyak orang kerja keras, tapi naik kendaraan yang salah. Mau kerja sekeras apapun, kalau kendaraannya lambat, ya tetap lambat sampainya.
+
+Ganti kendaraan. Jadi agen asuransi.
+
+Caranya? Klik link di bio.
+
+#GantiKendaraan #DriverOjolSukses #AgenAsuransi #KerjaSmartBukanKerjaKeras #IncomeStabil #PeluangBaru #TransformasiKarir #BisnisAsuransi #KisahNyata #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Buat gambar before-after Instagram 1:1 ratio. Background split diagonal. Kiri bawah (gelap, hujan): ilustrasi seorang pria Indonesia di atas motor ojol di tengah hujan dan macet, ekspresi lelah, jam menunjukkan malam. Kanan atas (cerah, sinar matahari): pria yang sama duduk nyaman di rumah di depan laptop, tersenyum, dengan notifikasi transfer masuk di HP. Panah besar di tengah bertuliskan "6 BULAN KEMUDIAN". Judul: "YANG BERUBAH BUKAN ORANGNYA. YANG BERUBAH KENDARAANNYA." dalam font bold. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya transformasi yang powerful.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 5/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Coba perhatikan di sekitar.
+
+Ada orang yang kerja dari jam 6 pagi sampai jam 10 malam. Pulang cuma buat tidur. Anak-anak sudah tertidur. Istri sudah lelah menunggu.
+
+Penghasilannya? Pas-pasan. Bulan depan harus kerja lagi dari nol.
+
+Itu namanya ACTIVE INCOME. Berhenti kerja = berhenti dapat uang.
+
+Sekarang bandingkan dengan seseorang yang punya PASSIVE INCOME. Uang masuk meskipun sedang tidur. Meskipun sedang liburan. Meskipun sedang sakit.
+
+Agen asuransi punya keduanya. Active income dari closing baru. Passive income dari renewal komisi setiap tahun.
+
+Mau tahu caranya? Klik link di bio.
+
+#ActiveVsPassiveIncome #PenghasilanPasif #AgenAsuransi #RenewalKomisi #FinancialFreedom #WaktuUntukKeluarga #BisnisAsuransi #RecurringIncome #BerhentiKerjaBerhentiDapat #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Buat gambar edukasi Instagram 1:1 ratio. Background dibagi dua secara horizontal. Atas (merah/gelap): ilustrasi jam weker berdering, pria Indonesia berlari dengan tas kerja di pagi buta, teks "ACTIVE INCOME: Berhenti kerja = Berhenti dapat uang" dengan ikon rantai. Bawah (hijau/cerah): ilustrasi pria yang sama tidur nyenyak di kasur sementara notifikasi uang masuk muncul di HP-nya, teks "PASSIVE INCOME: Uang masuk bahkan saat tidur" dengan ikon infinity. Judul besar: "MANA YANG LEBIH MASUK AKAL?" Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Desain kontras dan edukatif.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 6/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Pak Joko usia 50 tahun. Baru kena PHK.
+
+Mau lamar kerja? Ditolak karena "overqualified" atau terlalu tua.
+Mau buka usaha? Modal dari mana?
+Mau jadi ojol? Badan sudah ga kuat.
+
+Lalu ada yang bilang: "Kenapa ga coba jadi agen asuransi?"
+
+Dia skeptis. Tapi dia coba. Karena TANPA MODAL. Tanpa batasan usia. Training gratis.
+
+3 bulan kemudian, Pak Joko sudah closing 8 polis. Income lebih besar dari gaji terakhirnya di kantor.
+
+Usia bukan halangan. Yang jadi halangan itu GENGSI dan RAGU.
+
+Mau seperti Pak Joko? Klik link di bio.
+
+#UsiaBukanHalangan #PHKBukanAkhir #AgenAsuransi50Tahun #MulaiBaru #TanpaModal #KarirTanpaBatasUsia #BisnisAsuransi #InspirasiBisnis #KisahPakJoko #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Buat gambar inspirasional Instagram 1:1 ratio. Background gradient dari abu-abu gelap (kiri) ke hijau cerah (kanan) menunjukkan transformasi. Di kiri: pria Indonesia usia 50-an terlihat sedih di depan laptop dengan banyak email penolakan terbuka. Di kanan: pria yang sama tersenyum lebar memegang sertifikat agen asuransi dan HP yang menunjukkan grafik komisi naik. Di tengah ada teks timeline "3 BULAN KEMUDIAN" dengan panah. Judul: "USIA 50? BUKAN HALANGAN." dalam font bold. Di bawah: "Yang jadi halangan: gengsi dan ragu." Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya warm dan inspiring.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 7/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Jam istirahat. Coba pikirin ini sebentar.
+
+Ada seseorang yang sudah kerja 10 tahun. Posisi naik sedikit. Gaji naik sedikit. Tapi harga rumah? Naik 3x lipat. Biaya hidup? Naik terus.
+
+Artinya sebenarnya orang itu MAKIN MISKIN setiap tahun, meskipun gajinya naik.
+
+Ini bukan pendapat. Ini MATEMATIKA.
+
+Kalau penghasilan ga bisa tumbuh lebih cepat dari inflasi, maka hidup akan makin sempit.
+
+Pertanyaannya: ada ga pekerjaan yang incomenya bisa tumbuh 2x, 5x, bahkan 10x dalam setahun?
+
+Ada. Agen asuransi. Karena TIDAK ADA BATASAN penghasilan.
+
+Mau buktikan sendiri? Klik link di bio.
+
+#MatematikaKeuangan #GajiNaikTapiMakinMiskin #Inflasi #PenghasilanTanpaBatas #AgenAsuransi #RealitaFinansial #FinancialLiteracy #BisnisAsuransi #IncomeGrowth #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Buat gambar edukasi Instagram 1:1 ratio bergaya data visual. Background putih bersih. Judul besar: "GAJI NAIK, TAPI MAKIN MISKIN?" dalam font bold hitam. Di tengah ada grafik sederhana: garis biru (gaji) naik pelan, tapi garis merah (biaya hidup/inflasi) naik lebih cepat dan tajam. Area antara kedua garis diberi warna merah transparan dengan label "GAP SEMAKIN BESAR". Di bawah grafik: "Solusi: penghasilan yang BISA tumbuh tanpa batas." dengan panah ke CTA "Klik Link di Bio". Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Desain clean, data-driven, dan provokatif.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 8/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Mbak Sari kerja di bank. Jabatan tinggi. Gaji besar. Semua orang bilang dia sukses.
+
+Tapi setiap malam dia ga bisa tidur.
+
+Target terus naik. Tekanan dari atasan. Meeting sampai tengah malam. Anak-anak dititip babysitter dari pagi sampai malam.
+
+Suatu hari anaknya yang kecil bilang: "Mama kok ga pernah di rumah?"
+
+Saat itu Mbak Sari sadar: dia sukses di mata orang, tapi GAGAL di mata anaknya sendiri.
+
+Sekarang Mbak Sari jadi agen asuransi. Income? Masih besar. Tapi waktu? MILIK DIA SENDIRI.
+
+Sukses itu bukan cuma soal uang. Sukses itu punya PILIHAN.
+
+Mau punya pilihan juga? Klik link di bio.
+
+#SuksesSemu #WaktuUntukKeluarga #AgenAsuransi #WorkLifeBalance #IbuBekerja #PilihanHidup #KarirFleksibel #TimeBelongToYou #BisnisAsuransi #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Buat gambar storytelling emosional Instagram 1:1 ratio. Background dibagi dua panel. Panel atas (gelap, biru tua): wanita Indonesia berpakaian formal di kantor mewah larut malam, terlihat stress di depan tumpukan dokumen, di sudut ada bubble pikiran anak kecil yang menangis. Panel bawah (cerah, kuning hangat): wanita yang sama bermain dengan anak-anaknya di rumah sambil laptop terbuka di meja, tersenyum bahagia. Judul: "SUKSES DI MATA SIAPA?" dalam font bold. Di bawah: "Sukses itu punya PILIHAN." Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya emosional dan reflektif.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 9/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">Fakta menyakitkan:
+
+Seseorang bisa bekerja 30 tahun di satu perusahaan. Setia. Disiplin. Ga pernah protes.
+
+Lalu di usia 55, di-PHK. Pesangon habis dalam 2 tahun. Ga punya skill lain. Ga punya bisnis. Ga punya passive income.
+
+Dan itu terjadi pada JUTAAN orang Indonesia setiap tahun.
+
+Yang menyedihkan: bukan karena mereka malas. Tapi karena ga ada yang pernah mengajarkan bahwa SATU sumber income itu SANGAT BERBAHAYA.
+
+Mulai sekarang, sebelum terlambat. Bangun sumber income kedua.
+
+Jadi agen asuransi bisa dimulai TANPA mengganggu pekerjaan utama.
+
+Langkah pertama? Klik link di bio.
+
+#SatuSumberIncomeBerbahaya #DiversifikasiIncome #PHKIndonesia #BangunBisnisSebelumTerlambat #AgenAsuransi #SideHustle #FinancialSafety #PassiveIncome #PlanB #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Buat gambar infografis Instagram 1:1 ratio bergaya warning/peringatan. Background hitam dengan border merah. Di tengah ada ilustrasi visual: satu keranjang berisi semua telur, dan keranjang itu retak hampir pecah. Judul besar: "SATU SUMBER INCOME = SANGAT BERBAHAYA" dalam font bold merah dan putih. Di bawah ada timeline: "Kerja 30 tahun - PHK - Pesangon habis 2 tahun - Lalu apa?" dalam step boxes. Di bagian paling bawah (hijau): "SOLUSI: Bangun income kedua SEKARANG." dengan CTA "Klik Link di Bio". Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya urgent dan eye-opening.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 10/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Ada dua orang teman kuliah. Lulus bareng. IPK hampir sama.
+
+Yang satu jadi karyawan. 10 tahun kemudian, posisi supervisor. Gaji 12 juta. Masih ngontrak.
+
+Yang satu lagi sempat "ga jelas" 2 tahun pertama. Dicemooh. Dibilang ga bener.
+
+Tapi 10 tahun kemudian? Dia punya tim 50 orang. Passive income dari renewals. Rumah lunas. Mobil lunas. Tiap tahun liburan ke luar negeri.
+
+Dia agen asuransi.
+
+Pertanyaannya bukan siapa yang lebih pintar. Tapi siapa yang lebih BERANI mengambil jalan berbeda.
+
+Mau mulai? Klik link di bio.
+
+#JalanBerbeda #10TahunKemudian #AgenAsuransiSukses #BeraniBeda #KarirVsBisnis #PassiveIncome #FinancialFreedom #TimAsuransi #SuksesJangkaPanjang #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Buat gambar perbandingan Instagram 1:1 ratio dengan layout "2 jalan hidup". Background gradient dari abu ke biru. Di atas: dua pria Indonesia muda bersebelahan saat wisuda (titik awal sama). Lalu ada dua jalur yang memisah. Jalur kiri: pria berpakaian kantoran di bilik sempit, teks "10 tahun: Supervisor, Gaji 12jt, Masih ngontrak". Jalur kanan: pria berpakaian casual di depan rumah besar dengan mobil, teks "10 tahun: Tim 50 orang, Passive Income, Rumah & Mobil Lunas". Judul: "TITIK AWAL SAMA. PILIHAN BERBEDA." Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya clean dan kontras kuat.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 11/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Pernah dengar cerita ini?
+
+Seseorang naik jabatan. Senang. Tapi gajinya cuma naik 500 ribu. Sementara tanggung jawabnya naik 5x lipat.
+
+Lembur tiap hari. Weekend masih kerja. Stress. Sakit maag. Tensi naik.
+
+Tapi ga berani resign karena "ya mau kerja apa lagi?"
+
+Ini yang namanya JEBAKAN KARIR. Merasa ga bisa keluar karena ga punya alternatif.
+
+Padahal alternatif itu ADA. Banyak orang sudah membuktikan bahwa jadi agen asuransi bisa jadi EXIT STRATEGY dari jebakan ini.
+
+Tanpa modal. Bisa dimulai sambil masih kerja.
+
+Info lengkap? Klik link di bio.
+
+#JebakanKarir #NaikJabatanTapiStress #ExitStrategy #AgenAsuransi #AlternatifKarir #BurnOut #KerjaKeras #WorkLifeBalance #BisnisAsuransi #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Buat gambar konseptual Instagram 1:1 ratio. Background gradient dari merah gelap ke hitam. Ilustrasi utama: seseorang (pria Indonesia) terjebak di dalam labirin/maze kantor yang sempit, dinding-dindingnya bertuliskan "LEMBUR", "TARGET", "MEETING", "DEADLINE". Di atas labirin ada cahaya terang dengan tulisan "EXIT STRATEGY" dan tangga menuju ke atas. Judul besar: "JEBAKAN KARIR" dalam font bold putih. Di bawah: "Ada jalan keluar. Tanpa harus resign dulu." Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya dramatic dan thought-provoking.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 12/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Sore ini coba bayangkan skenario ini:
+
+Seseorang usia 35. Punya cicilan rumah 25 tahun. Anak masih kecil. Istri tidak bekerja.
+
+Tiba-tiba besok dia TIDAK BISA bekerja lagi. Sakit. Kecelakaan. Apapun.
+
+Siapa yang bayar cicilan? Siapa yang biayai anak sekolah? Berapa lama tabungan bertahan?
+
+Realitanya: kebanyakan keluarga Indonesia TIDAK SIAP menghadapi skenario ini.
+
+Dan di sinilah peran agen asuransi. Bukan jualan ketakutan. Tapi memberikan SOLUSI nyata.
+
+Yang mau jadi bagian dari solusi dan dibayar untuk itu, klik link di bio.
+
+#SkenarioTerburuk #ProteksiKeluarga #AgenAsuransi #SolusiNyata #BisnisYangBermakna #BantuOrangLain #AsuransiJiwa #FinancialPlanning #EdukasiBisnis #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Buat gambar edukasi Instagram 1:1 ratio. Background gradient biru tua ke hitam. Di tengah ada ilustrasi rumah Indonesia dengan keluarga (ayah, ibu, anak kecil) di dalamnya, dilindungi oleh kubah/shield transparan berwarna biru bercahaya. Di luar kubah ada visual ancaman: ikon ambulans, ikon PHK, ikon kecelakaan. Judul besar: "KALAU BESOK TIDAK BISA KERJA LAGI, SIAPA YANG TANGGUNG?" dalam font bold putih. Di bawah: "Jadilah solusinya. Bukan penontonnya." dengan CTA. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya protektif dan emosional.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 13/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Kenapa orang-orang kaya semakin kaya?
+
+Bukan karena mereka lebih pintar. Bukan karena lebih rajin.
+
+Tapi karena mereka punya ASET yang bekerja untuk mereka. Sementara kebanyakan orang cuma punya GAJI yang berhenti kalau berhenti kerja.
+
+Ada orang yang tiap bulan dapat komisi renewal dari polis yang dia jual 5 TAHUN LALU. Tanpa kerja tambahan. Uang masuk otomatis.
+
+Itu namanya ASET.
+
+Jadi agen asuransi itu bukan cuma soal jualan hari ini. Tapi soal membangun income stream yang akan membayar BERTAHUN-TAHUN ke depan.
+
+Siapa yang ga mau punya aset seperti itu?
+
+Mulai bangun sekarang. Klik link di bio.
+
+#OrangKayaSemakinKaya #BangunAset #RenewalKomisi #PassiveIncome #AgenAsuransi #FinancialFreedom #IncomeStream #InvestasiWaktu #BisnisJangkaPanjang #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Buat gambar infografis Instagram 1:1 ratio. Background gradient emas ke hitam (luxury feel). Di tengah ada ilustrasi visual: di kiri ada seseorang berlari di treadmill (kerja terus tapi diam di tempat) dengan teks "GAJI: Berhenti kerja = Berhenti dapat". Di kanan ada seseorang duduk santai di kursi sementara pohon uang tumbuh di belakangnya dengan teks "ASET: Uang bekerja untuk Anda". Judul besar: "KENAPA YANG KAYA MAKIN KAYA?" dalam font bold emas. Di bawah: "Bangun aset. Mulai dari agen asuransi." Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya premium dan edukatif.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 14/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Malam ini, sebuah renungan.
+
+Di Indonesia, ada orang yang pensiun dengan tabungan KOSONG setelah kerja 35 tahun. Badan sudah rusak. Energi habis. Dan tidak ada passive income.
+
+Di sisi lain, ada orang yang pensiun di usia 40. Sehat. Bahagia. Passive income lebih dari cukup.
+
+Bedanya? Yang satu HANYA mengandalkan gaji. Yang satu MEMBANGUN bisnis sejak muda.
+
+Agen asuransi yang mulai di usia 25-30 bisa mencapai financial freedom di usia 40. Itu bukan teori. Itu sudah dibuktikan banyak orang.
+
+Pertanyaannya: mau pensiun yang mana?
+
+Langkah pertama ada di link di bio.
+
+#PensiunDini #FinancialFreedom #PensiunBahagia #AgenAsuransi #MulaiMuda #BangunBisnis #PassiveIncome #PensiunUsia40 #RenunganMalam #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Buat gambar perbandingan Instagram 1:1 ratio. Background gradient malam (ungu tua ke hitam). Dua panel. Panel kiri (gelap, sedih): ilustrasi orang tua Indonesia usia 60-an duduk sendirian di kursi, terlihat lelah, dompet kosong di meja, teks "Pensiun 60: Tabungan habis. Badan rusak." Panel kanan (cerah, emas): orang Indonesia usia 40-an tersenyum di pantai tropis, laptop di samping, keluarga bermain di belakang, teks "Pensiun 40: Passive income. Sehat. Bahagia." Judul: "MAU PENSIUN YANG MANA?" dalam font bold putih. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya kontras emosional yang kuat.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 15/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Cerita tentang Mas Doni.
+
+Mas Doni fresh graduate. Lamar kerja ke 50+ perusahaan. Ditolak semua. Mulai putus asa.
+
+Temannya ajak gabung jadi agen asuransi. Dia pikir, "Ah, ga ada kerjaan lain juga, coba aja dulu."
+
+6 bulan kemudian? Teman-teman kuliahnya yang diterima kerja kantoran BARU gajian pertama 5 juta.
+
+Mas Doni? Sudah tembus 18 juta di bulan ke-6.
+
+Kadang jalan yang kelihatan "ga jelas" justru menghasilkan lebih dari jalan yang "aman".
+
+Yang merasa sedang di persimpangan, mungkin ini jalannya. Klik link di bio.
+
+#FreshGraduate #SusahCariKerja #JalanTakTerduga #AgenAsuransi #PenghasilanMuda #AlternatifKarir #GaHarusKantoran #BisnisAsuransi #Persimpangan #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Buat gambar storytelling Instagram 1:1 ratio. Background gradient biru ke ungu. Di atas: ilustrasi pria muda Indonesia di depan laptop dengan banyak email "REJECTED" (ditolak), ekspresi frustrasi. Di tengah: panah timeline "6 BULAN KEMUDIAN". Di bawah: pria yang sama tersenyum percaya diri, memegang HP dengan grafik income naik yang menunjukkan "18 Juta/bulan", di belakangnya teman-temannya masih di bilik kantor. Judul: "DITOLAK 50 PERUSAHAAN. SEKARANG INCOME LEBIH BESAR DARI MEREKA SEMUA." dalam font bold putih. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya underdog-to-winner yang inspiratif.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 16/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Pernah perhatikan ga?
+
+Orang-orang yang paling keras kerjanya, sering kali BUKAN yang paling kaya.
+
+Tukang bangunan kerja keras. Petani kerja keras. Guru kerja keras. Tapi income mereka terbatas.
+
+Sementara ada orang yang kerjanya "cuma ngobrol sama orang" tapi incomenya puluhan juta sebulan.
+
+Bukan berarti kerja fisik itu salah. Tapi ini membuktikan satu hal: KERJA KERAS SAJA TIDAK CUKUP. Yang menentukan itu LEVERAGE dan NILAI yang diberikan.
+
+Agen asuransi memberikan NILAI TINGGI (proteksi finansial untuk keluarga) dengan LEVERAGE (1 polis = komisi bertahun-tahun).
+
+Ini bukan soal kerja lebih keras. Ini soal kerja lebih CERDAS.
+
+Mau belajar? Klik link di bio.
+
+#KerjaKerasTidakCukup #KerjaCerdas #Leverage #NilaiTinggi #AgenAsuransi #SmartWork #PenghasilanCerdas #BisnisAsuransi #MindsetShift #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Buat gambar edukasi Instagram 1:1 ratio bergaya infografis. Background putih dengan aksen biru. Di atas: judul "KERJA KERAS SAJA TIDAK CUKUP" dalam font bold hitam. Di tengah ada visual timbangan/scale: di sisi kiri ada ikon orang bekerja fisik berat (palu, cangkul) dengan teks "Kerja Keras" dan label "Income Terbatas". Di sisi kanan ada ikon orang di laptop/meeting dengan teks "Kerja Cerdas + Leverage" dan label "Income Tanpa Batas". Timbangan condong ke kanan. Di bawah: "Bukan soal lebih keras. Tapi lebih CERDAS." dengan CTA. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya clean dan mind-shifting.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 17/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Post terakhir untuk hari ini.
+
+Ada satu pola yang selalu sama. Orang-orang yang berhasil di bisnis ini punya satu kesamaan: mereka MEMULAI meskipun belum sempurna. Meskipun masih takut. Meskipun belum tahu semua jawabannya.
+
+Sementara yang tidak berhasil? Mereka terus MENUNGGU. Menunggu waktu yang tepat. Menunggu modal. Menunggu ilmu yang cukup. Menunggu sampai usia keburu lewat.
+
+Pak Budi yang kena PHK di awal tadi? Dia akhirnya gabung. Sekarang incomenya lebih stabil dari gaji kantornya dulu.
+
+Mbak Rina, Pak Joko, Mas Doni - mereka semua punya satu kesamaan: MEREKA MULAI.
+
+Hari ini, pilihan itu ada di depan mata. Klik link di bio. Atau scroll terus dan lupa.
+
+Terserah. Tapi ingat, usia terus bertambah. Dan waktu tidak bisa diputar ulang.
+
+Selamat malam.
+
+#MulaiSekarang #JanganMenunggu #UsiaTerusBertambah #AgenAsuransi #KeputusanHariIni #WaktuTidakMenunggu #ActionTaker #BisnisAsuransi #LastCallToday #RekrutAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Buat gambar closing/CTA Instagram 1:1 ratio. Background gradient malam (hitam ke biru tua) dengan jam besar yang jarumnya hampir menunjukkan tengah malam. Judul besar: "USIA TERUS BERTAMBAH. WAKTU TIDAK BISA DIPUTAR ULANG." dalam font bold putih dengan efek glow. Di bawah ada dua pilihan visual: tombol hijau terang "MULAI SEKARANG" dan tombol abu-abu redup "NANTI AJA" (yang tercoret). Di bagian paling bawah: CTA "Klik Link di Bio" dengan efek shine. Suasana reflektif, urgent tapi tidak memaksa. Hidden watermark @petrusjakub di tengah gambar dengan opacity sangat rendah. Gaya cinematic dan final-call yang elegan.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>@petrusjakub Content Plan Edisi 2 - Rekrut Agen Asuransi | Perspektif Pihak Ketiga</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Task (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        // Persist hidden state in localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('petrusjakub2-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        // Update toggleTask to save state
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('petrusjakub2-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
