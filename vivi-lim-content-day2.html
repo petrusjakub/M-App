@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivi Lim - Day 2 Content Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .nav-bar {
+            background: rgba(255,255,255,0.95);
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(240,147,251,0.4);
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .post-card.hidden {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden .post-content {
+            display: none;
+        }
+
+        .post-time {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .post-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f5576c;
+            margin-bottom: 6px;
+            margin-top: 14px;
+        }
+
+        .caption-box, .prompt-box {
+            background: #fff5f7;
+            border-left: 4px solid #f5576c;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+
+        .prompt-box {
+            border-left-color: #f093fb;
+            background: #fdf0ff;
+        }
+
+        .pinterest-links {
+            margin-top: 10px;
+        }
+
+        .pinterest-links a {
+            display: inline-block;
+            background: #e60023;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+        }
+
+        .pinterest-links a:hover {
+            background: #ad081b;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .btn-copy {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-copy-caption {
+            background: #f5576c;
+            color: white;
+        }
+
+        .btn-copy-caption:hover {
+            background: #d4324a;
+        }
+
+        .btn-copy-prompt {
+            background: #f093fb;
+            color: white;
+        }
+
+        .btn-copy-prompt:hover {
+            background: #d06de0;
+        }
+
+        .btn-hide {
+            background: #f0f0f0;
+            color: #666;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-hide:hover {
+            background: #ddd;
+        }
+
+        .btn-copy.copied {
+            background: #27ae60 !important;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-done {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .reset-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 24px;
+            background: white;
+            color: #f5576c;
+            border: 2px solid #f5576c;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #f5576c;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .post-card {
+                padding: 16px;
+            }
+            .nav-bar {
+                position: static;
+                padding: 10px 12px;
+            }
+            .nav-btn {
+                font-size: 0.72rem;
+                padding: 5px 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vivi Lim - Day 2 Content</h1>
+            <p>Weekend Vibes | Mulai 05:00 | Jeda 60 menit | Workout, Pasar, Chill, Explore</p>
+        </div>
+
+        <div class="nav-bar" id="nav-bar"></div>
+
+        <div id="posts-container"></div>
+
+        <button class="reset-btn" onclick="resetAll()">Reset Semua Task</button>
+    </div>
+
+    <script>
+        const posts = [
+            {
+                time: "05:00",
+                title: "Bangun Pagi - Weekend Edition",
+                caption: `Weekend tapi tetep bangun jam 5? Iya dong, badan udah alarm sendiri haha.\n\nBedanya kalau weekend tuh bangunnya lebih happy karena ga ada tekanan meeting. Rasanya tuh... freedom!\n\nHari ini aku mau lakuin sesuatu yang udah lama di bucket list. Penasaran? Stay tuned ya!\n\nSiapa yang weekend-nya tetap bangun pagi juga? Atau kalian tim hibernasi?\n\n#WeekendMorning #EarlyBird #SaturdayVibes #5AMClub #BandungWeekend`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di pinggir tempat tidur sambil meregangkan kedua tangan ke atas dengan mata terpejam dan senyum lebar, di latar kamar tidur apartment dengan tirai setengah terbuka menampilkan langit subuh berwarna ungu kemerahan, angle selfie dari samping, suasana peaceful dan excited.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=cute+sleepwear+women+morning+stretch+bed" },
+                    { label: "Latar: Dawn Bedroom", url: "https://www.pinterest.com/search/pins/?q=bedroom+dawn+purple+sky+curtain+open+cozy" }
+                ]
+            },
+            {
+                time: "06:00",
+                title: "Morning Workout - Yoga di Balkon",
+                caption: `Pagi ini yoga di balkon! Udara Bandung jam segini tuh sejuk banget, perfect buat olahraga outdoor.\n\nIni pose favorit aku, warrior pose. Berasa powerful gitu haha. Padahal habis ini pasti gemeter kakinya.\n\nKalian olahraga weekend biasanya apa? Aku lagi pengen coba hal baru nih, kasih ide dong!\n\n#MorningYoga #WeekendWorkout #BalconyYoga #FitLife #HealthyLifestyle #BandungMorning`,
+                prompt: `Vivi pakai outfit image 2, sedang melakukan warrior pose yoga di balkon apartment dengan kedua tangan terentang dan satu kaki ke depan, ekspresi fokus dan tenang, di latar pemandangan kota Bandung pagi hari dengan gunung di kejauhan dan sedikit kabut, lantai balkon ada yoga mat warna lavender, angle difotoin dari samping.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=yoga+outfit+women+sports+bra+leggings+pastel" },
+                    { label: "Latar: Balcony Yoga", url: "https://www.pinterest.com/search/pins/?q=balcony+yoga+morning+city+view+mountain+misty" },
+                    { label: "Item: Yoga Mat", url: "https://www.pinterest.com/search/pins/?q=lavender+yoga+mat+balcony+outdoor+aesthetic" }
+                ]
+            },
+            {
+                time: "07:00",
+                title: "Post-Workout Smoothie",
+                caption: `Setelah olahraga, wajib refuel! Hari ini aku bikin smoothie sendiri dari buah-buah yang kemarin dibeli.\n\nResepnya gampang banget: pisang + strawberry + yogurt + madu. Blend, done!\n\nIni tuh enak banget serius, apalagi diminum pas badan masih anget habis workout. Refreshing parah!\n\nKalian tim smoothie atau tim sarapan berat?\n\n#PostWorkout #SmoothieBowl #HealthyLiving #HomeMade #WeekendBreakfast`,
+                prompt: `Vivi pakai outfit image 2, sedang berdiri di dapur sambil menuangkan smoothie pink dari blender ke gelas tinggi, ekspresi senang dan bangga, di latar dapur apartment dengan buah-buahan di counter dan cahaya pagi dari jendela, angle difotoin dari depan setengah badan, ada smoothie warna pink cantik di gelas.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=sporty+casual+women+kitchen+morning+workout+outfit" },
+                    { label: "Latar: Kitchen Morning", url: "https://www.pinterest.com/search/pins/?q=bright+kitchen+morning+light+fruits+counter+aesthetic" },
+                    { label: "Item: Pink Smoothie", url: "https://www.pinterest.com/search/pins/?q=pink+strawberry+smoothie+glass+aesthetic" }
+                ]
+            },
+            {
+                time: "08:00",
+                title: "Ke Pasar Tradisional",
+                caption: `PASAR TIME! Iya guys, aku tuh suka banget ke pasar tradisional. Suasananya tuh beda, rame, colorful, dan berasa authentic banget.\n\nAnak Medan mah udah biasa ya ke pasar dari kecil, jadi kalau weekend suka kangen vibes pasar gitu.\n\nHari ini mau beli bahan buat masak sesuatu special. Mau tau ga apa? Nanti aku share ya!\n\n#PasarTradisional #WeekendActivity #LocalMarket #BandungMarket #AnakMedan #AuthenticVibes`,
+                prompt: `Vivi pakai outfit image 2, sedang berjalan di lorong pasar tradisional sambil memegang tas belanja kain berisi sayuran, ekspresi happy dan excited melihat dagangan, di latar pasar tradisional yang ramai dengan pedagang dan sayuran warna-warni tertata di kios-kios, cahaya alami masuk dari atap, angle difotoin dari belakang serong sehingga terlihat profil wajah Vivi, ada ibu-ibu pedagang Indonesia di background.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+market+outfit+women+tote+bag+simple+fresh" },
+                    { label: "Latar: Traditional Market", url: "https://www.pinterest.com/search/pins/?q=indonesian+traditional+market+pasar+colorful+vegetables" },
+                    { label: "Item: Tas Belanja", url: "https://www.pinterest.com/search/pins/?q=canvas+tote+bag+vegetables+market+shopping" }
+                ]
+            },
+            {
+                time: "09:00",
+                title: "Hunting Jajanan Pasar",
+                caption: `Ga lengkap ke pasar kalau ga jajan! Ini tuh weakness aku banget, jajanan pasar.\n\nKlepon, onde-onde, pisang goreng, kue lapis... semua mau dibeli rasanya HAHA.\n\nAkhirnya beli beberapa aja buat di rumah nanti. Tapi yang paling favorit tetep klepon. Isinya melted gitu loh pas digigit!\n\nJajanan pasar favorit kalian apa? Bet kalian ga bisa pilih satu!\n\n#JajananPasar #KulinerTradisional #Klepon #IndonesianSnack #PasarVibes #Foodie`,
+                prompt: `Vivi pakai outfit image 2, sedang berdiri di depan penjual jajanan pasar sambil menunjuk ke arah klepon dengan ekspresi excited dan mata berbinar, di latar kios jajanan pasar dengan berbagai kue tradisional warna-warni tertata di nampan-nampan, ada uap dari gorengan, angle difotoin dari samping, ada pedagang ibu-ibu tersenyum di belakang dagangan.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+cute+market+outfit+women+asian+simple" },
+                    { label: "Latar: Jajanan Pasar Stall", url: "https://www.pinterest.com/search/pins/?q=indonesian+market+snack+stall+jajanan+pasar+kue" },
+                    { label: "Item: Klepon", url: "https://www.pinterest.com/search/pins/?q=klepon+indonesian+snack+traditional+green+ball" }
+                ]
+            },
+            {
+                time: "10:00",
+                title: "Coffee Shop Hopping",
+                caption: `Habis dari pasar, lanjut ke coffee shop favorit aku yang baru buka cabang baru di daerah Dago.\n\nTempatnya aesthetic banget guys, cocok buat kerja atau chill. Dan kopinya? Chef's kiss!\n\nIni salah satu hal yang aku suka dari Bandung: coffee shop-nya selalu next level.\n\nRekomen coffee shop hidden gem di Bandung dong! Aku mau explore lebih banyak\n\n#CoffeeShop #BandungCafe #WeekendChill #CoffeeTime #DagoBandung #CafeHopping`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di kursi outdoor coffee shop dengan kaki disilangkan sambil memegang cangkir kopi latte art, ekspresi santai dan happy, di latar coffee shop bergaya rustic modern dengan tanaman hijau, dinding bata ekspos, dan meja-meja kayu, cahaya pagi yang terang, angle difotoin dari depan full body, ada pengunjung lain di background tidak sadar kamera.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+weekend+outfit+women+coffee+shop+cute" },
+                    { label: "Latar: Rustic Cafe", url: "https://www.pinterest.com/search/pins/?q=bandung+coffee+shop+rustic+modern+plants+outdoor+seating" },
+                    { label: "Item: Latte Art", url: "https://www.pinterest.com/search/pins/?q=latte+art+coffee+cup+aesthetic+hands+holding" }
+                ]
+            },
+            {
+                time: "11:00",
+                title: "Window Shopping di Butik Lokal",
+                caption: `Lanjut jalan kaki ke butik lokal yang udah lama aku incerin. Ternyata koleksi barunya bagus-bagus banget!\n\nAku tuh kalau belanja prinsipnya: quality over quantity. Mending beli satu yang bagus daripada banyak tapi ga dipake.\n\nTapi susah sih nahan diri kalau semuanya cantik gini haha. Akhirnya... ya beli juga sih satu.\n\nKalian tim impulsive buyer atau tim mikir dulu?\n\n#LocalBrand #ShoppingTime #BandungFashion #SupportLocal #WeekendShopping #OOTD`,
+                prompt: `Vivi pakai outfit image 2, sedang berdiri di dalam butik fashion sambil memegang hanger dengan dress cantik dan menempelkannya di depan badan sambil menatap cermin dengan ekspresi senang, di latar butik fashion minimalis dengan rak baju tertata rapi dan pencahayaan hangat, angle difotoin dari belakang melalui cermin sehingga terlihat refleksi Vivi.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+chic+weekend+outfit+women+boutique+shopping" },
+                    { label: "Latar: Fashion Boutique", url: "https://www.pinterest.com/search/pins/?q=minimalist+fashion+boutique+interior+warm+light+rack" },
+                    { label: "Item: Dress Display", url: "https://www.pinterest.com/search/pins/?q=woman+holding+dress+mirror+boutique+trying" }
+                ]
+            },
+            {
+                time: "12:00",
+                title: "Brunch Cantik di Resto Baru",
+                caption: `Nemu resto baru yang vibes-nya tuh Bali banget tapi di Bandung! Langsung masuk dong.\n\nPesennya agak banyak sih karena semuanya keliatan enak. No regret! Weekend gini mah harus treat yourself.\n\nMakanannya enak, tempatnya cantik, porsinya generous. Udah sih perfect combo.\n\nWajib coba deh kalau kalian ke Bandung!\n\n#BrunchTime #WeekendBrunch #BandungFood #RestoBaru #FoodieLife #TreatYourself`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di restoran outdoor bergaya tropical sambil mengangkat garpu dengan makanan dan tersenyum ke kamera, di latar restoran dengan tanaman tropis, payung bambu, dan kolam kecil, ada beberapa piring makanan cantik di meja, cahaya siang terang dan warm, angle selfie dari depan, ada pengunjung lain di meja sebelah.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+brunch+outfit+women+tropical+restaurant" },
+                    { label: "Latar: Tropical Resto", url: "https://www.pinterest.com/search/pins/?q=tropical+restaurant+outdoor+bali+style+bandung+plants" },
+                    { label: "Item: Brunch Spread", url: "https://www.pinterest.com/search/pins/?q=brunch+table+aesthetic+multiple+plates+tropical+restaurant" }
+                ]
+            },
+            {
+                time: "13:00",
+                title: "Foto-foto di Taman Kota",
+                caption: `Jalan sore eh siang ding haha ke taman kota dekat sini. Hari ini cerah banget, sayang kalau ga keluar.\n\nIni spot foto yang aku suka, di bawah pohon besar yang teduh. Vibes-nya calm dan grounding.\n\nKadang kita butuh slow down sebentar dan appreciate hal-hal simple kayak gini.\n\nSpot favorit kalian di kota masing-masing apa? Share dong!\n\n#TamanKota #WeekendVibes #NatureInCity #BandungCity #PeacefulMoment #PhotoSpot`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di bangku taman di bawah pohon besar yang rindang sambil mendongak ke atas melihat daun-daun dengan ekspresi damai dan senyum tipis, sinar matahari menembus celah daun menciptakan efek dappled light di wajah dan badan, di latar taman kota yang hijau dan asri dengan jalan setapak, angle difotoin dari samping bawah, ada orang-orang berjalan di jauh.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+park+outfit+women+sitting+bench+aesthetic" },
+                    { label: "Latar: City Park", url: "https://www.pinterest.com/search/pins/?q=city+park+big+tree+dappled+sunlight+bench+green" },
+                    { label: "Item: Bangku Taman", url: "https://www.pinterest.com/search/pins/?q=park+bench+under+tree+sunlight+peaceful" }
+                ]
+            },
+            {
+                time: "14:00",
+                title: "Beli Bunga di Pinggir Jalan",
+                caption: `Tadi jalan pulang lewat tukang bunga dan ga bisa nahan diri buat ga beli! Sunflower karena lagi butuh energy positif.\n\nAku percaya rumah yang ada bunga fresh tuh vibes-nya beda. Lebih hidup, lebih cheerful.\n\nSiapa di sini yang juga suka beli bunga buat di rumah? Bunga favorit kalian apa?\n\nAku sih selalu balik ke sunflower dan peony.\n\n#FreshFlowers #Sunflower #HomeDecor #SimpleJoy #WeekendMood #FlowerLover`,
+                prompt: `Vivi pakai outfit image 2, sedang berdiri di depan penjual bunga pinggir jalan sambil memegang bucket sunflower kecil yang dibungkus kertas coklat, ekspresi senang mencium bunga, di latar deretan ember berisi berbagai bunga warna-warni di trotoar dengan latar jalan kota, angle difotoin dari depan setengah badan, ada penjual bunga ibu-ibu di background.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+outfit+women+holding+flowers+street" },
+                    { label: "Latar: Flower Stall Street", url: "https://www.pinterest.com/search/pins/?q=street+flower+stall+colorful+buckets+sidewalk" },
+                    { label: "Item: Sunflower Bouquet", url: "https://www.pinterest.com/search/pins/?q=sunflower+small+bouquet+brown+paper+wrap" }
+                ]
+            },
+            {
+                time: "15:00",
+                title: "Pulang - Beberes Rumah",
+                caption: `Sampai rumah! Langsung taro bunga di vas dan beberes dikit. Weekend cleaning session mini.\n\nIni tuh therapeutic banget buat aku. Rumah bersih = pikiran bersih. Setuju ga?\n\nPlus sambil pasang playlist favorit, kerasa ga capeknya.\n\nShare playlist weekend kalian dong! Aku butuh lagu-lagu baru nih\n\n#WeekendCleaning #HomeVibes #CleanSpace #ProductiveDay #ApartmentLife #Therapeutic`,
+                prompt: `Vivi pakai outfit image 2, sedang menaruh vas bunga sunflower di atas meja ruang tamu sambil tersenyum puas melihat hasilnya, di latar ruang tamu apartment yang bersih dan rapi dengan sofa, rak buku, dan jendela besar, ada speaker bluetooth kecil di meja dengan indikator menyala, cahaya siang masuk dari jendela, angle difotoin dari samping.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+home+outfit+women+cleaning+comfortable+shorts" },
+                    { label: "Latar: Clean Apartment", url: "https://www.pinterest.com/search/pins/?q=clean+apartment+living+room+bright+organized+minimalist" },
+                    { label: "Item: Sunflower Vase", url: "https://www.pinterest.com/search/pins/?q=sunflower+vase+living+room+table+aesthetic" }
+                ]
+            },
+            {
+                time: "16:00",
+                title: "Masak Resep Baru dari Bahan Pasar",
+                caption: `Inget tadi pagi aku bilang mau masak sesuatu special? NAH INI DIA.\n\nAku coba bikin soto Medan versi aku sendiri! Kangen masakan rumah sih jujur.\n\nBahannya seger semua dari pasar tadi pagi. Dan bumbunya? Rahasia keluarga dong hehe.\n\nHasilnya gimana? Scroll ke post selanjutnya ya!\n\n#HomeCooking #SotoMedan #MasakSendiri #ResepRumahan #AnakMedan #WeekendCooking`,
+                prompt: `Vivi pakai outfit image 2, sedang berdiri di dapur dengan celemek lucu sambil mengaduk panci besar di atas kompor, uap naik dari panci, ekspresi serius dan fokus, di latar dapur apartment dengan bumbu-bumbu dan sayuran dari pasar tertata di counter, ada talenan dengan bawang dan cabai yang sudah diiris, angle difotoin dari samping depan.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=cute+apron+women+cooking+kitchen+casual" },
+                    { label: "Latar: Cooking Kitchen", url: "https://www.pinterest.com/search/pins/?q=kitchen+cooking+ingredients+counter+steam+pot" },
+                    { label: "Item: Soto Ingredients", url: "https://www.pinterest.com/search/pins/?q=indonesian+soup+ingredients+fresh+herbs+spices+cooking" }
+                ]
+            },
+            {
+                time: "17:00",
+                title: "Hasil Masakan - Soto Medan!",
+                caption: `JADI GUYS! Soto Medan buatan aku sendiri di perantauan!\n\nJujur ya, rasanya ga 100% sama kayak buatan mama di Medan. Tapi lumayan lah 80% mirip haha. Yang penting niat dan cintanya dapet.\n\nKalau kangen rumah, masak aja. Bau bumbunya langsung bikin berasa di rumah.\n\nBuat anak rantau yang kangen masakan rumah, peluk jauh ya! Kita kuat!\n\n#SotoMedan #AnakRantau #HomeCooking #KangenRumah #MedanFood #MasakanRumah`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di meja makan dengan semangkuk soto Medan yang mengepul di depannya, ekspresi bangga dan happy sambil memegang sendok dan berpose peace sign, di latar ruang makan apartment dengan pencahayaan warm sore hari, ada nasi putih dan sambal di samping mangkuk, angle selfie dari atas.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+home+outfit+women+eating+dinner+table" },
+                    { label: "Latar: Dining Warm Light", url: "https://www.pinterest.com/search/pins/?q=apartment+dining+table+warm+afternoon+light+cozy" },
+                    { label: "Item: Soto Medan", url: "https://www.pinterest.com/search/pins/?q=soto+medan+indonesian+soup+bowl+aesthetic+food" }
+                ]
+            },
+            {
+                time: "18:00",
+                title: "Golden Hour di Rooftop",
+                caption: `Naik ke rooftop apartment buat nangkep golden hour. Dan WOW, hari ini cantik banget!\n\nIni salah satu privilege tinggal di apartment - viewnya. Gunung, kota, dan langit yang berubah warna tiap sore.\n\nKadang aku just stand here and breathe. Grateful aja bisa ada di titik ini.\n\nSunset favorit kalian dimana? Share fotonya dong!\n\n#GoldenHour #Rooftop #BandungSunset #CityView #Grateful #SunsetLover #EveningVibes`,
+                prompt: `Vivi pakai outfit image 2, sedang berdiri di rooftop apartment menghadap kamera dengan background langit sunset warna oranye-pink-ungu yang dramatis dan siluet kota Bandung, rambut tertiup angin, ekspresi peaceful dan bahagia, cahaya golden hour menyinari wajah dari samping, angle difotoin dari depan dengan wide shot.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=casual+evening+outfit+women+rooftop+sunset+golden+hour" },
+                    { label: "Latar: Rooftop Sunset", url: "https://www.pinterest.com/search/pins/?q=rooftop+sunset+city+view+golden+hour+dramatic+sky" }
+                ]
+            },
+            {
+                time: "19:00",
+                title: "Self Care - Face Mask & Bath",
+                caption: `Weekend self care ritual! Hari ini pakai sheet mask baru yang kata review bagus banget.\n\nSambil mask-an, rendam kaki di air hangat pake bath salt. Ini tuh surga setelah seharian jalan!\n\nInvestasi terbaik itu invest ke diri sendiri. Setuju?\n\nProduk self care favorit kalian apa? Aku selalu cari rekomendasi baru!\n\n#SelfCare #FaceMask #WeekendRitual #MeTime #Pamper #SkincareAddict #Relaxing`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di pinggir bathtub dengan kaki terendam di air yang ada kelopak bunga, sheet mask di wajah, sambil memegang handphone dan tersenyum, di latar bathroom yang didekorasi dengan lilin-lilin kecil dan tanaman hijau, uap sedikit naik dari air, pencahayaan warm dan dim, angle selfie dari depan atas.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=self+care+bath+robe+women+relaxing+spa+home" },
+                    { label: "Latar: Home Spa Bath", url: "https://www.pinterest.com/search/pins/?q=home+spa+bathroom+candles+bath+petals+relaxing" },
+                    { label: "Item: Sheet Mask", url: "https://www.pinterest.com/search/pins/?q=sheet+mask+face+selfie+cute+spa+night" }
+                ]
+            },
+            {
+                time: "20:00",
+                title: "Nonton Film Bareng Video Call",
+                caption: `Weekend movie night! Tapi hari ini ga sendiri, nonton bareng temen via video call. Watch party gitu!\n\nFilmnya romantic comedy karena butuh ketawa. Dan ternyata temen aku nangis dong di bagian sad-nya HAHA.\n\nIni cara aku jaga silaturahmi sama temen yang jauh. Walau beda kota, tetap bisa quality time.\n\nFilm recommendation dong yang bikin ketawa tapi juga feel!\n\n#MovieNight #WatchParty #VideoCall #WeekendIn #FilmRecommendation #LongDistanceFriend`,
+                prompt: `Vivi pakai outfit image 2, sedang berbaring di sofa dengan bantal dan selimut, laptop di pangkuan menampilkan video call dengan teman yang juga nonton, di tangan ada popcorn, ekspresi ketawa, di latar ruang tamu apartment gelap dengan TV menyala di background dan lampu LED strip warna warm, angle selfie dari atas.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=cozy+loungewear+women+sofa+movie+night+blanket" },
+                    { label: "Latar: Movie Night Room", url: "https://www.pinterest.com/search/pins/?q=cozy+movie+night+living+room+dark+LED+lights+sofa" },
+                    { label: "Item: Popcorn", url: "https://www.pinterest.com/search/pins/?q=popcorn+bowl+movie+night+cozy+aesthetic" }
+                ]
+            },
+            {
+                time: "21:00",
+                title: "Late Night Snack - Indomie Time",
+                caption: `Ga ada yang bisa ngalahin Indomie jam segini. NOTHING.\n\nIni udah tradisi anak rantau: weekend malam, Indomie goreng pake telor ceplok dan keju. Masterpiece.\n\nSiapa yang setuju Indomie itu comfort food terbaik se-Indonesia? Raise your hand!\n\nTopping Indomie andalan kalian apa? Aku pengen coba yang aneh-aneh!\n\n#IndomieTime #MidnightSnack #ComfortFood #AnakRantau #IndomieGoreng #WeekendTradition`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di meja dapur dengan piring Indomie goreng yang ada telur ceplok dan keju meleleh di atasnya, sedang mengangkat mie dengan garpu tinggi-tinggi sambil ekspresi excited dan mata berbinar, di latar dapur apartment malam hari dengan lampu warm, angle selfie dari depan.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=cute+pajama+women+eating+noodles+night+kitchen" },
+                    { label: "Latar: Night Kitchen", url: "https://www.pinterest.com/search/pins/?q=apartment+kitchen+night+warm+light+cozy+eating" },
+                    { label: "Item: Indomie", url: "https://www.pinterest.com/search/pins/?q=indomie+goreng+fried+egg+cheese+aesthetic+food" }
+                ]
+            },
+            {
+                time: "22:00",
+                title: "Journaling & Gratitude",
+                caption: `Sebelum tidur, aku selalu tulis 3 hal yang aku syukuri hari ini. Simple tapi powerful.\n\nHari ini:\n1. Sehat dan bisa olahraga pagi\n2. Nemu tempat makan enak\n3. Berhasil masak soto Medan!\n\nGratitude journal ini udah jadi habit 6 bulan dan honestly, mindset aku berubah banyak sejak mulai.\n\nCoba deh, tulis 3 hal yang kalian syukuri hari ini di kolom komentar!\n\n#GratitudeJournal #NightRoutine #Journaling #Mindfulness #PositiveVibes #SelfGrowth`,
+                prompt: `Vivi pakai outfit image 2, sedang duduk di tempat tidur bersila dengan journal terbuka di pangkuan dan pena di tangan, ekspresi tenang dan reflektif sambil tersenyum tipis, di latar kamar tidur malam hari dengan lampu tidur menyala lembut dan beberapa buku di nightstand, ada secangkir teh chamomile di samping, angle difotoin dari depan.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=cozy+sleepwear+women+journaling+bed+night" },
+                    { label: "Latar: Night Bedroom Journaling", url: "https://www.pinterest.com/search/pins/?q=bedroom+night+journaling+warm+lamp+cozy+books" },
+                    { label: "Item: Journal & Tea", url: "https://www.pinterest.com/search/pins/?q=journal+notebook+pen+tea+cup+bedside+aesthetic" }
+                ]
+            },
+            {
+                time: "23:00",
+                title: "Good Night - Teaser Besok",
+                caption: `Hari ini seru banget ya dari pagi sampe malam! Makasih udah nemenin lagi.\n\nBesok aku ada plan yang lebih exciting lagi. Hint: ada yang mau aku tunjukin sesuatu yang udah lama aku prepare.\n\nPenasaran? Hehe ya harus penasaran dong!\n\nGood night semuanya. Tidur yang nyenyak, besok kita have fun lagi ya!\n\nSweet dreams!\n\n#GoodNight #SeeYouTomorrow #SweetDreams #WeekendEnds #StayTuned #Teaser`,
+                prompt: `Vivi pakai outfit image 2, sedang berbaring di tempat tidur dengan selimut ditarik sampai dagu, satu tangan membuat peace sign ke kamera, mata setengah terpejam dengan senyum sleepy yang cute, di latar kamar tidur gelap dengan hanya lampu tidur kecil menyala dan string lights di dinding, suasana cozy dan drowsy, angle selfie dari atas dekat.`,
+                pinterest: [
+                    { label: "Outfit Ref", url: "https://www.pinterest.com/search/pins/?q=cute+sleepy+woman+bed+goodnight+cozy+blanket" },
+                    { label: "Latar: Cozy Night Bedroom", url: "https://www.pinterest.com/search/pins/?q=cozy+bedroom+night+fairy+lights+dim+lamp+sleep" }
+                ]
+            }
+        ];
+
+        function getStorageKey() {
+            return 'vivilim-day2-hidden-posts';
+        }
+
+        function getHiddenPosts() {
+            const saved = localStorage.getItem(getStorageKey());
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveHiddenPosts(hidden) {
+            localStorage.setItem(getStorageKey(), JSON.stringify(hidden));
+        }
+
+        function toggleHide(index) {
+            const hidden = getHiddenPosts();
+            const idx = hidden.indexOf(index);
+            if (idx > -1) {
+                hidden.splice(idx, 1);
+            } else {
+                hidden.push(index);
+            }
+            saveHiddenPosts(hidden);
+            renderPosts();
+        }
+
+        function resetAll() {
+            localStorage.removeItem(getStorageKey());
+            renderPosts();
+        }
+
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(function() {
+                var original = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.textContent = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                // Fallback for older browsers
+                var textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                var original = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.textContent = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyCaption(index, btn) {
+            var text = posts[index].caption;
+            copyText(text, btn);
+        }
+
+        function copyPrompt(index, btn) {
+            var text = posts[index].prompt;
+            copyText(text, btn);
+        }
+
+        function renderNav() {
+            var navBar = document.getElementById('nav-bar');
+            navBar.innerHTML = '';
+            posts.forEach(function(post, index) {
+                var link = document.createElement('a');
+                link.className = 'nav-btn';
+                link.href = '#post-' + index;
+                link.textContent = post.time + ' ' + post.title.split(' - ')[0].substring(0, 12);
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.getElementById('post-' + index);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+                navBar.appendChild(link);
+            });
+        }
+
+        function renderPosts() {
+            var container = document.getElementById('posts-container');
+            var hidden = getHiddenPosts();
+            container.innerHTML = '';
+
+            posts.forEach(function(post, index) {
+                var isHidden = hidden.includes(index);
+                var card = document.createElement('div');
+                card.className = 'post-card' + (isHidden ? ' hidden' : '');
+                card.id = 'post-' + index;
+
+                var pinterestHTML = '';
+                post.pinterest.forEach(function(pin) {
+                    pinterestHTML += '<a href="' + pin.url + '" target="_blank" rel="noopener">' + pin.label + '</a>';
+                });
+
+                card.innerHTML =
+                    '<span class="status-badge ' + (isHidden ? 'status-done' : 'status-pending') + '">' + (isHidden ? 'Done' : 'Pending') + '</span>' +
+                    '<span class="post-time">' + post.time + '</span>' +
+                    '<div class="post-title">' + post.title + '</div>' +
+                    '<div class="post-content">' +
+                        '<div class="section-label">Caption FB</div>' +
+                        '<div class="caption-box">' + post.caption + '</div>' +
+                        '<div class="section-label">Image Prompt</div>' +
+                        '<div class="prompt-box">' + post.prompt + '</div>' +
+                        '<div class="section-label">Pinterest References</div>' +
+                        '<div class="pinterest-links">' + pinterestHTML + '</div>' +
+                        '<div class="btn-row">' +
+                            '<button class="btn-copy btn-copy-caption" onclick="copyCaption(' + index + ', this)">Copy Caption</button>' +
+                            '<button class="btn-copy btn-copy-prompt" onclick="copyPrompt(' + index + ', this)">Copy Prompt</button>' +
+                            '<button class="btn-hide" onclick="toggleHide(' + index + ')">Hide Task (Done)</button>' +
+                        '</div>' +
+                    '</div>' +
+                    (isHidden ? '<div style="margin-top:10px;"><button class="btn-hide" onclick="toggleHide(' + index + ')">Show Task</button></div>' : '');
+
+                container.appendChild(card);
+            });
+        }
+
+        renderNav();
+        renderPosts();
+    </script>
+</body>
+</html>
