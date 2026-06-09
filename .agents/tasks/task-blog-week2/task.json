@@ -2,7 +2,7 @@
   "task_id": "task-blog-week2",
   "task_description": "Replace all 21 Week 1 articles in satuyangterpenting.wordpress.com.html with Week 2 content. New articles use emotional storytelling, text formatting (bold/italic/underline/highlight), images, SVG-decorated CTA buttons (info icon + WhatsApp logo), and 20 tags per article. Split into 3 features to avoid timeout: articles 1-7, 8-14, 15-21.",
   "status": "completed",
-  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003"],
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003", "FEAT-004"],
   "blocked_reason": null,
   "verification": {
     "build": "pass",
