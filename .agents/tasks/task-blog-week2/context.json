@@ -1,0 +1,16 @@
+{
+  "project_type": "Standalone HTML content file (blog articles for WordPress)",
+  "language": "HTML/CSS/JS",
+  "build_system": "None - standalone HTML file",
+  "test_framework": "None - manual validation",
+  "build_command": "N/A",
+  "test_command": "grep -c 'accordion-item' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to verify 21 articles exist",
+  "verification_instructions": "1. Verify file has 21 article accordion-items. 2. Each article contains formatted HTML in code block (bold/italic/underline/mark tags). 3. Each article has img tag. 4. CTA buttons have inline SVG icons. 5. Each article has exactly 20 comma-separated single-word tags with # prefix. 6. Content is Week 2 (not Week 1).",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - editing a standalone HTML file",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external CDN access at runtime for the accordion page itself. However, the article HTML CODE inside pre/code blocks CAN reference external images (unsplash etc) since that code will be pasted into WordPress. The accordion page's own header/footer can use inline SVG for logos.",
+  "contribution_requirements": "File must remain self-contained HTML. All CSS/JS inline. No external dependencies for the accordion page itself.",
+  "key_patterns": "Accordion UI pattern with pre/code blocks containing escaped HTML article content. 3 copy buttons per article (title, article HTML, tags). Schedule badges: pagi (07:00), siang (12:00), sore (19:00). Tags stored in data-tags attribute space-separated for copy button.",
+  "relevant_files": ["/projects/sandbox/M-App/satuyangterpenting.wordpress.com.html"],
+  "directory_structure": "M-App/ root contains the target HTML file alongside a React Vite app (unrelated to this task)."
+}

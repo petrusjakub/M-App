@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Add Week 2 articles 15-21 (Day 5 evening, Day 6 all, Day 7 all) to complete the full 21-article set. Same formatting requirements: emotional storytelling, text formatting, images, SVG CTA buttons, 20 tags each.",
+  "status": "pending",
+  "steps": [
+    "Open /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html and insert articles 15-21 after article 14 (replace the placeholder comment <!-- ARTICLES 15-21 CONTINUE HERE -->)",
+    "Schedule mapping: Article 15 = Day 5 Jam 19:00 (sore), Article 16 = Day 6 Jam 07:00 (pagi), Article 17 = Day 6 Jam 12:00 (siang), Article 18 = Day 6 Jam 19:00 (sore), Article 19 = Day 7 Jam 07:00 (pagi), Article 20 = Day 7 Jam 12:00 (siang), Article 21 = Day 7 Jam 19:00 (sore)",
+    "Topics for articles 15-21: tax benefits of insurance, health cost reality check, building legacy for next generation, digital tools for agents, work-life balance as agent, MiUltimate Healthcare vs competitors, final week 2 closing/summary with strong CTA",
+    "Each article must follow same format: escaped HTML in pre/code block with <b>/<i>/<u>/<mark> formatting, img tag, SVG CTA buttons",
+    "Each article must have emotional storytelling style with direct questions to reader",
+    "Each article must have exactly 20 tags (single words with # prefix)",
+    "Remove any remaining placeholder comments after article 21",
+    "Verify the closing </main>, footer, and script sections are intact after the last article"
+  ],
+  "acceptance_criteria": [
+    "Articles 15-21 are properly inserted after article 14",
+    "Each new article has correct schedule badge (Day 5-7 with correct time slots)",
+    "Each article code block has text formatting (bold/italic/underline/mark)",
+    "Each article code block has at least one img tag",
+    "Each article has SVG-decorated CTA buttons in the article HTML",
+    "Each article has exactly 20 tags with # prefix",
+    "File now contains exactly 21 total accordion-items",
+    "All articles use emotional storytelling with reflective questions",
+    "No placeholder comments remain in the file",
+    "Footer and JavaScript sections are intact and functional"
+  ],
+  "verification": [
+    "Run: grep -c 'accordion-item' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should show exactly 21",
+    "Run: grep -c 'Hari 6' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should show 3",
+    "Run: grep -c 'Hari 7' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should show 3",
+    "Run: grep 'CONTINUE HERE' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should return nothing",
+    "Run: grep -c 'toggleAccordion' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should be >= 1 (script intact)"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
