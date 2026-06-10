@@ -1,0 +1,38 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Append Posts 15-20 (19:00-00:00), footer, and JavaScript to complete Susan-sun-content-kamis.html",
+  "status": "completed",
+  "steps": [
+    "Append to the existing /projects/sandbox/M-App/Susan-sun-content-kamis.html file after Post 14, adding Posts 15-20, footer, and JavaScript",
+    "POST 15 (19:00) Post 15/20 - Dinner Korean BBQ (samgyeopsal restaurant). Caption: kocak tentang makan Korean BBQ sampe baju wangi asap tapi worth it, food coma incoming. Prompt: Susan pakai outfit Set 3, duduk di Korean BBQ restaurant Jakarta, di meja ada panggangan bulat dengan daging sedang dimasak, banchan (side dishes) tersusun cantik, Susan memegang sumpit dan selada untuk ssam, senyum lebar, beberapa keluarga Indo di meja lain tidak sadar kamera, lighting warm restaurant. Refs: Pinterest Korean BBQ restaurant aesthetic, Pinterest samgyeopsal dinner table",
+    "POST 16 (20:00) Post 16/20 - Noraebang (Korean karaoke). Caption: ngasal/kocak tentang suara pas-pasan tapi passion karaoke Korea level dewa, nyanyi lagu K-pop sampe suara habis. Prompt: Susan pakai outfit Set 3 (tanpa coat, hanya dress midi hitam), berdiri di ruangan karaoke Korea yang colorful dengan lampu disco, satu tangan pegang mic, satu tangan pose rock sign, layar menampilkan lirik lagu Korea, ada tambourine di sofa, pencahayaan neon warna-warni. Refs: Pinterest Korean noraebang karaoke room, Pinterest karaoke aesthetic neon",
+    "POST 17 (21:00) Post 17/20 - Dessert bingsu di Korean dessert cafe malam. Caption: pantun tentang bingsu dan kebahagiaan malam hari. Prompt: Susan pakai outfit Set 3, duduk di Korean dessert cafe yang cozy malam hari, di meja ada injeolmi bingsu besar yang cantik dengan topping berlimpah, Susan pose cute memegang sendok siap makan, interior cafe warm dengan lampu gantung dan dekorasi Korea, pencahayaan warm malam. Refs: Pinterest bingsu dessert aesthetic night, Pinterest Korean dessert cafe evening",
+    "POST 18 (22:00) Post 18/20 - Night market Korean street food (hotteok, tteokbokki, odeng). Caption: kocak tentang street food Korea di Jakarta yang bikin lupa diet, perut udah penuh tapi mulut masih mau. Prompt: Susan pakai outfit Set 3, berdiri di area street food/night market Jakarta yang menjual Korean food, tangan memegang hotteok (pancake Korea) yang masih panas, di background ada stand-stand makanan dengan tulisan Korea, beberapa orang Indo antri di belakang, pencahayaan lampu night market warm. Refs: Pinterest Korean street food night market, Pinterest hotteok street food aesthetic",
+    "POST 19 (23:00) Post 19/20 - Skincare malam 10-step Korean routine di rumah. Caption: puitis/galau tentang ritual self-care malam yang sakral, me-time terbaik setelah seharian full Korean vibes. Prompt: Susan pakai outfit santai malam (sudah ganti ke pajama Korea Set 1 lagi), duduk di depan vanity mirror di kamar, wajah sudah bersih natural, di meja ada deretan produk skincare Korea tersusun rapi (toner, essence, serum, moisturizer, sleeping mask), Susan sedang mengaplikasikan sheet mask, pencahayaan warm lampu kamar. Refs: Pinterest Korean 10 step skincare routine, Pinterest vanity skincare shelfie night",
+    "POST 20 (00:00) Post 20/20 - Closing post: K-drama marathon sebelum tidur. Caption: closing yang heartfelt tentang hari Korean yang sempurna, recap seru, mengajak follow dan engagement besok. Prompt: Susan pakai outfit Set 1 (pajama Korea), berbaring di kasur dengan selimut empuk, laptop di pangkuan menampilkan scene K-drama, di samping ada mug teh dan snack Korea (pepero), lampu tidur warm menyala, pose selfie natural senyum ngantuk tapi bahagia, suasana cozy dan sleepy. Refs: Pinterest cozy bed K-drama watching night, Pinterest Korean bedroom aesthetic night",
+    "Add footer after last post: 'Susan Sun - Kamis Korean Vibes Content Plan | Made with love and kimchi' and second line 'Semua caption dan prompt bisa di-copy 1 klik. Annyeong! Happy posting!'",
+    "Add the JavaScript section (identical structure to reference but with localStorage prefix 'susan-kamis-task-'): copyText function (same), toggleTask function (same), DOMContentLoaded event listener that reads localStorage with prefix 'susan-kamis-task-' + index, and the override toggleTask that saves to localStorage with 'susan-kamis-task-' + index",
+    "Close all HTML tags properly (</div> for container, </body>, </html>)",
+    "IMPORTANT: The localStorage code must use 'susan-kamis-task-' prefix instead of 'susan-task-' in both the load and save operations"
+  ],
+  "acceptance_criteria": [
+    "Posts 15-20 (19:00 through 00:00) are appended correctly",
+    "Post IDs are post-1900, post-2000, post-2100, post-2200, post-2300, post-0000",
+    "Post numbers are Post 15/20 through Post 20/20",
+    "Caption IDs are caption-15 through caption-20, Prompt IDs are prompt-15 through prompt-20",
+    "Footer is present with Korean-themed text",
+    "JavaScript section includes copyText and toggleTask functions",
+    "localStorage uses 'susan-kamis-task-' prefix (NOT 'susan-task-')",
+    "File is properly closed with </div></body></html>",
+    "The complete file is valid HTML that can be opened in a browser"
+  ],
+  "verification": [
+    "Verify the file has proper HTML closing tags",
+    "Verify localStorage prefix is 'susan-kamis-task-' in the JavaScript",
+    "Verify all 20 posts exist in the final file (grep for post-0500, post-1200, post-2000, post-0000)",
+    "Verify the file starts with <!DOCTYPE html> and ends with </html>"
+  ],
+  "blocked_reason": null,
+  "findings": "All 6 posts (15-20) successfully inserted before the footer element. File now contains 20 posts total (05:00-00:00). All IDs, times, and post numbers verified correct. File structure remains valid HTML with proper closing tags."
+}
