@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Susan Sun - Kamis Korean Vibes Content Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .outfit-info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .outfit-info h3 {
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .outfit-set {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+        }
+
+        .outfit-set:last-child {
+            border-left-color: #e91e63;
+        }
+
+        .outfit-set strong {
+            color: #333;
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .label-prompt {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .label-refs {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .caption-box, .prompt-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .prompt-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ref-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px;
+            background: #f1f8e9;
+            color: #33691e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border: 1px solid #c5e1a5;
+            transition: background 0.2s;
+        }
+
+        .ref-links a:hover {
+            background: #dcedc8;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Susan Sun - Kamis Korean Vibes</h1>
+            <p>Full Day Content Schedule | Kamis Korean Day | Jakarta Life | Insurance Boss + K-Drama Lover</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap ~60 menit | Start jam 5 pagi sampai 12 malam | 20 Posts | Korean Vibes All Day</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0500">05:00</a>
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+                <a href="#post-2300">23:00</a>
+                <a href="#post-0000">00:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (05:00 - 08:00):</strong> Pajama set Korea lucu warna baby pink + cardigan knit cream + sandal rumah bulu-bulu putih. Korean morning aesthetic untuk skincare routine dan sarapan di rumah.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (09:00 - 16:00):</strong> Oversized blazer beige + inner putih + celana kulot hitam + sling bag cream + sneakers putih. Korean chic style cocok untuk Korean cafe, shopping, dan aktivitas siang di Jakarta.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 3 (17:00 - 00:00):</strong> Dress midi knit warna hitam + long coat camel + ankle boots hitam + mini bag chain strap gold. Korean drama heroine vibes untuk dinner dan hangout malam.
+            </div>
+        </div>
+
+        <!-- POST 05:00 -->
+        <div class="post-card" id="post-0500">
+            <div class="post-header">
+                <span class="post-time">05:00 WIB</span>
+                <span class="post-number">Post 1/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Jam 5 subuh dan Susan udah melek. Bukan karena rajin, tapi karena alarm skincare routine bunyi. Ya, Susan punya alarm khusus buat skincare. Priorities, bestie.
+
+10-step Korean skincare routine dimulai! Double cleanse, toner, essence, serum, ampoule, sheet mask, eye cream, moisturizer, sleeping mask, dan... wait, itu udah 9. Yang ke-10 apa ya? Ah ya: SELFIE. Dokumentasi itu penting.
+
+Muka belum apa-apa udah ditempel 7 layer produk. Kayak tembok yang di-cat berkali-kali. Tapi hasilnya? Glass skin, chingu! (Atau minimal glossy skin dari kebanyakan produk.)
+
+Yang punya skincare routine lebih dari 5 step, kita temenan. Yang cuma cuci muka pake air: Susan kagum sama keberanian kalian.</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Susan pakai outfit Set 1 (pajama set Korea warna baby pink + cardigan knit cream), sedang berdiri di depan bathroom vanity yang penuh produk skincare Korea (berbagai botol dan jar warna-warni tertata rapi), pose mirror selfie sambil memegang sheet mask yang belum dibuka, pencahayaan subuh lembut dari jendela kecil di bathroom. Background cermin besar dengan ring light menyala soft, handuk putih tergantung rapi di samping. Angle selfie mirror, suasana Korean morning skincare aesthetic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20skincare%20shelfie%20bathroom%20aesthetic" target="_blank">Pinterest: Korean Skincare Shelfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bathroom%20vanity%20aesthetic%20morning%20skincare%20routine" target="_blank">Pinterest: Bathroom Vanity Morning Aesthetic</a>
+                    <a href="https://www.google.com/search?q=korean+skincare+routine+bathroom+mirror+selfie+aesthetic&tbm=isch" target="_blank">Google: Korean Skincare Mirror Selfie</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 2/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Jam 6 pagi: Susan masak Korean breakfast! Menu hari ini: ramyeon + kimbap buatan sendiri. Iya, BUATAN SENDIRI. Jangan kaget.
+
+Sebenernya Susan cuma bisa masak ramyeon doang. Tapi kimbap? Pertama kali coba. Hasilnya? Bentuknya kayak lumpia yang gagal diet. Tapi rasanya? Surprisingly enak! Atau mungkin Susan aja yang laper.
+
+Proses masak ala drama Korea: rambut diiket rapi, celemek lucu, spatula di tangan. Kenyataan: rambut berantakan, kena minyak panas 3 kali, dan hampir lupa matiin kompor.
+
+Yang bisa masak Korean food dengan cantik: ajarin Susan. Yang sama-sama cuma bisa masak ramyeon: kita satu geng.</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Susan pakai outfit Set 1 (pajama set Korea baby pink + cardigan knit cream), berdiri di dapur modern minimalis, sedang di depan kompor dengan panci ramyeon yang mendidih mengeluarkan uap, di meja dapur (kitchen island) ada kimbap yang sudah diiris rapi di atas cutting board kayu, ada juga mangkuk kimchi kecil dan sumpit kayu. Pencahayaan pagi cerah dari jendela dapur. Background dapur bersih dengan beberapa bumbu Korea di rak (gochujang, sesame oil). Susan pose candid sedang mengaduk ramyeon dengan sumpit panjang. Angle dari samping depan, suasana Korean breakfast homey.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20breakfast%20ramyeon%20kimbap%20aesthetic%20homecooking" target="_blank">Pinterest: Korean Breakfast Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=ramyeon%20cooking%20aesthetic%20kitchen%20steam" target="_blank">Pinterest: Ramyeon Cooking Aesthetic</a>
+                    <a href="https://www.google.com/search?q=masak+ramyeon+kimbap+dapur+aesthetic+korean+food&tbm=isch" target="_blank">Google: Masak Korean Food Aesthetic</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 3/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Habis sarapan, Susan nonton K-drama sambil stretching. Katanya productive morning. Kenyataannya: stretching 2 menit, nonton drama 2 jam.
+
+Episode ini oppa-nya lagi galau karena ceweknya pergi. Susan ikutan nangis. Padahal ini drama, bukan kehidupan nyata. Tapi hati Susan lemah kalo soal oppa.
+
+Puisi untuk oppa di drama:
+Wahai oppa bermata sendu,
+Kenapa kau tinggalkan noona-mu,
+Susan di sini ikut menanggung rindu,
+Padahal kita ga pernah ketemu.
+
+Drama Korea itu berbahaya. Bikin ekspektasi sama cowok jadi setinggi Namsan Tower. Suami Susan sampe bingung kenapa tiba-tiba diminta pake jas sambil jalan di bawah hujan.
+
+Yang lagi nonton drakor juga: kita satu frekuensi. Yang belum: mulai dari Goblin, thank me later.</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Susan pakai outfit Set 1 (pajama Korea baby pink + cardigan knit cream), duduk di sofa ruang keluarga yang cozy dengan selimut fleece warna cream di pangkuan, TV layar besar di depan menampilkan scene drama Korea (dua orang berhadapan dramatis), tangan memegang mug berbentuk character Ryan (Kakao Friends) berisi teh hangat yang mengepul. Pencahayaan pagi lembut masuk dari jendela besar di samping dengan tirai tipis putih. Background ruang tamu modern dengan cushion-cushion lucu dan beberapa tanaman indoor. Susan pose candid sedang fokus menonton dengan ekspresi terharu. Angle dari samping, suasana cozy Korean drama watching.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy%20kdrama%20watching%20aesthetic%20living%20room%20blanket" target="_blank">Pinterest: Cozy K-Drama Watching Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20cute%20mug%20kakao%20friends%20aesthetic" target="_blank">Pinterest: Korean Cute Mug Character</a>
+                    <a href="https://www.google.com/search?q=nonton+drama+korea+sofa+cozy+aesthetic+morning&tbm=isch" target="_blank">Google: Nonton Drakor Cozy Aesthetic</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 4/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Jam 8 pagi: saatnya ganti outfit! Korean OOTD preparation dimulai. Masalahnya? Susan udah ganti baju 5 KALI dan masih ga puas.
+
+Percobaan 1: Terlalu formal. Percobaan 2: Terlalu santai. Percobaan 3: Mirip ahjumma ke pasar. Percobaan 4: Kayak mau audisi K-pop. Percobaan 5: NAH INI DIA. Korean chic tapi ga lebay.
+
+Kasur Susan sekarang kayak backstage fashion show. Baju berserakan di mana-mana. Yang tadi rapi sekarang kayak kapal pecah.
+
+Tapi demi OOTD yang perfect, semua pengorbanan worth it. Motto Susan: lebih baik telat 30 menit tapi outfit on point, daripada tepat waktu tapi ga pede.
+
+Yang juga suka ganti baju berkali-kali sebelum keluar rumah: KITA SAMA. Yang langsung pake baju pertama yang diambil: Susan iri sama kepercayaan diri kalian.</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Susan pakai outfit Set 2 (oversized blazer beige + inner putih + celana kulot hitam + sneakers putih), pose mirror selfie full body di kamar tidur modern, di belakang Susan terlihat beberapa outfit yang sudah dicoba tergantung di standing hanger (ada dress, kemeja, cardigan lain), di kasur ada 2-3 baju yang terlipat asal. Susan pose peace sign dengan satu tangan, tangan lain memegang phone untuk selfie. Cermin besar full-length dengan frame minimalis. Pencahayaan pagi cerah dari jendela kamar. Angle mirror selfie, suasana Korean OOTD preparation yang fun.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20ootd%20mirror%20selfie%20outfit%20aesthetic" target="_blank">Pinterest: Korean OOTD Mirror Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=outfit%20flatlay%20korean%20style%20blazer%20minimalist" target="_blank">Pinterest: Outfit Flatlay Korean Style</a>
+                    <a href="https://www.google.com/search?q=korean+fashion+mirror+selfie+ootd+bedroom&tbm=isch" target="_blank">Google: Korean Fashion Mirror Selfie</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 5/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Sampai di Korean cafe! Langsung pesan patbingsu dan tteokbokki. Diet? Besok aja mulainya. Hari ini kan Korean Day, jadi semua makanan Korea halal secara emosional.
+
+Pantun Korean Food:
+Beli tteokbokki di Korean cafe,
+Patbingsu-nya dingin seger sekali,
+Susan bilang diet mulai besok ae,
+Padahal besok ngomong gitu lagi.
+
+Bingsu-nya segede gunung Hallasan. Tteokbokki-nya pedes tapi nagih. Ini bukan makan siang, ini pengalaman spiritual.
+
+Yang suka Korean food: kalian tim bingsu atau tim tteokbokki? Yang jawab "dua-duanya": kita soulmate.
+
+Makan dulu baru mikir kalori. Hidup cuma sekali, chingu!</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Susan pakai outfit Set 2 (oversized blazer beige + inner putih + celana kulot hitam + sling bag cream), duduk di Korean cafe bergaya pastel dengan tulisan hangul di dinding dan neon sign bertuliskan Korean, di meja ada patbingsu besar dengan topping red bean dan mochi warna-warni, serta piring tteokbokki merah mengkilat dengan fish cake. Susan pose cute memegang sendok bingsu dengan ekspresi excited. Background interior cafe pastel pink dan mint dengan beberapa pengunjung Indonesia di meja lain tidak sadar kamera. Pencahayaan indoor terang dan warm. Angle dari depan agak atas, suasana Korean cafe Jakarta yang instagramable.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20cafe%20jakarta%20pastel%20interior%20aesthetic" target="_blank">Pinterest: Korean Cafe Jakarta Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bingsu%20tteokbokki%20food%20photo%20aesthetic%20cafe" target="_blank">Pinterest: Bingsu Tteokbokki Food Photo</a>
+                    <a href="https://www.google.com/search?q=korean+cafe+jakarta+bingsu+tteokbokki+aesthetic&tbm=isch" target="_blank">Google: Korean Cafe Jakarta Food</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 6/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Update: Susan masuk K-beauty store. Niatnya beli 1 sheet mask doang. SATU. Kenyataannya? Keluar bawa kantong penuh kayak habis menang undian.
+
+Daftar belanja awal: sheet mask (1 pcs)
+Daftar belanja akhir: sheet mask (10 pcs karena beli 5 gratis 5), serum vitamin C, lip tint 3 warna, cushion foundation, sunscreen, cleansing balm, dan snail mucin yang katanya bikin kulit kayak glass skin.
+
+Susan lemah kalo ada tulisan "BUY 1 GET 1" dan "BEST SELLER in Korea". Itu bukan diskon, itu jebakan batman berbahasa hangul.
+
+Dompet Susan menangis tapi kulit Susan akan berterima kasih (harapannya).
+
+Yang juga sering kalap di beauty store: angkat tangan! Yang kuat iman: ajarin Susan dong.</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Susan pakai outfit Set 2 (oversized blazer beige + inner putih + celana kulot hitam), berdiri di depan rak-rak produk skincare Korea yang colorful dan tertata rapi (warna-warni packaging pink, putih, hijau muda), tangan kanan memegang beberapa sheet mask pack, tangan kiri memegang shopping basket yang sudah terisi produk-produk, senyum excited sambil melihat ke arah kamera. Latar toko K-beauty dengan display cantik, ada poster brand Korea di dinding, ada 1-2 orang Indonesia lain sedang memilih produk di background tidak sadar kamera. Pencahayaan toko terang dan clean. Angle dari depan, suasana shopping spree yang fun di K-beauty store Jakarta.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=k-beauty%20store%20interior%20colorful%20skincare%20shelves" target="_blank">Pinterest: K-Beauty Store Interior</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=skincare%20shopping%20haul%20korea%20sheet%20mask" target="_blank">Pinterest: Skincare Shopping Haul Korea</a>
+                    <a href="https://www.google.com/search?q=k-beauty+store+jakarta+interior+shopping&tbm=isch" target="_blank">Google: K-Beauty Store Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 7/20</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Sekarang Susan di Korean grocery store. Misi: beli bahan masak Korea buat dinner nanti. Masalahnya: SEMUA TULISANNYA HANGUL.
+
+Susan di sini kayak detective. Liat gambar di packaging terus nebak-nebak: "Ini gochujang apa gochugaru ya? Yang satu paste yang satu flakes kan? Atau dua-duanya sama? Help."
+
+Strategy belanja Susan: 1) Liat gambar 2) Cium baunya (ga bisa, masih sealed) 3) Google Translate camera 4) Yasudah ambil aja semua yang keliatan familiar.
+
+Trolley Susan sekarang isinya: ramyeon 5 bungkus (essentials), kimchi jar, gochujang (semoga bener), tteok frozen, dan snack-snack yang Susan ga tau isinya tapi packaging-nya lucu.
+
+Yang jago baca hangul: plis adopt Susan. Yang sama-sama buta hangul tapi suka grocery shopping Korea: kita senasib sepenanggungan.</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Susan pakai outfit Set 2 (oversized blazer beige + inner putih + celana kulot hitam + sneakers putih), berdiri di lorong Korean grocery store dengan rak-rak tinggi berisi produk Korea (packaging warna-warni dengan tulisan hangul), tangan mendorong trolley belanja yang sudah terisi gochujang jar merah, kimchi jar, beberapa bungkus ramyeon instan, tteok frozen pack, dan snack Korea. Susan pose candid sedang memegang satu produk dan membaca label belakangnya dengan ekspresi bingung yang lucu. Pencahayaan toko terang fluorescent. Background lorong supermarket dengan beberapa produk Korea tertata rapi di rak. Angle dari samping depan, suasana shopping di Korean grocery store yang relatable.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20grocery%20store%20aesthetic%20shelves%20hangul" target="_blank">Pinterest: Korean Grocery Store Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=korean%20food%20ingredients%20gochujang%20kimchi%20ramyeon" target="_blank">Pinterest: Korean Food Ingredients</a>
+                    <a href="https://www.google.com/search?q=korean+grocery+store+jakarta+belanja+bahan+korea&tbm=isch" target="_blank">Google: Korean Grocery Store Jakarta</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Susan Sun - Kamis Korean Vibes Content Plan | Made with love and kimchi</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Annyeong! Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Task (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        // Persist hidden state in localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('susan-kamis-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        // Update toggleTask to save state
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('susan-kamis-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
