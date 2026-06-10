@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suzan Kim - Day 2 Content Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+        }
+
+        .outfit-info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .outfit-info h3 {
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .outfit-set {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #fff0f6;
+            border-left: 4px solid #f093fb;
+        }
+
+        .outfit-set:last-child {
+            border-left-color: #f5576c;
+        }
+
+        .outfit-set strong {
+            color: #333;
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #f5576c;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .label-prompt {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .label-refs {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .caption-box, .prompt-box {
+            background: #fff8fa;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #fce4ec;
+        }
+
+        .caption-box p, .prompt-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ref-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px;
+            background: #fce4ec;
+            color: #880e4f;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border: 1px solid #f8bbd0;
+            transition: background 0.2s;
+        }
+
+        .ref-links a:hover {
+            background: #f8bbd0;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Suzan Kim - Day 2 Content Plan</h1>
+            <p>Full Day Content Schedule | Anak Kost Jakarta | Freelancer + College Life</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap 60 menit | 06:00 - 00:00 | 19 Posts | Flirty & Fun Vibes</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+                <a href="#post-2300">23:00</a>
+                <a href="#post-0000">00:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (06:00 - 15:00):</strong> Oversized flannel shirt merah-hitam dibuka depan + sports bra putih + cargo pants abu-abu + sneakers chunky + kacamata frame besar. Tampilan tomboy-chic anak kuliahan yang sporty tapi tetap memperlihatkan body line dari sports bra.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (16:00 - 00:00):</strong> Backless halter top warna emerald + leather pants hitam ketat + heels strap hitam + anting panjang emas + clutch kecil hitam. Tampilan malam yang bold dan seductive, punggung terbuka dan siluet tubuh tercetak jelas.
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Alarm bunyi jam setengah enam tapi baru beneran bangun sekarang. Hari ini ada janji sama Nana buat jogging pagi di taman komplek. Terakhir olahraga itu dua minggu lalu dan badan udah mulai protes.
+
+Tapi jujur, alasan utama bangun sepagi ini bukan sehat. Aku cuma pengen buktiin ke kalian kalau aku bisa disiplin. Sekali-kali.
+
+Yang bangun pagi juga, kasih tau aku alasan kalian. Biar aku ga ngerasa sendirian.</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Suzan Kim pakai outfit image 2, sedang stretching di depan pintu kamar kost dengan mata masih setengah melek, satu tangan mengangkat ke atas sambil menguap, background lorong kost pagi hari yang sepi dengan cahaya matahari awal masuk dari ujung lorong. Angle full body dari depan, suasana early morning, ada sepatu sneakers chunky di lantai siap dipakai.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=morning%20stretch%20girl%20doorway%20aesthetic" target="_blank">Pinterest: Morning Stretch</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=kost%20hallway%20morning%20light%20indonesia" target="_blank">Pinterest: Lorong Kost Pagi</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flannel%20shirt%20sports%20bra%20cargo%20pants%20outfit" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 2/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Sampai di taman dan Nana udah nunggu sambil pemanasan. Baru lari satu putaran udah ngos-ngosan. Nana ketawa sambil bilang napas aku kayak kakek-kakek. Sialan tapi bener.
+
+Yang bikin semangat cuma satu. Cowok-cowok yang juga lagi jogging pada noleh. Entah karena aku cantik atau karena aku keliatan mau pingsan. Dua-duanya aku terima.
+
+Olahraga tuh lebih seru kalau ada yang diliat dan ada yang ngeliat.</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Suzan Kim pakai outfit image 2, sedang berlari kecil di jogging track taman kota Jakarta pagi hari (image 3), rambut diikat ponytail bergoyang, ekspresi tertawa sambil menoleh ke belakang ke arah teman perempuan Indonesia yang mengejar. Background taman hijau dengan pohon besar dan beberapa orang jogging tidak sadar kamera. Cahaya pagi golden hour, angle medium shot dari samping depan.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=jogging%20girl%20park%20morning%20golden%20hour" target="_blank">Pinterest: Jogging Pagi</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=taman%20kota%20jakarta%20jogging%20track%20aesthetic" target="_blank">Pinterest: Taman Kota Jakarta</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flannel%20open%20sports%20bra%20sporty%20look" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 3/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Habis jogging langsung mampir ke abang jus di pinggir taman. Pesen jus alpukat satu gelas gede. Nana pesen jus wortel karena katanya biar matanya tambah tajam buat stalking mantan. Aku ga komentar.
+
+Duduk di bangku taman sambil ngadem. Keringetan tapi happy. Badan rasanya lebih hidup dibanding kemarin yang cuma rebahan seharian.
+
+Besok lari lagi ga ya. Jangan tanya, aku juga belum yakin.</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Suzan Kim pakai outfit image 2, sedang jongkok di depan gerobak abang jus pinggir taman Jakarta (image 3), satu tangan menerima gelas jus alpukat besar (image 4), keringat sedikit di dahi, ekspresi senang dan lega. Background gerobak jus warna-warni dengan buah-buahan display, ada teman perempuan Indonesia berdiri di belakang minum jus. Angle rendah dari depan, cahaya pagi cerah.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=juice%20stand%20indonesia%20street%20vendor%20colorful" target="_blank">Pinterest: Abang Jus</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20squatting%20street%20food%20candid%20asia" target="_blank">Pinterest: Jongkok Candid</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sporty%20flannel%20cargo%20pants%20women%20outfit" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 4/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Balik ke kost buat mandi terus siap-siap ke kampus. Hari ini ada kelas jam sepuluh tapi aku mau dateng lebih awal karena ada spot skateboard di belakang gedung fakultas yang lagi sepi pagi-pagi.
+
+Iya aku bisa skateboard. Bukan pro, tapi cukup buat bikin orang kaget. Hobi tersembunyi anak kost yang biasanya cuma keliatan kalem.
+
+Penasaran ga. Scroll terus aja.</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Suzan Kim pakai outfit image 2, sedang naik skateboard di area belakang gedung kampus Jakarta yang sepi (image 3), posisi badan agak rendah menjaga keseimbangan, rambut tertiup angin, ekspresi fokus tapi cool. Background tembok gedung kampus dengan grafiti dan beberapa tiang besi. Angle low dari samping, efek motion blur sedikit di roda skateboard (image 4). Cahaya pagi masuk dari celah gedung.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20skateboarding%20campus%20aesthetic%20urban" target="_blank">Pinterest: Skateboard Girl</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=university%20backyard%20graffiti%20urban%20indonesia" target="_blank">Pinterest: Kampus Urban</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cargo%20pants%20flannel%20skateboard%20girl%20outfit" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 5/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Kelas dimulai dan aku duduk di barisan belakang kayak biasa. Dosen lagi jelasin teori komunikasi tapi otak aku malah mikirin ide konten buat klien freelance nanti siang.
+
+Multitasking level mahasiswa semester akhir. Di depan keliatan fokus, di layar laptop sebenernya lagi bikin mood board.
+
+Aku yakin setengah dari kalian juga gini. Pura-pura dengerin padahal pikiran udah kemana-mana.</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Suzan Kim pakai outfit image 2, sedang duduk di bangku belakang ruang kuliah kampus Indonesia (image 3), laptop terbuka di meja, satu tangan menopang dagu dengan ekspresi melamun sambil senyum kecil, di layar laptop terlihat Pinterest terbuka (image 4). Background mahasiswa Indonesia lain dari belakang menghadap dosen di depan, ruangan ber-AC dengan proyektor menyala. Angle dari samping agak belakang, candid.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=lecture%20hall%20university%20indonesia%20student" target="_blank">Pinterest: Ruang Kuliah</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20daydreaming%20class%20laptop%20aesthetic" target="_blank">Pinterest: Daydream di Kelas</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=tomboy%20chic%20flannel%20sporty%20college%20look" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 6/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Kelas selesai dan aku langsung kabur ke tangga darurat kampus. Tempat favoritku buat foto karena pencahayaannya dramatic banget dari jendela kecil di atas. Ga ada orang yang lewat jadi bebas pose aneh-aneh.
+
+Hari ini aku mau coba pose yang agak beda. Duduk di anak tangga sambil kaki diangkat ke dinding sebelah. Yoga versi anak kuliahan males.
+
+Fleksibel itu bukan cuma soal badan. Tapi juga soal cara pandang hidup. Setuju ga.</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Suzan Kim pakai outfit image 2, sedang duduk di anak tangga darurat kampus dengan satu kaki diangkat menempel ke dinding sebelah dalam pose fleksibel yang unik (image 3), sinar matahari masuk dari jendela kecil di atas menciptakan dramatic lighting di wajah dan badan. Background tangga beton industrial dengan railing besi. Angle dari bawah looking up, ekspresi percaya diri menatap kamera. Sports bra terlihat dari flannel yang terbuka.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=stairwell%20photography%20dramatic%20light%20portrait" target="_blank">Pinterest: Tangga Dramatic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flexible%20pose%20girl%20staircase%20urban" target="_blank">Pinterest: Pose Fleksibel</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flannel%20open%20sports%20bra%20aesthetic%20girl" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 7/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Makan siang di kantin kampus bareng Lia. Dia baru selesai presentasi jadi mukanya lega banget. Aku pesen nasi goreng spesial yang porsinya segede gunung.
+
+Sambil makan, Lia cerita soal dosen yang nanya pertanyaan jebakan. Aku cuma ketawa karena kemarin aku yang kena pertanyaan yang sama dan ga bisa jawab.
+
+Solidaritas mahasiswa itu ada di momen-momen kecil kayak gini. Senasib sepenanggungan.</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Suzan Kim pakai outfit image 2, sedang makan nasi goreng di kantin kampus Indonesia yang ramai (image 3), mulut setengah terbuka baru mau suap, di seberang meja ada teman perempuan Indonesia yang tertawa. Background kantin dengan mahasiswa Indonesia lain antri dan makan, ada menu tulisan tangan di papan (image 4). Angle medium shot dari depan agak samping, suasana ramai dan hidup, pencahayaan natural dari atap kantin.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=kantin%20kampus%20indonesia%20aesthetic%20student" target="_blank">Pinterest: Kantin Kampus</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=nasi%20goreng%20food%20photography%20indonesia" target="_blank">Pinterest: Nasi Goreng</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sporty%20casual%20flannel%20girl%20campus%20style" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 8/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Nemu piano tua di aula kampus yang lagi kosong. Ga bisa main piano beneran tapi aku tau beberapa chord dari nonton YouTube. Jari-jari asal pencet tapi bunyinya lumayan mirip lagu. Mirip, bukan sama.
+
+Lia rekamin dari belakang tanpa aku tau. Hasilnya ternyata aesthetic banget. Kayak scene di drama Korea tapi versi budget mahasiswa.
+
+Kadang hal random kayak gini yang bikin hari jadi memorable.</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Suzan Kim pakai outfit image 2, sedang duduk di depan piano tua di aula kampus yang kosong (image 3), jari-jari menyentuh tuts piano, kepala sedikit menunduk dengan ekspresi tenang. Background aula besar dengan jendela tinggi dan cahaya matahari siang masuk membentuk siluet (image 4). Angle dari belakang samping, terlihat profil wajah dan tangan di piano. Suasana sepi dan cinematic, debu berterbangan di cahaya.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20playing%20piano%20aesthetic%20silhouette%20light" target="_blank">Pinterest: Piano Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=empty%20hall%20piano%20sunlight%20window%20cinematic" target="_blank">Pinterest: Aula Cinematic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flannel%20shirt%20cargo%20pants%20girl%20tomboy%20chic" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 9/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">Pindah ke perpustakaan kampus buat kerjain revisi tugas freelance. Duduk di pojokan paling sepi, pasang earphone, buka laptop. Kali ini beneran kerja, ga cuma pura-pura.
+
+Tiga jam deadline dan aku baru mulai. Hidup di ujung tanduk itu udah jadi lifestyle. Bukan bangga, tapi ya begini adanya anak semester akhir yang kerja sampingan.
+
+Doain selesai tepat waktu ya. Atau minimal mendekati tepat waktu.</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Suzan Kim pakai outfit image 2, sedang duduk bersila di lantai perpustakaan kampus di antara rak-rak buku tinggi (image 3), laptop di pangkuan, earphone terpasang, ekspresi serius fokus ke layar. Background rak buku penuh dengan pencahayaan hangat dari lampu baca di atas (image 4). Angle dari ujung lorong rak buku, framing natural dari rak-rak di kiri kanan. Suasana tenang dan studious.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=library%20floor%20sitting%20girl%20laptop%20bookshelf" target="_blank">Pinterest: Perpus Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=university%20library%20indonesia%20warm%20lighting" target="_blank">Pinterest: Perpustakaan Kampus</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cargo%20pants%20chunky%20sneakers%20sporty%20girl" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 10/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Deadline kelar lima menit sebelum batas waktu. Rasanya kayak menang lotre. Langsung kirim file ke klien terus tutup laptop dramatis kayak di film action habis defuse bom.
+
+Sekarang reward time. Beli boba di depan kampus yang antrinya panjang tapi worth it. Rasa taro dengan topping pudding, extra gula karena otak butuh suplai setelah kerja keras.
+
+Kalian tim boba rasa apa. Jangan bilang ga suka boba, aku ga percaya.</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Suzan Kim pakai outfit image 2, sedang melompat kecil di depan stand boba dekat kampus Jakarta (image 3) sambil mengangkat gelas boba taro besar dengan kedua tangan di atas kepala, ekspresi super senang dan celebratory. Background stand minuman boba warna-warni dengan antrian mahasiswa Indonesia (image 4). Angle full body dari depan, suasana sore cerah, bayangan panjang di lantai.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=boba%20drink%20taro%20aesthetic%20girl%20holding" target="_blank">Pinterest: Boba Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=happy%20jumping%20girl%20celebratory%20candid" target="_blank">Pinterest: Jump Celebrate</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flannel%20shirt%20open%20sports%20bra%20outfit%20women" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 11/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Balik ke kost dan ganti baju. Malam ini Nana sama Lia ngajak ke acara live music di bar daerah Kemang. Jadi aku keluarin senjata malam yang udah lama ga dipake.
+
+Mirror check sebelum keluar. Kalau tadi pagi aku versi sporty tomboy, sekarang aku versi yang bikin orang lupa nama sendiri. Transformasi anak kost itu nyata.
+
+Siap ga liat versi malam aku. Spoiler, jawabannya selalu iya.</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Suzan Kim pakai outfit image 2, sedang berdiri membelakangi cermin besar di kamar kost lalu menoleh ke kamera sambil senyum menggoda, punggung terbuka dari halter top terlihat di pantulan cermin (image 3). Satu tangan memegang clutch hitam kecil. Background kamar kost dengan fairy lights dan makeup berserakan di meja rias (image 4). Angle medium shot dari depan, pencahayaan warm dari lampu kamar.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=backless%20halter%20top%20mirror%20selfie%20night%20out" target="_blank">Pinterest: Mirror Night Look</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=getting%20ready%20night%20out%20vanity%20makeup%20aesthetic" target="_blank">Pinterest: Getting Ready</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=emerald%20halter%20top%20leather%20pants%20outfit" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 12/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Nunggu Grab di depan kost sambil dancing kecil-kecil karena lagu di earphone terlalu enak. Ga peduli tetangga kost ngeliat aneh. Hidup terlalu pendek buat malu goyang di trotoar.
+
+Nana video call bilang dia udah di jalan juga. Lia nyusul dari kampus langsung. Malam ini bakal seru, aku bisa ngerasain dari sekarang.
+
+Kalian pernah ga sih tiba-tiba joget di tempat umum. Jangan bohong.</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Suzan Kim pakai outfit image 2, sedang menari kecil di trotoar depan kost Jakarta sore hari (image 3), satu tangan di atas kepala, pinggul bergoyang, earphone wireless terpasang, ekspresi fun dan bebas. Background gang kost dengan motor parkir dan tanaman pot, langit sore keemasan (image 4). Ada satu ibu-ibu tetangga kost yang ngeliat dari jauh dengan ekspresi bingung. Angle full body dari depan, vibe carefree.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20dancing%20sidewalk%20earphones%20carefree" target="_blank">Pinterest: Dancing Sidewalk</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=jakarta%20kost%20alley%20golden%20hour%20aesthetic" target="_blank">Pinterest: Gang Kost Sore</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=halter%20top%20leather%20pants%20heels%20night%20outfit" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 13/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Sampai di venue dan suasananya udah rame banget. Band belum mulai tapi DJ udah mainin lagu enak. Nana sama Lia udah nunggu di meja deket panggung. Mereka pesen cocktail duluan tanpa aku. Pengkhianat.
+
+Tapi ga apa-apa karena aku langsung pesen yang lebih mahal buat balas dendam. Malam ini duit freelance kemarin resmi habis. Worth it.
+
+Yang suka live music, venue favorit kalian di mana. Kasih rekomendasi dong.</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Suzan Kim pakai outfit image 2, sedang berdiri di depan panggung bar live music Jakarta (image 3), tangan memegang cocktail berwarna hijau emerald senada bajunya (image 4), di belakang ada DJ booth dengan lampu warna-warni. Dua teman perempuan Indonesia duduk di meja tinggi di belakang melambaikan tangan. Angle medium shot dari depan agak bawah, lighting neon ungu dan biru, suasana ramai dan energetic malam hari.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=live%20music%20bar%20jakarta%20kemang%20neon%20lights" target="_blank">Pinterest: Bar Live Music</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20cocktail%20neon%20bar%20night%20aesthetic" target="_blank">Pinterest: Cocktail Neon</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=emerald%20backless%20top%20leather%20pants%20night" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 14/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Band mulai main dan ternyata mereka cover lagu-lagu 2000an. Nana langsung narik tangan aku ke depan panggung buat ikut nyanyi bareng. Suara aku jelek tapi di keramaian ga ada yang denger jadi aman.
+
+Ini yang aku suka dari hidup di Jakarta. Selalu ada tempat buat teriak lepas tanpa dinilai. Semua orang terlalu sibuk having fun buat peduli sama orang lain.
+
+Lagu 2000an favorit kalian apa. Yang bikin pengen teriak di bar.</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Suzan Kim pakai outfit image 2, sedang bernyanyi dengan mulut terbuka lebar dan tangan terangkat di depan panggung live music (image 3), di sebelahnya teman perempuan Indonesia juga ikut teriak nyanyi, background band dengan gitaris dan drummer di panggung dengan lighting kuning dramatic (image 4). Crowd orang-orang Indonesia di sekitar juga ikut bernyanyi. Angle dari bawah panggung looking up, suasana euphoric dan penuh energi.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=singing%20crowd%20live%20music%20concert%20girl%20hands%20up" target="_blank">Pinterest: Singing Crowd</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=indie%20band%20stage%20bar%20warm%20lighting%20jakarta" target="_blank">Pinterest: Band Panggung Bar</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=backless%20halter%20top%20concert%20night%20girl" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 15/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Break sebentar dari keramaian. Keluar ke area smoking section yang ada tangga besi di belakang bar. Aku ga ngerokok tapi tangga besi ini spot foto paling keren yang pernah aku temuin.
+
+Duduk di anak tangga besi dengan kaki menggantung ke bawah. Dari sini keliatan jalanan Kemang yang ramai di bawah. Lampu-lampu dan suara musik samar dari dalam.
+
+Kadang being alone sebentar di tengah keramaian itu perlu. Buat napas. Buat appreciate momen.</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Suzan Kim pakai outfit image 2, sedang duduk di tangga besi fire escape di belakang bar malam Jakarta (image 3), kaki menggantung di pinggir anak tangga, badan bersandar ke railing besi, kepala mendongak ke langit malam. Background jalanan Kemang Jakarta di bawah dengan lampu-lampu kendaraan dan pejalan kaki (image 4). Punggung terbuka dari halter top terlihat dari angle samping belakang. Suasana contemplative, lighting dari lampu jalanan di bawah menciptakan siluet dramatic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=fire%20escape%20stairs%20night%20city%20girl%20sitting" target="_blank">Pinterest: Fire Escape Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=kemang%20jakarta%20street%20night%20lights%20aesthetic" target="_blank">Pinterest: Kemang Malam</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=backless%20top%20leather%20pants%20night%20aesthetic" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 16/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Balik masuk dan ternyata ada karaoke room kecil di lantai dua bar ini. Nana sama Lia udah nyanyi duluan dan suara mereka gabungan kayak kucing berantem. Tapi seru banget.
+
+Aku ambil mic dan langsung pilih lagu ballad Korea. Nana bilang aku nyanyi kayak orang patah hati padahal jomblo sudah dua tahun. Ga perlu pengalaman buat jadi penuh penghayatan.
+
+Yang jago karaoke, lagu andalan kalian apa. Aku butuh referensi baru.</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Suzan Kim pakai outfit image 2, sedang berdiri di karaoke room kecil memegang mic dengan kedua tangan (image 3), mata terpejam penuh penghayatan, mulut terbuka sedang bernyanyi, background layar karaoke menyala dengan lirik lagu (image 4). Dua teman perempuan Indonesia duduk di sofa belakang tertawa dan tepuk tangan. Lighting disco ball kecil di langit-langit menciptakan titik-titik cahaya. Angle medium shot dari depan agak bawah, suasana fun private karaoke.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=karaoke%20room%20girl%20singing%20microphone%20aesthetic" target="_blank">Pinterest: Karaoke Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=disco%20ball%20small%20room%20neon%20lights%20party" target="_blank">Pinterest: Disco Karaoke Room</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=emerald%20halter%20backless%20night%20out%20look" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 17/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Keluar dari bar dan jalan kaki bertiga nyusuri trotoar Kemang. Lia tiba-tiba naik ke pagar pendek di pinggir jalan dan jalan di atasnya kayak di atas tali. Aku ikutan karena kenapa engga.
+
+Tiga cewek jalan di atas pagar sambil pegangan satu sama lain biar ga jatoh. Orang-orang yang lewat senyum-senyum ngeliat kita. Biarin, kita lagi happy dan dunia boleh nonton gratis.
+
+Pernah ga sih kalian melakukan sesuatu yang random banget sama temen tapi justru itu yang paling diinget.</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Suzan Kim pakai outfit image 2, sedang berjalan di atas pagar pendek trotoar Kemang Jakarta malam hari (image 3), kedua tangan direntangkan untuk keseimbangan, di belakang ada dua teman perempuan Indonesia juga naik pagar sambil pegangan. Background trotoar Kemang dengan lampu cafe dan restoran di kiri kanan (image 4). Ekspresi Suzan tertawa gembira, badan sedikit oleng. Angle wide shot dari depan bawah, suasana playful dan spontaneous malam hari.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20balancing%20fence%20sidewalk%20night%20fun" target="_blank">Pinterest: Balancing Fun</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=kemang%20jakarta%20sidewalk%20night%20restaurants%20lights" target="_blank">Pinterest: Kemang Trotoar</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=leather%20pants%20heels%20halter%20top%20night%20look" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 23:00 -->
+        <div class="post-card" id="post-2300">
+            <div class="post-header">
+                <span class="post-time">23:00 WIB</span>
+                <span class="post-number">Post 18/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-18">Mampir ke warmindo 24 jam sebelum pulang. Ritual wajib setelah main malam yaitu indomie goreng double plus telor ceplok. Duduk bertiga di bangku plastik depan warmindo sambil makan pake piring melamin.
+
+Dari outfit mahal sampai makan di pinggir jalan. Kontras hidup anak Jakarta yang ga ada duanya. Dan aku cinta setiap bagiannya.
+
+Nana bilang ini momen paling jujur dari kita bertiga. Ga ada filter, ga ada gaya. Cuma lapar dan bahagia.
+
+Warmindo favorit kalian di mana. Aku yakin semua punya.</p>
+                    <button class="copy-btn" onclick="copyText('caption-18', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-18">Suzan Kim pakai outfit image 2, sedang duduk di kursi plastik warmindo pinggir jalan malam Jakarta (image 3), di meja ada piring indomie goreng dengan telor ceplok mengepul (image 4), Suzan sedang meniup mie di garpu dengan ekspresi lucu. Dua teman perempuan Indonesia di sebelah juga makan sambil tertawa. Background gerobak warmindo dengan lampu neon dan tulisan menu, jalanan sepi malam hari. Angle medium shot dari depan, suasana raw dan authentic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-18', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=warmindo%20indomie%20jakarta%20street%20food%20night" target="_blank">Pinterest: Warmindo Malam</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=indomie%20goreng%20fried%20egg%20aesthetic%20food" target="_blank">Pinterest: Indomie Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=halter%20top%20leather%20pants%20street%20food%20contrast" target="_blank">Pinterest: Outfit Ref</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 00:00 -->
+        <div class="post-card" id="post-0000">
+            <div class="post-header">
+                <span class="post-time">00:00 WIB</span>
+                <span class="post-number">Post 19/19</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-19">Hari kedua resmi berakhir. Dari jogging pagi yang hampir bikin aku pingsan sampai karaoke malam yang bikin suara hilang. Dari skateboard di kampus sampai nyanyi di bar. Hari ini penuh kejutan.
+
+Besok ga tau bakal kayak gimana. Mungkin lebih gila, mungkin lebih kalem. Yang pasti aku bakal tetap jadi aku. Cewek kost yang hidup di Jakarta dengan caranya sendiri.
+
+Makasih yang udah ikutin dari pagi sampai sekarang. Kalian yang bikin aku semangat share setiap momen.
+
+Selamat tidur. Besok ketemu lagi. Dan kalau mimpi aku malam ini, itu bukan kebetulan.</p>
+                    <button class="copy-btn" onclick="copyText('caption-19', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-19">Suzan Kim pakai kaos oversized putih sebagai baju tidur, sedang berbaring tengkurap di kasur kamar kost (image 3), dagu ditopang dua tangan, kaki ditekuk ke atas disilangkan di udara, menatap kamera dengan senyum kecil penuh arti. Di samping ada HP yang menampilkan gallery foto hari ini (image 4). Background kamar kost gelap dengan fairy lights redup dan jendela yang memperlihatkan langit malam Jakarta. Angle rendah dari depan kasur, suasana intimate, soft, dan penuh kasih sayang ke followers.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-19', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl%20lying%20bed%20chin%20hands%20aesthetic%20night" target="_blank">Pinterest: Bed Pose Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy%20bedroom%20fairy%20lights%20night%20jakarta%20kost" target="_blank">Pinterest: Kamar Kost Malam</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=phone%20gallery%20memories%20aesthetic%20screen" target="_blank">Pinterest: Phone Gallery</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Suzan Kim Day 2 Content Plan - Made for engagement & growth</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Task (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+            // Save state
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((c, index) => {
+                localStorage.setItem('suzankim-day2-task-' + index, c.classList.contains('hidden-task'));
+            });
+        }
+
+        // Restore hidden state from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('suzankim-day2-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
