@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjectCuan TikTok - Day 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #e94560, #533483);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #e94560, #533483);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #ffe0e6;
+            color: #c0392b;
+        }
+
+        .label-heygen {
+            background: #e8d5f5;
+            color: #6a1b9a;
+        }
+
+        .caption-box, .heygen-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .heygen-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 80px;
+            white-space: pre-wrap;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #e94560, #533483);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .hide-btn, .delete-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn {
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            color: #666;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .delete-btn {
+            background: #fff0f0;
+            border: 2px dashed #ffcdd2;
+            color: #c62828;
+        }
+
+        .delete-btn:hover {
+            background: #ffebee;
+            border-color: #e57373;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 8px 14px;
+                font-size: 0.85em;
+            }
+            .task-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ProjectCuan TikTok - Day 1</h1>
+            <p>Konten Harian TikTok | Rekrutmen Bisnis Asuransi</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Jadwal posting: 06:00 - 09:00 - 12:00 - 15:00 - 18:00 - 21:00 WIB</p>
+            <p style="margin-top:5px; font-size:0.85em; color:#aaa;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Pilih Jam Posting:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-2100">21:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="caption-box">
+                    <p id="caption-1">Udah kerja bertahun-tahun tapi kok ga kaya-kaya? Jangan-jangan kamu salah kendaraan.
+
+Banyak orang Indonesia kerja 10-15 tahun, tapi tabungannya masih nol. Gaji naik? Pengeluaran juga naik. Lingkaran setan yang ga pernah putus.
+
+Aku dulu juga gitu. Sampai aku nemu jalan lain. Bisnis yang modalnya NOL, tapi potensi incomenya TANPA BATAS.
+
+Bukan scam. Bukan MLM abal-abal. Ini bisnis asuransi yang diawasi OJK dan didukung perusahaan multinasional.
+
+Mau tau caranya? Cek link di bio.
+
+#ProjectCuan #BisnisAsuransi #IncomeTambahan #KerjaCerdas #TikTokIndonesia #FinancialFreedom #AgenAsuransi #PeluangBisnis</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-heygen">Script HeyGen (9:16 | 1-3 menit)</span>
+                <div class="heygen-box">
+                    <p id="heygen-1">Halo semuanya. Aku mau tanya satu hal yang mungkin bikin kamu mikir keras pagi ini.
+
+Udah berapa tahun kamu kerja? Lima tahun? Sepuluh tahun? Lima belas tahun? Sekarang coba jawab jujur, apakah kamu sudah kaya? Apakah tabunganmu sudah cukup kalau besok kamu berhenti kerja?
+
+Kalau jawabannya belum, berarti ada yang salah. Bukan salah kamu kurang kerja keras. Tapi mungkin salah kendaraan.
+
+Aku sendiri dulu juga terjebak di siklus yang sama. Kerja dari pagi sampai malam, gaji habis di tanggal 25, terus nunggu gajian lagi bulan depan. Bertahun-tahun kayak gitu.
+
+Sampai akhirnya aku kenal bisnis asuransi. Dan bukan, ini bukan soal jual-jual asuransi aja. Ini soal membangun tim, membangun passive income, dan yang paling penting, membantu orang lain punya proteksi finansial.
+
+Perusahaan yang aku gabung sekarang itu Manulife. Perusahaan asuransi multinasional yang sudah beroperasi puluhan tahun di Indonesia. Diawasi OJK. Legal. Terpercaya.
+
+Dan yang bikin aku excited, kamu bisa mulai TANPA MODAL. Training gratis. Support sistem lengkap. Kamu tinggal bawa kemauan dan konsistensi.
+
+Kalau kamu merasa stuck dengan penghasilanmu sekarang, ini saatnya coba jalan yang berbeda. Cek link di bio aku untuk info lebih lengkap. Atau langsung chat aku.
+
+Ini bukan soal bisa atau tidak bisa. Ini soal mau atau tidak mau berubah.</p>
+                    <button class="copy-btn" onclick="copyText('heygen-1', this)">Copy</button>
+                </div>
+
+                <div class="task-actions">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 2/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="caption-box">
+                    <p id="caption-2">Kalau besok kamu masuk rumah sakit, siapa yang bayarin? Mikir dulu sebentar.
+
+75% orang Indonesia BELUM punya asuransi. Itu artinya kalau terjadi sesuatu, mereka harus jual aset, pinjam sana-sini, atau bahkan putus sekolahkan anaknya.
+
+Sekarang bayangkan kalau KAMU bisa jadi orang yang mencegah itu terjadi. Kamu bantu orang punya proteksi. Dan kamu DIBAYAR untuk itu.
+
+Gajinya? Unlimited. Waktunya? Fleksibel. Modalnya? NOL.
+
+Ini nyata. Ini bisnis asuransi di era digital. Cek link di bio.
+
+#AsuransiIndonesia #ProteksiKeluarga #BisnisDigital #ProjectCuan #PeluangKarir #TikTokBisnis #SideHustle #FinancialPlanning</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-heygen">Script HeyGen (9:16 | 1-3 menit)</span>
+                <div class="heygen-box">
+                    <p id="heygen-2">Aku mau ajak kamu bayangin sesuatu. Ini pagi yang normal. Kamu sarapan, berangkat kerja, semua biasa aja. Tapi tiba-tiba siang ini kamu kolaps. Masuk IGD. Harus rawat inap.
+
+Pertanyaannya: siapa yang bayar?
+
+Kalau jawaban kamu adalah "nggak tau" atau "pinjam dulu kali," maka kamu termasuk dari 75 persen orang Indonesia yang belum punya proteksi finansial yang memadai.
+
+Ini bukan nakut-nakutin. Ini fakta dari data OJK.
+
+Nah, sekarang bayangin kalau kamu bisa jadi solusi untuk masalah ini. Kamu edukasi orang soal pentingnya asuransi. Kamu bantu mereka pilih proteksi yang tepat. Dan kamu mendapatkan komisi dari setiap orang yang kamu bantu.
+
+Di Manulife Indonesia, sistem ini sudah terbukti. Banyak agen yang dulunya karyawan biasa, ibu rumah tangga, bahkan fresh graduate, sekarang punya penghasilan puluhan juta per bulan.
+
+Yang kamu butuhkan cuma tiga hal: kemauan belajar, konsistensi, dan smartphone.
+
+Modal? Nol. Training? Gratis. Support? Lengkap dari tim dan perusahaan.
+
+Kalau kamu penasaran, cek link di bio aku. Di sana ada penjelasan lengkap tentang bagaimana sistem ini bekerja dan bagaimana kamu bisa mulai.
+
+Jangan tunggu sampai kamu atau keluargamu yang butuh. Mulai sekarang.</p>
+                    <button class="copy-btn" onclick="copyText('heygen-2', this)">Copy</button>
+                </div>
+
+                <div class="task-actions">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 3/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="caption-box">
+                    <p id="caption-3">Jam istirahat. Scroll TikTok. Tapi coba tanya ke diri sendiri: setelah jam 5 sore nanti, apa yang berubah di hidupmu?
+
+Kalau jawabannya NOTHING, mungkin ini saatnya kamu coba sesuatu yang beda.
+
+Aku bukan motivator. Aku cuma orang biasa yang capek hidup gaji-ke-gaji. Dan aku nemu jalan keluar di bisnis asuransi.
+
+Sekarang aku punya income tambahan yang bahkan lebih besar dari gaji utama. Dan aku bisa bantu kamu juga.
+
+Syaratnya cuma satu: kamu harus MAU berubah. Cek link di bio.
+
+#JamIstirahat #WakeUpCall #GajiKeGaji #BisnisAsuransi #ProjectCuan #IncomeTambahan #PerubahanHidup #TikTokMotivasi</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-heygen">Script HeyGen (9:16 | 1-3 menit)</span>
+                <div class="heygen-box">
+                    <p id="heygen-3">Selamat siang. Kamu lagi istirahat kan? Makan siang sambil scroll TikTok?
+
+Oke, aku mau ngobrol sebentar. Cuma satu menit. Tapi ini bisa mengubah cara kamu lihat hidupmu.
+
+Tanya ke diri sendiri: apa yang beda hari ini dibanding kemarin? Atau minggu lalu? Atau bahkan setahun lalu?
+
+Kalau jawabannya "sama aja," maka kamu sedang stuck. Dan stuck itu berbahaya. Karena waktu terus jalan, harga-harga naik, kebutuhan bertambah, tapi penghasilanmu segitu-gitu aja.
+
+Aku pernah di posisi itu. Kerja dari Senin sampai Jumat, gaji habis sebelum akhir bulan. Nunggu tanggal 25 kayak nunggu hujan di musim kemarau.
+
+Lalu aku diajak teman gabung di bisnis asuransi Manulife. Awalnya skeptis. Tapi setelah belajar sistemnya, aku sadar ini beda dari yang aku bayangkan.
+
+Ini bukan soal jualan door-to-door. Ini soal membangun jaringan dan edukasi. Di era digital, semua bisa dilakukan dari handphone.
+
+Bulan pertama memang belajar. Bulan kedua mulai dapat leads. Bulan ketiga, closing pertama. Dan sekarang? Income tambahan aku sudah melebihi gaji kantor.
+
+Kalau kamu mau tahu lebih detail, cek link di bio. Aku siap jelasin dan dampingi kamu dari awal.
+
+Pertanyaannya bukan "bisa atau nggak." Pertanyaannya: mau atau nggak?</p>
+                    <button class="copy-btn" onclick="copyText('heygen-3', this)">Copy</button>
+                </div>
+
+                <div class="task-actions">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 4/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="caption-box">
+                    <p id="caption-4">FAKTA MENGERIKAN: 8 dari 10 keluarga Indonesia akan BANGKRUT kalau pencari nafkah utamanya meninggal atau sakit kritis.
+
+Bukan lebay. Ini data.
+
+Tapi kabar baiknya: KAMU bisa jadi solusi. Dengan jadi agen asuransi, kamu ga cuma cari uang. Kamu MENYELAMATKAN keluarga-keluarga dari kehancuran finansial.
+
+Dan penghasilannya? Bisa bikin kamu pensiun dini.
+
+Tertarik? Atau masih mau kerja 9-to-5 sampai umur 60? Pilihan ada di tanganmu. Cek link di bio.
+
+#FaktaKeuangan #AsuransiJiwa #PensiunDini #BisnisAsuransi #ProjectCuan #KarirBermakna #FinancialFreedom #TikTokEdukasi</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-heygen">Script HeyGen (9:16 | 1-3 menit)</span>
+                <div class="heygen-box">
+                    <p id="heygen-4">Aku mau share satu data yang mungkin bikin kamu merinding.
+
+Menurut riset, 8 dari 10 keluarga di Indonesia akan mengalami krisis finansial serius kalau pencari nafkah utama mereka tiba-tiba tidak bisa bekerja. Entah karena sakit kritis, kecelakaan, atau meninggal dunia.
+
+Bayangin. Rumah dijual. Anak putus sekolah. Utang menumpuk. Dan ini terjadi SETIAP HARI di Indonesia.
+
+Sekarang aku tanya: kamu mau jadi bagian dari masalah ini, atau jadi bagian dari SOLUSI?
+
+Sebagai agen asuransi di Manulife, tugas aku setiap hari adalah mengedukasi keluarga-keluarga Indonesia tentang pentingnya proteksi finansial. Aku bantu mereka pilih produk yang tepat sesuai kebutuhan dan budget mereka.
+
+Dan untuk setiap keluarga yang aku bantu, aku mendapatkan komisi. Komisi yang kalau dihitung, bisa jauh lebih besar dari gaji kantoran.
+
+Tapi yang bikin aku bangun setiap pagi bukan cuma uangnya. Tapi knowing bahwa aku sedang membantu orang. Bahwa pekerjaanku punya MAKNA.
+
+Kalau kamu merasa pekerjaanmu sekarang ga punya meaning, atau kamu butuh income tambahan yang signifikan, mungkin ini jalan yang tepat buat kamu.
+
+Cek link di bio. Di sana ada semua informasi yang kamu butuhkan untuk mulai. Atau langsung DM aku, kita ngobrol personal.
+
+Ingat: kesempatan ga datang dua kali dengan cara yang sama.</p>
+                    <button class="copy-btn" onclick="copyText('heygen-4', this)">Copy</button>
+                </div>
+
+                <div class="task-actions">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 5/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="caption-box">
+                    <p id="caption-5">Pulang kerja. Capek. Badan remuk. Tapi rekening? Tetep segitu aja.
+
+Ini yang namanya RAT RACE. Lari terus di tempat. Ga pernah maju.
+
+Aku dulu juga kayak gitu. Sampai akhirnya aku ketemu komunitas yang ngajarin aku cara KELUAR dari siklus ini.
+
+Sekarang aku punya bisnis sendiri di industri asuransi. Income BERKALI-KALI LIPAT dari gaji kantoran. Dan yang terpenting: aku punya WAKTU.
+
+Kamu juga bisa. Ga perlu resign dulu. Mulai sambil kerja. Cek link di bio.
+
+#RatRace #PulangKerja #CapekKerja #IncomeTambahan #ProjectCuan #BisnisAsuransi #MerdekFinansial #WaktuUntukKeluarga</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-heygen">Script HeyGen (9:16 | 1-3 menit)</span>
+                <div class="heygen-box">
+                    <p id="heygen-5">Hei, selamat sore. Kamu baru pulang kerja ya? Atau masih di jalan?
+
+Aku mau nanya: apa yang kamu rasain sekarang? Capek? Badan sakit? Pengen langsung rebahan?
+
+Tapi besok pagi kamu harus bangun lagi. Berangkat lagi. Kerja lagi. Dan uangnya? Ya segitu aja.
+
+Ini yang disebut rat race. Dan jutaan orang Indonesia terjebak di sini. Termasuk aku dulu.
+
+Tapi aku berhasil keluar. Dan caranya bukan dengan menang lotre atau dapat warisan. Caranya adalah dengan membangun bisnis di industri asuransi.
+
+Kenapa asuransi? Pertama, industrinya growing. Penetrasi asuransi di Indonesia masih sangat rendah, artinya market-nya BESAR banget.
+
+Kedua, di Manulife sistem supportnya lengkap. Training, marketing tools, mentoring, semua disediakan.
+
+Ketiga, kamu bisa mulai TANPA harus resign dari pekerjaanmu sekarang. Jalanin dulu sebagai side hustle. Kalau sudah menghasilkan lebih dari gaji, baru kamu putuskan mau fokus penuh atau tidak.
+
+Yang paling penting: ini bisnis yang HALAL dan BERMAKNA. Kamu membantu orang punya proteksi untuk keluarga mereka.
+
+Kalau kamu capek dengan rutinitas yang ga membawa kemana-mana, saatnya coba hal baru. Link di bio aku, semua informasinya ada di sana.
+
+Atau DM aku. Kita ngobrol. Ga ada paksaan. Cuma sharing peluang.</p>
+                    <button class="copy-btn" onclick="copyText('heygen-5', this)">Copy</button>
+                </div>
+
+                <div class="task-actions">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 6/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="caption-box">
+                    <p id="caption-6">Malam ini sebelum tidur, tanya ke diri sendiri: Kalau kamu terus hidup kayak sekarang, 5 tahun lagi kamu akan ada di mana?
+
+Masih di kerjaan yang sama? Masih gaji segitu? Masih ngontrak? Masih pusing bayar cicilan?
+
+Kalau bayangannya bikin kamu takut, mungkin SEKARANG waktu yang tepat untuk berubah.
+
+Aku bukan jual mimpi. Aku nawarin KENDARAAN. Bisnis asuransi yang sudah terbukti mengubah hidup banyak orang biasa jadi luar biasa.
+
+Besok aku share lebih banyak. Tapi kalau kamu ga mau nunggu, cek link di bio.
+
+#RefleksiMalam #5TahunLagi #PerubahanDimulai #ProjectCuan #BisnisAsuransi #MotivasiMalam #MasaDepan #BeraniBerubah</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-heygen">Script HeyGen (9:16 | 1-3 menit)</span>
+                <div class="heygen-box">
+                    <p id="heygen-6">Selamat malam. Ini mungkin video terakhir yang kamu tonton hari ini sebelum tidur. Jadi aku mau bikin ini bermakna.
+
+Coba pejamkan mata sebentar. Bayangin hidupmu 5 tahun dari sekarang. Kamu tinggal di mana? Kamu naik apa? Keluargamu hidup seperti apa?
+
+Sekarang buka mata. Apakah apa yang kamu lakukan HARI INI sedang membawamu ke sana? Atau kamu cuma berharap tanpa action?
+
+Kebanyakan orang bermimpi tapi tidak pernah bertindak. Mereka bilang "nanti aja," "belum waktunya," "aku ga bisa."
+
+Tapi orang-orang yang berhasil adalah mereka yang BERANI mengambil langkah pertama. Meskipun takut. Meskipun ragu.
+
+Aku mengajak kamu untuk mempertimbangkan satu hal: gabung di bisnis asuransi bersama aku dan tim ProjectCuan.
+
+Ini bukan get-rich-quick scheme. Ini butuh kerja keras dan konsistensi. Tapi kalau kamu MAU, hasilnya bisa mengubah hidupmu.
+
+Di Manulife, kamu akan dapat training profesional, sistem kerja yang proven, dan komunitas yang supportive. Banyak dari anggota tim kami yang dulunya skeptis, sekarang penghasilannya sudah berkali-kali lipat dari gaji mereka sebelumnya.
+
+Malam ini, sebelum tidur, pikirkan matang-matang. Dan kalau kamu merasa ini sesuatu yang worth dicoba, link-nya ada di bio aku.
+
+Besok aku akan share konten lagi. Tapi ingat: setiap hari yang berlalu tanpa action adalah hari yang terbuang. Selamat malam.</p>
+                    <button class="copy-btn" onclick="copyText('heygen-6', this)">Copy</button>
+                </div>
+
+                <div class="task-actions">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>ProjectCuan TikTok Content - Day 1 | Rekrutmen Bisnis Asuransi</p>
+            <p style="margin-top:5px;">Sumber konten: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Task';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+            saveState();
+        }
+
+        function deleteTask(button) {
+            const card = button.closest('.post-card');
+            if (confirm('Hapus task ini? Task tidak bisa dikembalikan.')) {
+                card.style.transition = 'all 0.3s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    card.remove();
+                    saveState();
+                }, 300);
+            }
+        }
+
+        function saveState() {
+            const cards = document.querySelectorAll('.post-card');
+            const state = {};
+            cards.forEach((card) => {
+                state[card.id] = {
+                    hidden: card.classList.contains('hidden-task'),
+                    deleted: false
+                };
+            });
+            localStorage.setItem('projectcuan-tiktok-day1', JSON.stringify(state));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('projectcuan-tiktok-day1');
+            if (saved) {
+                const state = JSON.parse(saved);
+                Object.keys(state).forEach(id => {
+                    const card = document.getElementById(id);
+                    if (card && state[id].hidden) {
+                        card.classList.add('hidden-task');
+                        const btn = card.querySelector('.hide-btn');
+                        if (btn) {
+                            btn.innerText = 'Tampilkan Kembali';
+                            btn.classList.remove('hide-btn');
+                            btn.classList.add('show-btn');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
