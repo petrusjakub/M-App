@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrusjakub IG Day 6 - Rekrut Agen Asuransi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #11998e 0%, #38ef7d 50%, #eafff5 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.95); border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.2em; color: #333; margin-bottom: 10px; }
+        header p { color: #666; font-size: 1.1em; }
+        .day-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 15px 20px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .day-nav h3 { color: #333; margin-bottom: 10px; font-size: 1em; }
+        .day-nav .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .day-nav .nav-links a { display: inline-block; padding: 6px 14px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; text-decoration: none; border-radius: 20px; font-size: 0.85em; font-weight: 500; transition: transform 0.2s; }
+        .day-nav .nav-links a:hover { transform: translateY(-2px); }
+        .day-nav .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .schedule-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.2em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a { display: inline-block; padding: 8px 16px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: 500; transition: transform 0.2s; }
+        .nav-links a:hover { transform: translateY(-2px); }
+        .post-card { background: rgba(255,255,255,0.97); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.2s, opacity 0.3s; position: relative; }
+        .post-card.done-task { opacity: 0.4; transform: scale(0.98); }
+        .post-card.done-task .post-content { display: none; }
+        .post-card.done-task .done-label { display: block; }
+        .done-label { display: none; text-align: center; color: #4caf50; font-weight: 600; padding: 10px; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #11998e; }
+        .post-number { background: linear-gradient(135deg, #11998e, #38ef7d); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .section-label { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 600; margin-bottom: 12px; }
+        .label-caption { background: #e0f7fa; color: #006064; }
+        .label-prompt { background: #e8f5e9; color: #1b5e20; }
+        .caption-box, .prompt-box { background: #f0fdf4; border-radius: 12px; padding: 16px; margin-bottom: 15px; position: relative; border: 1px solid #c8e6c9; }
+        .caption-box p, .prompt-box p { color: #333; line-height: 1.7; font-size: 0.95em; padding-right: 80px; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8em; font-weight: 600; transition: transform 0.2s; }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .action-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .done-btn, .delete-btn { flex: 1; min-width: 140px; padding: 12px; border-radius: 10px; cursor: pointer; font-size: 0.9em; font-weight: 600; border: none; transition: all 0.2s; }
+        .done-btn { background: #e8f5e9; color: #2e7d32; border: 2px dashed #81c784; }
+        .done-btn:hover { background: #c8e6c9; border-color: #4caf50; }
+        .delete-btn { background: #ffebee; color: #c62828; border: 2px dashed #ef9a9a; }
+        .delete-btn:hover { background: #ffcdd2; border-color: #f44336; }
+        footer { text-align: center; padding: 20px; color: rgba(0,80,60,0.8); font-size: 0.9em; }
+        @media (max-width: 600px) { body { padding: 10px; } header h1 { font-size: 1.6em; } .post-card { padding: 18px; } .nav-links a { padding: 6px 12px; font-size: 0.8em; } .caption-box p, .prompt-box p { padding-right: 60px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>@petrusjakub - IG Content Day 6</h1>
+            <p>Tema: Stabilitas Income & Bukti Nyata (Social Proof)</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">17 Post | 06:00 - 22:00 WIB | Jeda 1 Jam</p>
+        </header>
+
+        <div class="day-nav"><h3>Navigasi Hari:</h3><div class="nav-links"><a href="petrusjakub-IG-day1.html">Day 1</a><a href="petrusjakub-IG-day2.html">Day 2</a><a href="petrusjakub-IG-day3.html">Day 3</a><a href="petrusjakub-IG-day4.html">Day 4</a><a href="petrusjakub-IG-day5.html">Day 5</a><a href="petrusjakub-IG-day6.html" class="active">Day 6</a><a href="petrusjakub-IG-day7.html">Day 7</a></div></div>
+
+        <div class="schedule-nav"><h3>Jump to Post:</h3><div class="nav-links"><a href="#post-0600">06:00</a><a href="#post-0700">07:00</a><a href="#post-0800">08:00</a><a href="#post-0900">09:00</a><a href="#post-1000">10:00</a><a href="#post-1100">11:00</a><a href="#post-1200">12:00</a><a href="#post-1300">13:00</a><a href="#post-1400">14:00</a><a href="#post-1500">15:00</a><a href="#post-1600">16:00</a><a href="#post-1700">17:00</a><a href="#post-1800">18:00</a><a href="#post-1900">19:00</a><a href="#post-2000">20:00</a><a href="#post-2100">21:00</a><a href="#post-2200">22:00</a></div></div>
+
+        <div class="post-card" id="post-0600"><div class="post-header"><span class="post-time">06:00 WIB</span><span class="post-number">Post 1/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-1">Pagi ini aku mau share BUKTI NYATA.
+
+Bukan teori. Bukan janji manis. Tapi ANGKA REAL dari tim aku:
+
+Member A (ex-karyawan bank): Bulan ke-4 income 18 juta/bulan
+Member B (ibu rumah tangga): Bulan ke-6 income 12 juta/bulan
+Member C (fresh graduate): Bulan ke-3 income 8 juta/bulan
+Member D (ex-guru): Bulan ke-8 income 25 juta/bulan
+Member E (mahasiswa): Part-time, bulan ke-2 income 5 juta/bulan
+
+Ini bukan orang-orang spesial. Ini orang BIASA yang mau BELAJAR dan ACTION.
+
+Background beda-beda. Hasil? Semua NAIK.
+
+Mau jadi Member F? Link di bio.
+
+#BuktiNyata #AngkaReal #HasilNyata #TimSukses #AgenAsuransi #RealResults #BukanJanjiManis #IncomeStabil #OrangBiasaHasilLuarBiasa #JoinTimKami</p><button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-1">Buat gambar Instagram 1:1 tentang bukti nyata income tim. Background gradient hijau teal gelap ke hijau terang. Di tengah ada 5 bar chart naik bertahap, masing-masing berlabel: "Member A: 18jt", "Member B: 12jt", "Member C: 8jt", "Member D: 25jt", "Member E: 5jt". Setiap bar punya ikon profesi kecil di atas (bank, rumah, toga, buku, kampus). Judul bold putih: "BUKTI NYATA. BUKAN JANJI MANIS." Di bawah: "Orang biasa. Hasil luar biasa." Gaya data-driven, clean, trustworthy. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-0700"><div class="post-header"><span class="post-time">07:00 WIB</span><span class="post-number">Post 2/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-2">Kenapa income agen asuransi itu STABIL?
+
+Ini yang orang ga tau:
+
+1. RENEWAL COMMISSION - Nasabah bayar premi tiap bulan/tahun. Kamu dapat komisi TERUS selama polis aktif. Tanpa kerja ulang.
+
+2. PERSISTENCY BONUS - Kalau nasabahmu loyal (ga lapse), kamu dapat bonus tambahan.
+
+3. OVERRIDING COMMISSION - Punya tim? Setiap closing tim = income buat kamu juga.
+
+4. PRODUCTION BONUS - Target tercapai? Bonus bulanan/kuartalan/tahunan.
+
+Jadi income agen itu BERLAPIS-LAPIS. Bukan cuma 1 sumber.
+
+Makanya banyak agen senior yang income-nya 50-100 juta/bulan. Karena LAYER income-nya sudah BANYAK.
+
+Mau mulai numpuk layer? Link di bio.
+
+#IncomeStabil #RenewalCommission #PersistencyBonus #OverridingCommission #AgenAsuransi #IncomeBerlapis #PassiveIncome #LayerIncome #StabilDanNaik #SmartCareer</p><button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-2">Buat gambar Instagram 1:1 tentang income berlapis. Background gradient hijau ke emas. Di tengah ada ilustrasi kue lapis/layer cake, setiap layer berlabel dari bawah ke atas: "Renewal Commission", "Persistency Bonus", "Overriding Commission", "Production Bonus". Semakin ke atas semakin terang/berkilau. Judul bold: "INCOME AGEN = BERLAPIS-LAPIS" Di bawah: "Bukan 1 sumber. Tapi BANYAK layer." Angka "50-100jt/bulan" di atas kue. Gaya infographic, layered, appealing. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-0800"><div class="post-header"><span class="post-time">08:00 WIB</span><span class="post-number">Post 3/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-3">TESTIMONI REAL dari member tim aku:
+
+"Awalnya aku skeptis banget. Asuransi? Yang bener? Tapi karena lagi desperate (kena PHK), aku coba.
+
+Bulan 1: Ga closing sama sekali. Mau nyerah.
+Bulan 2: 1 closing. Komisi 3.5 juta. Semangat lagi.
+Bulan 3: 3 closing. Komisi 9 juta. WOW.
+Bulan 4-6: Konsisten 4-5 closing. Income 12-18 juta.
+Sekarang (bulan 10): Tim 4 orang. Income total 28 juta/bulan.
+
+Yang berubah dari aku: confidence, skill komunikasi, financial literacy. Semua naik.
+
+Terima kasih @petrusjakub udah ga nyerah sama aku di bulan pertama."
+
+- Andi, 29 tahun, ex-karyawan warehouse
+
+Mau punya cerita kayak Andi? Link di bio.
+
+#TestimoniReal #DariPHKkeAgen #CeritaSukses #BulanPertamaSusah #AgenAsuransi #NeverGiveUp #IncomeNaik #TrustTheProcess #RealStory #FromZeroToHero</p><button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-3">Buat gambar Instagram 1:1 bergaya testimoni/screenshot chat. Background putih bersih. Di tengah ada card testimoni dengan foto profil pria muda Indonesia (blur/silhouette), nama "Andi, 29" dan timeline vertikal: Bulan 1 (merah) "0 closing", Bulan 2 (kuning) "1 closing - 3.5jt", Bulan 3 (hijau muda) "3 closing - 9jt", Bulan 6 (hijau) "5 closing - 18jt", Bulan 10 (emas) "Tim 4 orang - 28jt/bln". Judul bold: "DARI PHK KE 28 JUTA/BULAN" Di bawah: "10 bulan. Real story." Gaya testimonial, trustworthy. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-0900"><div class="post-header"><span class="post-time">09:00 WIB</span><span class="post-number">Post 4/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-4">STABILITAS vs KETIDAKPASTIAN. Mana yang kamu pilih?
+
+Karyawan:
+- Gaji PASTI tapi TERBATAS
+- Bisa di-PHK KAPAN SAJA
+- Kenaikan gaji: 5-10% per tahun (kalau beruntung)
+- Pensiun: tergantung perusahaan
+
+Freelancer/Bisnis Kecil:
+- Income NAIK-TURUN ga karuan
+- Bulan ini oke, bulan depan SEPI
+- Ga ada jaring pengaman
+- Stress berkepanjangan
+
+Agen Asuransi (setelah build 6-12 bulan):
+- Income NAIK TERUS (renewal + new business)
+- Ga bisa di-PHK (kamu bosnya)
+- Kenaikan: 50-200% per TAHUN
+- Pensiun: passive income seumur hidup
+
+Mana yang lebih STABIL untuk JANGKA PANJANG?
+
+Link di bio.
+
+#StabilitasIncome #IncomeStabil #TidakBisaDiPHK #JangkaPanjang #AgenAsuransi #KaryawanVsAgen #FreelancerVsAgen #FinancialStability #IncomeNaikTerus #PilihanCerdas</p><button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-4">Buat gambar Instagram 1:1 perbandingan 3 jalur income. Background putih bersih. 3 grafik garis berdampingan: Grafik 1 (biru) "Karyawan" - garis datar lalu putus (PHK). Grafik 2 (oranye) "Freelancer" - garis zig-zag naik turun drastis. Grafik 3 (hijau terang) "Agen Asuransi" - garis naik STABIL terus ke kanan atas. Judul bold: "INCOME MANA YANG LEBIH STABIL?" Di bawah: "Jangka panjang, jawabannya jelas." Gaya data comparison, clean chart. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1000"><div class="post-header"><span class="post-time">10:00 WIB</span><span class="post-number">Post 5/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-5">Screenshot income aku bulan lalu (angka real, bukan editan):
+
+Renewal Commission: Rp 14.200.000
+New Business Commission: Rp 8.700.000
+Overriding (tim): Rp 11.500.000
+Bonus Kuartalan: Rp 6.000.000
+TOTAL: Rp 40.400.000
+
+Dan ini BUKAN bulan terbaik aku. Ini bulan RATA-RATA.
+
+3 tahun lalu income aku: 7 juta/bulan (karyawan).
+
+Apa yang berubah? KEPUTUSAN. Aku memutuskan untuk PINDAH JALUR.
+
+Ga ada privilege. Ga ada koneksi. Ga ada modal besar. Cuma KEPUTUSAN + KONSISTENSI.
+
+Kalau aku bisa dari 7 juta ke 40 juta dalam 3 tahun... kamu bisa apa dalam 3 tahun ke depan?
+
+Link di bio.
+
+#ScreenshotIncome #AngkaReal #BukanEditan #40Juta #AgenAsuransi #DariKaryawanKeAgen #IncomeProof #RealNumbers #3TahunPerjalanan #KeputusanMengubah</p><button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-5">Buat gambar Instagram 1:1 bergaya screenshot income breakdown. Background gradient hijau gelap. Di tengah ada tampilan seperti app banking/dashboard income dengan breakdown: "Renewal: 14.2jt", "New Business: 8.7jt", "Overriding: 11.5jt", "Bonus: 6jt" dan TOTAL besar "Rp 40.400.000" berwarna emas. Di bawah ada before-after: "3 tahun lalu: 7jt/bln" dengan panah ke "Sekarang: 40jt/bln". Judul bold: "INCOME REAL. BUKAN EDITAN." Gaya dashboard, financial proof. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1100"><div class="post-header"><span class="post-time">11:00 WIB</span><span class="post-number">Post 6/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-6">"Tapi kan asuransi susah jualnya..."
+
+Ini MITOS terbesar yang bikin orang ga mau mulai.
+
+FAKTA:
+- 72% orang Indonesia BELUM punya asuransi jiwa
+- Setiap hari ada orang yang BUTUH proteksi
+- Produk asuransi sekarang MUDAH dipahami
+- Dengan social media, jangkauan UNLIMITED
+
+Yang "susah" itu DULU. Sekarang? Dengan training yang tepat + support tim + digital tools = closing bisa dari HP.
+
+Member aku yang paling muda (21 tahun, mahasiswa) closing 3x di bulan pertama. Dari INSTAGRAM doang.
+
+Masih bilang susah?
+
+Atau cuma TAKUT mencoba?
+
+Link di bio.
+
+#MitosTerbesar #AsuransiSusah #FaktaVsMitos #ClosingDariHP #AgenAsuransi #DigitalSelling #SocialMediaSelling #MahasiswaBisa #21TahunClosing #BuangMitosmu</p><button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-6">Buat gambar Instagram 1:1 mitos vs fakta. Background split vertikal: Kiri (merah gelap/abu) bertuliskan "MITOS: Asuransi susah dijual" dengan ikon X besar. Kanan (hijau terang) bertuliskan "FAKTA: 72% orang BELUM punya asuransi = PELUANG BESAR" dengan ikon centang. Di tengah bawah: ilustrasi tangan memegang HP dengan notifikasi "New Closing!" Judul bold: "MASIH PERCAYA MITOS INI?" Di bawah: "Mahasiswa 21 tahun aja bisa closing dari IG." Gaya myth-busting, bold. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1200"><div class="post-header"><span class="post-time">12:00 WIB</span><span class="post-number">Post 7/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-7">Lunch break reality check:
+
+Aku tanya 10 member tim aku yang udah jalan 6+ bulan:
+
+"Apa hal terbaik dari jadi agen asuransi?"
+
+Jawaban mereka:
+
+1. "Ga perlu minta izin cuti" - Rina, 34
+2. "Income bulan ini SELALU lebih besar dari bulan lalu" - Dedi, 28
+3. "Bisa bayar sekolah anak tanpa pusing" - Sari, 40
+4. "Ga takut lagi kalau ada emergency" - Budi, 31
+5. "Bisa bantu orang tua tanpa beban" - Anita, 26
+
+Bukan aku yang bilang. MEREKA yang bilang.
+
+Social proof paling kuat = testimony dari orang yang SUDAH merasakan.
+
+Mau merasakan juga? Link di bio.
+
+#TestimoniTim #HalTerbaik #MemberBicara #SocialProof #AgenAsuransi #RealTestimony #MerekaBilang #BukanAkuYangBilang #TimBerbicara #PengalamanNyata</p><button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-7">Buat gambar Instagram 1:1 bergaya testimoni kolektif. Background gradient hijau muda ke putih. Di tengah ada 5 bubble chat/testimoni card kecil tersusun rapi, masing-masing dengan avatar silhouette dan kutipan singkat: "Ga perlu izin cuti", "Income selalu naik", "Bayar sekolah anak", "Ga takut emergency", "Bantu orang tua". Bintang 5 di atas setiap bubble. Judul bold: "BUKAN AKU YANG BILANG. MEREKA YANG BILANG." Di bawah: "5 dari 10 member. Real answers." Gaya review/testimonial. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1300"><div class="post-header"><span class="post-time">13:00 WIB</span><span class="post-number">Post 8/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-8">Aku mau jujur soal INCOME STABILITY di asuransi.
+
+Bulan 1-3: Income BELUM stabil. Naik turun. Kadang 0. Ini NORMAL.
+
+Bulan 4-6: Mulai KONSISTEN. Pola terlihat. Confidence naik.
+
+Bulan 7-12: STABIL dan NAIK. Renewal masuk. Tim mulai jalan.
+
+Tahun 2+: SANGAT STABIL. Multiple income streams. Predictable.
+
+Aku ga mau bohong dan bilang "langsung stabil dari bulan 1." TIDAK.
+
+Tapi aku JAMIN: kalau kamu KONSISTEN 6 bulan, income AKAN stabil.
+
+Ini bukan get-rich-quick. Ini BUILD-wealth-steady.
+
+Siap commit 6 bulan? Link di bio.
+
+#JujurSoalIncome #IncomeTimeline #BulanPertamaBerat #Konsistensi6Bulan #AgenAsuransi #BuildWealth #BukanGetRichQuick #HonestReview #SteadyGrowth #CommitDulu</p><button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-8">Buat gambar Instagram 1:1 income timeline honest. Background putih bersih. Grafik garis dari kiri ke kanan: Area "Bulan 1-3" (merah muda, garis zig-zag rendah) label "Belum Stabil - NORMAL". Area "Bulan 4-6" (kuning, garis mulai naik) label "Mulai Konsisten". Area "Bulan 7-12" (hijau, garis naik stabil) label "Stabil & Naik". Area "Tahun 2+" (emas, garis tinggi stabil) label "Sangat Stabil". Judul bold: "TIMELINE JUJUR INCOME AGEN" Di bawah: "Bukan get-rich-quick. Ini build-wealth-steady." Gaya honest, educational. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1400"><div class="post-header"><span class="post-time">14:00 WIB</span><span class="post-number">Post 9/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-9">Cerita member: Ibu Rumah Tangga yang "cuma bantu suami"
+
+Nama: Mbak Dewi, 36 tahun, 2 anak
+Background: IRT full-time, suami karyawan gaji 8 juta
+
+Awalnya gabung "iseng, cuma buat nambah-nambah."
+
+Timeline:
+- Bulan 1: Belajar produk sambil ngurusin anak
+- Bulan 2: 1 closing dari tetangga. Komisi 2.8 juta
+- Bulan 4: 3 closing. Income 8 juta. SAMA dengan gaji suami!
+- Bulan 8: Income 15 juta. LEBIH BESAR dari suami.
+- Sekarang (bulan 14): Income 22 juta. Suami ikut resign dan JOIN tim!
+
+Plot twist: sekarang mereka BERDUA jadi agen. Combined income: 45 juta/bulan.
+
+Dari "cuma bantu suami" jadi BREADWINNER.
+
+Mau kayak Mbak Dewi? Link di bio.
+
+#IbuRumahTangga #IRTBerpenghasilan #CumaBantuSuami #PlotTwist #AgenAsuransi #IRTHebat #LebihDariSuami #CoupleGoals #45JutaPerBulan #WomenEmpowerment</p><button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-9">Buat gambar Instagram 1:1 cerita ibu rumah tangga sukses. Background gradient pink lembut ke emas. Ilustrasi: ibu Indonesia dengan 2 anak kecil di rumah, tapi di tangan ada laptop dan HP menunjukkan grafik income naik. Timeline di samping: "Bulan 2: 2.8jt" > "Bulan 4: 8jt" > "Bulan 8: 15jt" > "Bulan 14: 22jt". Plot twist box: "Suami IKUT join! Combined: 45jt/bln". Judul bold: "DARI 'CUMA BANTU SUAMI' JADI BREADWINNER" Di bawah: "Real story. Real numbers." Gaya empowering, warm. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1500"><div class="post-header"><span class="post-time">15:00 WIB</span><span class="post-number">Post 10/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-10">Yang bikin income agen asuransi STABIL jangka panjang:
+
+COMPOUNDING EFFECT.
+
+Tahun 1: 20 nasabah. Renewal 3 juta/bulan.
+Tahun 2: 50 nasabah total. Renewal 8 juta/bulan.
+Tahun 3: 90 nasabah total. Renewal 15 juta/bulan.
+Tahun 5: 180 nasabah total. Renewal 30 juta/bulan.
+
+INI BARU RENEWAL DOANG. Belum new business. Belum overriding tim.
+
+Setiap nasabah yang kamu closing = INCOME SEUMUR HIDUP (selama polis aktif).
+
+Bayangkan: 5 tahun dari sekarang, kamu punya 200 nasabah. TANPA closing baru pun, income 30 juta/bulan OTOMATIS masuk.
+
+Ini yang namanya BUILD ONCE, EARN FOREVER.
+
+Mau mulai build? Link di bio.
+
+#CompoundingEffect #BuildOnceEarnForever #RenewalIncome #PassiveIncome #AgenAsuransi #IncomeSeumurHidup #NasabahLoyalIncomeLancar #5TahunKedepan #StabilJangkaPanjang #SmartBuilding</p><button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-10">Buat gambar Instagram 1:1 tentang compounding income. Background gradient hijau teal ke biru. Di tengah ada grafik compound growth: sumbu X "Tahun 1-5", sumbu Y "Renewal Income". Grafik naik exponensial. Titik-titik di grafik: "Thn 1: 3jt/bln", "Thn 2: 8jt/bln", "Thn 3: 15jt/bln", "Thn 5: 30jt/bln". Area di bawah grafik terisi hijau (accumulated wealth). Judul bold: "BUILD ONCE. EARN FOREVER." Di bawah: "Compounding effect: setiap nasabah = income seumur hidup." Gaya financial growth, compound. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1600"><div class="post-header"><span class="post-time">16:00 WIB</span><span class="post-number">Post 11/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-11">Agen asuransi LAIN yang baca ini:
+
+Kamu udah di industri ini tapi income STAGNAN?
+
+Kemungkinan besar masalahnya:
+1. Sistem training KURANG
+2. Support dari upline MINIM
+3. Ga punya tim (kerja sendiri terus)
+4. Tools digital ga dikasih
+5. Produk terbatas
+
+Di tim aku:
+- Training SETIAP MINGGU (bukan cuma pas awal)
+- Aku PERSONALLY mentoring
+- Build tim dari bulan 3 (bukan nunggu bertahun-tahun)
+- Digital marketing tools LENGKAP
+- Akses ke SEMUA produk top
+
+Kalau kamu udah jadi agen tapi STUCK, mungkin bukan kamu masalahnya. Mungkin SISTEM-nya yang salah.
+
+Mau pindah ke sistem yang WORKS? Link di bio.
+
+#AgenAsuransiLain #PindahTim #SistemYangWorks #StuckIncome #AgenAsuransi #UpgradeSystem #TrainingMingguan #MentoringLangsung #DigitalTools #LevelUpAgen</p><button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-11">Buat gambar Instagram 1:1 untuk agen yang stuck. Background split: Kiri (abu-abu gelap) orang duduk sendirian di meja kosong, label "Sistem Lama: Stuck, Sendiri, Minim Support". Kanan (hijau terang bersinar) tim bersemangat di meeting, label "Sistem Baru: Training, Mentoring, Tools, Tim". Panah besar dari kiri ke kanan. Judul bold: "STUCK? MUNGKIN BUKAN KAMU MASALAHNYA." Di bawah: "Mungkin SISTEM-nya yang perlu diganti." Gaya comparison, upgrade. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1700"><div class="post-header"><span class="post-time">17:00 WIB</span><span class="post-number">Post 12/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-12">Pengusaha/pebisnis yang baca ini:
+
+Kamu punya bisnis tapi income TIDAK PREDICTABLE?
+
+Bulan ini untung. Bulan depan? Entah.
+
+Aku punya solusi: DIVERSIFIKASI ke asuransi.
+
+Kenapa cocok buat pengusaha:
+1. Network kamu SUDAH LUAS (tinggal approach)
+2. Skill komunikasi SUDAH tajam
+3. Bisa jalan BERSAMAAN dengan bisnis lain
+4. Income asuransi = SAFETY NET kalau bisnis lagi down
+5. Nasabah dari circle bisnis = HIGH VALUE (premi besar)
+
+Beberapa pengusaha di tim aku jadikan asuransi sebagai "plan B yang menghasilkan lebih dari plan A."
+
+Mau tau caranya diversifikasi? Link di bio.
+
+#PengusahaCerdas #DiversifikasiIncome #SafetyNet #BisnisParallel #AgenAsuransi #PlanBYangLebihBaik #NetworkLuas #HighValueNasabah #EntrepreneurInsurance #SmartDiversification</p><button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-12">Buat gambar Instagram 1:1 untuk pengusaha. Background gradient navy ke hijau teal. Di tengah ada ilustrasi pengusaha Indonesia dengan 2 pilar income: Pilar 1 "Bisnis Utama" (garis naik-turun/tidak stabil) dan Pilar 2 "Asuransi" (garis stabil naik, bercahaya hijau). Safety net di bawah pilar 1 bertuliskan "Income Asuransi = Safety Net". Judul bold: "PENGUSAHA: DIVERSIFIKASI INCOME-MU" Di bawah: "Plan B yang bisa jadi lebih besar dari Plan A." Gaya business, professional. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1800"><div class="post-header"><span class="post-time">18:00 WIB</span><span class="post-number">Post 13/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-13">SOCIAL PROOF terkuat: angka tim aku bulan ini.
+
+Total member aktif: 47 orang
+Yang income di atas 10 juta/bulan: 31 orang (66%)
+Yang income di atas 20 juta/bulan: 18 orang (38%)
+Yang income di atas 30 juta/bulan: 9 orang (19%)
+Top earner bulan ini: 67 juta
+
+Rata-rata income per member: 14.2 juta/bulan
+
+Ini bukan tim yang "dipilih-pilih." Ini orang-orang dari background BERBEDA yang commit dan konsisten.
+
+Ada guru, driver ojol, mahasiswa, IRT, karyawan, pengusaha, bahkan mantan MLM yang gagal di tempat lain.
+
+Sistem yang BENAR + orang yang MAU = HASIL PASTI.
+
+Mau jadi bagian dari statistik ini? Link di bio.
+
+#StatistikTim #SocialProof #66PersenDiAtas10Juta #AngkaTimReal #AgenAsuransi #TimBerbagaiBackground #HasilPasti #RealTeamResults #JoinTheStats #ProvenSystem</p><button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-13">Buat gambar Instagram 1:1 statistik tim. Background gradient hijau gelap ke teal. Di tengah ada infographic circle/donut chart: 66% hijau terang "Income >10jt", 38% emas "Income >20jt", 19% platinum "Income >30jt". Di tengah donut: "47 Member Aktif. Rata-rata: 14.2jt/bln". Top earner badge di sudut: "TOP: 67jt/bln". Judul bold: "STATISTIK TIM BULAN INI" Di bawah: "Sistem benar + orang yang mau = HASIL PASTI." Gaya data, infographic, professional. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1900"><div class="post-header"><span class="post-time">19:00 WIB</span><span class="post-number">Post 14/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-14">Fresh graduate yang bingung mau kerja apa:
+
+Fakta yang kamu perlu tau:
+- Rata-rata gaji fresh grad Indonesia: 4-6 juta/bulan
+- Waktu tunggu dapat kerja setelah lulus: 3-12 bulan
+- Kenaikan gaji tahunan: 5-10%
+- Posisi manager: 8-15 TAHUN lagi
+
+ATAU:
+
+- Income bulan ke-3 sebagai agen: 5-10 juta (SUDAH lebih dari rata-rata fresh grad)
+- Ga perlu nunggu lowongan
+- Kenaikan income: 50-200% per TAHUN
+- Posisi leader/manager: 1-2 TAHUN
+
+Member aku Raka (fresh grad 2023, Teknik Sipil): "Temen-temen aku masih kirim CV. Aku udah income 12 juta di bulan ke-5."
+
+Mau kayak Raka? Link di bio.
+
+#FreshGraduate #LulusanBaru #BingungKerja #GajiVsIncome #AgenAsuransi #FreshGradSukses #SkipAntrianCV #12JutaBulan5 #KarirCepat #AlternatifKerja</p><button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-14">Buat gambar Instagram 1:1 untuk fresh graduate. Background gradient biru muda ke hijau. Di tengah ada 2 jalur: Jalur A (panjang, abu-abu) "Jalur Konvensional: Kirim CV > Tunggu > Interview > Gaji 5jt > 10 tahun jadi manager". Jalur B (pendek, hijau emas) "Jalur Agen: Mulai > Bulan 3: 8jt > Bulan 5: 12jt > Tahun 1: Leader". Quote box: "Temen kirim CV. Aku udah income 12jt. - Raka, 23". Judul bold: "FRESH GRAD: 2 JALUR. MANA YANG KAMU PILIH?" Gaya youth, energetic. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-2000"><div class="post-header"><span class="post-time">20:00 WIB</span><span class="post-number">Post 15/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-15">Malam ini aku mau share RESEP STABILITAS income di asuransi:
+
+1. CLOSING RUTIN - Minimal 2-3 closing/bulan. Konsisten > banyak tapi sekali.
+2. JAGA PERSISTENCY - Rawat nasabah. Jangan cuma kejar closing baru.
+3. BUILD TIM - Mulai rekrut dari bulan 3-4. Tim = multiplier.
+4. DIVERSIFIKASI PRODUK - Jangan cuma jual 1 jenis. Pelajari semua lini.
+5. UPGRADE SKILL - Ikut training. Baca buku. Praktek terus.
+
+5 hal ini yang membedakan agen yang income-nya STABIL vs yang NAIK-TURUN.
+
+Agen yang stabil = agen yang DISIPLIN menjalankan 5 resep ini.
+
+Aku ajarkan semuanya ke tim aku. Dari NOL.
+
+Mau belajar 5 resep ini langsung? Link di bio.
+
+#ResepStabilitas #5LangkahStabil #ClosingRutin #BuildTim #AgenAsuransi #DisiplinAgen #IncomeKonsisten #UpgradeSkill #ResepSukses #DariNolBelajar</p><button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-15">Buat gambar Instagram 1:1 resep stabilitas. Background gradient hijau ke putih. Di tengah ada ilustrasi buku resep terbuka dengan 5 "bahan" tersusun rapi: "1. Closing Rutin", "2. Jaga Persistency", "3. Build Tim", "4. Diversifikasi Produk", "5. Upgrade Skill". Setiap bahan punya ikon kecil. Di atas buku: sendok emas yang mengaduk (metafora). Judul bold: "5 RESEP INCOME STABIL" Di bawah: "Ikuti resepnya. Hasilnya PASTI." Gaya recipe/cookbook style, actionable. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-2100"><div class="post-header"><span class="post-time">21:00 WIB</span><span class="post-number">Post 16/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-16">Pebisnis jaringan/MLM yang udah capek:
+
+Aku tau rasanya:
+- Recruit terus tapi member ga aktif
+- Stok numpuk di rumah
+- Income ga sebanding sama effort
+- "Passive income" yang ga pernah bener-bener passive
+
+Asuransi BEDA:
+- Ga ada stok barang
+- Ga perlu beli produk sendiri
+- Member yang kamu rekrut = LANGSUNG menghasilkan (ga perlu tunggu downline berlapis)
+- Income beneran PASSIVE (renewal otomatis)
+- Produk yang orang BUTUH (bukan perlu di-convince)
+
+Banyak ex-MLM di tim aku yang bilang: "Kenapa ga dari dulu?"
+
+Karena mereka baru TAU sekarang. Kamu? Sekarang kamu udah TAU.
+
+Link di bio.
+
+#ExMLM #PindahDariMLM #BedaDariMLM #TanpaStok #AgenAsuransi #NetworkerPindah #RealPassiveIncome #GaPerluStok #IndustriYangBenar #KenapaGaDariDulu</p><button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-16">Buat gambar Instagram 1:1 untuk ex-MLM. Background split: Kiri (abu-abu/merah pudar) tumpukan kardus stok barang, orang kelelahan, label "MLM: Stok Numpuk, Member Ga Aktif, Income Ga Jelas". Kanan (hijau bersinar) orang tersenyum dengan HP, tanpa kardus, grafik naik, label "Asuransi: Tanpa Stok, Income Real, Passive Renewal". Di tengah panah besar "SWITCH". Judul bold: "CAPEK MLM? INI SOLUSINYA." Di bawah: "Banyak ex-MLM bilang: kenapa ga dari dulu?" Gaya comparison, liberating. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-2200"><div class="post-header"><span class="post-time">22:00 WIB</span><span class="post-number">Post 17/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-17">Day 6 selesai.
+
+Hari ini aku tunjukin BUKTI. Bukan JANJI.
+
+Angka real. Testimoni real. Statistik real. Timeline real.
+
+Kenapa aku share semua ini? Karena aku tau:
+
+Banyak orang yang TERTARIK tapi masih RAGU. Dan satu-satunya obat untuk keraguan = BUKTI NYATA.
+
+Sekarang kamu udah lihat buktinya:
+- Income breakdown real
+- Cerita member real
+- Statistik tim real
+- Timeline honest
+
+Pertanyaannya tinggal 1: Apakah kamu mau jadi BUKTI BERIKUTNYA?
+
+Besok Day 7 (hari terakhir), aku akan kasih FINAL CALL. Jangan sampai ketinggalan.
+
+Selamat malam. See you Day 7.
+
+#Day6Complete #BuktiNyata #BukanJanji #SocialProofDay #AgenAsuransi #BuktiBerikutnya #RealProof #FinalCallBesok #SeeYouDay7 #LastChanceTomorrow</p><button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-17">Buat gambar Instagram 1:1 closing Day 6. Background gradient hijau teal gelap ke hitam malam. Di tengah ada stamp/badge besar "VERIFIED - BUKTI NYATA" berwarna emas. Di sekitar badge ada angka-angka kecil floating: "40jt", "28jt", "22jt", "67jt", "14.2jt avg". Di bawah badge: "Day 6 Complete. Besok: FINAL CALL." Countdown "Day 7" bercahaya di pojok. Judul bold emas: "BUKTI SUDAH DITUNJUKKAN. KEPUTUSAN DI TANGAN KAMU." Gaya closing, verified, premium. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <footer><p>@petrusjakub IG Content Plan - Day 6 | Stabilitas Income & Bukti Nyata</p><p style="margin-top:5px;">Semua caption & prompt bisa di-copy. Selamat posting!</p></footer>
+    </div>
+    <script>
+        const STORAGE_KEY = 'petrusjakub-day6';
+        function copyText(elementId, button) { const text = document.getElementById(elementId).innerText; navigator.clipboard.writeText(text).then(() => { showCopied(button); }).catch(() => { const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showCopied(button); }); }
+        function showCopied(button) { const o = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied'); setTimeout(() => { button.innerText = o; button.classList.remove('copied'); }, 2000); }
+        function markDone(button) { button.closest('.post-card').classList.add('done-task'); saveState(); }
+        function deleteTask(button) { if (confirm('Hapus task ini?')) { button.closest('.post-card').style.display = 'none'; saveState(); } }
+        function saveState() { const cards = document.querySelectorAll('.post-card'); const state = {}; cards.forEach(c => { state[c.id] = { done: c.classList.contains('done-task'), deleted: c.style.display === 'none' }; }); localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+        function loadState() { const s = localStorage.getItem(STORAGE_KEY); if (!s) return; const state = JSON.parse(s); Object.keys(state).forEach(id => { const c = document.getElementById(id); if (!c) return; if (state[id].done) c.classList.add('done-task'); if (state[id].deleted) c.style.display = 'none'; }); }
+        document.addEventListener('DOMContentLoaded', loadState);
+    </script>
+</body>
+</html>
