@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngobras TikTok - Day 2 | Konten Asuransi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        header h1 { font-size: 2em; color: #1a1a2e; margin-bottom: 8px; }
+        header p { color: #555; font-size: 1em; }
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .schedule-nav {
+            background: rgba(255,255,255,0.97);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .schedule-nav h3 { color: #1a1a2e; margin-bottom: 15px; font-size: 1.1em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(233,69,96,0.4);
+        }
+        .post-card {
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+        .post-card.hidden-task { opacity: 0.3; transform: scale(0.98); }
+        .post-card.hidden-task .post-content { display: none; }
+        .post-card.deleted { display: none; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #e94560; }
+        .post-number {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .section-label {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .label-caption { background: #fff0f3; color: #e94560; }
+        .label-script { background: #f0f4ff; color: #0f3460; }
+        .content-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+        .content-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 0.93em;
+            padding-right: 80px;
+            white-space: pre-line;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .hide-btn, .delete-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.2s;
+            border: 2px dashed;
+        }
+        .hide-btn { background: #f5f5f5; border-color: #ccc; color: #666; }
+        .hide-btn:hover { background: #eee; border-color: #999; }
+        .delete-btn { background: #fff5f5; border-color: #ffcdd2; color: #c62828; }
+        .delete-btn:hover { background: #ffebee; border-color: #ef9a9a; }
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.85em; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            header h1 { font-size: 1.5em; }
+            .post-card { padding: 18px; }
+            .nav-links a { padding: 8px 14px; font-size: 0.85em; }
+            .content-box p { padding-right: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ngobras TikTok - Konten Asuransi</h1>
+            <p>Generate Leads Nasabah Asuransi via TikTok</p>
+            <p style="margin-top:6px; font-size:0.85em; color:#888;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+            <span class="day-badge">DAY 2 - Selasa</span>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Navigasi Jadwal Posting:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-2100">21:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-1">Selamat pagi! Coba tanya ke diri sendiri:
+
+"Kalau aku meninggal besok, keluargaku bisa hidup berapa lama?"
+
+Berat? Emang. Tapi ini pertanyaan yang HARUS dijawab.
+
+Karena kenyataannya:
+- Cicilan rumah tetap jalan
+- Biaya sekolah anak tetap jalan
+- Kebutuhan hidup tetap jalan
+
+Tapi penghasilanmu? BERHENTI.
+
+Asuransi jiwa itu bukan buat kamu. Ini buat orang-orang yang kamu TINGGALKAN.
+
+Ini wujud cinta yang paling nyata.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-1">Hook (5 detik):
+"Kalau kamu meninggal besok, keluargamu bisa hidup berapa lama tanpa penghasilanmu?"
+
+Isi:
+"Pagi semuanya. Aku tau ini topik yang berat. Tapi justru karena berat, banyak orang yang menghindarinya. Dan itu BAHAYA.
+
+Coba pikirin. Kamu punya keluarga. Istri, anak, atau orang tua yang bergantung ke kamu. Setiap bulan, ada cicilan rumah, biaya sekolah, listrik, makan, dan segala macam.
+
+Sekarang... kalau tiba-tiba kamu ga ada. Semua tanggungan itu ga ikut hilang. Tetap ada. Tapi yang nanggung? Sudah ga ada.
+
+Ini yang bikin aku passion banget soal asuransi jiwa. Karena ini BUKAN soal kamu. Ini soal orang-orang yang kamu cintai.
+
+Dengan asuransi jiwa, kalau terjadi sesuatu... keluargamu tetap dapat uang pertanggungan. Bisa ratusan juta sampai miliaran. Untuk cover semua kebutuhan mereka.
+
+Cicilan rumah? Terbayar.
+Sekolah anak? Tetap jalan.
+Biaya hidup? Tercukupi.
+
+Ini bukan soal kamu pesimis atau ga percaya umur panjang. Ini soal kamu BERTANGGUNG JAWAB.
+
+Laki-laki sejati, kepala keluarga yang sesungguhnya, itu yang SIAP untuk skenario terburuk.
+
+Mau tau berapa yang kamu butuhkan? Klik link di bio. Kita hitung bareng. Gratis."
+
+CTA (5 detik):
+"Klik link di bio. Lindungi keluargamu sekarang."</p>
+                    <button class="copy-btn" onclick="copyText('script-1', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 2/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-2">BPJS aja CUKUP? Yakin?
+
+Coba cek fakta ini:
+- Antrian BPJS bisa berminggu-minggu
+- Obat-obatan tertentu TIDAK ditanggung
+- Kamar yang tersedia sering PENUH
+- Untuk penyakit kritis, sering harus UPGRADE
+
+BPJS itu bagus sebagai DASAR. Tapi untuk proteksi LENGKAP? Butuh lebih.
+
+Asuransi swasta itu PELENGKAP, bukan pengganti BPJS.
+
+Dengan kombinasi keduanya, kamu dan keluarga benar-benar AMAN.
+
+Mau tau caranya? Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-2">Hook (5 detik):
+"BPJS aja cukup? Sebelum kamu jawab iya, dengerin ini dulu."
+
+Isi:
+"Banyak orang bilang: udah punya BPJS, ngapain tambah asuransi lagi?
+
+Oke, aku ga bilang BPJS itu jelek. BPJS itu SANGAT BAGUS sebagai proteksi dasar. Dan setiap warga negara memang harus punya.
+
+TAPI... ada hal-hal yang perlu kamu tau:
+
+Pertama, antrian. Untuk ketemu dokter spesialis, kamu bisa nunggu berminggu-minggu bahkan berbulan-bulan. Kalau sakitnya urgent, kamu sanggup nunggu?
+
+Kedua, obat. Ga semua obat ditanggung BPJS. Obat-obat tertentu, terutama untuk penyakit kritis, seringkali harus bayar sendiri. Dan harganya? Jutaan per bulan.
+
+Ketiga, kamar. Kelas yang ditanggung BPJS sering penuh. Kamu mau recovery dari operasi tapi sekamar sama 5-6 orang lain?
+
+Keempat, limitasi. Untuk kasus-kasus tertentu seperti kanker stadium lanjut, treatment terbaik kadang ga di-cover penuh.
+
+Nah, di sinilah asuransi swasta berperan sebagai PELENGKAP. Bukan pengganti, tapi pelengkap.
+
+Dengan asuransi tambahan:
+- Kamu bisa akses dokter spesialis LANGSUNG
+- Obat-obatan ter-cover lebih lengkap
+- Pilih kamar yang nyaman
+- Treatment terbaik tersedia
+
+Dan preminya? Ga semahal yang kamu kira. Mulai dari 300 ribuan per bulan.
+
+Mau tau kombinasi proteksi yang ideal buat kamu? Klik link di bio."
+
+CTA (5 detik):
+"BPJS plus asuransi. Combo terbaik. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-2', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 3/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-3">Inflasi medis di Indonesia: 10-15% PER TAHUN.
+
+Artinya?
+
+Biaya rumah sakit yang sekarang 50 juta...
+5 tahun lagi bisa jadi 80-100 juta.
+10 tahun lagi? 150-200 juta.
+
+Tabunganmu PASTI kalah sama inflasi medis.
+
+Yang bisa ngalahin inflasi medis? ASURANSI KESEHATAN dengan manfaat yang naik setiap tahun.
+
+Ini bukan soal takut sakit. Ini soal REALISTIS secara finansial.
+
+Jangan biarkan kerja kerasmu bertahun-tahun habis dalam hitungan hari di rumah sakit.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-3">Hook (5 detik):
+"Biaya rumah sakit naik 10-15% tiap tahun. Tabunganmu bisa ngikutin?"
+
+Isi:
+"Hai semuanya. Aku mau kasih tau satu fakta yang jarang orang tau tapi SANGAT PENTING.
+
+Inflasi medis di Indonesia itu 10 sampai 15 persen per tahun. Ini 2-3 kali lipat dari inflasi normal.
+
+Artinya apa?
+
+Operasi usus buntu yang sekarang 30 juta, 5 tahun lagi bisa jadi 50 juta. 10 tahun lagi? 80 juta.
+
+Rawat inap yang sekarang 2 juta per hari, nanti bisa jadi 4 juta per hari.
+
+Dan penyakit kritis? Yang sekarang butuh 200 juta untuk treatment, bisa jadi 400-500 juta di masa depan.
+
+Nah pertanyaannya: tabunganmu tumbuh secepat itu ga?
+
+Kalau kamu nabung 1 juta per bulan... dalam setahun baru 12 juta. Itu JAUH dari cukup untuk cover biaya medis yang terus naik.
+
+Solusinya bukan nabung lebih banyak. Solusinya adalah punya ASURANSI KESEHATAN yang manfaatnya mengikuti inflasi medis.
+
+Dengan asuransi yang tepat, mau biaya naik berapa pun, kamu tetap ter-cover. Karena limit manfaatnya ikut naik setiap tahun.
+
+Dan yang paling penting: kerja keras kamu bertahun-tahun ga akan habis dalam hitungan hari cuma gara-gara masuk rumah sakit.
+
+Mau tau produk mana yang kasih proteksi terbaik melawan inflasi medis? Klik link di bio. Aku bantu analisis kebutuhanmu."
+
+CTA (5 detik):
+"Jangan biarkan inflasi menggerus hidupmu. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-3', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 4/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-4">Aku mau jujur soal pengalaman pribadi.
+
+Dulu aku juga orang yang bilang "asuransi ga penting."
+
+Sampai papa aku kena serangan jantung. Dadakan. Ga ada warning.
+
+Biaya? 180 juta dalam 2 minggu.
+
+Untungnya, papa punya asuransi dari kantornya. Semua ter-cover.
+
+Tapi bayangkan kalau ga punya? Rumah bisa dijual. Tabungan pensiun habis.
+
+Dari situ aku SADAR. Asuransi itu bukan buang uang. Itu JARING PENGAMAN yang ga terlihat sampai kamu butuh.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-4">Hook (5 detik):
+"Papa aku kena serangan jantung. Biayanya 180 juta. Ini yang terjadi..."
+
+Isi:
+"Aku mau cerita sesuatu yang personal. Dan ini alasan kenapa aku sekarang sangat passionate soal asuransi.
+
+Beberapa tahun lalu, papa aku tiba-tiba kena serangan jantung. Ga ada tanda-tanda sebelumnya. Sehat-sehat aja. Tiba-tiba collapse.
+
+Langsung masuk ICU. Operasi. Perawatan intensif.
+
+Total biaya dalam 2 minggu: 180 juta rupiah.
+
+Sekarang bayangkan... kalau papa aku ga punya asuransi dari kantornya. 180 juta. Dari mana?
+
+Jual rumah? Itu satu-satunya aset keluarga.
+Pinjam bank? Bunganya mencekik.
+GoFundMe? Malu dan ga tentu dapat.
+
+Tapi Alhamdulillah, papa punya asuransi. Semua biaya ditanggung. Keluarga ga keluar sepeser pun.
+
+Papa sekarang sehat. Pulih total. Dan keluarga ga kehilangan apa-apa secara finansial.
+
+ITULAH kekuatan asuransi. Kamu ga ngerasain manfaatnya sampai kamu BUTUH. Tapi waktu kamu butuh, itu jadi PENYELAMAT.
+
+Aku bercerita ini karena aku ga mau ada keluarga lain yang harus kehilangan rumah, tabungan, atau masa depan anak cuma karena sakit.
+
+Proteksi itu murah. Yang mahal itu kalau ga punya proteksi.
+
+Klik link di bio. Aku bantu cariin yang paling cocok buat kamu dan keluarga."
+
+CTA (5 detik):
+"Jangan tunggu kejadian. Klik link di bio sekarang."</p>
+                    <button class="copy-btn" onclick="copyText('script-4', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 5/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-5">3 TANDA kamu BUTUH asuransi SEKARANG JUGA:
+
+1. Kamu satu-satunya pencari nafkah di keluarga
+2. Kamu punya cicilan (rumah, mobil, dll)
+3. Kamu belum punya dana darurat 12x pengeluaran bulanan
+
+Kalau minimal 1 aja yang relate... kamu HARUS punya proteksi.
+
+Bukan besok. Bukan bulan depan. SEKARANG.
+
+Karena risiko ga pernah kasih kamu waktu untuk siap-siap.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-5">Hook (5 detik):
+"3 tanda kamu HARUS punya asuransi sekarang juga. Cek yang mana yang relate."
+
+Isi:
+"Sore semuanya. Aku mau kasih checklist sederhana. Kalau minimal satu aja yang relate sama kamu, berarti kamu BUTUH proteksi asuransi. Sekarang. Bukan nanti.
+
+Tanda pertama: Kamu satu-satunya pencari nafkah di keluarga.
+
+Kalau penghasilan kamu berhenti, entah karena sakit atau hal lain, keluargamu langsung kehilangan sumber pemasukan. Ga ada backup. Ini sangat berbahaya tanpa proteksi.
+
+Tanda kedua: Kamu punya cicilan.
+
+Rumah, mobil, atau utang lainnya. Kalau kamu ga bisa kerja, cicilan ga otomatis berhenti. Bank tetap nagih. Dan kalau ga bayar? Asetmu disita.
+
+Dengan asuransi, kalau terjadi sesuatu, uang pertanggungan bisa cover sisa cicilan. Keluarga ga kehilangan rumah.
+
+Tanda ketiga: Kamu belum punya dana darurat minimal 12 kali pengeluaran bulanan.
+
+Financial planner bilang idealnya punya dana darurat 6-12 bulan. Tapi berapa persen orang Indonesia yang punya? Sangat sedikit.
+
+Nah kalau kamu belum punya dana darurat sebanyak itu, asuransi jadi PENGGANTI jaring pengaman.
+
+Jadi gimana? Ada yang relate?
+
+Kalau iya, jangan tunda lagi. Setiap hari yang berlalu tanpa proteksi itu hari yang berisiko.
+
+Klik link di bio. Aku bantu pilihkan yang sesuai kebutuhan dan budget kamu. Ga ada paksaan."
+
+CTA (5 detik):
+"Cek link di bio. Proteksi ga boleh ditunda."</p>
+                    <button class="copy-btn" onclick="copyText('script-5', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 6/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-6">Malam ini sebelum tidur, coba peluk keluargamu lebih erat.
+
+Dan tanyakan ke diri sendiri:
+
+"Udah cukup belum usahaku untuk MELINDUNGI mereka?"
+
+Bukan cuma lindungi dari hal-hal kecil. Tapi lindungi dari BENCANA FINANSIAL yang bisa datang kapan aja.
+
+Cinta itu bukan cuma bilang sayang. Cinta itu ACTION. Dan salah satu action terbesar itu adalah memastikan keluargamu AMAN secara finansial, meskipun kamu ga ada.
+
+Itu yang asuransi lakukan.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-6">Hook (5 detik):
+"Malam ini peluk keluargamu lebih erat. Dan tanya ke diri sendiri..."
+
+Isi:
+"Malam semuanya. Ini video terakhir aku hari ini. Dan aku mau ngomong dari hati.
+
+Aku tau banyak dari kalian yang nonton video-video aku hari ini tentang asuransi. Mungkin ada yang tertarik, mungkin ada yang masih ragu.
+
+Tapi aku mau minta satu hal. Malam ini, sebelum tidur, peluk keluargamu. Anak-anakmu. Pasanganmu. Orang tuamu.
+
+Dan tanya ke diri sendiri: kalau besok aku ga ada, mereka baik-baik aja ga?
+
+Kalau jawabannya bikin kamu ga tenang... berarti masih ada yang perlu kamu lakukan.
+
+Aku bukan mau jualan. Aku mau kamu SADAR.
+
+Setiap hari yang berlalu tanpa proteksi itu seperti nyetir tanpa sabuk pengaman. Mungkin ga kenapa-kenapa. Tapi KALAU terjadi sesuatu... nyeselnya seumur hidup.
+
+Dan yang paling sedih... yang merasakan dampaknya bukan kamu. Tapi MEREKA. Orang-orang yang kamu tinggalkan.
+
+Jadi please, ambil satu langkah kecil. Cuma satu.
+
+Klik link di bio aku. Isi form sederhana. Dan aku akan hubungi kamu untuk ngobrol ringan soal proteksi yang cocok.
+
+Ga ada paksaan. Ga ada tekanan. Cuma informasi dan pilihan.
+
+Karena keputusan terbaik itu yang diambil dengan INFORMASI yang lengkap."
+
+CTA (5 detik):
+"Klik link di bio. Satu langkah kecil untuk keluargamu."</p>
+                    <button class="copy-btn" onclick="copyText('script-6', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Ngobras TikTok - Day 2 | Konten Asuransi untuk Lead Generation</p>
+            <p style="margin-top:5px;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(btn) {
+            const card = btn.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                btn.textContent = 'Sembunyikan Task';
+            } else {
+                card.classList.add('hidden-task');
+                const showBtn = document.createElement('button');
+                showBtn.className = 'show-btn';
+                showBtn.textContent = 'Tampilkan Kembali';
+                showBtn.onclick = function() {
+                    card.classList.remove('hidden-task');
+                    showBtn.remove();
+                };
+                card.appendChild(showBtn);
+            }
+        }
+
+        function deleteTask(btn) {
+            if (confirm('Yakin mau hapus task ini?')) {
+                const card = btn.closest('.post-card');
+                card.classList.add('deleted');
+            }
+        }
+    </script>
+</body>
+</html>
