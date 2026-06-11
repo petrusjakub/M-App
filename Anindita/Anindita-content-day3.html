@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anindita - Day 3 Content Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+        }
+
+        .outfit-info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .outfit-info h3 {
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .outfit-set {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #fef0f7;
+            border-left: 4px solid #f093fb;
+        }
+
+        .outfit-set:last-child {
+            border-left-color: #f5576c;
+        }
+
+        .outfit-set strong {
+            color: #333;
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #f093fb;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .label-prompt {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .label-refs {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .caption-box, .prompt-box {
+            background: #fef8fc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #fce4ec;
+        }
+
+        .caption-box p, .prompt-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ref-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px;
+            background: #fef0f7;
+            color: #880e4f;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border: 1px solid #f8bbd0;
+            transition: background 0.2s;
+        }
+
+        .ref-links a:hover {
+            background: #fce4ec;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Anindita - Day 3 Content Plan</h1>
+            <p>Shopping & Self-care Day | Tangerang/Serpong/BSD | Princess Girl Introvert</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap ~60 menit | Engagement & Follower Growth</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (06:00 - 16:00):</strong> Crop top putih + high-waist jeans pendek + platform sneakers putih + mini sling bag + kacamata hitam oversized. Tampilan trendy shopping girl yang stylish dan playful, cocok buat jalan-jalan mall dan belanja seharian di area Serpong/BSD.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (17:00 - 22:00):</strong> Silk pajama set warna sage green + fuzzy slippers + headband bulu. Tampilan cozy self-care princess yang soft dan relaxing, cocok buat pamper session malam di rumah.
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Bangun pagi dan langsung skincare routine. Hari ini tujuannya cuma satu: treat myself. Kemarin-kemarin udah capek banget, sekarang waktunya Anindita jadi princess beneran. Cuci muka, toner, serum, moisturizer. Lengkap kayak tutorial YouTube yang biasanya cuma aku tonton tanpa dipraktekin.
+
+Kulit muka langsung berasa plump dan fresh. Worth it banget ternyata kalau rajin.
+
+Skincare routine kalian ada berapa step? Aku baru mulai konsisten nih.</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Anindita pakai outfit image 2 (masih pakai baju tidur cute warna pastel) sedang berdiri di depan cermin kamar mandi sambil mengaplikasikan serum ke wajah, di counter ada deretan produk skincare Korea aesthetic (image 3). Cahaya pagi lembut dari jendela kecil, ekspresi fresh dan fokus. Angle mirror selfie, suasana kamar mandi bersih minimalis. Vibes morning skincare routine princess.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=morning+skincare+routine+girl+mirror+aesthetic" target="_blank">Pinterest: Morning Skincare Routine</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=korean+skincare+products+bathroom+counter" target="_blank">Pinterest: Korean Skincare Products</a>
+                    <a href="https://www.google.com/search?q=skincare+routine+pagi+aesthetic+korea&tbm=isch" target="_blank">Google: Skincare Routine Pagi</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 2/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Sarapan cantik dulu sebelum berangkat. Bikin avocado toast sendiri karena lagi pengen vibes healthy brunch ala cafe. Ternyata gampang banget dan aesthetic parah. Langsung foto-foto dulu sebelum dimakan.
+
+Pantun pagi:
+Beli roti di toko Jaya,
+Olesin mentega yang lembut.
+Pagi ini aku bahagia,
+Karena hari ini mau beli baju yang lucu-lucu.
+
+Sarapan favorit kalian apa?</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Anindita pakai outfit image 2 (crop top putih, high-waist jeans pendek) sedang duduk di meja makan rumah dengan piring avocado toast yang cantik (image 3), tangan memegang gelas jus jeruk segar (image 4). Angle flat lay agak miring, ekspresi senang. Background dapur rumah bersih dengan tanaman kecil, cahaya pagi cerah masuk dari jendela. Vibes healthy brunch at home.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=avocado+toast+aesthetic+breakfast+homemade" target="_blank">Pinterest: Avocado Toast Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=healthy+breakfast+table+morning+light" target="_blank">Pinterest: Healthy Breakfast Table</a>
+                    <a href="https://www.google.com/search?q=sarapan+aesthetic+avocado+toast+homemade&tbm=isch" target="_blank">Google: Sarapan Aesthetic</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 3/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">OOTD check sebelum berangkat ke mall. Crop top putih + high-waist jeans pendek + platform sneakers. Kacamata hitam oversized buat dramatis efek. Hari ini misi utama: cari outfit baru yang lucu-lucu dan affordable. Budget udah disiapkan, wishlist udah di-screenshot.
+
+Mirror selfie dulu dong sebelum keluar rumah. Wajib hukumnya.
+
+Kalian tim belanja impulsif atau tim riset dulu sebelum beli?</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Anindita pakai outfit image 2 (crop top putih, high-waist jeans pendek, platform sneakers putih, kacamata hitam oversized di kepala, mini sling bag) sedang mirror selfie full body di cermin kamar. Angle mirror selfie, pose casual peace sign. Background kamar rapi dengan pintu terbuka, cahaya pagi cerah. Vibes ready to shop dan confident.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=ootd+mirror+selfie+crop+top+jeans+aesthetic" target="_blank">Pinterest: OOTD Mirror Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=shopping+outfit+trendy+girl+sneakers" target="_blank">Pinterest: Shopping Outfit Trendy</a>
+                    <a href="https://www.google.com/search?q=ootd+crop+top+jeans+pendek+mirror+selfie&tbm=isch" target="_blank">Google: OOTD Crop Top Jeans</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 4/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Sampai di AEON Mall BSD dan langsung ke section fashion. Mall baru buka tapi udah lumayan rame. Mata langsung tertuju ke display window yang pajang dress lucu banget. Tapi tahan dulu, window shopping dulu baru decide.
+
+Masalah anak introvert di mall: pengen masuk toko tapi takut ditanyain "cari apa kak?" sama SPG-nya.
+
+Relate ga sih? Atau cuma aku yang gini?</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Anindita pakai outfit image 2 sedang berdiri di depan display window toko fashion di mall BSD (image 3), tangan memegang mini sling bag sambil memandangi mannequin yang pakai dress lucu (image 4). Angle dari samping, Anindita terlihat excited memandangi display. Background interior mall modern dengan lantai mengkilap, beberapa pengunjung lewat. Pencahayaan mall terang, vibes shopping excited.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl+window+shopping+mall+fashion+display" target="_blank">Pinterest: Window Shopping Mall</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=AEON+mall+BSD+interior+modern" target="_blank">Pinterest: AEON Mall BSD</a>
+                    <a href="https://www.google.com/search?q=AEON+mall+BSD+tangerang+fashion+store&tbm=isch" target="_blank">Google: AEON Mall BSD Fashion</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 5/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">DRESSING ROOM CHRONICLES. Udah nyoba 6 outfit dalam 30 menit. Yang cocok? Baru satu. Yang bikin ngakak di cermin? Lima. Ada satu dress yang bikin aku keliatan kayak taplak meja nenek. Tapi yaudah, part of the process.
+
+Kenapa ya ukuran baju tuh ga pernah konsisten? Di toko A size M pas, di toko B size M kayak baju anak SD.
+
+Relate banget ga sih perjuangan fitting room ini?</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Anindita pakai outfit image 2 sedang berdiri di fitting room toko baju (image 3), di hook gantungan ada beberapa baju warna-warni yang sudah dicoba (image 4). Angle mirror selfie fitting room, ekspresi lucu dan bingung sambil memegang satu dress ke badan. Background fitting room dengan cermin besar, tirai, dan pencahayaan terang. Vibes funny dressing room moment.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=fitting+room+selfie+girl+trying+clothes" target="_blank">Pinterest: Fitting Room Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=dressing+room+mirror+shopping+aesthetic" target="_blank">Pinterest: Dressing Room Mirror</a>
+                    <a href="https://www.google.com/search?q=fitting+room+mall+coba+baju+aesthetic&tbm=isch" target="_blank">Google: Fitting Room Mall</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 6/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">HAUL TIME. Akhirnya dapet 3 baju dan 1 aksesoris. Budget? Sedikit over tapi masih acceptable. Yang penting happy. Paling suka cardigan rajut warna lilac yang bisa dipake buat layering. Sama anting-anting kecil bentuk bulan sabit. Princess vibes banget.
+
+Setiap beli baju baru, aku selalu mikir "ini bisa dipake ke berapa event?" Biar ga guilty.
+
+Shopping haul terakhir kalian apa? Spill dong!</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Anindita pakai outfit image 2 sedang duduk di bench mall dengan beberapa paper bag belanjaan warna-warni di sebelahnya (image 3), tangan mengangkat satu cardigan lilac baru ke kamera dengan senyum puas (image 4). Angle dari depan, ekspresi bangga dan senang. Background area mall dengan orang-orang lewat, toko-toko di belakang. Pencahayaan mall terang, vibes happy shopaholic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=shopping+haul+paper+bags+mall+girl" target="_blank">Pinterest: Shopping Haul Mall</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=lilac+cardigan+knit+aesthetic+cute" target="_blank">Pinterest: Lilac Cardigan</a>
+                    <a href="https://www.google.com/search?q=shopping+haul+mall+BSD+serpong+fashion&tbm=isch" target="_blank">Google: Shopping Haul BSD</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 7/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Lunch time di food court mall. Pilih mie ayam karena comfort food terbaik sepanjang masa. Duduk sendiri tapi ga kerasa lonely. Malah enjoy people watching sambil makan. Liat orang-orang yang juga lagi shopping, ada yang bawa anak, ada yang sama pacar, ada yang solo kayak aku.
+
+Ternyata makan sendiri di tempat umum itu ga se-scary yang aku bayangkan dulu. Malah peaceful.
+
+Tim makan sendiri atau harus rame-rame?</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Anindita pakai outfit image 2 sedang duduk di meja food court mall BSD (image 3), di depannya ada semangkuk mie ayam yang mengepul dan gelas es teh (image 4). Angle dari depan agak atas, Anindita sedang meniup mie dengan sumpit, ekspresi happy dan casual. Background food court ramai dengan orang-orang Indonesia lain makan, paper bag belanjaan di kursi sebelah. Pencahayaan terang food court, vibes solo lunch content.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=food+court+mall+lunch+asian+noodles+aesthetic" target="_blank">Pinterest: Food Court Lunch</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=girl+eating+noodles+alone+mall+aesthetic" target="_blank">Pinterest: Solo Lunch Mall</a>
+                    <a href="https://www.google.com/search?q=food+court+mall+BSD+tangerang+mie+ayam&tbm=isch" target="_blank">Google: Food Court BSD</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 8/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Setelah makan, jalan-jalan lagi explore toko aksesoris dan beauty store. Masuk ke toko makeup dan ga bisa nahan diri buat nyobain tester lipstick. Sekarang bibir aku udah 5 warna dalam 10 menit. SPG-nya pasti udah capek ngelayanin aku.
+
+Tapi serius, warna-warna baru itu therapy banget. Ada yang cocok, ada yang bikin muka keliatan sakit. Trial and error ya namanya.
+
+Warna lipstick andalan kalian apa?</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Anindita pakai outfit image 2 sedang berdiri di depan display lipstick di beauty store mall (image 3), tangan kanan memegang satu lipstick tester dekat bibir sambil lihat cermin kecil (image 4). Angle close-up dari samping, ekspresi fokus dan senang mencoba. Background beauty store dengan rak-rak produk warna-warni, lampu terang toko. Vibes beauty shopping fun.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl+trying+lipstick+beauty+store+tester" target="_blank">Pinterest: Trying Lipstick Store</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=beauty+store+makeup+display+colorful" target="_blank">Pinterest: Beauty Store Display</a>
+                    <a href="https://www.google.com/search?q=beauty+store+mall+BSD+lipstick+tester&tbm=isch" target="_blank">Google: Beauty Store Mall</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 9/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">NAH INI YANG DITUNGGU. Nail salon time! Pilih warna soft pink dengan sedikit glitter di ring finger. Classic tapi tetap sparkly. Proses manicure itu relaxing banget, kayak mini meditation. Tinggal duduk, dengerin musik, dan liatin kuku jadi cantik.
+
+Self-love itu bukan cuma soal inner peace. Kadang cuma perlu kuku yang cantik buat boost confidence.
+
+Kalian suka nail art yang simple atau yang heboh?</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Anindita pakai outfit image 2 sedang duduk di kursi nail salon dengan satu tangan diletakkan di atas meja manicure (image 3), nail technician sedang mengecat kuku dengan warna soft pink (image 4). Angle close-up tangan dan kuku, beberapa kuku sudah selesai dengan glitter accent. Background nail salon bersih dengan botol-botol cat kuku warna-warni di rak, lampu UV, suasana tenang. Vibes pampering dan relaxing.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=nail+salon+manicure+soft+pink+glitter" target="_blank">Pinterest: Nail Salon Pink Glitter</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=nail+art+simple+elegant+korean+style" target="_blank">Pinterest: Nail Art Korean Style</a>
+                    <a href="https://www.google.com/search?q=nail+salon+mall+BSD+serpong+manicure&tbm=isch" target="_blank">Google: Nail Salon BSD</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 10/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Dari nail salon langsung ke spa yang ada di lantai atas mall. Booking massage 60 menit. Ini treat terbesar buat diri sendiri hari ini. Begitu masuk ruangan yang gelap dengan aroma lavender dan musik gamelan lembut, semua stress hilang. Badan yang capek dari hari-hari kemarin langsung di-release.
+
+Kadang kita lupa bahwa badan kita juga butuh di-appreciate. Bukan cuma pikiran.
+
+Kapan terakhir kali kalian treat diri sendiri ke spa?</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Anindita sedang berbaring di massage bed spa dengan handuk putih menutupi badan (image 3), tangan terapis sedang memijat pundak, di samping ada lilin aromatherapy dan bunga-bunga (image 4). Angle dari atas samping, mata terpejam dengan ekspresi rileks dan damai. Background ruangan spa gelap dengan pencahayaan lilin, essential oil diffuser, musik ambient. Vibes total relaxation dan self-love.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=spa+massage+girl+relaxing+candles+aesthetic" target="_blank">Pinterest: Spa Massage Relaxing</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=spa+room+aromatherapy+dark+peaceful" target="_blank">Pinterest: Spa Room Aromatherapy</a>
+                    <a href="https://www.google.com/search?q=spa+massage+mall+BSD+serpong+tangerang&tbm=isch" target="_blank">Google: Spa Mall BSD</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 11/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Selesai spa dan badan berasa kayak awan. Ringan, lembut, dan pengen melayang. Sekarang duduk di cafe sebelah spa sambil minum matcha latte hangat. Ini perfect ending buat shopping day. Kaki udah capek jalan seharian tapi hati puas banget.
+
+Pantun sore:
+Pergi ke mall beli baju baru,
+Mampir salon kuku jadi cantik.
+Hari ini aku sayang diriku,
+Ga perlu alasan buat jadi happy.
+
+Bawa belanjaan pulang dulu, nanti lanjut self-care di rumah ya!</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Anindita pakai outfit image 2 sedang duduk di cafe area spa mall dengan secangkir matcha latte di depannya (image 3), paper bag belanjaan ditata di kursi sebelah, tangan menunjukkan kuku baru yang cantik ke kamera (image 4). Angle selfie dari depan, ekspresi puas dan rileks pasca spa. Background cafe minimalis dengan tanaman hijau, suasana sore tenang. Vibes satisfied dan pampered.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=matcha+latte+cafe+girl+relaxing+afternoon" target="_blank">Pinterest: Matcha Latte Cafe</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=nails+showing+camera+cafe+aesthetic" target="_blank">Pinterest: Showing Nails Cafe</a>
+                    <a href="https://www.google.com/search?q=cafe+matcha+mall+BSD+aesthetic+sore&tbm=isch" target="_blank">Google: Cafe Matcha BSD</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 12/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Sampai rumah dan langsung ganti ke comfy mode. Silk pajama sage green ON. Fuzzy slippers ON. Headband bulu ON. Sekarang saatnya self-care session part 2: home edition. Nyalain lilin aromatherapy, pasang playlist lo-fi, dan siapkan semua face mask collection.
+
+Transisi dari mall princess ke rumahan princess tuh smooth banget. Intinya tetap princess.
+
+Kalian punya ritual pulang rumah habis jalan-jalan ga?</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Anindita pakai outfit image 2 (silk pajama set sage green, fuzzy slippers, headband bulu) sedang berdiri di kamar yang cozy dengan lilin aromatherapy menyala di meja nakas (image 3), tangan memegang beberapa sachet face mask warna-warni (image 4). Angle dari depan, ekspresi senang dan rileks. Background kamar dengan fairy lights, bantal-bantal lucu, paper bag belanjaan di pojok. Lighting hangat sore, vibes cozy home self-care.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=silk+pajama+sage+green+cozy+home+self+care" target="_blank">Pinterest: Silk Pajama Sage Green</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=face+mask+collection+self+care+night" target="_blank">Pinterest: Face Mask Collection</a>
+                    <a href="https://www.google.com/search?q=self+care+night+routine+cozy+room+aesthetic&tbm=isch" target="_blank">Google: Self Care Night Routine</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 13/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Face mask on dan aku officially jadi hantu lucu warna putih. Sheet mask ini katanya hydrating dan soothing. Sambil nunggu 15 menit, rebahan di kasur scrolling TikTok. Ini definisi peace yang sesungguhnya.
+
+Ga ada yang ganggu. Ga ada yang minta apa-apa. Cuma aku, face mask, dan algoritma TikTok yang tau aku suka kucing.
+
+Self-care versi kalian yang paling simple tapi paling effective apa?</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Anindita pakai outfit image 2 (silk pajama sage green) sedang rebahan di tempat tidur dengan sheet mask di wajah (image 3), tangan memegang smartphone di atas wajah menampilkan TikTok (image 4). Angle bird eye view dari atas, pose rileks dengan bantal-bantal di sekitar. Background tempat tidur cozy dengan selimut lembut, lilin aromatherapy di meja nakas, fairy lights. Lighting redup dan hangat, vibes ultimate relaxation.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sheet+mask+face+girl+bed+relaxing+phone" target="_blank">Pinterest: Sheet Mask Bed Relaxing</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=self+care+night+bed+cozy+candles" target="_blank">Pinterest: Self Care Night Bed</a>
+                    <a href="https://www.google.com/search?q=sheet+mask+rebahan+aesthetic+self+care&tbm=isch" target="_blank">Google: Sheet Mask Rebahan</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 14/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Habis face mask, lanjut hair mask dan body scrub di kamar mandi. Full pamper session. Rambut ditutup shower cap lucu warna pink polkadot sambil scrubbing badan. Kulit langsung smooth kayak bayi. Ini investasi buat kulit yang selama ini aku abaikan.
+
+Dulu aku pikir self-care itu buang waktu. Sekarang ngerti kenapa orang-orang bilang "you can't pour from an empty cup."
+
+Produk body care favorit kalian apa? Aku lagi cari rekomendasi.</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Anindita sedang berdiri di kamar mandi dengan shower cap pink polkadot di kepala (image 3), tangan mengaplikasikan body scrub ke lengan dengan latar belakang ubin kamar mandi bersih (image 4). Angle selfie mirror kamar mandi, ekspresi fun dan playful. Background kamar mandi bersih dengan botol-botol body care, handuk fluffy, steam sedikit. Lighting kamar mandi terang, vibes full pampering session.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=body+scrub+self+care+bathroom+routine" target="_blank">Pinterest: Body Scrub Routine</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=shower+cap+cute+pink+girl+bathroom" target="_blank">Pinterest: Shower Cap Cute</a>
+                    <a href="https://www.google.com/search?q=body+scrub+self+care+routine+aesthetic&tbm=isch" target="_blank">Google: Body Scrub Self Care</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 15/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Sekarang movie time. Pilih film romantic comedy Korea yang udah lama di watchlist. Buat popcorn microwave, gelar selimut, matiin lampu, dan jadi satu sama layar laptop. Ini definisi perfect evening buat introvert kayak aku.
+
+Ga perlu ke bioskop, ga perlu teman. Kadang me-time yang paling berkualitas itu ya yang literally cuma ada "me".
+
+Film terakhir yang bikin kalian senyum sendiri apa? Butuh rekomendasi romcom nih.</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Anindita pakai outfit image 2 (silk pajama sage green) sedang duduk di tempat tidur dengan selimut fluffy menutupi kaki (image 3), laptop terbuka di depan menampilkan film Korea, tangan memegang mangkuk popcorn (image 4). Angle dari samping, wajah diterangi cahaya laptop, ekspresi fokus dan senang menonton. Background kamar gelap dengan fairy lights, bantal-bantal ditumpuk. Vibes cozy movie night solo.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy+movie+night+bed+laptop+popcorn+girl" target="_blank">Pinterest: Cozy Movie Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=watching+film+alone+bed+fairy+lights+aesthetic" target="_blank">Pinterest: Solo Movie Night Bed</a>
+                    <a href="https://www.google.com/search?q=movie+night+aesthetic+kamar+laptop+popcorn&tbm=isch" target="_blank">Google: Movie Night Kamar</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 16/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Film selesai dan sekarang lagi journaling. Nulis semua yang aku rasakan hari ini. Dari excitement belanja, relaxing di spa, sampai peacefulness malam ini. Ternyata nulis itu membantu banget buat organize pikiran yang biasanya berantakan di kepala.
+
+Hari ini aku belajar: merawat diri sendiri bukan selfish. Justru itu yang paling basic dan paling penting.
+
+Kalian journaling juga ga? Atau lebih suka curhat ke orang?</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Anindita pakai outfit image 2 (silk pajama sage green) sedang duduk di meja belajar kamar dengan buku jurnal terbuka (image 3), tangan menulis dengan pulpen warna pink, di samping ada secangkir chamomile tea (image 4). Angle dari atas samping, ekspresi thoughtful dan damai. Background kamar dengan lampu meja menyala lembut, tanaman kecil, stiker-stiker lucu di jurnal. Lighting hangat malam, vibes reflective dan mindful.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=journaling+night+girl+desk+aesthetic+tea" target="_blank">Pinterest: Journaling Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cute+journal+writing+stickers+pink+pen" target="_blank">Pinterest: Cute Journal Writing</a>
+                    <a href="https://www.google.com/search?q=journaling+aesthetic+malam+desk+lamp&tbm=isch" target="_blank">Google: Journaling Aesthetic Malam</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 17/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Day 3 selesai. Hari yang full self-love. Dari skincare pagi, shopping spree, nail salon, spa, sampai pamper session di rumah. Aku ngerasa kayak baterai yang udah di-charge full. Kulit glowing, kuku cantik, badan rileks, dan pikiran tenang.
+
+Pantun penutup:
+Belanja baju di mall yang baru,
+Pulang rumah pakai masker muka.
+Sayang diri sendiri itu perlu,
+Biar besok bisa sayang orang lain juga.
+
+Selamat malam semua. Besok hari baru lagi. Love yourself first ya.</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Anindita pakai outfit image 2 (silk pajama sage green) sudah berbaring di tempat tidur dengan selimut ditarik sampai dada (image 3), di meja nakas ada shopping bags kecil, lilin aromatherapy yang hampir habis, dan lampu tidur lembut (image 4). Angle bird eye view, mata setengah terpejam dengan senyum puas dan damai. Background kamar gelap dengan cahaya warm dari lampu tidur, vibes grateful, pampered, dan content.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl+sleeping+cozy+bed+candle+shopping+bags" target="_blank">Pinterest: Cozy Bed Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=silk+pajamas+bed+peaceful+sleep+aesthetic" target="_blank">Pinterest: Silk Pajamas Sleep</a>
+                    <a href="https://www.google.com/search?q=tidur+nyenyak+aesthetic+self+care+night&tbm=isch" target="_blank">Google: Tidur Aesthetic Self Care</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Anindita Day 3 Content Plan - Made with love for engagement & growth</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Task (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        // Persist hidden state in localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('anindita-day3-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        // Update toggleTask to save state
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('anindita-day3-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
