@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satu Yang Terpenting - Week 6 | Konten Asuransi Manulife</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #e8eaf6;
+            color: #283593;
+        }
+
+        .caption-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .caption-box div {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .caption-box blockquote {
+            border-left: 4px solid #667eea;
+            padding: 12px 16px;
+            margin: 12px 0;
+            background: #f0f0ff;
+            border-radius: 8px;
+            font-style: italic;
+            color: #444;
+        }
+
+        .caption-box .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4a 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-wa {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+        }
+
+        .cta-web {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .cta-rekrut {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .cta-ig {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .cta-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Satu Yang Terpenting - Week 6</h1>
+            <p>Konten Edukasi Asuransi Manulife | 7 Hari x 3 Postingan</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Pagi - Siang - Malam | Follow @petrusjakub</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Navigasi Postingan:</h3>
+            <div class="nav-links">
+                <a href="#post-h1-pagi">Hari 1 Pagi</a>
+                <a href="#post-h1-siang">Hari 1 Siang</a>
+                <a href="#post-h1-malam">Hari 1 Malam</a>
+                <a href="#post-h2-pagi">Hari 2 Pagi</a>
+                <a href="#post-h2-siang">Hari 2 Siang</a>
+                <a href="#post-h2-malam">Hari 2 Malam</a>
+                <a href="#post-h3-pagi">Hari 3 Pagi</a>
+                <a href="#post-h3-siang">Hari 3 Siang</a>
+                <a href="#post-h3-malam">Hari 3 Malam</a>
+                <a href="#post-h4-pagi">Hari 4 Pagi</a>
+                <a href="#post-h4-siang">Hari 4 Siang</a>
+                <a href="#post-h4-malam">Hari 4 Malam</a>
+                <a href="#post-h5-pagi">Hari 5 Pagi</a>
+                <a href="#post-h5-siang">Hari 5 Siang</a>
+                <a href="#post-h5-malam">Hari 5 Malam</a>
+                <a href="#post-h6-pagi">Hari 6 Pagi</a>
+                <a href="#post-h6-siang">Hari 6 Siang</a>
+                <a href="#post-h6-malam">Hari 6 Malam</a>
+                <a href="#post-h7-pagi">Hari 7 Pagi</a>
+                <a href="#post-h7-siang">Hari 7 Siang</a>
+                <a href="#post-h7-malam">Hari 7 Malam</a>
+            </div>
+        </div>
+
+        <!-- HARI 1: Bagaimana jika besok tidak bisa bekerja? - MiWealth Protection -->
+
+        <!-- POST Hari 1 Pagi -->
+        <div class="post-card" id="post-h1-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 1 - Pagi</span>
+                <span class="post-number">Post 1/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1"><b>Pernahkah Anda berpikir, bagaimana jika besok Anda tidak bisa bekerja lagi?</b>
+
+Bukan karena malas, bukan karena resign. Tapi karena <u>tubuh Anda tidak lagi mampu</u>. Kecelakaan, stroke, atau penyakit serius bisa membuat Anda kehilangan kemampuan untuk mencari nafkah.
+
+<span class="highlight">Data menunjukkan bahwa 1 dari 4 pekerja di Indonesia mengalami risiko cacat tetap sebelum masa pensiun.</span>
+
+<blockquote>"The only thing worse than being blind is having sight but no vision." - Helen Keller</blockquote>
+
+<b>MiWealth Protection dari Manulife</b> memberikan <i>santunan sekaligus hingga miliaran rupiah jika Anda mengalami cacat tetap total atau meninggal dunia, sehingga keluarga tetap memiliki sumber dana untuk melanjutkan hidup</i>.
+
+<img src="https://via.placeholder.com/600x400?text=MiWealth+Protection+-+Proteksi+Penghasilan" alt="MiWealth Protection melindungi penghasilan keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Jangan tunggu sampai terlambat. <b>Lindungi penghasilan Anda sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 1 Siang -->
+        <div class="post-card" id="post-h1-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 1 - Siang</span>
+                <span class="post-number">Post 2/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2"><b>Siapa yang akan membayar cicilan rumah dan biaya sekolah anak jika Anda tidak bisa bekerja?</b>
+
+Coba bayangkan: <u>penghasilan berhenti, tapi tagihan terus datang setiap bulan</u>. KPR, listrik, air, sekolah anak, kebutuhan sehari-hari...
+
+<span class="highlight">Tanpa proteksi yang tepat, seluruh beban itu akan jatuh ke pundak pasangan atau keluarga Anda.</span>
+
+<blockquote>"It is not the strongest of the species that survives, nor the most intelligent, but the one most responsive to change." - Charles Darwin</blockquote>
+
+Dengan <b>MiWealth Protection</b>, Anda mendapatkan <i>jaminan bahwa keluarga akan menerima dana tunai yang cukup untuk melunasi semua kewajiban finansial, termasuk utang dan biaya hidup minimal 5-10 tahun ke depan</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Proteksi+Penghasilan+Keluarga" alt="Jaminan penghasilan keluarga dengan MiWealth Protection" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Keputusan hari ini menentukan ketenangan keluarga Anda esok hari. <b>Konsultasi gratis sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 1 Malam -->
+        <div class="post-card" id="post-h1-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 1 - Malam</span>
+                <span class="post-number">Post 3/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3"><b>Malam ini, tanyakan pada diri sendiri: Sudahkah saya mempersiapkan plan B jika tidak bisa bekerja?</b>
+
+Banyak orang mengandalkan satu sumber penghasilan tanpa cadangan. <u>Ketika sumber itu tiba-tiba berhenti, segalanya runtuh dalam hitungan bulan</u>.
+
+<span class="highlight">Sebuah studi menunjukkan 70% keluarga Indonesia akan mengalami krisis finansial dalam 3 bulan jika pencari nafkah utama berhenti bekerja.</span>
+
+<blockquote>"In the middle of difficulty lies opportunity." - Albert Einstein</blockquote>
+
+<b>MiWealth Protection</b> adalah <i>plan B yang paling rasional. Dengan premi terjangkau mulai ratusan ribu per bulan, Anda mendapatkan perlindungan hingga miliaran rupiah yang siap menjadi pengganti penghasilan</i> saat dibutuhkan.
+
+<img src="https://via.placeholder.com/600x400?text=Plan+B+Untuk+Keluarga" alt="Rencana cadangan finansial untuk keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Jangan biarkan ketidakpastian mengendalikan hidup Anda. <b>Ambil langkah malam ini.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 2: Biaya rumah sakit naik 10-15% per tahun - MiUltimate HealthCare Plus -->
+
+        <!-- POST Hari 2 Pagi -->
+        <div class="post-card" id="post-h2-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 2 - Pagi</span>
+                <span class="post-number">Post 4/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4"><b>Tahukah Anda bahwa biaya rumah sakit naik 10-15% setiap tahun?</b>
+
+Artinya, <u>biaya rawat inap yang hari ini Rp 1 juta per malam, dalam 10 tahun bisa menjadi Rp 3-4 juta per malam</u>. Apakah kenaikan gaji Anda sebanding?
+
+<span class="highlight">Inflasi medis di Indonesia adalah salah satu yang tertinggi di Asia Tenggara, melampaui inflasi umum sebesar 2-3 kali lipat.</span>
+
+<blockquote>"The question isn't at what age I want to retire, it's at what income." - George Foreman</blockquote>
+
+<b>MiUltimate HealthCare Plus dari Manulife</b> memberikan <i>limit tahunan yang sangat besar dengan penyesuaian inflasi, kamar rawat inap tanpa batasan harga, serta jaringan rumah sakit premium di seluruh Indonesia dan luar negeri</i>.
+
+<img src="https://via.placeholder.com/600x400?text=MiUltimate+HealthCare+Plus" alt="Asuransi kesehatan premium MiUltimate HealthCare Plus" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Jangan biarkan inflasi medis menggerus tabungan Anda. <b>Proteksi diri Anda sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 2 Siang -->
+        <div class="post-card" id="post-h2-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 2 - Siang</span>
+                <span class="post-number">Post 5/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5"><b>Pernahkah Anda melihat tagihan rumah sakit dan terkejut dengan jumlahnya?</b>
+
+Satu malam di ICU bisa <u>menghabiskan Rp 5-15 juta</u>. Operasi besar bisa memakan biaya ratusan juta. Dan itu belum termasuk obat-obatan pasca operasi.
+
+<span class="highlight">Banyak keluarga terpaksa menjual aset, bahkan rumah, hanya untuk membayar biaya pengobatan anggota keluarga.</span>
+
+<blockquote>"Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship." - Buddha</blockquote>
+
+Dengan <b>MiUltimate HealthCare Plus</b>, Anda mendapatkan <i>fasilitas cashless di rumah sakit rekanan, tidak perlu membayar uang muka, cukup tunjukkan kartu dan langsung ditangani. Limit mencakup rawat inap, pembedahan, rawat jalan, dan perawatan gigi</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Cashless+Tanpa+Uang+Muka" alt="Fasilitas cashless di rumah sakit rekanan" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Kesehatan adalah investasi, bukan pengeluaran. <b>Lindungi sekarang sebelum terlambat.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 2 Malam -->
+        <div class="post-card" id="post-h2-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 2 - Malam</span>
+                <span class="post-number">Post 6/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6"><b>Apakah BPJS cukup untuk menutupi semua kebutuhan kesehatan Anda?</b>
+
+Jujur saja: BPJS memang membantu, tapi <u>ada banyak keterbatasan seperti antrian panjang, rujukan bertingkat, dan obat yang tidak selalu tersedia</u>.
+
+<span class="highlight">Untuk penyakit serius yang membutuhkan penanganan cepat, setiap menit sangat berharga. Apakah Anda siap menunggu?</span>
+
+<blockquote>"Time is the most valuable thing a man can spend." - Theophrastus</blockquote>
+
+<b>MiUltimate HealthCare Plus</b> melengkapi BPJS Anda dengan <i>akses langsung ke dokter spesialis tanpa rujukan, kamar VIP, obat-obatan terbaru, dan penanganan di rumah sakit terbaik tanpa antrian panjang</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Asuransi+Pelengkap+BPJS" alt="MiUltimate HealthCare Plus sebagai pelengkap BPJS" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Kesehatan Anda tidak bisa menunggu. <b>Dapatkan proteksi premium sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 3: Membangun legacy untuk generasi mendatang - MiWealth Legacy -->
+
+        <!-- POST Hari 3 Pagi -->
+        <div class="post-card" id="post-h3-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 3 - Pagi</span>
+                <span class="post-number">Post 7/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7"><b>Apa warisan terbesar yang ingin Anda tinggalkan untuk generasi mendatang?</b>
+
+Bukan hanya soal harta benda. Tapi <u>tentang membangun fondasi keuangan yang kokoh agar anak cucu Anda tidak perlu memulai dari nol</u>.
+
+<span class="highlight">Keluarga-keluarga sukses di dunia memiliki satu kesamaan: mereka merencanakan warisan lintas generasi sejak dini.</span>
+
+<blockquote>"Someone is sitting in the shade today because someone planted a tree a long time ago." - Warren Buffett</blockquote>
+
+<b>MiWealth Legacy dari Manulife</b> adalah solusi <i>perencanaan warisan yang menggabungkan proteksi jiwa dengan investasi jangka panjang. Nilai polis bertumbuh seiring waktu dan dapat diwariskan kepada generasi berikutnya</i> dengan cara yang efisien.
+
+<img src="https://via.placeholder.com/600x400?text=MiWealth+Legacy+-+Warisan+Generasi" alt="MiWealth Legacy untuk warisan lintas generasi" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Mulai bangun legacy Anda hari ini. <b>Generasi mendatang akan berterima kasih.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 3 Siang -->
+        <div class="post-card" id="post-h3-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 3 - Siang</span>
+                <span class="post-number">Post 8/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8"><b>Mengapa orang-orang terkaya di dunia selalu memikirkan generasi berikutnya?</b>
+
+Karena mereka paham: <u>kekayaan tanpa perencanaan akan habis dalam 2-3 generasi</u>. Inilah yang disebut "shirtsleeves to shirtsleeves in three generations."
+
+<span class="highlight">Perencanaan warisan bukan hanya untuk orang super kaya. Semua orang tua yang ingin memberikan masa depan lebih baik perlu melakukannya.</span>
+
+<blockquote>"Legacy is not leaving something for people. It's leaving something in people." - Peter Strople</blockquote>
+
+<b>MiWealth Legacy</b> memungkinkan Anda <i>membangun aset yang terus bertumbuh melalui pilihan investasi yang dikelola profesional, sambil tetap memberikan proteksi jiwa yang besar. Dana bisa dicairkan bertahap atau sekaligus sesuai kebutuhan</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Bangun+Legacy+Keluarga" alt="Membangun legacy keuangan keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Warisan terbaik adalah persiapan yang matang. <b>Mulai sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 3 Malam -->
+        <div class="post-card" id="post-h3-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 3 - Malam</span>
+                <span class="post-number">Post 9/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9"><b>Jika Anda pergi hari ini, apakah anak-anak Anda akan mewarisi kekayaan atau mewarisi masalah?</b>
+
+Pertanyaan ini sangat personal, tapi penting. <u>Tanpa perencanaan yang jelas, warisan justru bisa menjadi sumber konflik keluarga</u>.
+
+<span class="highlight">Di Indonesia, banyak kasus perebutan warisan yang berujung pada perpecahan keluarga. Semua karena tidak ada perencanaan sejak awal.</span>
+
+<blockquote>"The greatest use of a life is to spend it on something that will outlast it." - William James</blockquote>
+
+Dengan <b>MiWealth Legacy</b>, Anda bisa <i>menentukan secara jelas siapa penerima manfaat dan berapa bagiannya. Proses klaim yang transparan memastikan tidak ada konflik, dan keluarga Anda menerima warisan dengan damai</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Warisan+Tanpa+Konflik" alt="Perencanaan warisan yang jelas dan tanpa konflik" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Malam ini, renungkan legacy apa yang ingin Anda bangun. <b>Konsultasi gratis dengan kami.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 4: Penghasilan tanpa batas sebagai agen - Rekrutmen -->
+
+        <!-- POST Hari 4 Pagi -->
+        <div class="post-card" id="post-h4-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 4 - Pagi</span>
+                <span class="post-number">Post 10/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10"><b>Apakah Anda merasa penghasilan bulanan Anda sudah mencapai batasnya?</b>
+
+Sebagai karyawan, <u>kenaikan gaji biasanya hanya 5-10% per tahun</u>. Sementara kebutuhan hidup terus meningkat. Apakah Anda siap terjebak dalam siklus ini selamanya?
+
+<span class="highlight">Di Manulife, banyak agen yang menghasilkan puluhan hingga ratusan juta per bulan karena tidak ada batasan penghasilan.</span>
+
+<blockquote>"The only limit to our realization of tomorrow will be our doubts of today." - Franklin D. Roosevelt</blockquote>
+
+Menjadi <b>agen asuransi Manulife</b> berarti <i>Anda memiliki bisnis sendiri dengan modal minimal, mendapat pelatihan profesional, komisi tanpa batas, bonus perjalanan ke luar negeri, dan jenjang karir yang jelas dari Agency Manager hingga Agency Director</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Karir+Agen+Manulife+-+Tanpa+Batas" alt="Peluang penghasilan tanpa batas sebagai agen Manulife" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Penghasilan tanpa batas dimulai dari keberanian untuk memulai. <b>Bergabung sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 4 Siang -->
+        <div class="post-card" id="post-h4-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 4 - Siang</span>
+                <span class="post-number">Post 11/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11"><b>Bagaimana rasanya bisa mengatur waktu sendiri sambil tetap menghasilkan lebih dari karyawan kantoran?</b>
+
+Tidak perlu macet pagi-pagi. Tidak perlu izin atasan untuk urusan keluarga. <u>Anda yang menentukan kapan dan bagaimana Anda bekerja</u>.
+
+<span class="highlight">Banyak agen Manulife yang berhasil membangun karir cemerlang sambil tetap hadir di setiap momen penting keluarga.</span>
+
+<blockquote>"Choose a job you love, and you will never have to work a day in your life." - Confucius</blockquote>
+
+Sebagai agen Manulife, Anda mendapatkan <i>fleksibilitas waktu 100%, sistem pendukung yang solid termasuk teknologi digital untuk presentasi, dan komunitas yang saling mendukung untuk mencapai kesuksesan bersama</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Fleksibilitas+Waktu+Agen" alt="Fleksibilitas waktu dan penghasilan sebagai agen" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Kebebasan waktu dan finansial bukan mimpi. <b>Ini nyata di Manulife.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 4 Malam -->
+        <div class="post-card" id="post-h4-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 4 - Malam</span>
+                <span class="post-number">Post 12/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12"><b>Pernahkah Anda membayangkan memiliki penghasilan pasif yang terus mengalir setiap bulan?</b>
+
+Sebagai agen senior, <u>Anda tidak hanya mendapat komisi dari penjualan sendiri, tapi juga dari tim yang Anda bangun</u>. Inilah yang disebut residual income.
+
+<span class="highlight">Beberapa Agency Director di Manulife menghasilkan miliaran per tahun dari overriding commission tim mereka.</span>
+
+<blockquote>"The richest people in the world look for and build networks, everyone else looks for work." - Robert Kiyosaki</blockquote>
+
+Di Manulife, <i>Anda bisa membangun tim agen sendiri dan mendapatkan bonus kepemimpinan, overriding dari setiap produksi tim, serta bonus tahunan yang sangat menggiurkan</i>. Semua dengan <b>modal awal yang sangat minimal</b>.
+
+<img src="https://via.placeholder.com/600x400?text=Passive+Income+Agen+Manulife" alt="Membangun passive income sebagai agen Manulife" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Malam ini, pikirkan: apakah Anda ingin bekerja keras selamanya, atau membangun sesuatu yang bekerja untuk Anda? <b>Hubungi kami sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 5: Diabetes dan penyakit degeneratif - MiEarly Critical Care -->
+
+        <!-- POST Hari 5 Pagi -->
+        <div class="post-card" id="post-h5-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 5 - Pagi</span>
+                <span class="post-number">Post 13/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13"><b>Tahukah Anda bahwa Indonesia adalah negara dengan jumlah penderita diabetes terbanyak ke-5 di dunia?</b>
+
+<u>Lebih dari 19 juta orang Indonesia hidup dengan diabetes</u>, dan banyak yang tidak menyadarinya hingga komplikasi muncul. Komplikasi diabetes bisa menyerang ginjal, mata, jantung, dan saraf.
+
+<span class="highlight">Biaya pengobatan diabetes seumur hidup bisa mencapai ratusan juta hingga miliaran rupiah jika sudah ada komplikasi.</span>
+
+<blockquote>"Take care of your body. It's the only place you have to live." - Jim Rohn</blockquote>
+
+<b>MiEarly Critical Care dari Manulife</b> memberikan <i>perlindungan finansial sejak tahap awal penyakit kritis terdeteksi, termasuk diabetes dengan komplikasi, sehingga Anda bisa fokus pada pengobatan tanpa khawatir biaya</i>.
+
+<img src="https://via.placeholder.com/600x400?text=MiEarly+Critical+Care+-+Diabetes" alt="Proteksi penyakit kritis diabetes dengan MiEarly Critical Care" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Deteksi dini menyelamatkan nyawa. Proteksi dini menyelamatkan keuangan. <b>Konsultasi sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 5 Siang -->
+        <div class="post-card" id="post-h5-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 5 - Siang</span>
+                <span class="post-number">Post 14/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14"><b>Apakah Anda tahu bahwa penyakit degeneratif kini menyerang usia yang semakin muda?</b>
+
+Dulu, penyakit jantung dan stroke identik dengan usia 50-an ke atas. Sekarang? <u>Banyak kasus ditemukan pada usia 30-40 tahun</u> akibat gaya hidup modern yang penuh stres.
+
+<span class="highlight">Pola makan tidak sehat, kurang olahraga, dan stres berlebihan adalah kombinasi mematikan yang mempercepat datangnya penyakit degeneratif.</span>
+
+<blockquote>"An ounce of prevention is worth a pound of cure." - Benjamin Franklin</blockquote>
+
+<b>MiEarly Critical Care</b> melindungi Anda dari <i>risiko finansial 60+ jenis penyakit kritis termasuk penyakit jantung, stroke, gagal ginjal, dan kanker. Klaim dibayarkan sejak stadium awal, sehingga Anda bisa langsung mendapat perawatan terbaik</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Proteksi+Penyakit+Degeneratif" alt="Proteksi dari penyakit degeneratif sejak dini" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Jangan tunggu sampai diagnosis datang. <b>Persiapkan diri Anda sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 5 Malam -->
+        <div class="post-card" id="post-h5-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 5 - Malam</span>
+                <span class="post-number">Post 15/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15"><b>Bagaimana jika Anda didiagnosis penyakit kritis dan harus berhenti bekerja untuk berobat?</b>
+
+Pengobatan penyakit kritis bukan hanya mahal, tapi juga <u>membutuhkan waktu berbulan-bulan hingga bertahun-tahun, yang artinya Anda kehilangan penghasilan selama masa pemulihan</u>.
+
+<span class="highlight">Banyak pasien penyakit kritis yang terpaksa menjual aset atau berhutang besar karena tidak memiliki proteksi yang memadai.</span>
+
+<blockquote>"It is health that is real wealth and not pieces of gold and silver." - Mahatma Gandhi</blockquote>
+
+<b>MiEarly Critical Care</b> memberikan <i>santunan sekaligus saat diagnosis penyakit kritis, yang bisa digunakan untuk biaya pengobatan, pengganti penghasilan selama pemulihan, atau kebutuhan apapun tanpa perlu dipertanggungjawabkan penggunaannya</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Santunan+Penyakit+Kritis" alt="Santunan tunai saat diagnosis penyakit kritis" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Malam ini, hargai kesehatan Anda dengan mempersiapkan proteksi terbaik. <b>Hubungi kami untuk informasi lebih lanjut.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 6: Dana darurat vs asuransi - MiSave Pro + MiUltimate HealthCare -->
+
+        <!-- POST Hari 6 Pagi -->
+        <div class="post-card" id="post-h6-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 6 - Pagi</span>
+                <span class="post-number">Post 16/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16"><b>Apakah dana darurat saja sudah cukup untuk melindungi Anda dari risiko finansial?</b>
+
+Banyak orang berpikir: "Saya sudah punya tabungan darurat 6 bulan pengeluaran, saya aman." Tapi <u>satu kali rawat inap bisa menghabiskan dana darurat Anda dalam hitungan hari</u>.
+
+<span class="highlight">Dana darurat dan asuransi bukanlah pilihan salah satu, melainkan keduanya harus dimiliki untuk perlindungan finansial yang lengkap.</span>
+
+<blockquote>"Do not save what is left after spending, but spend what is left after saving." - Warren Buffett</blockquote>
+
+Kombinasi <b>MiSave Pro</b> untuk <i>membangun dana darurat yang terus bertumbuh dengan bunga kompetitif</i> dan <b>MiUltimate HealthCare</b> untuk <i>melindungi Anda dari biaya kesehatan yang tidak terduga</i> adalah strategi perlindungan finansial yang cerdas.
+
+<img src="https://via.placeholder.com/600x400?text=Dana+Darurat+%2B+Asuransi" alt="Kombinasi dana darurat dan asuransi untuk proteksi lengkap" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Jangan pilih salah satu. Miliki keduanya. <b>Konsultasi gratis sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 6 Siang -->
+        <div class="post-card" id="post-h6-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 6 - Siang</span>
+                <span class="post-number">Post 17/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17"><b>Berapa lama waktu yang Anda butuhkan untuk mengumpulkan dana darurat 6 bulan pengeluaran?</b>
+
+Mungkin 1-2 tahun menabung dengan disiplin. Tapi <u>satu musibah kesehatan bisa menguras semuanya dalam sekejap</u>. Lalu Anda harus mulai lagi dari nol.
+
+<span class="highlight">Itulah mengapa asuransi kesehatan menjadi tameng yang menjaga dana darurat Anda tetap utuh untuk keperluan lain.</span>
+
+<blockquote>"A budget is telling your money where to go instead of wondering where it went." - Dave Ramsey</blockquote>
+
+<b>MiSave Pro</b> membantu Anda <i>membangun dana darurat secara otomatis dengan setoran rutin yang fleksibel dan imbal hasil yang kompetitif</i>. Sementara <b>MiUltimate HealthCare</b> memastikan <i>biaya kesehatan tidak pernah mengganggu dana darurat yang sudah Anda bangun</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Strategi+Keuangan+Cerdas" alt="Strategi keuangan cerdas dengan tabungan dan asuransi" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Keuangan yang sehat dimulai dari strategi yang tepat. <b>Mari kita susun bersama.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 6 Malam -->
+        <div class="post-card" id="post-h6-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 6 - Malam</span>
+                <span class="post-number">Post 18/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-18"><b>Apa yang lebih bijak: mengeluarkan Rp 500 ribu per bulan untuk premi, atau Rp 500 juta saat sakit?</b>
+
+Banyak orang merasa premi asuransi itu mahal. Tapi <u>coba bandingkan dengan biaya satu kali rawat inap yang bisa menghabiskan tabungan bertahun-tahun</u>.
+
+<span class="highlight">Premi asuransi adalah biaya kecil yang Anda bayar hari ini untuk menghindari biaya besar yang mungkin datang besok.</span>
+
+<blockquote>"Price is what you pay. Value is what you get." - Warren Buffett</blockquote>
+
+Dengan kombinasi <b>MiSave Pro + MiUltimate HealthCare</b>, Anda mendapatkan <i>dua manfaat sekaligus: tabungan yang terus bertumbuh sebagai dana darurat, plus proteksi kesehatan menyeluruh yang menjaga keuangan Anda dari risiko tak terduga</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Investasi+Proteksi+Cerdas" alt="Investasi proteksi yang cerdas dan terjangkau" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Bijak hari ini, tenang esok hari. <b>Mulai langkah pertama Anda malam ini.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-18', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 7: Cinta sejati = memastikan keluarga aman - MiWealth Protection -->
+
+        <!-- POST Hari 7 Pagi -->
+        <div class="post-card" id="post-h7-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 7 - Pagi</span>
+                <span class="post-number">Post 19/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-19"><b>Apa bukti cinta sejati yang bisa Anda berikan kepada keluarga?</b>
+
+Bukan hadiah mahal. Bukan liburan mewah. Tapi <u>kepastian bahwa mereka akan baik-baik saja apapun yang terjadi pada Anda</u>.
+
+<span class="highlight">Cinta yang sesungguhnya adalah tindakan nyata untuk memastikan orang-orang terkasih tidak pernah menderita secara finansial.</span>
+
+<blockquote>"The greatest thing you'll ever learn is just to love and be loved in return." - Nat King Cole</blockquote>
+
+<b>MiWealth Protection</b> adalah <i>wujud cinta nyata Anda kepada keluarga. Dengan Uang Pertanggungan yang besar, keluarga Anda akan tetap memiliki sumber dana untuk hidup layak, melanjutkan pendidikan anak, dan melunasi semua kewajiban</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Cinta+Sejati+Untuk+Keluarga" alt="Cinta sejati diwujudkan dengan proteksi keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Cintai keluarga Anda dengan cara yang paling nyata. <b>Lindungi mereka sekarang.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-19', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 7 Siang -->
+        <div class="post-card" id="post-h7-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 7 - Siang</span>
+                <span class="post-number">Post 20/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-20"><b>Jika Anda meninggal besok, apakah keluarga Anda akan menangis karena kehilangan Anda saja, atau juga karena kehilangan sumber penghasilan?</b>
+
+Pertanyaan ini menyakitkan, tapi perlu. <u>Jangan biarkan kepergian Anda menjadi beban ganda bagi orang yang Anda cintai</u>.
+
+<span class="highlight">Seorang suami atau istri yang bijak tidak hanya mencintai dengan kata-kata, tapi juga dengan persiapan nyata untuk masa depan keluarga.</span>
+
+<blockquote>"Love is not about how much you say 'I love you,' but how much you can prove that it's true." - Les Brown</blockquote>
+
+Dengan <b>MiWealth Protection</b>, Anda memberikan <i>jaminan bahwa keluarga tidak perlu khawatir soal uang di saat mereka paling terpuruk. Dana santunan bisa digunakan untuk biaya hidup, pendidikan anak, melunasi utang, dan memulai usaha baru</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Proteksi+Jiwa+Wujud+Cinta" alt="Proteksi jiwa sebagai wujud cinta kepada keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Buktikan cinta Anda bukan hanya di saat hidup, tapi juga setelah Anda pergi. <b>Ambil tindakan hari ini.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-20', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 7 Malam -->
+        <div class="post-card" id="post-h7-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 7 - Malam</span>
+                <span class="post-number">Post 21/21</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-21"><b>Minggu ini kita sudah membahas banyak hal penting. Sekarang pertanyaannya: Apa yang akan Anda lakukan?</b>
+
+Anda sudah tahu risikonya. Anda sudah tahu solusinya. <u>Yang tersisa hanyalah keputusan Anda untuk bertindak atau tetap diam dan berharap yang terbaik</u>.
+
+<span class="highlight">Harapan bukanlah strategi. Tindakan nyata adalah satu-satunya cara untuk melindungi masa depan keluarga Anda.</span>
+
+<blockquote>"Action is the foundational key to all success." - Pablo Picasso</blockquote>
+
+<b>MiWealth Protection</b> hadir untuk Anda yang <i>ingin memberikan cinta sejati kepada keluarga dalam bentuk perlindungan finansial yang nyata dan terukur. Premi mulai dari ratusan ribu per bulan untuk Uang Pertanggungan hingga miliaran rupiah</i>.
+
+<img src="https://via.placeholder.com/600x400?text=Saatnya+Bertindak+Sekarang" alt="Saatnya bertindak untuk masa depan keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+
+Malam ini, sebelum tidur, ambil satu langkah kecil yang berarti besar. <b>Hubungi kami sekarang untuk konsultasi gratis.</b></p>
+                    <button class="copy-btn" onclick="copyText('caption-21', this)">Copy</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/" target="_blank" class="cta-btn cta-web">Info Produk Nasabah</a>
+                    <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" target="_blank" class="cta-btn cta-rekrut">Peluang Karir Agen</a>
+                    <a href="https://instagram.com/petrusjakub" target="_blank" class="cta-btn cta-ig">Follow @petrusjakub</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Satu Yang Terpenting - Week 6 | @petrusjakub</p>
+            <p style="margin-top:8px;">Konten Edukasi Asuransi Manulife Indonesia</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('satuyangterpenting-week6-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('satuyangterpenting-week6-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
