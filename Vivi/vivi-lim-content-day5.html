@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivi Lim - Content Day 5</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.95); border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.2em; color: #333; margin-bottom: 10px; }
+        header p { color: #666; font-size: 1.1em; }
+        .schedule-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.2em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a { display: inline-block; padding: 8px 16px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s; }
+        .nav-links a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4); }
+        .outfit-info { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .outfit-info h3 { color: #333; margin-bottom: 12px; }
+        .outfit-set { padding: 12px 16px; margin-bottom: 10px; border-radius: 10px; background: #f8f9ff; border-left: 4px solid #11998e; }
+        .outfit-set:last-child { border-left-color: #38ef7d; }
+        .outfit-set strong { color: #333; }
+        .post-card { background: rgba(255,255,255,0.97); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.2s, opacity 0.3s; position: relative; }
+        .post-card.hidden-task { opacity: 0.3; transform: scale(0.98); }
+        .post-card.hidden-task .post-content { display: none; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #11998e; }
+        .post-number { background: linear-gradient(135deg, #11998e, #38ef7d); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .section-label { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 600; margin-bottom: 12px; }
+        .label-caption { background: #e3f2fd; color: #1565c0; }
+        .label-prompt { background: #fce4ec; color: #c62828; }
+        .label-refs { background: #e8f5e9; color: #2e7d32; }
+        .caption-box, .prompt-box { background: #f8f9ff; border-radius: 12px; padding: 16px; margin-bottom: 15px; position: relative; border: 1px solid #e8eaf6; }
+        .caption-box p, .prompt-box p { color: #333; line-height: 1.7; font-size: 0.95em; padding-right: 40px; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8em; font-weight: 600; transition: transform 0.2s; }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .ref-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .ref-links a { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; background: #f1f8e9; color: #33691e; text-decoration: none; border-radius: 8px; font-size: 0.85em; border: 1px solid #c5e1a5; transition: background 0.2s; }
+        .ref-links a:hover { background: #dcedc8; }
+        .hide-btn { display: block; width: 100%; margin-top: 15px; padding: 10px; background: #f5f5f5; border: 2px dashed #ccc; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #666; font-weight: 500; }
+        .hide-btn:hover { background: #eeeeee; border-color: #999; }
+        .show-btn { display: block; width: 100%; margin-top: 10px; padding: 10px; background: #e8f5e9; border: 2px dashed #81c784; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #2e7d32; font-weight: 500; }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.8); font-size: 0.9em; }
+        @media (max-width: 600px) { body { padding: 10px; } header h1 { font-size: 1.6em; } .post-card { padding: 18px; } .nav-links a { padding: 6px 12px; font-size: 0.8em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vivi Lim - Day 5 Content Plan</h1>
+            <p>Jumat Adventure | Day Trip ke Kawah Putih Ciwidey</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Skenario: Cuti Jumat, road trip ke Ciwidey, explore alam, makan di kebun strawberry, pulang sore</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a><a href="#post-0700">07:00</a><a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a><a href="#post-1000">10:00</a><a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a><a href="#post-1300">13:00</a><a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a><a href="#post-1600">16:00</a><a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a><a href="#post-1900">19:00</a><a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a><a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (06:00 - 17:00):</strong> Hoodie oversized warna forest green + legging hitam + hiking boots coklat + bucket hat cream + mini backpack + kacamata hitam. Adventure look yang tetap stylish dan cocok untuk alam.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (17:00 - 22:00):</strong> Ganti ke flannel shirt merah-hitam (dibuka kancingnya) + kaos putih di dalam + celana cargo cream + sneakers + beanie hitam. Vibes: cozy evening post-adventure.
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header"><span class="post-time">06:00 WIB</span><span class="post-number">Post 1/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">JUMAT CUTI! Hari ini adventure day ke Kawah Putih Ciwidey. Udah lama pengen ke sana dan akhirnya hari ini terwujud!
+
+Bangun jam 5:30, siap-siap secepat kilat, dan sekarang udah on the way! Jalanan masih sepi, udara pagi Bandung segar banget.
+
+Sebagai orang yang suka tempat fotogenik DAN alam, Kawah Putih itu perfect destination. Alam + aesthetic = Vivi's paradise.
+
+Yang pernah ke Kawah Putih: tips dong! Yang belum: ayo kapan?
+
+Road trip mood: ON!</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Vivi pakai outfit image 2 (hoodie forest green + bucket hat), selfie di dalam mobil pagi hari. Background jendela mobil dengan pemandangan jalan dan langit pagi yang biru cerah. Ekspresi excited dan semangat, satu tangan peace sign. Pencahayaan pagi golden dari jendela mobil. Vibes: road trip morning excitement.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=road+trip+car+selfie+morning+excited+woman" target="_blank">Pinterest: Road Trip Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=hoodie+bucket+hat+adventure+outfit+woman" target="_blank">Pinterest: Adventure Outfit</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header"><span class="post-time">07:00 WIB</span><span class="post-number">Post 2/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Pit stop! Sarapan di warung pinggir jalan menuju Ciwidey. Makan nasi uduk + ayam goreng + teh panas. Makanan pinggir jalan itu punya magic tersendiri.
+
+Pemandangan sepanjang jalan ke Ciwidey: sawah, kebun teh, pegunungan. Bandung Selatan itu underrated banget sih keindahannya.
+
+Pantun perjalanan:
+Jalan berliku ke Ciwidey,
+Sarapan nasi uduk di tepi jalan,
+Pemandangan sawah dan gunung indah,
+Jiwa yang penat kini tersembuhkan!
+
+Yang suka road trip: ini vibes terbaik. Setuju?</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Vivi pakai outfit image 2, duduk di warung pinggir jalan dengan pemandangan sawah dan pegunungan di belakang. Di meja ada piring nasi uduk dan teh panas. Selfie dari atas dengan background alam yang hijau. Pencahayaan pagi cerah outdoor. Di latar ada beberapa pengunjung lokal. Vibes: road trip breakfast pitstop nature.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=warung+pinggir+jalan+ciwidey+bandung+nature" target="_blank">Pinterest: Warung Ciwidey</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bandung+selatan+sawah+mountain+view+morning" target="_blank">Pinterest: Bandung Selatan View</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header"><span class="post-time">08:00 WIB</span><span class="post-number">Post 3/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Lewat kebun teh! Hijau sejauh mata memandang. Ini yang bikin Bandung special: dalam 1-2 jam drive, kamu bisa nemu pemandangan kayak gini.
+
+Stop sebentar buat foto. Karena ga mungkin Vivi lewat pemandangan secantik ini tanpa dokumentasi. Content is life.
+
+Udara di sini beda banget. Sejuk, bersih, dan bikin paru-paru berterima kasih.
+
+Yang pernah lewat kebun teh Ciwidey: pasti paham. Yang belum: tambahkan ke wishlist!
+
+Nature heals everything.</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Vivi pakai outfit image 2, berdiri di tengah kebun teh yang hijau luas di area Ciwidey. Pose elegan dengan tangan terentang sedikit, menikmati pemandangan. Background hamparan kebun teh dengan pegunungan di kejauhan dan langit biru. Pencahayaan pagi cerah dengan udara sedikit berkabut. Angle wide shot dari belakang samping. Vibes: tea plantation adventure morning.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=ciwidey+tea+plantation+bandung+woman+portrait" target="_blank">Pinterest: Ciwidey Tea Plantation</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=tea+garden+green+mountain+foggy+morning" target="_blank">Pinterest: Tea Garden Morning</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header"><span class="post-time">09:00 WIB</span><span class="post-number">Post 4/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">SAMPAI DI KAWAH PUTIH! Dan wow... speechless. Warna airnya turquoise-putih, dikelilingi tebing dan kabut. Rasanya kayak masuk ke dunia lain.
+
+Dinginnya luar biasa, untung bawa hoodie tebal. Bau belerang juga lumayan kenceng tapi ya namanya juga kawah vulkanik.
+
+First impression: foto di Google ternyata ga lebay. Beneran sebagus itu.
+
+Yang bilang Kawah Putih overrated: KAMU SALAH. Ini masterpiece alam.
+
+Siap-siap foto banyak! Content goldmine!</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Vivi pakai outfit image 2, berdiri di tepi Kawah Putih Ciwidey dengan background danau kawah berwarna turquoise-putih dan tebing-tebing di sekelilingnya. Kabut tipis menyelimuti area. Pose casual berdiri dengan kedua tangan di saku hoodie, ekspresi takjub. Di latar ada beberapa wisatawan Indonesia tidak sadar kamera. Pencahayaan pagi dengan kabut, tone cool dan mystical. Angle medium full body dari depan. Vibes: Kawah Putih mystical beauty.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=kawah+putih+ciwidey+bandung+turquoise+lake" target="_blank">Pinterest: Kawah Putih</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=volcanic+crater+lake+foggy+woman+portrait" target="_blank">Pinterest: Crater Lake Portrait</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header"><span class="post-time">10:00 WIB</span><span class="post-number">Post 5/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Foto-foto di Kawah Putih! Setiap angle hasilnya bagus. Ini tempat yang literally ga perlu filter.
+
+Vivi udah ambil maybe 200 foto dalam 30 menit. Berlebihan? Mungkin. Tapi better lebih daripada kurang.
+
+Fun fact: Kawah Putih ini hasil letusan Gunung Patuha. Dari destruksi lahir keindahan. Deep? Banget.
+
+Puisi alam:
+Di tepi kawah putih berselimut kabut,
+Alam berbisik tentang keindahan,
+Jauh dari hiruk pikuk dunia kerja,
+Jiwa menemukan ketenangan yang dicari.
+
+Tag temen yang harus diajak ke sini!</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Vivi pakai outfit image 2, difotoin dari belakang sedang berdiri di tepi Kawah Putih, menatap ke arah danau. Rambut tertiup angin dari bawah bucket hat. Background panorama kawah putih yang luas dengan warna air yang dramatis dan tebing berkabut. Pencahayaan overcast mystical. Angle wide dari belakang. Vibes: contemplative nature moment epic landscape.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=kawah+putih+back+view+woman+landscape+epic" target="_blank">Pinterest: Kawah Putih Landscape</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman+back+view+crater+lake+nature+contemplative" target="_blank">Pinterest: Nature Contemplative</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header"><span class="post-time">11:00 WIB</span><span class="post-number">Post 6/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Explore area sekitar kawah! Ada jalan setapak di hutan pinus yang indah banget. Pohon-pohon tinggi menjulang, tanah berlumut, dan suara burung di mana-mana.
+
+Ini sih healing terbaik. Ga perlu bayar psikolog (becanda, tetep pergi ya kalo butuh). Tapi nature therapy itu real.
+
+Sebagai orang yang sehari-hari di depan laptop, momen kayak gini precious banget. Paru-paru bersyukur, mata istirahat dari layar.
+
+Yang butuh healing: pergi ke alam. Serius. Works wonders.</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Vivi pakai outfit image 2, berjalan di jalan setapak hutan pinus Ciwidey. Pose candid sedang berjalan dan sedikit menyentuh batang pohon pinus. Background hutan pinus tinggi dengan cahaya matahari menerobos sela-sela pohon, tanah berlumut. Di latar ada beberapa orang Indonesia berjalan di kejauhan. Pencahayaan dappled sunlight through trees. Angle medium dari depan. Vibes: forest walk peaceful nature.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=pine+forest+ciwidey+bandung+walking+path" target="_blank">Pinterest: Pine Forest Ciwidey</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman+walking+forest+path+sunlight+trees" target="_blank">Pinterest: Forest Walk Sunlight</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header"><span class="post-time">12:00 WIB</span><span class="post-number">Post 7/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Mampir ke kebun strawberry! Petik strawberry langsung dari kebun dan makan di tempat. Freshnya beda banget dari yang di supermarket.
+
+Manis, asem, juicy. Dan ada yang sebesar jempol! Vivi udah makan 10 biji sebelum sempet bayar (bayar tetep ya, Vivi bukan maling).
+
+Sebagai food lover, makan buah yang baru dipetik itu experience yang ga bisa diganti. Farm-to-mouth literally.
+
+Yang suka strawberry: dateng ke sini! Yang ga suka: kamu kehilangan banyak hal dalam hidup.</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Vivi pakai outfit image 2, di kebun strawberry Ciwidey. Pose cute jongkok di antara tanaman strawberry, satu tangan pegang strawberry merah besar dekat wajah, satu tangan pegang keranjang kecil berisi strawberry. Ekspresi happy dan playful. Background kebun strawberry hijau dengan polybag dan atap greenhouse. Pencahayaan siang cerah. Angle dari depan agak atas. Vibes: strawberry picking fun adventure.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=strawberry+picking+farm+woman+fun+bandung" target="_blank">Pinterest: Strawberry Picking</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=kebun+strawberry+ciwidey+bandung+greenhouse" target="_blank">Pinterest: Kebun Strawberry Ciwidey</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header"><span class="post-time">13:00 WIB</span><span class="post-number">Post 8/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Lunch di resto view sawah dan gunung. Menu: iga bakar + nasi liwet + sambal + lalapan + es kelapa muda. SURGA.
+
+Makan di alam terbuka dengan udara sejuk, pemandangan gunung, dan makanan yang enak. This is the life.
+
+Pantun siang:
+Iga bakar empuk menggoda,
+Nasi liwet harum semerbak,
+Makan siang di alam terbuka,
+Hidup terasa lengkap dan bahagia!
+
+Kalian makan siang dimana? Pasti ga se-epic ini kan? (Sombong dikit boleh ya).</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Vivi pakai outfit image 2, duduk di saung restoran outdoor dengan pemandangan sawah dan gunung. Di meja ada nasi liwet, iga bakar, dan es kelapa muda. Vivi selfie dari atas dengan background alam yang hijau dan gunung. Ekspresi super happy. Pencahayaan siang cerah outdoor. Di latar ada beberapa pengunjung di saung lain. Vibes: nature restaurant epic lunch view.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=saung+restaurant+mountain+view+ciwidey+bandung" target="_blank">Pinterest: Saung Restaurant Mountain</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=nasi+liwet+iga+bakar+indonesian+food" target="_blank">Pinterest: Nasi Liwet Iga Bakar</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header"><span class="post-time">14:00 WIB</span><span class="post-number">Post 9/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">Post-lunch: jalan santai di area perkebunan teh sebelah resto. Perut kenyang, hati senang, badan seger.
+
+Ini sih momen dimana Vivi mikir: "Kenapa ga tiap Jumat cuti aja ya?" (Karena nanti dipecat, Vi.)
+
+Tapi serius, sesekali take a day off dari rutinitas itu penting. Otak butuh reset, jiwa butuh isi ulang, dan Instagram butuh konten baru.
+
+Yang jarang cuti: coba deh sesekali. Lo deserve it. Kerjaan bisa ditinggal sehari, mental health ga bisa ditunda.
+
+Self-care is not selfish!</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Vivi pakai outfit image 2, berjalan santai di jalanan di antara kebun teh hijau. Pose candid sedang berjalan sambil menikmati pemandangan, satu tangan memegang bucket hat yang tertiup angin. Background hamparan kebun teh dengan langit biru dan awan putih. Pencahayaan siang cerah dengan soft shadows. Angle wide medium dari samping. Vibes: peaceful tea garden stroll.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=tea+plantation+walking+woman+hat+sunny" target="_blank">Pinterest: Tea Garden Walk</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=ciwidey+tea+garden+path+blue+sky" target="_blank">Pinterest: Ciwidey Tea Path</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header"><span class="post-time">15:00 WIB</span><span class="post-number">Post 10/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Mampir ke Situ Patenggang! Danau yang tenang dan dikelilingi hutan. Bisa naik perahu atau just duduk di tepi danau.
+
+Vivi pilih duduk di tepi danau aja, dengerin suara air dan burung. Simple tapi calming banget.
+
+Kadang kebahagiaan itu ga harus mahal atau ribet. Cukup duduk di alam, tutup mata, dan rasakan angin.
+
+Quote: "In every walk with nature, one receives far more than he seeks." - John Muir. Dan Vivi setuju 100%.
+
+Foto ini tanpa filter ya. Alam Bandung emang secantik itu.</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Vivi pakai outfit image 2, duduk di tepi danau Situ Patenggang, kaki hampir menyentuh air. Pose contemplative dari samping, menatap ke arah danau. Background danau tenang dengan pantulan pepohonan dan langit. Beberapa perahu kecil di kejauhan. Pencahayaan sore hari golden pada air. Angle medium wide dari samping. Vibes: serene lakeside contemplation.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=situ+patenggang+lake+ciwidey+bandung" target="_blank">Pinterest: Situ Patenggang</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman+sitting+lakeside+peaceful+nature" target="_blank">Pinterest: Lakeside Peaceful</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header"><span class="post-time">16:00 WIB</span><span class="post-number">Post 11/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Last stop sebelum pulang: ngopi dulu di kedai kecil di area Ciwidey. Hot coffee + pisang goreng + view pegunungan = afternoon perfection.
+
+Ini momen dimana Vivi reflects: hari ini luar biasa. Kawah Putih, kebun strawberry, hutan pinus, danau, dan sekarang ngopi di gunung. Packed day tapi ga exhausting.
+
+Besok Sabtu jadi masih bisa istirahat. Perfect planning if I do say so myself.
+
+Yang suka ngopi di tempat-tempat unik: Ciwidey punya banyak hidden gems!</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Vivi pakai outfit image 2, duduk di kedai kopi kecil outdoor di area pegunungan Ciwidey. Di meja ada cangkir kopi panas mengepul dan piring pisang goreng. Pose candid sedang meniup kopi sambil melihat pemandangan gunung. Background pegunungan hijau dan langit sore. Pencahayaan golden hour sore. Vibes: mountain coffee shop afternoon bliss.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=mountain+coffee+shop+outdoor+afternoon+view" target="_blank">Pinterest: Mountain Coffee Shop</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=hot+coffee+mountain+view+woman+golden+hour" target="_blank">Pinterest: Coffee Mountain Golden</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header"><span class="post-time">17:00 WIB</span><span class="post-number">Post 12/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Heading home! Ganti outfit ke mode cozy karena nanti malam mau mampir dulu ke suatu tempat di jalan pulang.
+
+Perjalanan pulang dari Ciwidey selalu bikin galau sedikit. Meninggalkan alam yang indah buat balik ke rutinitas. Tapi ya, hidup harus balanced kan.
+
+Sekali-kali escapism ke alam itu penting. Biar inget bahwa dunia itu luas, bukan cuma seukuran layar laptop.
+
+Yang juga pernah sedih pulang dari liburan: WE RELATE.
+
+See you next time, Ciwidey!</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Vivi pakai outfit image 2 (flannel merah-hitam + kaos putih + cargo cream + beanie), berdiri di area parkir dengan background pemandangan Ciwidey saat senja. Pose casual satu tangan wave goodbye ke pemandangan. Langit senja berwarna oranye di belakang pegunungan. Pencahayaan golden hour sore. Angle medium full body. Vibes: goodbye nature golden hour.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sunset+mountain+goodbye+wave+woman+golden" target="_blank">Pinterest: Sunset Mountain Goodbye</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=flannel+shirt+beanie+cargo+pants+woman+outdoor" target="_blank">Pinterest: Flannel Outdoor Look</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header"><span class="post-time">18:00 WIB</span><span class="post-number">Post 13/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Di perjalanan pulang, mampir ke spot makan yang viral: bakso urat di pinggir jalan Ciwidey! Katanya baksonya gede dan kuahnya juara.
+
+Dan ternyata... BENER. Baksonya segede bola tenis dan kuahnya gurih pake banget. Worth the stop!
+
+Sebagai anak Medan, Vivi appreciate banget makanan yang kuahnya kuat. Reminds me of home.
+
+Yang juga suka bakso: level kalian makan pake berapa cabai? Vivi: 5 sendok sambal. Fight me.
+
+Rating: 9/10! Would stop again.</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Vivi pakai outfit image 2, selfie di warung bakso pinggir jalan malam hari. Di meja ada mangkok bakso besar yang mengepul. Ekspresi excited. Background warung sederhana dengan lampu terang, pengunjung lokal di sekitar. Pencahayaan malam dari lampu warung. Angle selfie dari atas. Vibes: viral street food pitstop night.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=bakso+indonesia+street+food+big+bowl" target="_blank">Pinterest: Bakso Street Food</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=warung+makan+malam+indonesia+simple" target="_blank">Pinterest: Warung Malam</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header"><span class="post-time">19:00 WIB</span><span class="post-number">Post 14/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">On the road lagi. Dengerin musik sambil nikmatin perjalanan malam. Playlist hari ini: acoustic covers + indie Indonesia.
+
+Jalan malam di area Bandung Selatan itu gelap tapi tenang. Bintang-bintang keliatan terang, udara makin dingin.
+
+Momen-momen kayak gini yang bikin Vivi appreciate life. Ga perlu yang mewah, cukup perjalanan yang meaningful.
+
+Puisi malam:
+Jalan gelap diterangi bintang,
+Musik mengalun di telinga,
+Hati penuh oleh hari yang indah,
+Pulang dengan jiwa yang telah terisi!
+
+Safe driving everyone!</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Vivi pakai outfit image 2, selfie di dalam mobil malam hari. Wajah diterangi cahaya warm dari dashboard. Di luar jendela gelap dengan sedikit bintang terlihat. Earphone di telinga, ekspresi damai dan content. Pencahayaan malam dari dashboard mobil saja. Vibes: night drive peaceful playlist mood.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=night+drive+car+selfie+dashboard+light+woman" target="_blank">Pinterest: Night Drive Car Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=driving+night+stars+road+peaceful" target="_blank">Pinterest: Night Road Stars</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header"><span class="post-time">20:00 WIB</span><span class="post-number">Post 15/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Sampai rumah! Langsung mandi air hangat dan rasanya kayak reborn. Badan yang tadi penuh debu dan bau belerang sekarang wangi dan bersih.
+
+Setelah seharian di alam, pulang ke rumah terasa extra nyaman. Kasur terasa extra empuk. Selimut terasa extra hangat.
+
+Gratitude moment: bersyukur punya kesempatan explore alam yang indah, dan bersyukur juga punya rumah yang nyaman untuk pulang.
+
+Yang juga habis jalan seharian: mandi dulu baru rebahan ya! Hidup itu soal prioritas.</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Vivi pakai bathrobe putih, duduk di sofa ruang tamu dengan rambut masih basah dibungkus handuk. Pose relaxed pegang mug teh hangat. Background ruang tamu cozy dengan lampu warm dan bantal-bantal. Pencahayaan malam indoor warm. Ekspresi fresh dan relaxed setelah mandi. Vibes: post-adventure fresh home comfort.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=bathrobe+sofa+evening+relaxing+woman+tea" target="_blank">Pinterest: Bathrobe Relaxing</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=after+shower+fresh+cozy+home+evening" target="_blank">Pinterest: After Shower Home</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header"><span class="post-time">21:00 WIB</span><span class="post-number">Post 16/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Lagi sort foto-foto hari ini. Dari 500+ foto, harus pilih yang terbaik buat gallery. Struggle nyata content creator part-time.
+
+Tapi seru sih, liat lagi semua momen hari ini. Kawah Putih yang magical, strawberry yang manis, hutan pinus yang tenang.
+
+Besok Sabtu, jadi masih bisa santai edit foto dan istirahat. Weekend plan: literally nothing. Dan itu VALID.
+
+Yang juga suka sort foto setelah jalan: pasti relate kan? Satu trip bisa 1000 foto easy.
+
+Gallery dump coming soon!</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Vivi pakai outfit santai rumah (oversized tee + celana pendek), duduk di kasur dengan laptop terbuka menampilkan gallery foto. Di sekeliling ada bantal-bantal dan selimut. Pose candid sedang scroll foto di laptop, ekspresi nostalgic smile. Pencahayaan malam dari laptop dan lampu tidur warm. Vibes: sorting photos bedtime cozy.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=editing+photos+laptop+bed+night+woman+cozy" target="_blank">Pinterest: Editing Photos Bed</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sorting+photos+laptop+bedroom+night+warm" target="_blank">Pinterest: Sorting Photos Night</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header"><span class="post-time">22:00 WIB</span><span class="post-number">Post 17/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Good night! Day 5 = best day so far. Nature really does heal everything.
+
+Terima kasih Ciwidey, terima kasih Kawah Putih, terima kasih alam Bandung yang selalu indah.
+
+Dan terima kasih untuk kalian yang udah nemenin virtual trip Vivi hari ini. Semoga bisa menginspirasi untuk keluar dan explore alam sekitar.
+
+Besok Sabtu! Rencana: istirahat total. Full recharge mode.
+
+Sweet dreams, beautiful souls! Sampai jumpa besok!
+
+Follow Vivi untuk cerita harian yang seru!</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Vivi pakai outfit tidur (tank top + celana panjang katun), sudah berbaring di kasur dengan selimut ditarik sampai dada. Selfie dari atas dengan ekspresi sleepy satisfied. Di nakas ada lampu tidur menyala warm dan foto polaroid dari trip hari ini. Background kamar gelap dengan cahaya warm dari lampu tidur saja. Vibes: happy tired good night adventure day.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=bedtime+selfie+sleepy+happy+night+cozy" target="_blank">Pinterest: Bedtime Sleepy Happy</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy+bed+night+lamp+warm+polaroid" target="_blank">Pinterest: Cozy Bed Night Lamp</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Vivi Lim Content Plan - Day 5 | Jumat Adventure Ciwidey</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied');
+                setTimeout(() => { button.innerText = originalText; button.classList.remove('copied'); }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea'); textArea.value = text; textArea.style.position = 'fixed'; textArea.style.left = '-9999px';
+                document.body.appendChild(textArea); textArea.select(); document.execCommand('copy'); document.body.removeChild(textArea);
+                const originalText = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied');
+                setTimeout(() => { button.innerText = originalText; button.classList.remove('copied'); }, 2000);
+            });
+        }
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) { card.classList.remove('hidden-task'); button.innerText = 'Sembunyikan Post (Sudah Selesai)'; button.classList.remove('show-btn'); button.classList.add('hide-btn'); }
+            else { card.classList.add('hidden-task'); button.innerText = 'Tampilkan Kembali'; button.classList.remove('hide-btn'); button.classList.add('show-btn'); }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => { const isHidden = localStorage.getItem('vivi-day5-task-' + index); if (isHidden === 'true') { card.classList.add('hidden-task'); const btn = card.querySelector('.hide-btn, .show-btn'); if (btn) { btn.innerText = 'Tampilkan Kembali'; btn.classList.remove('hide-btn'); btn.classList.add('show-btn'); } } });
+        });
+        const originalToggle = toggleTask;
+        toggleTask = function(button) { originalToggle(button); const cards = document.querySelectorAll('.post-card'); cards.forEach((card, index) => { localStorage.setItem('vivi-day5-task-' + index, card.classList.contains('hidden-task')); }); };
+    </script>
+</body>
+</html>

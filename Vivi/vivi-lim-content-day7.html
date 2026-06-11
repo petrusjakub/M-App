@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivi Lim - Content Day 7</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.95); border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.2em; color: #333; margin-bottom: 10px; }
+        header p { color: #666; font-size: 1.1em; }
+        .schedule-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.2em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a { display: inline-block; padding: 8px 16px; background: linear-gradient(135deg, #89f7fe, #66a6ff); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s; }
+        .nav-links a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 166, 255, 0.4); }
+        .outfit-info { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .outfit-info h3 { color: #333; margin-bottom: 12px; }
+        .outfit-set { padding: 12px 16px; margin-bottom: 10px; border-radius: 10px; background: #f8f9ff; border-left: 4px solid #89f7fe; }
+        .outfit-set:last-child { border-left-color: #66a6ff; }
+        .outfit-set strong { color: #333; }
+        .post-card { background: rgba(255,255,255,0.97); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.2s, opacity 0.3s; position: relative; }
+        .post-card.hidden-task { opacity: 0.3; transform: scale(0.98); }
+        .post-card.hidden-task .post-content { display: none; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #66a6ff; }
+        .post-number { background: linear-gradient(135deg, #89f7fe, #66a6ff); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .section-label { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 600; margin-bottom: 12px; }
+        .label-caption { background: #e3f2fd; color: #1565c0; }
+        .label-prompt { background: #fce4ec; color: #c62828; }
+        .label-refs { background: #e8f5e9; color: #2e7d32; }
+        .caption-box, .prompt-box { background: #f8f9ff; border-radius: 12px; padding: 16px; margin-bottom: 15px; position: relative; border: 1px solid #e8eaf6; }
+        .caption-box p, .prompt-box p { color: #333; line-height: 1.7; font-size: 0.95em; padding-right: 40px; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #89f7fe, #66a6ff); color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8em; font-weight: 600; transition: transform 0.2s; }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .ref-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .ref-links a { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; background: #f1f8e9; color: #33691e; text-decoration: none; border-radius: 8px; font-size: 0.85em; border: 1px solid #c5e1a5; transition: background 0.2s; }
+        .ref-links a:hover { background: #dcedc8; }
+        .hide-btn { display: block; width: 100%; margin-top: 15px; padding: 10px; background: #f5f5f5; border: 2px dashed #ccc; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #666; font-weight: 500; }
+        .hide-btn:hover { background: #eeeeee; border-color: #999; }
+        .show-btn { display: block; width: 100%; margin-top: 10px; padding: 10px; background: #e8f5e9; border: 2px dashed #81c784; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #2e7d32; font-weight: 500; }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.8); font-size: 0.9em; }
+        @media (max-width: 600px) { body { padding: 10px; } header h1 { font-size: 1.6em; } .post-card { padding: 18px; } .nav-links a { padding: 6px 12px; font-size: 0.8em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vivi Lim - Day 7 Content Plan</h1>
+            <p>Minggu Tenang | Self-Care Sunday + Sunset di Teras Ciumbuleuit</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Skenario: Full self-care di rumah, sore ke cafe aesthetic di Ciumbuleuit untuk sunset, malam prep minggu depan</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a><a href="#post-0700">07:00</a><a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a><a href="#post-1000">10:00</a><a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a><a href="#post-1300">13:00</a><a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a><a href="#post-1600">16:00</a><a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a><a href="#post-1900">19:00</a><a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a><a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (06:00 - 16:00):</strong> Matching loungewear set warna lilac (sweater + celana panjang) + fuzzy socks + rambut di-claw clip. Full comfort mode untuk self-care day di rumah.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (17:00 - 22:00):</strong> Wrap dress warna sage green selutut + flat sandals woven + straw bag kecil + anting hoop gold. Vibes: relaxed feminine Sunday evening look.
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header"><span class="post-time">06:00 WIB</span><span class="post-number">Post 1/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Minggu pagi. Bangun tanpa alarm. Ini sih kemewahan terbesar dalam hidup: bangun natural tanpa bunyi berisik di telinga.
+
+Hari ini agenda: NOTHING PRODUCTIVE. Full self-care, full rest, full recharge. Besok Senin menanti, jadi hari ini tubuh dan jiwa harus di-isi ulang.
+
+Bandung pagi ini cerah dan sejuk. Perfect Sunday weather.
+
+Yang juga punya tradisi Self-Care Sunday: high five! Yang setiap hari self-care (alias rebahan terus): itu bukan self-care, itu... ya gapapa juga sih.
+
+Happy Sunday, everyone!</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Vivi pakai outfit image 2 (loungewear lilac), POV selfie baru bangun di kasur yang berantakan nyaman. Cahaya pagi cerah masuk dari jendela, tirai tipis berkibar. Rambut berantakan cute, ekspresi fresh dan well-rested, senyum natural. Satu tangan stretch ke atas. Background kamar tidur bright dan airy. Pencahayaan morning bright natural. Vibes: lazy Sunday morning well-rested.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sunday+morning+waking+up+natural+bright+bedroom" target="_blank">Pinterest: Sunday Morning Wake Up</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=lilac+loungewear+set+cozy+morning" target="_blank">Pinterest: Lilac Loungewear</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header"><span class="post-time">07:00 WIB</span><span class="post-number">Post 2/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Skincare Sunday dimulai! Double cleanse, toner, serum, sheet mask. The whole nine yards.
+
+Self-care itu bukan luxury, itu necessity. Kulit yang dirawat = kulit yang happy = foto yang bagus (priorities clear).
+
+Sambil sheet mask, Vivi dengerin music jazz slow dan minum air hangat lemon. Ini definition of peace.
+
+Pantun skincare:
+Sheet mask dingin di wajah,
+Serum meresap pori terbuka,
+Merawat diri bukan sekadar gaya,
+Tapi bentuk cinta pada tubuh sendiri!
+
+Skincare routine kalian apa aja? Share dong!</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Vivi pakai outfit image 2, dengan sheet mask di wajah, selfie di bathroom/vanity area. Satu tangan pegang gelas air lemon. Ekspresi lucu dengan sheet mask. Background bathroom bersih dengan produk skincare tertata rapi. Pencahayaan pagi bright dari jendela bathroom. Vibes: self-care Sunday skincare routine fun.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sheet+mask+selfie+skincare+routine+woman+fun" target="_blank">Pinterest: Sheet Mask Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=skincare+routine+bathroom+products+aesthetic" target="_blank">Pinterest: Skincare Routine</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header"><span class="post-time">08:00 WIB</span><span class="post-number">Post 3/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Brunch time! Karena Minggu, sarapannya agak siangan dan lebih fancy: pancake homemade + buah-buahan + maple syrup + kopi susu.
+
+Bikin pancake sendiri itu surprisingly gampang. Tepung, telur, susu, dan sedikit vanilla. 10 menit di kompor dan voila!
+
+Sunday brunch at home itu underrated. Ga perlu antri di cafe, ga perlu bayar mahal, dan bisa makan pake piyama.
+
+Yang juga bikin brunch sendiri: share kreasi! Yang pesen GoFood: equally valid. No judgment here.
+
+Selamat makan!</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Vivi pakai outfit image 2, duduk di meja makan dengan piring pancake stack yang cantik bertoping buah berry dan maple syrup, plus segelas kopi susu. Pose candid sedang menuang syrup dari atas, ekspresi focused dan happy. Background dapur bright dan clean. Pencahayaan pagi cerah. Angle dari atas menampilkan flat lay makanan dan sebagian wajah Vivi. Vibes: homemade Sunday brunch aesthetic.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=homemade+pancake+brunch+sunday+aesthetic+berries" target="_blank">Pinterest: Pancake Brunch Aesthetic</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sunday+brunch+home+bright+kitchen+woman" target="_blank">Pinterest: Sunday Brunch Home</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header"><span class="post-time">09:00 WIB</span><span class="post-number">Post 4/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Bersih-bersih rumah! Iya, Sunday cleaning juga termasuk self-care. Lingkungan bersih = pikiran bersih.
+
+Sambil beresin rumah, Vivi dengerin playlist upbeat. Sapu, pel, rapiin barang, cuci baju. Domestic goddess mode: activated.
+
+Ada yang bilang: "Your space reflects your mind." Kalo gitu, kamar Vivi sebelum diberesin menggambarkan chaos total. Tapi sekarang udah rapi!
+
+Yang juga Minggu bersih-bersih: kita kompak! Yang males beresin: it's okay, mulai dari satu sudut aja dulu.
+
+Clean space = happy place!</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Vivi pakai outfit image 2, di ruang tamu sedang merapikan bantal sofa sambil berjoget kecil (earphone di telinga). Background ruang tamu yang setengah rapi - beberapa area sudah bersih, beberapa masih progress. Pencahayaan pagi cerah dari jendela besar. Ekspresi fun dan energized. Vibes: Sunday cleaning dancing fun.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sunday+cleaning+dancing+woman+living+room+fun" target="_blank">Pinterest: Sunday Cleaning Fun</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=organizing+home+bright+minimalist+woman" target="_blank">Pinterest: Organizing Home</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header"><span class="post-time">10:00 WIB</span><span class="post-number">Post 5/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Rumah udah bersih! Sekarang pamper time: hair mask + nail care. Rambut di-treatment, kuku di-file dan kasih clear polish.
+
+Detail-detail kecil kayak gini yang bikin Vivi merasa put-together. You don't need a salon for self-care. DIY aja di rumah.
+
+Fun fact: Vivi punya koleksi nail polish 20+ warna tapi 90% pakenya clear polish doang. Classic choice.
+
+Yang juga suka DIY self-care di rumah: apa treatment favorit kalian? Hair mask? Face mask? Foot soak?
+
+Self-care doesn't have to be expensive!</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Vivi pakai outfit image 2, duduk di sofa dengan rambut dibungkus handuk (hair mask), sedang mengaplikasikan nail polish di kuku tangan. Di meja kecil ada berbagai produk self-care: nail file, polish, hand cream. Background ruang tamu bersih dan bright. Pencahayaan siang natural. Pose focused pada kuku. Vibes: DIY self-care nail treatment home.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=home+nail+care+self+care+sunday+woman" target="_blank">Pinterest: Home Nail Care</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=diy+self+care+day+home+pamper+routine" target="_blank">Pinterest: DIY Self Care Day</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header"><span class="post-time">11:00 WIB</span><span class="post-number">Post 6/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Reading time! Baca buku yang dibeli di Braga kemarin. Duduk di sofa dengan secangkir teh chamomile, dan tenggelam dalam cerita.
+
+Baca buku itu salah satu bentuk self-care terbaik menurut Vivi. Otak diajak jalan-jalan tanpa harus kemana-mana. Imajinasi works overtime.
+
+Kadang kita terlalu banyak scroll dan kurang baca. Padahal buku itu portal ke dunia lain.
+
+Puisi Minggu:
+Halaman demi halaman terbuai,
+Cerita mengalir seperti sungai,
+Di sofa dengan teh dan selimut,
+Minggu terasa damai sempurna!
+
+Buku apa yang lagi kalian baca?</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Vivi pakai outfit image 2, duduk nyaman di sofa dengan kaki ditekuk, membaca buku. Di samping ada cangkir teh dan selimut tipis. Rambut sudah kering natural waves. Background ruang tamu minimalis bright dengan tanaman dan jendela besar. Pencahayaan siang natural bright dan warm. Pose candid fokus membaca. Vibes: peaceful Sunday reading cozy.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=woman+reading+book+sofa+cozy+sunday+tea" target="_blank">Pinterest: Reading Sofa Cozy</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sunday+reading+bright+living+room+peaceful" target="_blank">Pinterest: Sunday Reading Bright</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header"><span class="post-time">12:00 WIB</span><span class="post-number">Post 7/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Lunch: sisa soto Medan kemarin! Dipanasin dan masih enak banget. Bahkan some people bilang masakan yang dipanasin ulang itu lebih enak karena bumbunya makin meresap.
+
+Ekonomis, praktis, dan lezat. Triple win.
+
+Makan siang Minggu di rumah dengan masakan sendiri itu rasanya warm banget. Comfort in every spoon.
+
+Yang juga suka makan sisa masakan kemarin: we're practical queens/kings. Yang buang makanan: jangan ya, sayang!
+
+Selamat makan siang santai!</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Vivi pakai outfit image 2, duduk di meja makan kecil dengan semangkok soto Medan yang mengepul. Pose candid sedang menyendok sambil senyum satisfied. Background dapur/ruang makan bersih dan minimalis. Pencahayaan siang natural. Angle dari depan medium. Vibes: simple Sunday lunch home comfort food.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=home+lunch+soup+bowl+simple+woman+comfort+food" target="_blank">Pinterest: Home Lunch Comfort</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=soto+medan+warm+soup+bowl+homemade" target="_blank">Pinterest: Soto Medan Homemade</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header"><span class="post-time">13:00 WIB</span><span class="post-number">Post 8/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Afternoon nap. Yang ini ga perlu justifikasi. Minggu = boleh tidur siang. Titik.
+
+Kasur, selimut, dan suara hujan rintik-rintik di luar (Bandung emang suka hujan siang). Perfect sleeping condition.
+
+Vivi set alarm 1 jam biar ga kebablasan. Tapi kemungkinan besar alarm itu bakal di-snooze 3 kali.
+
+Yang juga tim tidur siang Minggu: ini self-care paling basic tapi paling effective.
+
+Yang ga bisa tidur siang: we're different species dan itu okay.
+
+See you in an hour (or two)!</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Vivi pakai outfit image 2, foto dari angle atas sedang tidur siang di kasur yang nyaman. Selimut ditarik sampai pinggang, satu tangan di bawah bantal. Ekspresi damai tidur. Background kamar dengan jendela yang menampilkan hujan rintik di luar (blur). Pencahayaan siang agak redup karena mendung. Vibes: peaceful Sunday afternoon nap rainy day.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=afternoon+nap+cozy+bed+rainy+day+woman" target="_blank">Pinterest: Afternoon Nap Rainy</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sleeping+peacefully+bed+rain+window+cozy" target="_blank">Pinterest: Sleeping Rain Window</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header"><span class="post-time">14:00 WIB</span><span class="post-number">Post 9/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">Bangun! Ternyata tidur 1.5 jam (alarm di-snooze beneran). Tapi sekarang badan fresh banget.
+
+Hujan udah reda, matahari mulai keluar lagi. Bandung sore Minggu: sejuk, cerah, dan inviting.
+
+Sambil minum kopi sore, Vivi planning nanti mau ke cafe di Ciumbuleuit buat nonton sunset. Ada tempat baru yang katanya view-nya amazing.
+
+Who else loves a good sunset? Vivi rela jalan jauh demi golden hour yang bagus.
+
+Afternoon coffee first, lalu siap-siap!</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Vivi pakai outfit image 2, duduk di kursi balkon/teras kecil sambil pegang mug kopi sore. Background langit setelah hujan - cerah dengan beberapa awan putih, tanaman di balkon basah oleh hujan tadi. Pencahayaan sore cerah post-rain. Ekspresi refreshed dan contemplative. Vibes: after nap afternoon coffee balcony post-rain.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=afternoon+coffee+balcony+after+rain+fresh" target="_blank">Pinterest: Balcony Coffee After Rain</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=post+rain+sky+clear+balcony+plants+woman" target="_blank">Pinterest: Post Rain Sky Clear</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header"><span class="post-time">15:00 WIB</span><span class="post-number">Post 10/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Journaling session! Sebelum minggu baru, Vivi suka refleksi minggu yang lewat. Apa yang went well, apa yang bisa improved, dan apa yang mau dicapai minggu depan.
+
+Week recap: produktif di kantor, adventure di Ciwidey, masak Medan, nonton live music. Pretty good week!
+
+Journaling itu bukan harus panjang lebar. Kadang 3 bullet points aja cukup: grateful for, learned, want.
+
+Yang juga suka journaling: share method kalian! Yang ga suka nulis: voice note juga counts kok.
+
+Reflection is key to growth!</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Vivi pakai outfit image 2, duduk di meja kecil dekat jendela, menulis di journal/planner baru yang dibeli kemarin. Di meja ada pulpen, sticker, dan cangkir teh. Pose candid fokus menulis. Background jendela dengan cahaya sore cerah. Pencahayaan golden afternoon. Angle dari atas samping menampilkan journal dan tangan Vivi. Vibes: Sunday afternoon journaling reflection golden light.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=journaling+afternoon+window+light+planner+woman" target="_blank">Pinterest: Journaling Window Light</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=sunday+planning+journal+golden+hour+desk" target="_blank">Pinterest: Sunday Planning Journal</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header"><span class="post-time">16:00 WIB</span><span class="post-number">Post 11/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Getting ready buat keluar! Ganti dari loungewear ke wrap dress sage green. Transisi dari homebody ke outdoor mode.
+
+Tujuan sore ini: cafe di Ciumbuleuit yang punya rooftop view Bandung + sunset. Udah cek cuaca dan hari ini prediksi sunset bagus.
+
+Minggu sore di Bandung harus dimanfaatkan. Sebelum Senin dateng dan menyerang lagi.
+
+Yang juga punya tradisi jalan Minggu sore: it's the best therapy. Yang ga kemana-mana: nonton sunset dari jendela juga valid kok!
+
+Let's chase the sunset!</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Vivi pakai outfit image 2 malam (wrap dress sage green + flat sandals + straw bag), mirror selfie full body. Rambut ditata natural waves, makeup minimal fresh. Pose feminine satu tangan di dress sambil sedikit twirl. Background cermin kamar dengan pencahayaan sore golden. Vibes: Sunday evening feminine effortless OOTD.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sage+green+wrap+dress+Sunday+outfit+feminine" target="_blank">Pinterest: Sage Green Wrap Dress</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=feminine+dress+mirror+selfie+golden+light" target="_blank">Pinterest: Feminine Mirror Selfie</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header"><span class="post-time">17:00 WIB</span><span class="post-number">Post 12/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Sampai di cafe Ciumbuleuit! Tempatnya ternyata LEBIH BAGUS dari foto. View-nya 180 derajat: kota Bandung di bawah, gunung di kejauhan, dan langit yang mulai berubah warna.
+
+Ini sih hidden gem Bandung. Belum terlalu rame, suasananya intimate, dan kopi-nya juga enak.
+
+Sebagai seseorang yang suka tempat fotogenik, Vivi kasih rating 10/10 untuk tempat ini.
+
+Tag temen yang harus diajak ke sini! Save post ini buat reference nanti.
+
+Sunset countdown: T minus 1 jam!</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Vivi pakai outfit image 2, berdiri di area rooftop cafe Ciumbuleuit dengan pemandangan kota Bandung yang luas di bawah. Pose elegan satu tangan di railing, angin meniup rambut dan dress. Background panorama kota Bandung dengan gunung dan langit sore yang mulai berubah warna. Di latar ada beberapa pengunjung di meja-meja. Pencahayaan pre-sunset golden. Angle medium wide dari samping. Vibes: rooftop cafe stunning city view golden hour.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=rooftop+cafe+bandung+ciumbuleuit+city+view+sunset" target="_blank">Pinterest: Rooftop Cafe Ciumbuleuit</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=woman+rooftop+city+view+dress+golden+hour" target="_blank">Pinterest: Rooftop Golden Hour</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header"><span class="post-time">18:00 WIB</span><span class="post-number">Post 13/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">SUNSET! Dan WOW. Langit Bandung sore ini luar biasa. Warna oranye, pink, ungu, semuanya blend sempurna. Gratis tapi lebih indah dari lukisan mahal.
+
+Momen ini yang Vivi paling suka: saat matahari turun dan dunia berubah warna. Romantic, dramatic, dan magical sekaligus.
+
+Ga ada caption yang cukup buat describe pemandangan ini. Sometimes you just have to be present and grateful.
+
+Puisi sunset:
+Matahari turun di ufuk barat,
+Langit berubah jadi kanvas seni,
+Di antara warna yang berlari,
+Vivi menemukan kedamaian hati!
+
+Sunset di kota kalian kayak gimana?</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Vivi pakai outfit image 2, silhouette dari samping dengan background sunset Bandung yang spektakuler - langit penuh warna oranye, pink, ungu. Pose elegan berdiri di rooftop, tangan di railing, melihat ke arah sunset. Panorama kota Bandung di bawah dengan lampu mulai menyala. Pencahayaan sunset dramatic golden-pink. Angle medium wide silhouette. Vibes: epic sunset rooftop silhouette dramatic sky.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sunset+silhouette+woman+rooftop+dramatic+sky" target="_blank">Pinterest: Sunset Silhouette Rooftop</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bandung+sunset+orange+pink+purple+city+view" target="_blank">Pinterest: Bandung Sunset Colors</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header"><span class="post-time">19:00 WIB</span><span class="post-number">Post 14/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Dinner di cafe ini juga! Menu: pasta aglio olio + salad + jus alpukat. Light dinner karena besok Senin badan harus ringan dan siap perang.
+
+Suasana cafe malam ini: lampu-lampu lilin, musik acoustic live kecil, dan bintang-bintang mulai keliatan (Ciumbuleuit posisinya tinggi jadi bintangnya terang).
+
+Momen perfect buat close the week. Grateful for everything this week brought.
+
+Yang juga suka dinner dengan view: tempat favorit kalian dimana? Bandung punya terlalu banyak pilihan sih.
+
+Cheers to a good week!</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Vivi pakai outfit image 2, duduk di meja cafe rooftop malam hari. Di meja ada piring pasta dan lilin kecil. Pose candid sedang makan sambil tersenyum. Background langit malam dengan bintang-bintang dan city lights Bandung di kejauhan. Lampu lilin dan string lights di cafe. Pencahayaan malam warm dari lilin dan lampu. Vibes: romantic Sunday dinner rooftop stars city lights.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=rooftop+dinner+candle+night+stars+city+lights" target="_blank">Pinterest: Rooftop Dinner Night</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=pasta+dinner+candle+romantic+woman+cafe" target="_blank">Pinterest: Pasta Dinner Romantic</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header"><span class="post-time">20:00 WIB</span><span class="post-number">Post 15/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Heading home! Perjalanan turun dari Ciumbuleuit malam-malam itu cantik. Lampu-lampu kota dari atas, jalanan berkelok, dan udara malam yang bikin segar.
+
+Week 1 sebagai content creator: DONE. 7 hari full konten, 7 cerita berbeda, 7 skenario unik. Dan semuanya di kota tercinta, Bandung.
+
+Thank you for following along! Kalian yang nemenin, like, komen, dan share bikin Vivi semangat terus.
+
+Minggu depan: cerita baru, adventure baru, konten baru. Stay tuned!
+
+Safe driving for everyone on the road!</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Vivi pakai outfit image 2, selfie di dalam mobil/grab malam hari dengan background jendela menampilkan kota Bandung dari atas (city lights dari ketinggian Ciumbuleuit). Ekspresi happy dan grateful. Pencahayaan dari lampu mobil dan city lights. Vibes: driving home city lights from above night happy.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=car+night+city+lights+above+woman+selfie+happy" target="_blank">Pinterest: Car Night City Lights</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bandung+night+lights+from+above+ciumbuleuit" target="_blank">Pinterest: Bandung Night From Above</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header"><span class="post-time">21:00 WIB</span><span class="post-number">Post 16/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Di rumah! Sunday night prep: siapin baju buat besok Senin, beresin tas, dan set alarm (sayangnya).
+
+Sebagai ladyboss yang organized (sometimes), Vivi percaya Sunday night prep bikin Senin pagi jauh lebih smooth. Ga perlu panik cari baju atau lupa bawa charger.
+
+Pantun Minggu malam:
+Baju Senin sudah disiapkan,
+Alarm sudah di-set rapi,
+Weekend indah telah terlewati,
+Senin baru siap untuk ditaklukkan!
+
+Yang juga prep malam Minggu: kita squad yang sama. Yang spontan: good luck besok pagi!</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Vivi sudah ganti ke outfit tidur (oversized tee putih + shorts), di kamar sedang menyiapkan outfit Senin di gantungan baju. Pose candid memegang hanger dengan baju kerja. Background kamar rapi dengan lemari terbuka dan beberapa pilihan outfit terlihat. Pencahayaan malam indoor warm. Vibes: Sunday night prep organized ladyboss.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=sunday+night+prep+outfit+planning+woman+closet" target="_blank">Pinterest: Sunday Night Prep</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=organizing+clothes+wardrobe+evening+woman" target="_blank">Pinterest: Organizing Wardrobe</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header"><span class="post-time">22:00 WIB</span><span class="post-number">Post 17/17</span></div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Dan sampailah kita di penghujung Day 7. Minggu pertama konten Vivi Lim resmi selesai!
+
+7 hari, 7 cerita, 119 posts. From Senin produktif sampai Minggu self-care. Dari kantor sampai Kawah Putih. Dari gym sampai live music.
+
+Terima kasih Bandung, terima kasih semuanya yang udah ikut perjalanan ini. Vivi harap konten ini menghibur, menginspirasi, dan bikin kalian senyum.
+
+Sampai jumpa di minggu-minggu berikutnya! Cerita Vivi belum selesai.
+
+Good night, beautiful people. You are loved. You are enough. Sweet dreams!
+
+Follow Vivi untuk cerita berikutnya!</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Vivi pakai outfit tidur, sudah berbaring di kasur dengan selimut tebal. Pose selfie dari atas, ekspresi grateful dan sleepy happy, satu tangan bikin heart sign. Di nakas ada lampu tidur warm, buku, dan segelas air. Background kamar gelap cozy dengan hanya cahaya lampu tidur. Pencahayaan warm dim intimate. Vibes: final good night grateful heart peaceful ending.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=good+night+selfie+bed+grateful+heart+sign+cozy" target="_blank">Pinterest: Good Night Heart Sign</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bedroom+night+warm+lamp+peaceful+sleeping" target="_blank">Pinterest: Peaceful Bedroom Night</a>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Vivi Lim Content Plan - Day 7 | Minggu Self-Care + Sunset Ciumbuleuit</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+            <p style="margin-top:10px; font-weight:bold;">Week 1 Complete! Thank you for following Vivi's journey!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied');
+                setTimeout(() => { button.innerText = originalText; button.classList.remove('copied'); }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea'); textArea.value = text; textArea.style.position = 'fixed'; textArea.style.left = '-9999px';
+                document.body.appendChild(textArea); textArea.select(); document.execCommand('copy'); document.body.removeChild(textArea);
+                const originalText = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied');
+                setTimeout(() => { button.innerText = originalText; button.classList.remove('copied'); }, 2000);
+            });
+        }
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) { card.classList.remove('hidden-task'); button.innerText = 'Sembunyikan Post (Sudah Selesai)'; button.classList.remove('show-btn'); button.classList.add('hide-btn'); }
+            else { card.classList.add('hidden-task'); button.innerText = 'Tampilkan Kembali'; button.classList.remove('hide-btn'); button.classList.add('show-btn'); }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => { const isHidden = localStorage.getItem('vivi-day7-task-' + index); if (isHidden === 'true') { card.classList.add('hidden-task'); const btn = card.querySelector('.hide-btn, .show-btn'); if (btn) { btn.innerText = 'Tampilkan Kembali'; btn.classList.remove('hide-btn'); btn.classList.add('show-btn'); } } });
+        });
+        const originalToggle = toggleTask;
+        toggleTask = function(button) { originalToggle(button); const cards = document.querySelectorAll('.post-card'); cards.forEach((card, index) => { localStorage.setItem('vivi-day7-task-' + index, card.classList.contains('hidden-task')); }); };
+    </script>
+</body>
+</html>
