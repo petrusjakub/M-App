@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrusjakub - Threads Content Day 5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.97);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 52, 96, 0.4);
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #0f3460;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-thread {
+            background: #e8eaf6;
+            color: #1a237e;
+        }
+
+        .caption-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 0.95em;
+            padding-right: 40px;
+            white-space: pre-line;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>@petrusjakub - Threads Day 5</h1>
+            <p>Full Day Threads Content | Rekrut Agen Asuransi | Lead Generation</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap 1 jam | 05:00 - 22:00 WIB | CTA: Link di Bio / WA</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0500">05:00</a>
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <!-- POST 05:00 -->
+        <div class="post-card" id="post-0500">
+            <div class="post-header">
+                <span class="post-time">05:00 WIB</span>
+                <span class="post-number">Post 1/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-1">Sebelum dunia mulai berisik, saya mau bicara dari hati ke hati.
+
+Kamu yang baca ini di pagi buta... kamu pasti punya alasan kenapa belum tidur. Atau kenapa bangun sepagi ini.
+
+Mungkin kepikiran soal uang. Soal masa depan. Soal bagaimana caranya keluar dari situasi sekarang.
+
+Saya pernah di titik itu. Dan saya menemukan jalannya.
+
+Bukan jalan pintas. Tapi jalan yang BENAR. Legal. Punya sistem. Dan ada orang-orang yang siap membantu.
+
+Mau tahu jalannya? Klik link di bio atau WA saya. Link ada di bio.
+
+#PagiButa #DariHatiKeHati #AgenAsuransi #JalanYangBenar #AdaHarapan</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 2/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-2">Pertanyaan pagi: Berapa persen dari penghasilanmu yang bisa kamu tabung setiap bulan?
+
+Kalau jawabannya kurang dari 20%, kamu punya masalah.
+Kalau jawabannya 0%, kamu punya masalah BESAR.
+
+Bukan salah kamu. Ini masalah struktural. Gaji tidak naik secepat pengeluaran.
+
+Solusinya bukan berhemat sampai hidup tidak nyaman. Solusinya adalah MENAMBAH sumber income.
+
+Dan salah satu cara paling realistis adalah jadi agen asuransi di tim kami.
+
+Kamu dapat: gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Mulai sekarang. Klik link di bio atau WA saya. Link ada di bio.
+
+#TidakBisaMenung #TambahIncome #AgenAsuransi #MasalahStruktural #SolusiNyata</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 3/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-3">Ibu-ibu, saya mau share kisah nyata.
+
+Ada seorang ibu di tim kami. Dulunya hanya ibu rumah tangga. Tidak pernah bekerja di luar.
+
+Awalnya gabung karena iseng. Coba-coba. Tidak yakin bisa.
+
+Sekarang? Dia sudah bisa bayar uang sekolah anak dari penghasilannya SENDIRI. Suaminya bangga. Anak-anaknya bangga.
+
+Dan yang paling penting: DIA bangga pada dirinya sendiri.
+
+Anda bisa seperti dia. Di tim kami, semua fasilitas tersedia:
+- Gaji bulanan
+- Website gratis
+- Tools digital gratis
+- Konten harian gratis
+- Pelatihan dari nol
+
+Mau memulai? Klik link di bio atau WA saya. Link ada di bio.
+
+#KisahIbu #BanggaPadaDiri #AgenAsuransi #IbuBisaBayar #KisahInspirasi</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 4/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-4">Untuk fresh graduate yang masih bingung arah karir...
+
+Saya mau kasih perspektif berbeda.
+
+Di dunia kerja tradisional: kamu kerja untuk orang lain, dapat gaji tetap, naik jabatan paling cepat 2-3 tahun sekali.
+
+Di bisnis agen asuransi: kamu kerja untuk diri sendiri, income tidak terbatas, "naik jabatan" berdasarkan performa bukan senioritas.
+
+Mana yang lebih masuk akal untuk generasi yang ambisius?
+
+Dan di tim kami, kamu tidak perlu bingung mulai dari mana. Semuanya sudah tersistem:
+- Gaji bulanan
+- Website gratis
+- Tools digital gratis
+- Konten harian gratis
+- Pelatihan lengkap gratis
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#PerspektifBerbeda #FreshGrad #AgenAsuransi #GenerasiAmbisius #KarirModern</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 5/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-5">Pernah dengar istilah "golden handcuffs"?
+
+Itu istilah untuk orang yang terjebak di pekerjaan yang mereka tidak suka, hanya karena GAJI.
+
+Gaji yang cukup untuk membuat mereka tidak pergi, tapi tidak cukup untuk membuat mereka bahagia.
+
+Kalau kamu merasa ada di situasi itu sekarang... kamu perlu jalan keluar.
+
+Bisnis agen asuransi bisa menjadi kunci untuk melepas "borgol emas" itu. Pelan-pelan membangun income sendiri sampai akhirnya kamu BEBAS memilih.
+
+Di tim kami: gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#GoldenHandcuffs #TerjebakGaji #AgenAsuransi #BebasMenilih #LepaskanBorgol</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 6/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-6">Pengusaha pasti paham konsep ini: LEVERAGE.
+
+Menggunakan sesuatu yang kecil untuk menghasilkan sesuatu yang besar.
+
+Di bisnis agen asuransi, leverage kamu adalah:
+- Network yang sudah ada
+- Sistem dari agency
+- Tools digital yang disediakan
+- Konten yang sudah dibuat
+- Training yang sudah tersusun
+
+Kamu tinggal LEVERAGE semua itu menjadi income.
+
+Modal? Nol. Waktu? Fleksibel. Potensi? Tidak terbatas.
+
+Di tim kami semua leverage itu GRATIS:
+- Gaji bulanan
+- Website gratis
+- Tools digital gratis
+- Konten harian gratis
+- Pelatihan gratis
+
+Mau leverage? Klik link di bio atau WA saya. Link ada di bio.
+
+#Leverage #PengusahaCerdas #AgenAsuransi #SistemBekerja #PotensiBesar</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 7/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-7">Kalau ada yang bilang "jadi agen asuransi itu susah"...
+
+Mereka tidak salah. Tapi mereka juga tidak sepenuhnya benar.
+
+SUSAH kalau kamu sendirian. Tanpa sistem. Tanpa mentor. Tanpa tools.
+
+MUDAH kalau kamu ada di tim yang tepat. Dengan sistem yang jalan. Dengan mentor yang peduli. Dengan tools yang lengkap.
+
+Di agency kami, semua itu TERSEDIA.
+
+Kamu tidak perlu reinvent the wheel. Kamu hanya perlu IKUTI sistemnya.
+
+Gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Agency kami adalah agency terbaik nomor satu. Bukan saya yang bilang, tapi data yang berkata.
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#SusahAtauMudah #TimYangTepat #AgenAsuransi #IkutiSistem #AgencyTerbaik</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 8/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-8">Break siang. Saya mau cerita soal PASSIVE INCOME.
+
+Banyak orang bicara soal passive income tapi sedikit yang benar-benar punya.
+
+Di bisnis asuransi, passive income itu NYATA. Namanya: renewal commission.
+
+Setiap polis yang kamu close, kamu dapat komisi. Dan SETIAP TAHUN polis itu diperpanjang, kamu dapat komisi LAGI. Tanpa perlu kerja ulang.
+
+Bayangkan punya 50 polis aktif. Setiap tahun kamu dapat komisi dari 50 polis itu. Meskipun kamu lagi liburan.
+
+INI yang membuat agen asuransi bisa pensiun muda.
+
+Mau mulai membangun? Klik link di bio atau WA saya. Link ada di bio.
+
+#PassiveIncomeNyata #RenewalCommission #AgenAsuransi #PensiunMuda #IncomeSaatTidur</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 9/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-9">Buat mahasiswa yang lagi scroll Threads di jam kosong...
+
+Daripada cuma scroll, coba pikirin ini:
+
+Teman-teman kamu yang seangkatan, 5 tahun dari sekarang akan ada di posisi berbeda-beda. Ada yang sukses, ada yang biasa saja.
+
+Yang membedakan bukan siapa yang paling pintar di kelas. Tapi siapa yang paling CEPAT bertindak.
+
+Mulai sekarang, kamu sudah bisa membangun fondasi kesuksesan. Dengan jadi agen asuransi di tim kami.
+
+Dapat gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Jadi yang paling cepat bertindak. Klik link di bio atau WA saya. Link ada di bio.
+
+#MahasiswaAmbisi #CepatBertindak #AgenAsuransi #FondasiSukses #5TahunLagi</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 10/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-10">Saya sering dengar: "Saya mau bisnis tapi tidak punya modal."
+
+Oke. Saya kasih solusi yang REAL:
+
+Bisnis agen asuransi.
+Modal: NOL.
+Produk: sudah disediakan.
+Marketing material: sudah tersedia.
+Training: GRATIS.
+Website: GRATIS.
+Tools: GRATIS.
+
+Yang kamu investasikan hanya WAKTU dan KONSISTENSI.
+
+Tidak ada alasan lagi untuk bilang "tidak punya modal."
+
+Di tim kami, semua sudah disiapkan. Kamu tinggal jalankan.
+
+Masih mau bilang tidak bisa? Atau mau mulai sekarang?
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#TanpaModal #SolusiReal #AgenAsuransi #TidakAdaAlasan #MulaiSekarang</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 11/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-11">Saya mau ajak kamu berpikir secara LOGIS.
+
+Kamu punya 24 jam sehari. Sama seperti semua orang.
+
+8 jam untuk tidur. 8-10 jam untuk kerja. Sisanya 6-8 jam.
+
+Dari 6-8 jam itu, berapa yang kamu gunakan untuk MEMBANGUN sesuatu?
+
+Kalau jawabannya nol, maka 5 tahun dari sekarang hidupmu akan SAMA.
+
+Tapi kalau kamu investasikan 1-2 jam saja per hari untuk bisnis agen asuransi... dalam 1 tahun kamu sudah punya income stream baru.
+
+Di tim kami: gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Investasikan waktumu. Klik link di bio atau WA saya. Link ada di bio.
+
+#24Jam #InvestasiWaktu #AgenAsuransi #BerpikirLogis #1JamPerHari</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 12/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-12">Kamu pernah merasa iri dengan orang yang bisa liburan kapan saja? Yang bisa beli sesuatu tanpa mikir panjang?
+
+Itu bukan karena mereka lebih beruntung. Itu karena mereka punya INCOME yang mendukung gaya hidup itu.
+
+Dan income itu bisa dibangun. Oleh siapa saja. Termasuk kamu.
+
+Bisnis agen asuransi adalah salah satu jalan paling realistis untuk membangun income yang besar.
+
+Di tim kami kamu mendapatkan semua support:
+- Gaji bulanan
+- Website gratis
+- Tools digital gratis
+- Konten harian gratis
+- Pelatihan gratis
+
+Stop iri. Mulai bergerak. Klik link di bio atau WA saya. Link ada di bio.
+
+#StopIri #MulaiMembangun #AgenAsuransi #IncomeBesar #HidupImpian</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 13/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-13">Jam 5 sore. Hari hampir berakhir.
+
+Apa yang sudah kamu capai hari ini untuk MASA DEPAN kamu?
+
+Kalau jawabannya "kerja seperti biasa"... itu bagus. Tapi itu hanya untuk HARI INI.
+
+Masa depan dibangun dari langkah-langkah EXTRA yang kamu ambil di luar rutinitas.
+
+Dan langkah extra itu bisa dimulai SEKARANG. Dengan bergabung di tim agen asuransi kami.
+
+Hanya perlu 1-2 jam per hari. Sisanya biar sistem yang bekerja.
+
+Gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Ambil langkah extra hari ini. Klik link di bio atau WA saya. Link ada di bio.
+
+#LangkahExtra #MasaDepan #AgenAsuransi #DiLuarRutinitas #MulaiHariIni</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 14/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-14">Untuk para ibu: pernahkah anda merasa tidak dihargai?
+
+Kerja dari pagi sampai malam mengurus rumah, tapi tidak dianggap "bekerja" karena tidak menghasilkan uang.
+
+Saya ingin mengubah narasi itu.
+
+Anda BISA bekerja dan menghasilkan uang TANPA meninggalkan peran anda sebagai ibu.
+
+Banyak ibu di tim kami yang membuktikannya. Mereka menghasilkan jutaan per bulan dari rumah.
+
+Yang anda butuhkan:
+- Kemauan (dari anda)
+- Sistem (dari kami: gaji bulanan, website gratis, tools gratis, konten gratis, pelatihan gratis)
+
+Anda layak dihargai. Mulai dari menghargai potensi diri sendiri.
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#IbuDihargai #MenghasilkanDariRumah #AgenAsuransi #PotensiIbu #LayakDihargai</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 15/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-15">Malam ini saya mau bicara soal KONSISTENSI.
+
+Di bisnis apa pun, yang menang bukan yang paling pintar atau paling bermodal. Yang menang adalah yang paling KONSISTEN.
+
+Di tim kami, member yang konsisten posting, konsisten follow up, konsisten belajar... PASTI closing.
+
+Tidak ada pengecualian. Konsistensi selalu menang.
+
+Dan kami memudahkan konsistensi itu dengan menyediakan:
+- Konten harian gratis (tinggal posting)
+- Tools follow up otomatis
+- Pelatihan rutin
+- Gaji bulanan selama proses
+
+Kamu hanya perlu KONSISTEN. Biar sistem yang bantu sisanya.
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#KonsistensiMenang #RahasiaSukses #AgenAsuransi #PastiClosing #SistemMembantu</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 16/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-16">Coba bayangkan skenario ini:
+
+Kamu bergabung di tim kami hari ini.
+Minggu 1: Belajar fundamental.
+Minggu 2-3: Mulai praktek dengan bimbingan.
+Bulan 2: Closing pertama.
+Bulan 3-6: Income konsisten bertambah.
+Tahun 1: Punya passive income dari renewal.
+
+Ini bukan fantasi. Ini TIMELINE nyata yang sudah dilalui banyak member kami.
+
+Dan mereka mulai dari NOL. Seperti kamu sekarang.
+
+Yang membedakan mereka hanya satu: mereka MEMULAI.
+
+Klik link di bio atau WA saya. Link ada di bio.
+
+#TimelineNyata #MulaiDariNol #AgenAsuransi #ProsesSukses #MerekaMulai</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 17/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-17">Kenapa agency kami yang terbaik? Biar saya jelaskan dengan data:
+
+- Retention rate member tertinggi di industri
+- Closing rate member baru di atas rata-rata
+- Support system terlengkap
+- Tools digital paling advanced
+- Pelatihan paling komprehensif
+
+Ini bukan klaim kosong. Ini FAKTA yang bisa dibuktikan.
+
+Agency kami adalah agency terbaik nomor satu. Bukan saya yang bilang, tapi data yang berkata.
+
+Dan semua keunggulan itu bisa kamu akses GRATIS sebagai member baru.
+
+Gaji bulanan, website gratis, tools digital gratis, konten harian gratis, pelatihan gratis.
+
+Mau jadi bagian dari yang terbaik? Klik link di bio atau WA saya. Link ada di bio.
+
+#DataBicara #AgencyTerbaik #AgenAsuransi #FaktaBukanKlaim #JadiBagian</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 18/18</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-thread">Threads Post</span>
+                <div class="caption-box">
+                    <p id="caption-18">Pesan penutup hari ke-5:
+
+Kamu sudah membaca konten saya selama 5 hari. Kalau sampai sekarang kamu masih di sini, artinya ada SESUATU yang menarik perhatian kamu.
+
+Jangan abaikan perasaan itu. Itu insting kamu berbicara.
+
+Banyak orang yang akhirnya sukses bilang: "Saya hampir tidak jadi gabung. Tapi sesuatu di dalam diri saya bilang untuk mencoba."
+
+Dan mereka mencoba. Dan hasilnya mengubah hidup mereka.
+
+Kamu bisa jadi orang berikutnya.
+
+Hubungi saya. Klik link di bio atau WA. Link ada di bio.
+
+Selamat malam. Istirahat yang cukup.
+
+#HariKe5 #InstingBerbicara #AgenAsuransi #CobaSekarang #SelamatMalam</p>
+                    <button class="copy-btn" onclick="copyText('caption-18', this)">Copy</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>@petrusjakub - Threads Content Day 5 | Leads Rekrut Agen Asuransi</p>
+            <p style="margin-top:5px;">CTA: <a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="color:#90caf9;">https://projectcuan.petrusjakub.workers.dev/pages/bisnis</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('threads-day5-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('threads-day5-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
