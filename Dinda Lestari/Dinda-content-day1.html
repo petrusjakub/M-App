@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinda Lestari - Day 1 Content Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .outfit-info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .outfit-info h3 {
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .outfit-set {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #f0f0ff;
+            border-left: 4px solid #667eea;
+        }
+
+        .outfit-set:last-child {
+            border-left-color: #764ba2;
+        }
+
+        .outfit-set strong {
+            color: #333;
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #e8eaf6;
+            color: #283593;
+        }
+
+        .label-prompt {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .label-refs {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .caption-box, .prompt-box {
+            background: #fafafe;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .prompt-box p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+            padding-right: 40px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .ref-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ref-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px;
+            background: #f0f0ff;
+            color: #4a148c;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border: 1px solid #d1c4e9;
+            transition: background 0.2s;
+        }
+
+        .ref-links a:hover {
+            background: #ede7f6;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dinda Lestari - Day 1 Content Plan</h1>
+            <p>Hari Santai di Kontrakan & Jalan-Jalan Sore | Bogor | Janda Muda Content Creator</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap ~60 menit | 06:00 - 22:00 WIB</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <div class="outfit-info">
+            <h3>Outfit Reference:</h3>
+            <div class="outfit-set">
+                <strong>Set 1 (06:00 - 09:00):</strong> Tank top putih ketat + celana pendek denim sobek + sandal jepit + rambut dicepol asal. Tampilan bangun tidur santai khas cewek kontrakan Bogor.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 2 (09:00 - 17:00):</strong> Kaos crop top hitam V-neck dalam + kemeja flannel merah kotak-kotak dibuka (lengan digulung) + celana jeans pendek high-waist + sneakers putih + tas selempang kecil. Gaya kasual modis gadis kampung yang mau jalan-jalan.
+            </div>
+            <div class="outfit-set">
+                <strong>Set 3 (17:00 - 22:00):</strong> Dress mini hitam off-shoulder ketat + heels tali hitam + anting panjang emas + clutch kecil hitam + lipstik merah. Tampilan berani buat nongkrong malam di kafe dan bar lokal Bogor.
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Bangun pagi bukan karena semangat, tapi karena tetangga sebelah nyetel dangdut kenceng banget jam 5. Yaudah sekalian aja deh bangun. Matahari Bogor pagi ini adem, anginnya masuk lewat jendela kontrakan yang gak ada gordennya. Hidup sederhana tapi ya gini lah, damai.
+
+Siapa yang juga dibangunin sama suara tetangga? Kita senasib wkwk</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Dinda pakai outfit image 2, pov first person selfie baru bangun tidur di kasur kontrakan sederhana, rambut berantakan, wajah natural tanpa makeup, satu tangan angkat ke atas stretching sambil memperlihatkan ketiak, jendela terbuka dengan cahaya pagi masuk, kamar kecil sederhana dengan lemari kayu dan kipas angin, pencahayaan pagi hari natural</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=simple+bedroom+indonesia+morning+light" target="_blank">Pinterest: Kamar Kontrakan Pagi</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=girl+waking+up+morning+stretch+natural" target="_blank">Pinterest: Pose Bangun Tidur</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=natural+morning+light+window+bedroom" target="_blank">Pinterest: Cahaya Pagi Jendela</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 2/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Ritual pagi: bikin kopi sachet + roti tawar pake mentega. Menu andalan anak kos yang gabisa masak tapi sok estetik. Duduk di teras kontrakan sambil liat kucing tetangga lewat. Ini sih healing versi budget terbatas.
+
+Pantun pagi:
+Beli roti di warung Haji
+Menteganya tinggal sedikit
+Hidup jomblo emang asyik
+Tapi kadang pingin dilirik
+
+Yang jomblo mana suaranya?</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Dinda pakai outfit image 2, pov difotoin duduk di kursi plastik teras kontrakan sempit, tangan pegang gelas kopi, di meja ada piring roti tawar, pose santai kaki diangkat satu ke kursi sambil memperlihatkan paha, kucing oren lewat di latar belakang, suasana gang sempit perumahan Bogor, pencahayaan pagi hari cerah</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=indonesian+small+house+terrace+morning" target="_blank">Pinterest: Teras Kontrakan</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=simple+breakfast+coffee+toast+aesthetic" target="_blank">Pinterest: Sarapan Sederhana</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=morning+light+outdoor+sitting+relaxed" target="_blank">Pinterest: Duduk Santai Pagi</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 3/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Nyuci baju dulu gengs. Iya, manual. Mesin cuci mah barang mewah buat aku. Tapi gapapa, otot lengan jadi kenceng. Siapa butuh gym kalau tiap hari kucek sprei?
+
+Yang masih cuci tangan manual angkat ember masing-masing! Kita kuat, kita tangguh, kita bokek wkwkwk</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Dinda pakai outfit image 2, pov difotoin sedang jongkok di depan ember besar cuci baju di belakang kontrakan, tangan penuh busa sabun, wajah bikin ekspresi cape tapi senyum, baju-baju dijemur di tali di belakang, suasana halaman belakang kontrakan sempit dengan tembok lumut, pencahayaan pagi hari cerah</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=hand+washing+clothes+outdoor+indonesia" target="_blank">Pinterest: Cuci Baju Manual</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=simple+backyard+indonesia+laundry" target="_blank">Pinterest: Halaman Belakang</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 4/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Ganti baju, dandan tipis. Hari ini mau ke pasar tradisional Bogor beli bahan buat masak. Yaa walaupun masaknya paling cuma tumis kangkung sama telor dadar. Tapi yang penting usaha, biar gak makan mie instan terus.
+
+Dinda hari ini modis dikit. Flannel merah, jeans pendek, sneakers. Gadis kampung sok kota. Yuk berangkat!</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Dinda pakai outfit image 2, mirror selfie di depan cermin kecil di kamar kontrakan, pose satu tangan di pinggang yang memperlihatkan perut rata dari crop top, senyum percaya diri, di belakang terlihat kasur dan lemari sederhana, pencahayaan siang dari jendela samping</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=casual+mirror+selfie+crop+top+flannel" target="_blank">Pinterest: Mirror Selfie Casual</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=small+room+mirror+selfie+indonesia" target="_blank">Pinterest: Selfie Kamar Kecil</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 5/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Sampai di Pasar Bogor. Rame banget kayak biasa. Ibu-ibu pada rebutan sayur, bapak-bapak pada ngopi di pojokan. Dinda mah santai, pilih kangkung yang seger, telor, sama bawang merah. Total belanja 15 ribu. Hemat adalah koentji.
+
+Tukang sayur: "Cantik, beli apa?"
+Dinda: "Kangkung aja pak, secantik saya"
+Tukang sayur: "..."
+
+Wkwkwk gak gitu juga sih</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div name="prompt-box" class="prompt-box">
+                    <p id="prompt-5">Dinda pakai outfit image 2, pov difotoin berdiri di gang pasar tradisional Bogor, tangan kiri pegang kresek belanjaan, tangan kanan peace sign, pose berdiri santai dengan latar pedagang sayur dan buah, beberapa ibu-ibu Indonesia belanja tidak sadar kamera, pencahayaan siang hari dengan atap pasar semi terbuka</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=traditional+market+indonesia+bogor" target="_blank">Pinterest: Pasar Tradisional Bogor</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=indonesian+local+market+vegetables+colorful" target="_blank">Pinterest: Sayuran Pasar</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 6/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Pulang dari pasar, mampir warung kopi pinggir jalan dulu. Ngopi cantik versi rakyat. Es kopi susu 5 ribu, duduk di bangku kayu sambil liat motor lewat. Ini sih cafe terbaik se-Bogor menurutku. Viewnya? Ya motor sama angkot. Tapi vibesnya? Chef kiss.
+
+Kadang bahagia itu gak perlu mahal. Cukup kopi dingin, angin sepoi, dan WiFi tetangga yang gak di-password.</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Dinda pakai outfit image 2, pov first person selfie duduk di bangku kayu warung kopi pinggir jalan Bogor, tangan pegang gelas plastik es kopi susu, pose manja bibir dimanyunin, latar belakang jalan raya dengan motor dan angkot lewat, ada bapak-bapak ngopi di meja sebelah tidak sadar kamera, pencahayaan siang terik dengan shade dari terpal warung</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=street+coffee+shop+indonesia+local" target="_blank">Pinterest: Warung Kopi Pinggir Jalan</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=iced+coffee+plastic+cup+indonesia+street" target="_blank">Pinterest: Es Kopi Plastik</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 7/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Masak kangkung + telor ceplok. Menu sederhana tapi bikin kenyang dan bahagia. Masaknya sambil joget-joget dengerin musik dari speaker bluetooth 50 ribuan. Dapur kontrakan kecil tapi cukup buat satu orang. Cukup buat Dinda yang single dan menikmati hidup.
+
+Kalian makan siang apa? Jangan bilang mie instan lagi. Eh tapi gapapa sih, besok giliran aku yang mie instan wkwk</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Dinda pakai outfit image 2, pov difotoin berdiri di dapur kecil kontrakan sedang mengaduk tumisan di wajan dengan spatula, pose candid ketawa, di meja ada piring telor ceplok dan nasi, dapur sederhana dengan kompor gas satu tungku dan rak piring plastik, pencahayaan siang dari ventilasi dapur</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=small+kitchen+indonesia+cooking+simple" target="_blank">Pinterest: Dapur Kecil Masak</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=simple+indonesian+home+cooking+kangkung" target="_blank">Pinterest: Masakan Rumahan</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 8/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Abis makan langsung ngantuk. Rebahan dulu di kasur sambil scroll TikTok. Nemu video motivasi: "Kamu itu lebih dari cukup." Ya makasih tapi rekening aku kurang dari cukup.
+
+Hidup mah gitu ya, kadang di atas kadang di bawah. Sekarang lagi di bawah tapi enjoy aja. Yang penting sehat, yang penting waras, yang penting WiFi lancar.
+
+Tag temen kalian yang lagi butuh rebahan juga.</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Dinda pakai outfit image 2, pov first person selfie rebahan di kasur dengan bantal, pose tiduran miring menghadap kamera sambil pegang HP, wajah manyun lucu, rambut terurai di bantal, kipas angin di samping kasur, kamar kontrakan sederhana, pencahayaan siang redup dari jendela tertutup tirai tipis</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=girl+lying+bed+phone+selfie+relaxed" target="_blank">Pinterest: Rebahan Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=simple+bedroom+indonesia+afternoon" target="_blank">Pinterest: Kamar Siang Hari</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 9/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">Kerja dulu bentar. Edit foto buat konten affiliate. Laptop kentang, tapi Alhamdulillah masih bisa buat kerja. Duduk di meja belajar bekas SMA yang masih dipake sampe sekarang. Meja kecil, mimpi besar. Halah.
+
+Yang juga kerja dari rumah atau dari kontrakan, kita sama. Yang penting hasilnya, bukan kantornya. Setuju?</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Dinda pakai outfit image 2, pov difotoin dari samping duduk di meja kecil di kamar kontrakan, laptop terbuka di meja, tangan di keyboard, pose fokus kerja dengan wajah serius, kaki diangkat ke kursi memperlihatkan paha, kamar sederhana dengan stiker-stiker di tembok, pencahayaan siang dari jendela</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=work+from+home+small+desk+laptop+girl" target="_blank">Pinterest: WFH Meja Kecil</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=content+creator+editing+laptop+simple+room" target="_blank">Pinterest: Content Creator</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 10/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">Sore-sore jalan ke minimarket beli snack. Cemilan adalah investasi terbaik. Beli chitato, teh kotak, sama es krim. Total 20 ribu. Worth it. Jalan kaki dari kontrakan cuma 5 menit, lewat gang-gang kecil yang isinya ibu-ibu ngerumpi.
+
+"Eh Dinda, kapan nikah lagi?"
+"Nanti bu, kalau udah ketemu yang mau nerima aku beserta utang-utang aku hehe"
+
+Ibu-ibu: *ketawa sambil geleng-geleng*</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Dinda pakai outfit image 2, pov first person selfie berdiri di depan minimarket Indomaret, tangan kiri pegang kantong belanjaan plastik, tangan kanan bikin peace sign, senyum lebar, latar depan minimarket dengan poster promo, beberapa orang Indonesia lewat di trotoar tidak sadar kamera, pencahayaan sore hari golden hour</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=indonesian+minimarket+afternoon+street" target="_blank">Pinterest: Minimarket Indonesia</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=golden+hour+street+photography+indonesia" target="_blank">Pinterest: Golden Hour Jalan</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 11/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Nonton drakor sambil ngemil chitato. Episode 8 dari 16. Tokoh utamanya cantik, kaya, punya pacar ganteng. Meanwhile Dinda: janda, ngontrak, snack-nya beli satuan.
+
+Tapi gapapa, setidaknya aku punya kebebasan. Gak ada yang nyuruh-nyuruh, gak ada yang ngomel. Rumah ini kecil tapi ini kerajaan aku.
+
+Yang lagi nonton drakor juga, lagi nonton apa? Kasih rekomendasi dong!</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Dinda pakai outfit image 2, pov first person selfie duduk di kasur dengan laptop di pangkuan nonton drakor, tangan pegang bungkus snack, pose santai bersandar di tembok dengan bantal, kaki dilurusin, ekspresi fokus nonton, kamar kontrakan dengan cahaya sore dari jendela, suasana cozy dan santai</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=watching+drama+laptop+bed+snacks+cozy" target="_blank">Pinterest: Nonton di Kasur</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy+afternoon+bedroom+laptop+girl" target="_blank">Pinterest: Sore Cozy</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 12/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Ganti outfit! Malam ini mau keluar. Temen ngajak nongkrong di kafe daerah Jalan Surya Kencana. Pakai dress hitam yang udah lama gak dipake. Masih muat dong. Lipstik merah biar keliatan fierce. Janda muda harus tetep stunning.
+
+Mau kemana? Rahasia. Yang pasti malam ini Dinda gak mau di rumah. Life is too short buat rebahan terus.
+
+Malam minggu kalian ngapain?</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Dinda pakai outfit image 2, mirror selfie full body di cermin kamar kontrakan, pose tangan di rambut memperlihatkan ketiak dan lekuk tubuh dalam dress ketat hitam, ekspresi percaya diri dan sedikit nakal, heels hitam, kamar sederhana tapi Dinda terlihat glamor, pencahayaan lampu kamar warm</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=little+black+dress+mirror+selfie+night+out" target="_blank">Pinterest: Black Dress Mirror Selfie</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=getting+ready+night+out+simple+room" target="_blank">Pinterest: Getting Ready</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 13/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Naik angkot dulu ke Surya Kencana. Iya, angkot. Pakai dress dan heels naik angkot. Sopirnya sampe noleh dua kali. Biarin lah, yang penting sampai.
+
+Kadang hidup itu tentang kontras ya. Glamor di atas, angkot di bawah. Mimpi tinggi, dompet tipis. Tapi tetep jalan terus.
+
+Yang pernah overdressed di tempat yang salah, kita temenan ya wkwk</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Dinda pakai outfit image 2, pov first person selfie duduk di dalam angkot Bogor, pose duduk dengan kaki disilangkan memperlihatkan paha di dress pendek, wajah senyum nakal ke kamera, latar dalam angkot dengan kursi-kursi dan penumpang lain Indonesia tidak sadar kamera, pencahayaan sore menjelang malam dari jendela angkot</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=indonesian+angkot+interior+evening" target="_blank">Pinterest: Dalam Angkot</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bogor+street+evening+golden+hour" target="_blank">Pinterest: Bogor Sore</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 14/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Sampai di kafe! Namanya Kopi Nako, daerah Surya Kencana. Tempatnya cozy, banyak tanaman, lampu-lampu warm. Temen udah nunggu di dalam. Pesen mocktail dulu sambil nunggu yang lain dateng.
+
+Rasanya seneng banget bisa keluar, ketemu orang, ngobrol. Kadang kita butuh keluar dari zona nyaman (baca: kontrakan) biar gak gila sendiri.
+
+Kafe favorit kalian di kota kalian apa?</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Dinda pakai outfit image 2, pov difotoin duduk di sofa kafe aesthetic Bogor, tangan pegang gelas mocktail warna pink, pose duduk menyilangkan kaki dengan dress pendek, senyum ke kamera, latar interior kafe dengan lampu gantung warm dan tanaman hijau, beberapa pengunjung Indonesia di meja lain tidak sadar kamera, pencahayaan malam hari warm indoor</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=cozy+cafe+bogor+night+warm+lighting" target="_blank">Pinterest: Kafe Bogor Malam</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=mocktail+pink+drink+aesthetic+cafe" target="_blank">Pinterest: Mocktail Pink</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 15/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">Ngobrol sama temen ternyata healing terbaik. Cerita soal hidup, soal mantan, soal mimpi-mimpi yang belum kesampean. Temen gue bilang: "Din, lo tuh kuat. Gak semua orang bisa kayak lo." Yah, mau gak mau harus kuat sih. Gak ada yang bisa diandalin selain diri sendiri.
+
+Tapi ya, tetep butuh temen buat curhat. Kalian curhatnya ke siapa biasanya?</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Dinda pakai outfit image 2, pov difotoin dari samping sedang mengobrol dengan teman perempuan di kafe, pose santai bersandar di sofa sambil pegang gelas, ekspresi serius tapi hangat, latar meja kafe dengan beberapa gelas minuman dan snack, pencahayaan malam warm dari lampu kafe, suasana intimate dan cozy</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=friends+talking+cafe+night+cozy+intimate" target="_blank">Pinterest: Ngobrol di Kafe</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=warm+cafe+interior+night+friends" target="_blank">Pinterest: Kafe Malam Hangat</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 16/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Dari kafe, lanjut ke bar kecil sebelah. Minum satu gelas aja, gak lebih. Musiknya enak, orang-orangnya asik. Ada yang ngajak kenalan, Dinda senyumin aja. Gak semua yang mendekati harus diterima. Tapi gak semua juga harus ditolak. Kita lihat aja nanti.
+
+Hidup single itu bebas. Mau ngapain, sama siapa, jam berapa, terserah. Nikmatilah selagi bisa.
+
+Cheers buat yang lagi single dan bahagia!</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Dinda pakai outfit image 2, pov first person selfie duduk di bar stool di bar kecil lokal Bogor, tangan pegang gelas cocktail, pose duduk dengan kaki disilangkan memperlihatkan kaki jenjang di dress pendek dan heels, senyum nakal ke kamera, latar belakang bar counter dengan botol-botol dan lampu neon, beberapa orang Indonesia di bar tidak sadar kamera, pencahayaan malam hari dim dengan aksen neon</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=small+bar+night+girl+cocktail+neon" target="_blank">Pinterest: Bar Malam Lokal</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=cocktail+bar+stool+girl+dress+night" target="_blank">Pinterest: Bar Stool Night</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 17/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Pulang. Angkot lagi. Kali ini sepi, cuma aku sama satu bapak yang ketiduran. Malem ini seru. Dari pagi yang biasa aja jadi malam yang berkesan. Sampai kontrakan, buka heels, lepas semuanya, langsung rebahan.
+
+Hari ini pelajarannya: keluar dari rumah itu worth it. Ketemu orang itu worth it. Hidup itu lebih dari empat dinding kontrakan.
+
+Besok cerita lagi ya. Sekarang Dinda mau bobo. Good night semua. Mimpi yang indah-indah.</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Dinda pakai outfit image 2 yang sudah agak berantakan, pov first person selfie rebahan di kasur kontrakan setelah pulang, heels dilepas di lantai samping kasur, rambut terurai berantakan di bantal, wajah capek tapi senyum puas, makeup sedikit luntur, kamar gelap dengan lampu kecil menyala, pencahayaan malam hari redup warm</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+
+                <span class="section-label label-refs">Reference Links</span>
+                <div class="ref-links">
+                    <a href="https://www.pinterest.com/search/pins/?q=coming+home+late+night+tired+bed+girl" target="_blank">Pinterest: Pulang Malam</a>
+                    <a href="https://www.pinterest.com/search/pins/?q=bedroom+night+dim+light+cozy+tired" target="_blank">Pinterest: Kamar Malam Redup</a>
+                </div>
+
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Post (Selesai)</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Dinda Lestari - Day 1 Content Plan | Bogor Life</p>
+    </footer>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                button.classList.add('copied');
+                button.innerText = 'Copied!';
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.innerText = button.innerText.includes('Caption') ? 'Copy Caption' : 'Copy Prompt';
+                    if (elementId.startsWith('caption')) {
+                        button.innerText = 'Copy Caption';
+                    } else {
+                        button.innerText = 'Copy Prompt';
+                    }
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan Post (Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('dinda-day1-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('dinda-day1-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+    </script>
+</body>
+</html>
