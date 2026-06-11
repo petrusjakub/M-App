@@ -1,0 +1,36 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the satuyangterpenting folder and implement satuyangterpenting-week1.html and satuyangterpenting-week2.html - each containing 21 posts (3 per day for 7 days: pagi/siang/malam) about insurance leads targeting both prospective clients (nasabah) and prospective agents.",
+  "status": "in_progress",
+  "steps": [
+    "Create folder /projects/sandbox/M-App/satuyangterpenting/",
+    "Create satuyangterpenting-week1.html following the HTML structure pattern from Petrusjakub-IG-content.html but adapted for the new requirements",
+    "Each HTML file must contain: embedded CSS with gradient background, mobile responsive design, card-based post layout, copy-to-clipboard functionality, navigation to jump between posts",
+    "Each file has 21 posts organized as Day 1 through Day 7, with 3 posts per day labeled Pagi (morning), Siang (afternoon), Malam (evening)",
+    "Content requirements for EVERY post: (1) Written as emotional questions that make readers think and feel urgency, (2) Insurance education content referencing Manulife products from manulife.co.id, (3) Pattern: sell the problem -> ask the right question -> provide Manulife solution -> explain product benefits in simple language, (4) Include a famous person's insurance/financial quote formatted as blockquote, (5) Use text formatting: bold, italic, underline, highlight throughout, (6) Include placeholder image with insurance-related alt text, (7) CTA buttons (not visible links): WhatsApp button linking to WA.me/+6287781896087, Web Nasabah button linking to https://projectcuan.petrusjakub.workers.dev/, Web Rekrut Agen button linking to https://projectcuan.petrusjakub.workers.dev/pages/bisnis, (8) Follow @petrusjakub on Instagram CTA, (9) Use polite Indonesian language - NEVER use gue/gua/elo/elu",
+    "Week 1 themes: Hari 1 - Pentingnya asuransi kesehatan (MiUltimate HealthCare), Hari 2 - Proteksi jiwa untuk keluarga (MiWealth Protection), Hari 3 - Dana pendidikan anak (MiEducation), Hari 4 - Pensiun yang tenang (MiRetirement Booster), Hari 5 - Asuransi penyakit kritis (MiEarly Critical Care), Hari 6 - Peluang karir agen asuransi (rekrutmen), Hari 7 - Investasi + proteksi sekaligus (MiWealth Link)",
+    "Week 2 themes: Hari 1 - Risiko keuangan tanpa proteksi (MiUltimate HealthCare), Hari 2 - Penghasilan keluarga jika pencari nafkah tiada (MiWealth Protection), Hari 3 - Biaya RS yang terus naik (MiUltimate HealthCare Plus), Hari 4 - Warisan untuk generasi berikutnya (MiWealth Legacy), Hari 5 - Kecelakaan bisa terjadi kapan saja (MiAccident Guard), Hari 6 - Kebebasan finansial sebagai agen (rekrutmen), Hari 7 - Perencanaan keuangan holistik (MiWealth Protection + MiRetirement)",
+    "Manulife product mentions must include simplified benefit explanations accessible to laypeople",
+    "Style buttons as gradient-colored rounded buttons that don't show the raw URL"
+  ],
+  "acceptance_criteria": [
+    "Folder /projects/sandbox/M-App/satuyangterpenting/ exists",
+    "satuyangterpenting-week1.html exists with valid HTML structure and exactly 21 posts (7 days x 3 posts)",
+    "satuyangterpenting-week2.html exists with valid HTML structure and exactly 21 posts (7 days x 3 posts)",
+    "All posts contain emotional questions, Manulife product references, famous quotes, text formatting (bold/italic/underline/highlight), image placeholders, and CTA buttons",
+    "All CTA links (WhatsApp, Web Nasabah, Web Rekrut Agen) are present as styled buttons",
+    "No instances of gue/gua/elo/elu in the content",
+    "HTML files render correctly when opened in a browser"
+  ],
+  "verification": [
+    "Run: ls /projects/sandbox/M-App/satuyangterpenting/ to confirm files exist",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week1.html to verify 21 post sections",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week2.html to verify 21 post sections",
+    "Run: grep -ci 'gue\\|gua\\|elo\\|elu' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week1.html should return 0",
+    "Run: grep -c 'wa.me\\|WA.me' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week1.html to confirm WhatsApp CTA presence",
+    "Run: grep -c 'projectcuan.petrusjakub.workers.dev' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week1.html to confirm web CTAs"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

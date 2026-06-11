@@ -1,0 +1,33 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create satuyangterpenting-week3.html and satuyangterpenting-week4.html - each containing 21 posts (3 per day for 7 days: pagi/siang/malam) continuing the insurance marketing content series.",
+  "status": "pending",
+  "steps": [
+    "Create satuyangterpenting-week3.html in /projects/sandbox/M-App/satuyangterpenting/ following the exact same HTML structure, styling, and formatting established in week1.html",
+    "Create satuyangterpenting-week4.html in the same folder with the same structure",
+    "Each file has 21 posts organized as Day 1 through Day 7, with 3 posts per day labeled Pagi (morning), Siang (afternoon), Malam (evening)",
+    "Content requirements identical to FEAT-001: emotional questions, Manulife products, famous quotes (blockquote), text formatting (bold/italic/underline/highlight), image placeholders, CTA buttons (WhatsApp WA.me/+6287781896087, Web Nasabah https://projectcuan.petrusjakub.workers.dev/, Web Rekrut Agen https://projectcuan.petrusjakub.workers.dev/pages/bisnis), follow IG @petrusjakub, polite Indonesian",
+    "Week 3 themes: Hari 1 - Bahaya tidak punya dana darurat (MiSave Pro), Hari 2 - Anak-anak bergantung pada kita (MiWealth Protection + MiEducation), Hari 3 - Kanker dan biayanya yang mencengangkan (MiEarly Critical Care), Hari 4 - Menikah dan tanggung jawab baru (MiWealth Protection), Hari 5 - Bisnis agen asuransi untuk ibu rumah tangga (rekrutmen), Hari 6 - Tabungan saja tidak cukup (MiWealth Link), Hari 7 - Rawat inap tanpa khawatir biaya (MiUltimate HealthCare)",
+    "Week 4 themes: Hari 1 - Sandwich generation: menanggung ortu dan anak (MiWealth Protection + MiRetirement), Hari 2 - Stroke dan serangan jantung di usia muda (MiEarly Critical Care), Hari 3 - Impian anak kuliah di universitas terbaik (MiEducation), Hari 4 - Penghasilan terhenti karena sakit (MiUltimate HealthCare), Hari 5 - Side hustle yang bisa jadi main hustle (rekrutmen agen), Hari 6 - Inflasi menggerus tabungan (MiWealth Link + MiRetirement Booster), Hari 7 - Asuransi sebagai bukti cinta kepada keluarga (MiWealth Protection)",
+    "Vary the famous quotes - use different notable figures for each post (e.g., Warren Buffett, Benjamin Franklin, Robert Kiyosaki, Suze Orman, Dave Ramsey, etc.)",
+    "Ensure content does not repeat themes/angles from week1 and week2"
+  ],
+  "acceptance_criteria": [
+    "satuyangterpenting-week3.html exists with valid HTML and exactly 21 posts",
+    "satuyangterpenting-week4.html exists with valid HTML and exactly 21 posts",
+    "All posts contain emotional questions, Manulife product references, famous quotes, text formatting, image placeholders, and CTA buttons",
+    "All CTA links are present as styled buttons (WhatsApp, Web Nasabah, Web Rekrut Agen)",
+    "No instances of gue/gua/elo/elu",
+    "Content themes differ from week1 and week2"
+  ],
+  "verification": [
+    "Run: ls /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week3.html /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week4.html",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week3.html to verify 21 posts",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week4.html to verify 21 posts",
+    "Run: grep -ci 'gue\\|gua\\|elo\\|elu' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week3.html should return 0",
+    "Run: grep -c 'wa.me\\|WA.me' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week3.html to confirm WhatsApp CTA"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

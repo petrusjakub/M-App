@@ -1,0 +1,20 @@
+{
+  "project_type": "TypeScript/Vite web app with standalone HTML content files for social media marketing",
+  "language": "HTML/CSS/JavaScript (content files), TypeScript (app)",
+  "build_system": "npm with vite",
+  "test_framework": "none - standalone HTML content files do not have tests",
+  "build_command": "npm run build",
+  "test_command": "none applicable for HTML content files",
+  "verification_instructions": "Verify HTML files exist in satuyangterpenting/ folder, open them in browser to confirm rendering, check all 21 posts per file, verify CTA links and button styling",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "npm install (for main app only; HTML content files are standalone)",
+  "environment_constraints": "HTML content files are standalone - no build required. Verification is file existence and valid HTML structure.",
+  "contribution_requirements": "Follow existing HTML content file patterns (see Petrusjakub-IG-content.html, SuzanKim-content.html). Indonesian language. Polite language (no gue/gua/elo/elu).",
+  "key_patterns": "Each HTML file is self-contained with embedded CSS and JS. Uses card-based layout with post-card class. Each post has caption-box with copy button functionality. Navigation links at top. Gradient backgrounds. Mobile responsive. Footer section.",
+  "relevant_files": [
+    "Petrusjakub-IG-content.html (primary pattern reference)",
+    "Petrusjakub-IG-content-2.html (secondary pattern reference)",
+    "SuzanKim-content.html (alternate styling reference)"
+  ],
+  "directory_structure": "Root level contains HTML content files, TypeScript app files (App.tsx, index.tsx), and config (package.json, tsconfig.json, vite.config.ts). New folder 'satuyangterpenting/' will be created at root level containing week1-week7 HTML files."
+}

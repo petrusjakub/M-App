@@ -1,0 +1,32 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Create satuyangterpenting-week5.html and satuyangterpenting-week6.html - each containing 21 posts (3 per day for 7 days: pagi/siang/malam) continuing the insurance marketing content series.",
+  "status": "pending",
+  "steps": [
+    "Create satuyangterpenting-week5.html in /projects/sandbox/M-App/satuyangterpenting/ following the exact same HTML structure, styling, and formatting established in week1.html",
+    "Create satuyangterpenting-week6.html in the same folder with the same structure",
+    "Each file has 21 posts organized as Day 1 through Day 7, with 3 posts per day labeled Pagi (morning), Siang (afternoon), Malam (evening)",
+    "Content requirements identical to FEAT-001: emotional questions, Manulife products, famous quotes (blockquote), text formatting (bold/italic/underline/highlight), image placeholders, CTA buttons (WhatsApp WA.me/+6287781896087, Web Nasabah https://projectcuan.petrusjakub.workers.dev/, Web Rekrut Agen https://projectcuan.petrusjakub.workers.dev/pages/bisnis), follow IG @petrusjakub, polite Indonesian",
+    "Week 5 themes: Hari 1 - Kecelakaan lalu lintas dan dampak finansialnya (MiAccident Guard), Hari 2 - Orang tua yang bergantung pada kita (MiWealth Protection), Hari 3 - Kebebasan waktu dan finansial (rekrutmen agen), Hari 4 - Biaya pengobatan kanker yang fantastis (MiEarly Critical Care), Hari 5 - Dana pensiun: kapan harus mulai? (MiRetirement Booster), Hari 6 - Proteksi untuk pekerja freelance/gig (MiUltimate HealthCare), Hari 7 - Investasi yang aman untuk pemula (MiWealth Link)",
+    "Week 6 themes: Hari 1 - Bagaimana jika besok tidak bisa bekerja? (MiWealth Protection), Hari 2 - Biaya rumah sakit naik 10-15% per tahun (MiUltimate HealthCare Plus), Hari 3 - Membangun legacy untuk generasi mendatang (MiWealth Legacy), Hari 4 - Penghasilan tanpa batas sebagai agen (rekrutmen), Hari 5 - Diabetes dan penyakit degeneratif (MiEarly Critical Care), Hari 6 - Dana darurat vs asuransi: keduanya penting (MiSave Pro + MiUltimate HealthCare), Hari 7 - Cinta sejati = memastikan keluarga aman (MiWealth Protection)",
+    "Use different famous quotes from prior weeks - draw from figures like Jack Ma, Tony Robbins, Mark Twain, Nelson Mandela, Zig Ziglar, Jim Rohn, etc.",
+    "Ensure content angles and scenarios are fresh and don't repeat prior weeks"
+  ],
+  "acceptance_criteria": [
+    "satuyangterpenting-week5.html exists with valid HTML and exactly 21 posts",
+    "satuyangterpenting-week6.html exists with valid HTML and exactly 21 posts",
+    "All posts contain emotional questions, Manulife product references, famous quotes, text formatting, image placeholders, and CTA buttons",
+    "All CTA links are present as styled buttons",
+    "No instances of gue/gua/elo/elu",
+    "Content themes and quotes differ from weeks 1-4"
+  ],
+  "verification": [
+    "Run: ls /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week5.html /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week6.html",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week5.html to verify 21 posts",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week6.html to verify 21 posts",
+    "Run: grep -ci 'gue\\|gua\\|elo\\|elu' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week5.html should return 0"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

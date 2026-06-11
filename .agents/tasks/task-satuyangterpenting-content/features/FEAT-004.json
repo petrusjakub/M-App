@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-004",
+  "type": "feat",
+  "description": "Create satuyangterpenting-week7.html containing 21 posts (3 per day for 7 days: pagi/siang/malam) - the final week of the insurance marketing content series.",
+  "status": "pending",
+  "steps": [
+    "Create satuyangterpenting-week7.html in /projects/sandbox/M-App/satuyangterpenting/ following the exact same HTML structure, styling, and formatting established in week1.html",
+    "The file has 21 posts organized as Day 1 through Day 7, with 3 posts per day labeled Pagi (morning), Siang (afternoon), Malam (evening)",
+    "Content requirements identical to FEAT-001: emotional questions, Manulife products, famous quotes (blockquote), text formatting (bold/italic/underline/highlight), image placeholders, CTA buttons (WhatsApp WA.me/+6287781896087, Web Nasabah https://projectcuan.petrusjakub.workers.dev/, Web Rekrut Agen https://projectcuan.petrusjakub.workers.dev/pages/bisnis), follow IG @petrusjakub, polite Indonesian",
+    "Week 7 themes: Hari 1 - Mimpi anak yang bergantung pada keputusan kita hari ini (MiEducation + MiWealth Protection), Hari 2 - Realita biaya hidup di masa pensiun (MiRetirement Booster), Hari 3 - Kenapa orang kaya tetap beli asuransi? (MiWealth Legacy), Hari 4 - Menjadi agen: membangun tim dan passive income (rekrutmen), Hari 5 - Kesehatan mental dan finansial saling terkait (MiUltimate HealthCare + MiEarly Critical Care), Hari 6 - Perbedaan BPJS dan asuransi swasta (MiUltimate HealthCare Plus), Hari 7 - Ringkasan dan call-to-action kuat: saatnya bertindak (all products overview + rekrutmen)",
+    "Use fresh famous quotes not used in weeks 1-6 - draw from figures like Oprah Winfrey, Bill Gates, Richard Branson, Albert Einstein (on planning), Mahatma Gandhi (on future), etc.",
+    "Week 7 Day 7 posts should serve as powerful closers with extra emphasis on urgency and action"
+  ],
+  "acceptance_criteria": [
+    "satuyangterpenting-week7.html exists with valid HTML and exactly 21 posts",
+    "All posts contain emotional questions, Manulife product references, famous quotes, text formatting, image placeholders, and CTA buttons",
+    "All CTA links are present as styled buttons",
+    "No instances of gue/gua/elo/elu",
+    "Content themes and quotes differ from weeks 1-6",
+    "Day 7 posts serve as strong closers with urgency messaging"
+  ],
+  "verification": [
+    "Run: ls /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week7.html",
+    "Run: grep -c 'post-card\\|post-item' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week7.html to verify 21 posts",
+    "Run: grep -ci 'gue\\|gua\\|elo\\|elu' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week7.html should return 0",
+    "Run: grep -c 'wa.me\\|WA.me' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week7.html to confirm WhatsApp CTA",
+    "Run: ls /projects/sandbox/M-App/satuyangterpenting/ to confirm all 7 files exist"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
