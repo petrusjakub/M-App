@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrusjakub IG Day 7 - Call to Action Final & Closing the Week</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f7971e 0%, #ffd200 50%, #fffbe6 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.95); border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.2em; color: #333; margin-bottom: 10px; }
+        header p { color: #666; font-size: 1.1em; }
+        .day-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 15px 20px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .day-nav h3 { color: #333; margin-bottom: 10px; font-size: 1em; }
+        .day-nav .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .day-nav .nav-links a { display: inline-block; padding: 6px 14px; background: linear-gradient(135deg, #f7971e, #ffd200); color: white; text-decoration: none; border-radius: 20px; font-size: 0.85em; font-weight: 500; transition: transform 0.2s; }
+        .day-nav .nav-links a:hover { transform: translateY(-2px); }
+        .day-nav .nav-links a.active { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .schedule-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.2em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a { display: inline-block; padding: 8px 16px; background: linear-gradient(135deg, #f7971e, #ffd200); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: 500; transition: transform 0.2s; }
+        .nav-links a:hover { transform: translateY(-2px); }
+        .post-card { background: rgba(255,255,255,0.97); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.2s, opacity 0.3s; position: relative; }
+        .post-card.done-task { opacity: 0.4; transform: scale(0.98); }
+        .post-card.done-task .post-content { display: none; }
+        .post-card.done-task .done-label { display: block; }
+        .done-label { display: none; text-align: center; color: #4caf50; font-weight: 600; padding: 10px; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #f7971e; }
+        .post-number { background: linear-gradient(135deg, #f7971e, #ffd200); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .section-label { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 600; margin-bottom: 12px; }
+        .label-caption { background: #fff3e0; color: #e65100; }
+        .label-prompt { background: #fff8e1; color: #f57f17; }
+        .caption-box, .prompt-box { background: #fffde7; border-radius: 12px; padding: 16px; margin-bottom: 15px; position: relative; border: 1px solid #ffe082; }
+        .caption-box p, .prompt-box p { color: #333; line-height: 1.7; font-size: 0.95em; padding-right: 80px; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #f7971e, #ffd200); color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8em; font-weight: 600; transition: transform 0.2s; }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .action-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .done-btn, .delete-btn { flex: 1; min-width: 140px; padding: 12px; border-radius: 10px; cursor: pointer; font-size: 0.9em; font-weight: 600; border: none; transition: all 0.2s; }
+        .done-btn { background: #e8f5e9; color: #2e7d32; border: 2px dashed #81c784; }
+        .done-btn:hover { background: #c8e6c9; border-color: #4caf50; }
+        .delete-btn { background: #ffebee; color: #c62828; border: 2px dashed #ef9a9a; }
+        .delete-btn:hover { background: #ffcdd2; border-color: #f44336; }
+        footer { text-align: center; padding: 20px; color: rgba(150,80,0,0.8); font-size: 0.9em; }
+        @media (max-width: 600px) { body { padding: 10px; } header h1 { font-size: 1.6em; } .post-card { padding: 18px; } .nav-links a { padding: 6px 12px; font-size: 0.8em; } .caption-box p, .prompt-box p { padding-right: 60px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>@petrusjakub - IG Content Day 7</h1>
+            <p>Tema: Call to Action Final & Closing the Week</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">17 Post | 06:00 - 22:00 WIB | Jeda 1 Jam</p>
+        </header>
+
+        <div class="day-nav"><h3>Navigasi Hari:</h3><div class="nav-links"><a href="petrusjakub-IG-day1.html">Day 1</a><a href="petrusjakub-IG-day2.html">Day 2</a><a href="petrusjakub-IG-day3.html">Day 3</a><a href="petrusjakub-IG-day4.html">Day 4</a><a href="petrusjakub-IG-day5.html">Day 5</a><a href="petrusjakub-IG-day6.html">Day 6</a><a href="petrusjakub-IG-day7.html" class="active">Day 7</a></div></div>
+
+        <div class="schedule-nav"><h3>Jump to Post:</h3><div class="nav-links"><a href="#post-0600">06:00</a><a href="#post-0700">07:00</a><a href="#post-0800">08:00</a><a href="#post-0900">09:00</a><a href="#post-1000">10:00</a><a href="#post-1100">11:00</a><a href="#post-1200">12:00</a><a href="#post-1300">13:00</a><a href="#post-1400">14:00</a><a href="#post-1500">15:00</a><a href="#post-1600">16:00</a><a href="#post-1700">17:00</a><a href="#post-1800">18:00</a><a href="#post-1900">19:00</a><a href="#post-2000">20:00</a><a href="#post-2100">21:00</a><a href="#post-2200">22:00</a></div></div>
+
+        <div class="post-card" id="post-0600"><div class="post-header"><span class="post-time">06:00 WIB</span><span class="post-number">Post 1/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-1">HARI TERAKHIR. Day 7 dari 7.
+
+Selama 6 hari kemarin, aku sudah share SEMUANYA:
+- Day 1: Hook & Masalah Kerja
+- Day 2: Pertanyaan Yang Membuka Mata
+- Day 3: Gaji Bulanan & Percepatan Income
+- Day 4: Freedom & Work-Life Balance
+- Day 5: Impian & Financial Freedom
+- Day 6: Bukti Nyata & Social Proof
+
+Hari ini? FINAL CALL.
+
+Ini KESEMPATAN TERAKHIR minggu ini. Slot mentoring aku TERBATAS. Hanya 5 orang lagi yang bisa aku terima bulan ini.
+
+Kenapa terbatas? Karena aku PERSONALLY mentoring. Bukan auto-pilot. Bukan bot. AKU LANGSUNG.
+
+5 SLOT. Setelah penuh, TUTUP sampai bulan depan.
+
+Siap? Link di bio. SEKARANG.
+
+#HariTerakhir #FinalCall #Day7 #SlotTerbatas #5SlotLagi #AgenAsuransi #KesempatanTerakhir #SekarangAtauTidak #PersonalMentoring #LastChance</p><button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-1">Buat gambar Instagram 1:1 bergaya urgent final call. Background gradient emas ke oranye gelap. Di tengah ada countdown timer besar menunjukkan "DAY 7/7 - FINAL". Di bawah timer ada 5 slot icons, 2 sudah terisi (merah) dan 3 masih kosong (berkedip emas). Teks bold putih: "HARI TERAKHIR. 5 SLOT TERSISA." Di bawah: "Personal mentoring. Bukan auto-pilot." Stamp merah di sudut: "CLOSES TODAY". Gaya urgency, countdown, premium. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-0700"><div class="post-header"><span class="post-time">07:00 WIB</span><span class="post-number">Post 2/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-2">Kamu udah baca semua post aku minggu ini.
+
+Kamu udah lihat angka-angkanya.
+Kamu udah baca testimoninya.
+Kamu udah tau sistemnya.
+Kamu udah tau peluangnya.
+
+Tapi kamu BELUM juga klik link di bio.
+
+Kenapa?
+
+Aku tau jawabannya: TAKUT.
+
+Takut gagal. Takut ga bisa. Takut dibilang orang. Takut keluar dari zona nyaman.
+
+Tapi tau ga? SEMUA member aku yang sekarang income puluhan juta... mereka JUGA TAKUT di awal.
+
+Bedanya? Mereka KLIK meskipun takut. Mereka ACTION meskipun ragu.
+
+Keberanian bukan berarti ga takut. Keberanian = ACTION meskipun takut.
+
+KLIK. SEKARANG. Link di bio.
+
+#TakutItuNormal #ActionMeskipunTakut #Keberanian #KlikSekarang #AgenAsuransi #KeluarZonaNyaman #TakutTapiAction #CourageNotFearless #StopRagu #MulaiHariIni</p><button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-2">Buat gambar Instagram 1:1 tentang keberanian melawan rasa takut. Background gradient oranye gelap ke emas terang. Di tengah ada siluet orang berdiri di tepi tebing, di depannya ada jembatan emas menuju sisi lain yang bersinar (simbolisasi peluang). Di bawah tebing: "ZONA NYAMAN". Di seberang: "INCOME 20-50JT/BLN". Teks bold: "TAKUT? SEMUA MEMBER AKU JUGA TAKUT DI AWAL." Di bawah: "Bedanya: mereka KLIK meskipun takut." Gaya motivational, bold, warm. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-0800"><div class="post-header"><span class="post-time">08:00 WIB</span><span class="post-number">Post 3/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-3">FOMO ALERT:
+
+Sementara kamu masih mikir-mikir...
+
+- 3 orang yang DM aku kemarin SUDAH mulai onboarding
+- 1 orang dari post Day 5 sudah closing PERTAMANYA (dalam 4 hari!)
+- Slot mentoring bulan ini tinggal 5
+
+Setiap hari kamu TUNDA = 1 hari income yang HILANG.
+
+Hitung: kalau rata-rata income bulan ke-3 adalah 8 juta...
+- Tunda 1 bulan = KEHILANGAN 8 juta
+- Tunda 3 bulan = KEHILANGAN 24 juta
+- Tunda 6 bulan = KEHILANGAN 48 juta
+
+Uang yang TIDAK akan pernah kembali.
+
+Masih mau tunda?
+
+KLIK LINK DI BIO. SEKARANG JUGA.
+
+#FOMO #JanganTunda #IncomeYangHilang #SetiapHariBerharga #AgenAsuransi #OpportunityLost #HitungKerugianmu #StopProcrastinating #ActNow #TimeIsMoney</p><button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-3">Buat gambar Instagram 1:1 bergaya FOMO/urgency. Background merah gelap ke oranye. Di tengah ada kalkulator besar menunjukkan angka kerugian: "Tunda 1 bln = -8jt", "Tunda 3 bln = -24jt", "Tunda 6 bln = -48jt" dengan uang yang terbang/menghilang. Jam pasir di samping yang hampir habis. Alert icon berkedip. Teks bold putih: "SETIAP HARI KAMU TUNDA = INCOME YANG HILANG." Di bawah: "3 orang kemarin sudah mulai. Kamu kapan?" Gaya alarm, urgent, loss aversion. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-0900"><div class="post-header"><span class="post-time">09:00 WIB</span><span class="post-number">Post 4/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-4">Aku mau hancurkan SEMUA alasan kamu satu per satu:
+
+"Ga punya pengalaman" = Aku training dari NOL. Member aku 80% tanpa pengalaman.
+
+"Ga punya modal" = Ga perlu modal. GRATIS gabung. Ga ada biaya apapun.
+
+"Ga punya waktu" = Part-time bisa. 2-3 jam/hari cukup di awal.
+
+"Ga punya koneksi" = Social media. Jangkauan UNLIMITED. Member aku closing dari IG/TikTok.
+
+"Takut ditolak" = Aku ajarin CARA APPROACH yang ga bikin ditolak.
+
+"Umur sudah tua" = Member tertua aku 52 tahun. Income 15 juta/bulan.
+
+"Masih kuliah" = Member termuda 19 tahun. Part-time, income 6 juta.
+
+SEMUA alasan sudah aku PATAHKAN.
+
+Yang tersisa cuma 1: KEPUTUSAN KAMU.
+
+Link di bio. SEKARANG.
+
+#SemuaAlasanPatah #GaAdaAlasan #NoExcuses #KeputusanKamu #AgenAsuransi #DariNol #GratisGabung #PartTimeBisa #SemuaBisa #TinggalPutuskan</p><button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-4">Buat gambar Instagram 1:1 tentang menghancurkan semua alasan. Background gradient emas ke oranye. Di tengah ada 7 balon/bubble alasan yang PECAH satu per satu: "Ga punya pengalaman" (pecah), "Ga punya modal" (pecah), "Ga punya waktu" (pecah), dll. Di bawah semua pecahan: tombol besar emas "LINK DI BIO" bercahaya. Teks bold: "SEMUA ALASAN SUDAH PATAH." Di bawah: "Tinggal 1 yang tersisa: KEPUTUSAN KAMU." Gaya destructive, empowering, bold. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1000"><div class="post-header"><span class="post-time">10:00 WIB</span><span class="post-number">Post 5/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-5">SCARCITY REAL: Kenapa slot aku terbatas?
+
+Ini BUKAN marketing gimmick. Ini FAKTA:
+
+1. Aku mentoring 1-on-1 di minggu pertama
+2. Setiap member baru butuh 3-5 jam waktu aku
+3. Aku masih handle tim existing (47 member)
+4. Training mingguan harus aku prepare
+5. Aku juga masih closing sendiri
+
+KAPASITAS AKU = TERBATAS.
+
+Bulan lalu aku terima 8 orang. 2 orang harus aku tolak karena OVER CAPACITY.
+
+Bulan ini? Sisa 5 slot. Kalau hari ini penuh, kamu HARUS tunggu bulan depan.
+
+Dan bulan depan? Ga ada jaminan masih buka.
+
+Ini bukan fake scarcity. Ini REAL limitation.
+
+GRAB YOUR SLOT. Link di bio.
+
+#ScarcityReal #SlotTerbatas #BukanGimmick #RealLimitation #AgenAsuransi #PersonalMentoring #OverCapacity #GrabYourSlot #TungguBulanDepan #SekarangAtauNunggu</p><button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-5">Buat gambar Instagram 1:1 tentang slot terbatas. Background hitam premium dengan aksen emas. Di tengah ada 8 kursi/seat, 3 sudah terisi (merah/locked), 5 masih kosong (berkilau emas, terbuka). Label "SLOT MENTORING BULAN INI". Counter besar: "5/8 TERSISA". Warning sign: "Bulan lalu 2 orang DITOLAK - over capacity". Teks bold emas: "BUKAN GIMMICK. INI REAL LIMITATION." Di bawah: "Kapasitas personal mentoring = terbatas." Gaya exclusive, VIP, scarcity. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1100"><div class="post-header"><span class="post-time">11:00 WIB</span><span class="post-number">Post 6/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-6">Bayangkan 3 bulan dari sekarang:
+
+SKENARIO A (kamu TIDAK klik link di bio):
+- Masih di kerjaan yang sama
+- Masih gaji yang sama
+- Masih ngeluh yang sama
+- Masih scroll IG orang sukses sambil iri
+- 3 bulan TERBUANG
+
+SKENARIO B (kamu KLIK link di bio HARI INI):
+- Bulan 1: Belajar, training, mulai approach
+- Bulan 2: 1-2 closing pertama (income 3-7 juta TAMBAHAN)
+- Bulan 3: Income 8-12 juta. Confidence naik. Hidup BERUBAH.
+
+Bedanya HANYA 1 klik. HARI INI.
+
+3 bulan itu akan berlalu baik kamu action maupun tidak. Pertanyaannya: di bulan ke-3, kamu mau di Skenario A atau B?
+
+PILIH. SEKARANG. Link di bio.
+
+#3BulanDariSekarang #SkenarioAvsB #1Klik #PilihSekarang #AgenAsuransi #BayangkanMasaDepan #WaktuBerlalu #ActionHariIni #UbahHidupmu #SkipRegret</p><button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-6">Buat gambar Instagram 1:1 skenario A vs B. Background split vertikal: Kiri (abu-abu gelap, hujan) orang duduk lesu di meja kerja dengan kalender "3 BULAN KEMUDIAN" dan thought bubble "Kenapa ga dari dulu?". Kanan (emas cerah, sinar) orang tersenyum dengan HP menunjukkan income 12jt, confetti, kalender sama "3 BULAN KEMUDIAN". Di tengah: "BEDANYA? 1 KLIK. HARI INI." Di bawah: "3 bulan akan berlalu. Kamu mau di mana?" Gaya contrast, decision, powerful. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1200"><div class="post-header"><span class="post-time">12:00 WIB</span><span class="post-number">Post 7/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-7">LUNCH BREAK FINAL OFFER:
+
+Khusus yang klik link di bio HARI INI, aku kasih BONUS:
+
+1. 1-on-1 video call strategy session (biasanya bayar 500rb)
+2. Template script closing yang sudah PROVEN (conversion rate 40%+)
+3. Database 100 leads GRATIS untuk mulai approach
+4. Akses grup VIP training (biasanya bulan ke-2 baru dapat)
+5. E-book "7 Hari Pertama Jadi Agen" (ga dijual di manapun)
+
+TOTAL VALUE: Rp 2.500.000+ GRATIS.
+
+Tapi HANYA untuk yang action HARI INI. Besok? Bonus ini HANGUS.
+
+Kenapa aku kasih segini banyak? Karena aku tau: member yang START dengan benar = SUCCESS lebih cepat = tim aku MAKIN KUAT.
+
+WIN-WIN.
+
+Link di bio. CLAIM BONUS-MU.
+
+#BonusHariIni #LimitedOffer #FinalOffer #ClaimBonus #AgenAsuransi #FreeStrategy #TemplatClosing #LeadsGratis #VIPAccess #HariIniSaja</p><button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-7">Buat gambar Instagram 1:1 bonus offer. Background gradient emas mewah ke oranye. Di tengah ada gift box terbuka bercahaya dengan 5 item keluar: "1-on-1 Call", "Script Template", "100 Leads", "Grup VIP", "E-book". Setiap item ada price tag yang dicoret (500rb, 300rb, dll). Total value besar: "TOTAL: Rp 2.500.000 GRATIS". Stamp merah: "HARI INI SAJA". Timer di bawah. Teks bold: "BONUS EXCLUSIVE UNTUK YANG ACTION HARI INI." Gaya offer, gift, premium, urgency. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1300"><div class="post-header"><span class="post-time">13:00 WIB</span><span class="post-number">Post 8/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-8">UPDATE REAL-TIME:
+
+Slot terisi lagi 1. Sisa: 4.
+
+Barusan ada yang DM: "Kak, aku udah follow dari Day 1. Hari ini aku siap."
+
+4 hari follow. 1 keputusan. Hidupnya BERUBAH mulai hari ini.
+
+Dia ga nunggu "waktu yang tepat." Dia ga nunggu "gaji bulan depan." Dia ga nunggu "mikir-mikir dulu."
+
+Dia PUTUSKAN. SEKARANG.
+
+Dan kamu? Masih nunggu apa?
+
+Nunggu sampai slot HABIS?
+Nunggu sampai bulan depan (yang ga ada jaminan buka)?
+Nunggu sampai "siap" (yang ga akan pernah datang)?
+
+SLOT: 4. WAKTU: HARI INI.
+
+Link di bio. JANGAN SAMPAI MENYESAL.
+
+#UpdateSlot #4Tersisa #RealTimeUpdate #KeputusanCepat #AgenAsuransi #JanganMenyesal #SisaSlot #StopNunggu #SekarangJuga #DecideNow</p><button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-8">Buat gambar Instagram 1:1 real-time update. Background hitam dengan spotlight emas. Di tengah ada notification bubble besar: "SLOT UPDATE: 4 TERSISA" dengan progress bar 4/8 terisi. Screenshot DM (blur): "Kak, aku siap." Di bawah: counter yang turun dari 5 ke 4 (animasi feel). Warning text merah: "JANGAN SAMPAI MENYESAL." Teks bold emas: "1 LAGI TERISI. SISA 4. WAKTU: HARI INI." Gaya live update, notification, urgency. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1400"><div class="post-header"><span class="post-time">14:00 WIB</span><span class="post-number">Post 9/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-9">Aku mau JUJUR satu hal:
+
+Aku ga butuh kamu.
+
+Tim aku udah 47 orang. Income aku udah 40 juta/bulan. Bisnis jalan.
+
+Tapi AKU MAU BANTU KAMU.
+
+Karena aku ingat rasanya dulu: stuck, bingung, income terbatas, mimpi gede tapi jalan ga tau.
+
+Ada orang yang BANTUIN aku dulu. Sekarang aku mau jadi orang itu BUAT KAMU.
+
+Tapi aku cuma bisa bantu orang yang MAU DIBANTU.
+
+Kalau kamu masih mikir "nanti aja deh"... ya ga apa-apa. Tapi jangan nyesal kalau slot udah penuh dan kamu ketinggalan.
+
+Ini bukan tentang AKU butuh KAMU. Ini tentang KAMU butuh KESEMPATAN INI.
+
+Link di bio. Ambil kesempatanmu.
+
+#AkuMauBantu #Jujur #BukanButuhKamu #KesempatanTerbatas #AgenAsuransi #HelpingOthers #PayItForward #AmbilKesempatanmu #MauDibantu #RealTalk</p><button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-9">Buat gambar Instagram 1:1 tentang ketulusan membantu. Background gradient oranye hangat ke emas. Di tengah ada dua tangan: satu di atas (menjulurkan ke bawah, bercahaya emas) dan satu di bawah (menjangkau ke atas). Di antara kedua tangan ada teks: "AKU MAU BANTU KAMU." Di bawah: "Tapi cuma untuk yang MAU dibantu." Quote box: "Aku ingat rasanya dulu: stuck. Sekarang giliran aku bantu kamu." Gaya sincere, warm, powerful. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1500"><div class="post-header"><span class="post-time">15:00 WIB</span><span class="post-number">Post 10/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-10">REKAP MINGGU INI - Semua yang kamu SUDAH TAU:
+
+DAY 1: Kerja 9-5 = jebakan. Ada jalan lain.
+DAY 2: Pertanyaan yang membuka mata tentang hidupmu.
+DAY 3: Income 20-50 juta/bulan ITU NYATA.
+DAY 4: Kerja dari mana saja. Waktu = milikmu.
+DAY 5: Impian bukan mimpi kalau ada JALAN-nya.
+DAY 6: Bukti. Angka. Testimoni. Semua REAL.
+DAY 7 (HARI INI): Waktunya ACTION.
+
+Kamu sudah PUNYA semua informasi. Kamu sudah LIHAT semua bukti. Kamu sudah DENGAR semua cerita.
+
+Yang belum kamu punya: KEPUTUSAN.
+
+Dan keputusan itu harus diambil HARI INI. Sebelum slot habis. Sebelum momentum hilang. Sebelum kamu lupa dan kembali ke rutinitas.
+
+Link di bio. FINAL.
+
+#RekapMinggu #7HariContent #SemuaSudahTau #TinggalAction #AgenAsuransi #KeputusanFinal #MomentumIni #JanganKembaliKeRutinitas #ActionDay #FinalPush</p><button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-10">Buat gambar Instagram 1:1 rekap 7 hari. Background gradient emas ke putih. Di tengah ada 7 cards/steps tersusun seperti tangga naik, masing-masing berlabel: "D1: Problem", "D2: Questions", "D3: Income", "D4: Freedom", "D5: Dreams", "D6: Proof", "D7: ACTION!" (paling atas, bercahaya emas). Orang berdiri di tangga step 7 dengan tangan terangkat. Teks bold: "7 HARI. SEMUA SUDAH KAU TAU." Di bawah: "Tinggal 1 step lagi: KLIK LINK DI BIO." Gaya journey, culmination, epic. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1600"><div class="post-header"><span class="post-time">16:00 WIB</span><span class="post-number">Post 11/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-11">DEADLINE: Malam ini jam 23:59 bonus HANGUS.
+
+Ini bukan scare tactic. Ini KENYATAAN:
+
+- 1-on-1 strategy call = besok TIDAK tersedia
+- Template script = besok kembali ke harga normal (500rb)
+- 100 leads database = besok TUTUP akses
+- Grup VIP early access = besok HANYA untuk member existing
+- E-book = besok TIDAK dibagikan lagi
+
+Kenapa deadline? Karena tanpa deadline, kamu akan TERUS menunda. Dan penundaan = KEMATIAN peluang.
+
+Orang sukses tau: OPPORTUNITY punya EXPIRY DATE.
+
+Jam 23:59 malam ini. Setelah itu? TOO LATE.
+
+Link di bio. SEBELUM DEADLINE.
+
+#Deadline2359 #BonusHangus #ExpiryDate #OpportunityExpires #AgenAsuransi #TidakAdaBesok #SebelumDeadline #TooLate #LastHours #FinalCountdown</p><button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-11">Buat gambar Instagram 1:1 bergaya deadline countdown. Background merah gelap ke hitam. Di tengah ada jam digital besar menunjukkan "23:59" dengan detik yang berjalan mundur. Di bawah jam: 5 bonus items yang satu per satu menghilang/fade out. Stamp merah besar: "EXPIRES TONIGHT". Alarm bells di sudut-sudut. Teks bold putih: "DEADLINE: MALAM INI 23:59." Di bawah: "Setelah itu? Semua bonus HANGUS." Gaya countdown, alarm, final hours. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1700"><div class="post-header"><span class="post-time">17:00 WIB</span><span class="post-number">Post 12/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-12">Sore ini aku share DM yang bikin aku SEDIH:
+
+"Kak Petrus, aku mau join tapi nunggu bulan depan ya."
+
+Ini DM yang SAMA aku terima 2 bulan lalu. Dari orang yang SAMA.
+
+Dia bilang "bulan depan" 2 bulan lalu. Sampai sekarang? BELUM juga mulai.
+
+2 bulan = income yang HILANG minimal 6-10 juta.
+
+Dan tau ga? Orang yang DM aku DI HARI YANG SAMA dengan dia (tapi langsung action)... sekarang SUDAH income 9 juta/bulan.
+
+PERBEDAANNYA? 1 orang bilang "nanti." 1 orang bilang "SEKARANG."
+
+Jangan jadi orang yang "bulan depan" terus.
+
+JADI ORANG YANG "SEKARANG."
+
+Link di bio. SEKARANG.
+
+#JanganBulanDepan #Procrastinator #NantiVsSekarang #2BulanHilang #AgenAsuransi #StopBilangNanti #AksiSekarang #JanganSedihkanDirimu #TimeWasted #ActionBeatsTalking</p><button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-12">Buat gambar Instagram 1:1 tentang procrastination. Background split: Kiri (abu-abu, waktu berlalu) kalender dengan X di setiap "bulan depan" selama 2 bulan, orang masih di posisi sama, label "2 BULAN LALU: 'Nanti ya kak'" > "SEKARANG: Masih belum mulai. -10jt." Kanan (emas cerah) orang yang action di hari yang sama, sekarang income 9jt, label "2 BULAN LALU: 'Siap kak!'" > "SEKARANG: Income 9jt/bln". Teks bold: "NANTI vs SEKARANG. HASILNYA BEDA JAUH." Gaya before-after, contrast. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1800"><div class="post-header"><span class="post-time">18:00 WIB</span><span class="post-number">Post 13/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-13">JAM 6 SORE. Sisa waktu: 6 JAM sebelum deadline.
+
+UPDATE SLOT: SISA 3.
+
+Dalam 5 jam terakhir, 2 slot LAGI terisi.
+
+Yang join hari ini:
+- Mas Eko, 27 tahun, ex-barista (slot ke-3)
+- Mbak Nita, 31 tahun, admin kantor (slot ke-4)
+- Mas Rendi, 24 tahun, fresh grad (slot ke-5)
+
+Mereka ga nunggu. Mereka ga mikir lama. Mereka PUTUSKAN.
+
+SISA 3 SLOT. 6 JAM.
+
+Setelah penuh? TUTUP. Ga ada pengecualian.
+
+Ini bukan drill. Ini REAL.
+
+KLIK LINK DI BIO SEKARANG. SEBELUM PENUH.
+
+#Sisa3Slot #6JamLagi #UpdateReal #SlotMakinPenuh #AgenAsuransi #MerekaSudahJoin #KamuKapan #ClosingSoon #RealUrgency #GrabNow</p><button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-13">Buat gambar Instagram 1:1 slot update sore. Background gradient oranye sunset ke merah. Di tengah ada visual 8 seats/slots: 5 sudah FILLED (abu-abu/locked dengan nama), 3 masih OPEN (berkilau emas, berkedip). Countdown besar: "6 JAM TERSISA". Nama-nama yang sudah join tertera. Progress bar hampir penuh. Teks bold putih: "SISA 3 SLOT. 6 JAM." Di bawah: "Setelah penuh: TUTUP. Ga ada pengecualian." Gaya filling up, countdown, almost gone. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-1900"><div class="post-header"><span class="post-time">19:00 WIB</span><span class="post-number">Post 14/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-14">Aku mau bicara langsung ke KAMU yang udah follow dari Day 1 tapi belum action:
+
+Aku LIHAT kamu. Aku tau kamu baca setiap post. Aku tau kamu tertarik. Aku tau kamu MEMPELAJARI semua yang aku share.
+
+Tapi kamu masih di balik layar. Masih jadi "silent follower."
+
+Ini pesan pribadi dari aku ke KAMU:
+
+Kamu SUDAH lebih siap dari yang kamu kira. Kamu sudah PUNYA knowledge-nya (7 hari aku share semua). Yang kurang BUKAN informasi. Yang kurang = KEBERANIAN klik 1 tombol.
+
+1 tombol. 1 klik. 1 detik.
+
+Dan hidupmu bisa COMPLETELY DIFFERENT 3 bulan dari sekarang.
+
+Jangan jadi orang yang "tau tapi ga action." Itu lebih menyedihkan dari orang yang "ga tau."
+
+KLIK. Link di bio. INI WAKTUNYA.
+
+#SilentFollower #AkuLihatKamu #SudahSiap #1KlikSaja #AgenAsuransi #ActionSekarang #JanganJadiPenonton #DariPenontonJadiPemain #TauTapiGaAction #IniWaktunya</p><button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-14">Buat gambar Instagram 1:1 bicara langsung ke silent follower. Background gradient oranye ke hitam malam. Di tengah ada ilustrasi: layar HP dengan mata yang "melihat" ke luar (representasi aku melihat kamu). Finger pointer mengarah ke tombol "LINK DI BIO" yang bercahaya emas. Teks personal: "AKU LIHAT KAMU. AKU TAU KAMU BACA INI." Di bawah: "1 klik. 1 detik. Hidupmu berubah." Jarak antara jari dan tombol sangat dekat (almost there). Gaya personal, direct, intimate. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-2000"><div class="post-header"><span class="post-time">20:00 WIB</span><span class="post-number">Post 15/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-15">JAM 8 MALAM. Sisa waktu: 4 JAM.
+
+SLOT UPDATE: SISA 2.
+
+1 lagi terisi barusan. Sisa tinggal DUA.
+
+Aku ga akan memaksa. Aku ga akan spam DM kamu. Aku ga akan guilt-trip.
+
+Tapi aku WAJIB kasih tau:
+
+Kalau kamu ga action malam ini, kamu KEHILANGAN:
+- 5 bonus senilai 2.5 juta (HANGUS jam 23:59)
+- Slot personal mentoring (PENUH = tunggu bulan depan)
+- Momentum (besok kamu akan LUPA dan kembali ke rutinitas)
+
+Ini TERAKHIR KALI aku post soal ini minggu ini.
+
+Minggu depan? Content biasa. Ga ada offer. Ga ada bonus. Ga ada slot info.
+
+SEKARANG atau TIDAK SAMA SEKALI.
+
+Link di bio. 2 SLOT. 4 JAM.
+
+#Sisa2Slot #4JamLagi #TerakhirKali #SekarangAtauTidak #AgenAsuransi #FinalWarning #NoMoreAfterThis #LastOffer #2SlotOnly #DecideNow</p><button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-15">Buat gambar Instagram 1:1 final warning malam. Background gradient hitam ke merah gelap. Di tengah ada counter besar merah berkedip: "2 SLOT TERSISA". Jam menunjukkan 4 jam countdown. 6 dari 8 kursi sudah terisi (gelap). Hanya 2 yang masih bercahaya emas. Warning triangle besar. Teks bold: "TERAKHIR KALI AKU POST SOAL INI." Di bawah: "Sekarang atau tidak sama sekali. 4 jam." Gaya final warning, last chance, critical. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-2100"><div class="post-header"><span class="post-time">21:00 WIB</span><span class="post-number">Post 16/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-16">JAM 9 MALAM. 3 JAM LAGI.
+
+LAST CALL.
+
+Ini post KEDUA TERAKHIR minggu ini.
+
+Aku sudah kasih kamu EVERYTHING:
+- Informasi LENGKAP
+- Bukti NYATA
+- Testimoni REAL
+- Bonus BERNILAI
+- Waktu CUKUP untuk berpikir (7 hari!)
+
+Kalau setelah 7 hari, 119 post, dan semua bukti ini kamu MASIH ga action...
+
+Maka mungkin memang ini BUKAN untuk kamu. Dan itu OK.
+
+Tapi kalau ada SEDIKIT saja api di dalam dirimu yang bilang "aku mau lebih"... "aku layak lebih"... "aku BISA lebih"...
+
+Maka IKUTI api itu. KLIK. SEKARANG.
+
+Jangan padamkan api itu dengan penundaan.
+
+Link di bio. LAST CALL. 3 JAM.
+
+#LastCall #3JamLagi #ApiDalamDiri #FinalPush #AgenAsuransi #IkutiApimu #KlikAtauMenyesal #7HariCukup #SemuaSudahDikasih #DecisionTime</p><button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-16">Buat gambar Instagram 1:1 last call malam. Background gelap malam dengan 1 api/flame kecil di tengah yang sangat terang (oranye-emas). Api ini dikelilingi kegelapan tapi bersinar kuat. Di dalam api ada siluet orang yang bangkit. Teks di atas: "LAST CALL." Countdown "3 JAM" di sudut. Di bawah api: "Ada api di dalam dirimu. Jangan padamkan dengan penundaan." Gaya emotional, flame, last moment. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <div class="post-card" id="post-2200"><div class="post-header"><span class="post-time">22:00 WIB</span><span class="post-number">Post 17/17</span></div><div class="post-content"><span class="section-label label-caption">Caption IG</span><div class="caption-box"><p id="caption-17">Day 7. Post terakhir. Minggu ini selesai.
+
+Terima kasih untuk semua yang sudah mengikuti 7 hari perjalanan ini.
+
+Untuk yang SUDAH klik link di bio dan join: SELAMAT DATANG. Perjalanan kita BARU DIMULAI. Aku akan pastikan kamu TIDAK menyesal.
+
+Untuk yang belum: slot masih ada SAMPAI MALAM INI. Setelah post ini, aku tidak akan remind lagi. Keputusan sepenuhnya di tangan kamu.
+
+Minggu depan aku akan kembali dengan content reguler. Tapi offer minggu ini? TIDAK akan terulang.
+
+Apapun keputusanmu, aku hargai. Yang penting: JANGAN PERNAH berhenti bermimpi besar.
+
+Sampai jumpa di konten berikutnya. Dan untuk member baru: sampai jumpa di training session besok!
+
+Salam sukses,
+@petrusjakub
+
+#Day7Complete #ClosingTheWeek #TerimaKasih #SampaiJumpa #AgenAsuransi #MingguIniSelesai #WelcomeNewMembers #TrainingBesok #BermimpiTerus #SalamSukses</p><button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button></div><span class="section-label label-prompt">Prompt Gambar 1:1</span><div class="prompt-box"><p id="prompt-17">Buat gambar Instagram 1:1 closing minggu/thank you. Background gradient emas hangat ke oranye sunset. Di tengah ada badge/emblem premium "7 DAYS COMPLETE" dengan laurel wreath emas. Di bawah badge: "Terima kasih sudah mengikuti perjalanan ini." Confetti emas halus di background. Di bagian bawah: "See you next week. Keep dreaming big." Signature "@petrusjakub" dalam font elegan. Vibe: warm closing, grateful, premium, accomplished. Hidden watermark @petrusjakub opacity rendah.</p><button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button></div><div class="action-buttons"><button class="done-btn" onclick="markDone(this)">Tandai Sudah Selesai</button><button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button></div></div><div class="done-label">Task sudah selesai</div></div>
+
+        <footer><p>@petrusjakub IG Content Plan - Day 7 | Call to Action Final & Closing the Week</p><p style="margin-top:5px;">Semua caption & prompt bisa di-copy. Selamat posting!</p></footer>
+    </div>
+    <script>
+        const STORAGE_KEY = 'petrusjakub-day7';
+        function copyText(elementId, button) { const text = document.getElementById(elementId).innerText; navigator.clipboard.writeText(text).then(() => { showCopied(button); }).catch(() => { const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showCopied(button); }); }
+        function showCopied(button) { const o = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied'); setTimeout(() => { button.innerText = o; button.classList.remove('copied'); }, 2000); }
+        function markDone(button) { button.closest('.post-card').classList.add('done-task'); saveState(); }
+        function deleteTask(button) { if (confirm('Hapus task ini?')) { button.closest('.post-card').style.display = 'none'; saveState(); } }
+        function saveState() { const cards = document.querySelectorAll('.post-card'); const state = {}; cards.forEach(c => { state[c.id] = { done: c.classList.contains('done-task'), deleted: c.style.display === 'none' }; }); localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+        function loadState() { const s = localStorage.getItem(STORAGE_KEY); if (!s) return; const state = JSON.parse(s); Object.keys(state).forEach(id => { const c = document.getElementById(id); if (!c) return; if (state[id].done) c.classList.add('done-task'); if (state[id].deleted) c.style.display = 'none'; }); }
+        document.addEventListener('DOMContentLoaded', loadState);
+    </script>
+</body>
+</html>
