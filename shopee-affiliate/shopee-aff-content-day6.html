@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Affiliate - Day 6 Content</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f53d2d 0%, #fe6433 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.95); border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.2em; color: #f53d2d; margin-bottom: 10px; }
+        header p { color: #666; font-size: 1.1em; }
+        .schedule-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.2em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a { display: inline-block; padding: 10px 18px; background: linear-gradient(135deg, #f53d2d, #fe6433); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+        .nav-links a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(245, 61, 45, 0.4); }
+        .post-card { background: rgba(255,255,255,0.97); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.2s, opacity 0.3s; position: relative; }
+        .post-card.hidden-task { opacity: 0.3; transform: scale(0.98); }
+        .post-card.hidden-task .post-content { display: none; }
+        .post-card.done { border-left: 5px solid #4caf50; opacity: 0.7; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #f53d2d; }
+        .post-number { background: linear-gradient(135deg, #f53d2d, #fe6433); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .section-label { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 600; margin-bottom: 10px; margin-top: 10px; }
+        .label-product { background: #fff3e0; color: #e65100; }
+        .label-link { background: #e8f5e9; color: #2e7d32; }
+        .label-caption { background: #fce4ec; color: #c62828; }
+        .content-box { background: #fef8f7; border-radius: 12px; padding: 16px; margin-bottom: 12px; position: relative; border: 1px solid #ffcdd2; }
+        .content-box p, .content-box a { color: #333; line-height: 1.7; font-size: 0.95em; padding-right: 80px; word-break: break-all; }
+        .content-box a { color: #f53d2d; text-decoration: underline; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #f53d2d, #fe6433); color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8em; font-weight: 600; transition: transform 0.2s; }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .action-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .done-btn { flex: 1; padding: 12px; background: #4caf50; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: background 0.2s; }
+        .done-btn:hover { background: #388e3c; }
+        .done-btn.completed { background: #81c784; }
+        .hide-btn { flex: 1; padding: 12px; background: #f5f5f5; border: 2px dashed #ccc; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #666; font-weight: 500; }
+        .hide-btn:hover { background: #eeeeee; border-color: #999; }
+        .show-btn { display: block; width: 100%; margin-top: 10px; padding: 10px; background: #e8f5e9; border: 2px dashed #81c784; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #2e7d32; font-weight: 500; }
+        .progress-bar { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .progress-bar h3 { color: #333; margin-bottom: 10px; }
+        .progress-track { background: #f0f0f0; border-radius: 10px; height: 20px; overflow: hidden; }
+        .progress-fill { background: linear-gradient(135deg, #f53d2d, #fe6433); height: 100%; border-radius: 10px; transition: width 0.5s ease; width: 0%; }
+        .progress-text { text-align: center; margin-top: 8px; color: #666; font-size: 0.9em; }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.9); font-size: 0.9em; }
+        @media (max-width: 600px) { body { padding: 10px; } header h1 { font-size: 1.6em; } .post-card { padding: 18px; } .nav-links a { padding: 8px 12px; font-size: 0.8em; } .action-buttons { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Shopee Affiliate - Day 6</h1>
+            <p>Konten Harian Shopee Affiliate</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap 2 jam | 06:00 - 00:00 WIB</p>
+        </header>
+
+        <div class="progress-bar">
+            <h3>Progress Hari Ini</h3>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <p class="progress-text" id="progressText">0 dari 10 konten selesai</p>
+        </div>
+
+        <div class="schedule-nav">
+            <h3>Jump to Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2200">22:00</a>
+                <a href="#post-0000">00:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-1">Timbangan Badan Digital Bluetooth Smart Scale Body Fat</p>
+                    <button class="copy-btn" onclick="copyText('product-1', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-1"><a href="https://shopee.co.id/Timbangan-Badan-Digital-Bluetooth-Smart-Scale-Body-Fat-i.161616.272727" target="_blank">https://shopee.co.id/Timbangan-Badan-Digital-Bluetooth-Smart-Scale-Body-Fat-i.161616.272727</a></p>
+                    <button class="copy-btn" onclick="copyText('link-1', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-1">Pagi ini cek progress health goal! Smart scale ini bisa ukur berat badan, body fat, massa otot, BMI, dan 13 metrik lainnya. Konek ke HP via Bluetooth, track progress harian. Desain slim dan tempered glass yang premium.
+
+Order di Shopee, harga promo hari ini!
+
+#SmartScale #HealthyLifestyle #BodyGoals #FitnessTracker #ShopeeFinds #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 2/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-2">Mug Keramik 400ml Desain Lucu Korea Microwave Safe</p>
+                    <button class="copy-btn" onclick="copyText('product-2', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-2"><a href="https://shopee.co.id/Mug-Keramik-400ml-Desain-Lucu-Korea-Microwave-Safe-i.272727.383838" target="_blank">https://shopee.co.id/Mug-Keramik-400ml-Desain-Lucu-Korea-Microwave-Safe-i.272727.383838</a></p>
+                    <button class="copy-btn" onclick="copyText('link-2', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-2">Morning coffee hits different pake mug lucu! Mug keramik 400ml ini desainnya Korean style yang bikin mood naik. Microwave safe dan dishwasher safe. Handle-nya ergonomis, nyaman dipegang. Bisa juga buat gift!
+
+Koleksi lengkap di Shopee, beli 2 free 1!
+
+#MugKeramik #CoffeeMug #KoreanDesign #MorningCoffee #ShopeeHaul #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 3/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-3">Tablet Drawing Pad 10 inch LCD Writing Board Papan Tulis</p>
+                    <button class="copy-btn" onclick="copyText('product-3', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-3"><a href="https://shopee.co.id/Tablet-Drawing-Pad-10-inch-LCD-Writing-Board-i.383838.494949" target="_blank">https://shopee.co.id/Tablet-Drawing-Pad-10-inch-LCD-Writing-Board-i.383838.494949</a></p>
+                    <button class="copy-btn" onclick="copyText('link-3', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-3">Catat ide atau brainstorm tanpa buang kertas! LCD writing board 10 inch ini bisa ditulis dan dihapus ribuan kali. Battery tahan 1 tahun. Cocok buat anak belajar, meeting notes, atau sketching. Tipis dan ringan!
+
+Available di Shopee, harga mulai 45rb!
+
+#WritingBoard #PapanTulis #EcoFriendly #StudyTools #ShopeeFinds #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 4/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-4">Chopper Blender Manual Pencacah Bawang Daging Sayur 900ml</p>
+                    <button class="copy-btn" onclick="copyText('product-4', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-4"><a href="https://shopee.co.id/Chopper-Blender-Manual-Pencacah-Bawang-Daging-Sayur-900ml-i.494949.505050" target="_blank">https://shopee.co.id/Chopper-Blender-Manual-Pencacah-Bawang-Daging-Sayur-900ml-i.494949.505050</a></p>
+                    <button class="copy-btn" onclick="copyText('link-4', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-4">Masak jadi cepet dengan chopper manual ini! Tinggal tarik talinya, bawang, daging, sayur langsung tercacah halus. Ga perlu listrik, kapasitas 900ml cukup buat masak sekeluarga. Blade stainless steel yang tajam dan tahan lama.
+
+Promo di Shopee, harga cuma 35rb!
+
+#ChopperManual #DapurPraktis #MasakCepat #KitchenHack #ShopeeHaul #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 5/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-5">Jam Tangan Digital Sport Waterproof Multifungsi LED</p>
+                    <button class="copy-btn" onclick="copyText('product-5', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-5"><a href="https://shopee.co.id/Jam-Tangan-Digital-Sport-Waterproof-Multifungsi-LED-i.505050.616161" target="_blank">https://shopee.co.id/Jam-Tangan-Digital-Sport-Waterproof-Multifungsi-LED-i.505050.616161</a></p>
+                    <button class="copy-btn" onclick="copyText('link-5', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-5">Jam tangan sport yang tahan banting! Waterproof, ada stopwatch, alarm, calendar, dan backlight LED. Cocok buat olahraga, outdoor adventure, atau daily wear. Strap-nya nyaman dan adjustable. Style sporty yang keren!
+
+Best seller di Shopee, pilihan warna banyak!
+
+#JamTangan #SportWatch #Waterproof #DailyWear #ShopeeFinds #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 6/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-6">Kemeja Flanel Unisex Kotak-Kotak Bahan Premium Tebal</p>
+                    <button class="copy-btn" onclick="copyText('product-6', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-6"><a href="https://shopee.co.id/Kemeja-Flanel-Unisex-Kotak-Kotak-Bahan-Premium-Tebal-i.616161.727272" target="_blank">https://shopee.co.id/Kemeja-Flanel-Unisex-Kotak-Kotak-Bahan-Premium-Tebal-i.616161.727272</a></p>
+                    <button class="copy-btn" onclick="copyText('link-6', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-6">Flanel vibes! Kemeja flanel tebal ini cocok buat layering atau dipake sendiri. Pattern kotak-kotak klasik yang timeless. Bahan premium ga gampang berbulu. Unisex, bisa couple-an juga!
+
+Order di Shopee, size S-3XL tersedia!
+
+#KemejaFlanel #OOTD #CasualStyle #Layering #ShopeeHaul #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 7/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-7">Panci Set Stainless Steel 5 Pcs Induksi Gas Kompor</p>
+                    <button class="copy-btn" onclick="copyText('product-7', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-7"><a href="https://shopee.co.id/Panci-Set-Stainless-Steel-5-Pcs-Induksi-Gas-Kompor-i.727272.838383" target="_blank">https://shopee.co.id/Panci-Set-Stainless-Steel-5-Pcs-Induksi-Gas-Kompor-i.727272.838383</a></p>
+                    <button class="copy-btn" onclick="copyText('link-7', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-7">Upgrade peralatan dapur dengan panci set stainless steel! Isi 5 pcs berbagai ukuran, compatible buat kompor gas dan induksi. Material tebal distribusi panas merata. Gampang dibersihkan dan tahan lama bertahun-tahun.
+
+Promo bundling di Shopee, hemat banget!
+
+#PanciSet #StainlessSteel #KitchenUpgrade #MasakDiRumah #ShopeeFinds #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 8/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-8">Game Controller Gamepad Bluetooth Wireless untuk HP PC</p>
+                    <button class="copy-btn" onclick="copyText('product-8', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-8"><a href="https://shopee.co.id/Game-Controller-Gamepad-Bluetooth-Wireless-HP-PC-i.838383.949494" target="_blank">https://shopee.co.id/Game-Controller-Gamepad-Bluetooth-Wireless-HP-PC-i.838383.949494</a></p>
+                    <button class="copy-btn" onclick="copyText('link-8', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-8">Gaming time! Gamepad wireless ini bikin main game di HP jadi 10x lebih seru. Compatible Android, iOS, dan PC. Grip ergonomis, button responsive, dan koneksi stabil tanpa delay. Battery tahan 20 jam continuous play!
+
+Flash sale di Shopee, harga spesial!
+
+#Gamepad #MobileGaming #GamingGear #WirelessController #ShopeeHaul #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 9/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-9">Hair Dryer Ionic Foldable 1800W Fast Dry Low Noise</p>
+                    <button class="copy-btn" onclick="copyText('product-9', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-9"><a href="https://shopee.co.id/Hair-Dryer-Ionic-Foldable-1800W-Fast-Dry-Low-Noise-i.949494.050505" target="_blank">https://shopee.co.id/Hair-Dryer-Ionic-Foldable-1800W-Fast-Dry-Low-Noise-i.949494.050505</a></p>
+                    <button class="copy-btn" onclick="copyText('link-9', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-9">Habis keramas malam, keringin rambut pake hair dryer ionic ini! Teknologi ion negatif bikin rambut smooth dan ga frizzy. 1800W fast dry tapi low noise. Foldable jadi ga makan tempat. 3 level suhu buat berbagai tipe rambut.
+
+Order di Shopee, harga terjangkau!
+
+#HairDryer #HairCare #IonicDryer #BeautyTools #ShopeeFinds #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 00:00 -->
+        <div class="post-card" id="post-0000">
+            <div class="post-header">
+                <span class="post-time">00:00 WIB</span>
+                <span class="post-number">Post 10/10</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-product">Judul Produk</span>
+                <div class="content-box">
+                    <p id="product-10">Buku Bacaan Self Improvement Best Seller Motivasi Pengembangan Diri</p>
+                    <button class="copy-btn" onclick="copyText('product-10', this)">Copy</button>
+                </div>
+                <span class="section-label label-link">Link Produk Shopee</span>
+                <div class="content-box">
+                    <p id="link-10"><a href="https://shopee.co.id/Buku-Self-Improvement-Best-Seller-Motivasi-Pengembangan-Diri-i.050505.161616" target="_blank">https://shopee.co.id/Buku-Self-Improvement-Best-Seller-Motivasi-Pengembangan-Diri-i.050505.161616</a></p>
+                    <button class="copy-btn" onclick="copyText('link-10', this)">Copy</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="content-box">
+                    <p id="caption-10">Sebelum tidur, baca buku dulu yuk! Reading sebelum tidur bikin otak lebih rileks dibanding scroll HP. Buku self improvement ini best seller, bahasanya ringan dan penuh insight. Investasi ilmu yang worth it banget!
+
+Available di Shopee, banyak judul pilihan!
+
+#BukuBagus #SelfImprovement #ReadingHabit #BookLovers #ShopeeHaul #AffiliateShopee</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="markDone(this)">Selesai</button>
+                    <button class="hide-btn" onclick="toggleTask(this)">Hide Task</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Shopee Affiliate Content Planner - Day 6</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+        function markDone(btn) {
+            const card = btn.closest('.post-card');
+            card.classList.add('done');
+            btn.textContent = 'Sudah Selesai!';
+            btn.classList.add('completed');
+            btn.disabled = true;
+            updateProgress();
+        }
+        function toggleTask(btn) {
+            const card = btn.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                btn.textContent = 'Hide Task';
+            } else {
+                card.classList.add('hidden-task');
+                const showBtn = document.createElement('button');
+                showBtn.className = 'show-btn';
+                showBtn.textContent = 'Tampilkan Task';
+                showBtn.onclick = function() { card.classList.remove('hidden-task'); showBtn.remove(); };
+                card.appendChild(showBtn);
+            }
+        }
+        function updateProgress() {
+            const total = document.querySelectorAll('.post-card').length;
+            const done = document.querySelectorAll('.post-card.done').length;
+            const percentage = (done / total) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = done + ' dari ' + total + ' konten selesai';
+        }
+    </script>
+</body>
+</html>
