@@ -1,0 +1,37 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the /Anindita/ folder and generate Anindita-content-day1.html with a full day content plan (06:00-22:00, 17 posts). Day 1 theme: First day as content creator - Anindita starts her journey, nervous but excited, exploring her neighborhood in Tangerang, trying to take her first content photos at various spots. Outfit Set 1 (06:00-16:00): Korean girly casual daywear. Outfit Set 2 (17:00-22:00): Cute evening outfit. Captions should be a mix of funny, relatable, galau, puitis. Each post has a caption (FB style), image prompt (describing Anindita with specific outfit doing specific activity), Pinterest reference links, and copy/hide buttons.",
+  "status": "in_progress",
+  "steps": [
+    "Create directory /projects/sandbox/M-App/Anindita/",
+    "Create /projects/sandbox/M-App/Anindita/Anindita-content-day1.html following EXACTLY the same HTML structure, CSS, and JavaScript as /projects/sandbox/M-App/Anindita-content-day2.html",
+    "Title: 'Anindita - Day 1 Content Plan'",
+    "Subtitle: mention Tangerang area and princess girl content creator theme",
+    "Schedule nav: links from 06:00 to 22:00 (17 time slots, every hour)",
+    "Outfit section: Set 1 (06:00-16:00) Korean girly casual - describe specific outfit. Set 2 (17:00-22:00) evening cute outfit - describe specific outfit",
+    "Generate 17 post cards (post-0600 through post-2200) each with: unique engaging FB caption (mix of kocak/puitis/galau/iseng/ngasal styles), detailed image prompt following the format 'Anindita pakai outfit image 2, (action) (location) (supporting details) (optional: people in background) (lighting)', 2-3 Pinterest search links relevant to outfit/location/props, 1 Google image search link",
+    "Day 1 storyline: Anindita decides to start her content creator journey. Morning at home getting ready, goes out to explore Tangerang spots for photos, visits a cafe, walks around BSD area, tries her first photoshoot at various locations, evening she reviews her content at home. Make it a connected narrative throughout the day.",
+    "Ensure localStorage key uses 'anindita-day1-task-' prefix for persistence",
+    "Post numbering: Post 1/17 through Post 17/17",
+    "All captions should feel authentic to a 20yo Indonesian college girl - mix of Bahasa Indonesia casual/slang"
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/M-App/Anindita/Anindita-content-day1.html",
+    "HTML structure matches the reference files exactly (same CSS, same card structure, same JS)",
+    "Contains exactly 17 post cards from 06:00 to 22:00",
+    "Each post has caption, prompt, reference links, and hide button",
+    "Copy buttons work (same JS as reference)",
+    "localStorage persistence uses day1-specific key",
+    "Day 1 has a unique storyline different from existing day 1 and day 2 reference files",
+    "Captions are varied in style (some funny, some poetic, some random, some galau)"
+  ],
+  "verification": [
+    "Check file exists and is valid HTML with proper structure",
+    "Grep for all 17 post IDs (post-0600 through post-2200)",
+    "Grep for copyText and toggleTask functions",
+    "Verify localStorage key contains 'day1'"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
