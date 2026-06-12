@@ -321,6 +321,54 @@
                 width: 100%;
             }
         }
+
+        .title-section {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+            border-radius: 12px;
+            border: 1px solid #c8d8f0;
+        }
+
+        .title-section .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .title-text {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .copy-title-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #43a047, #2e7d32);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-title-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-title-btn.copied {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        }
     </style>
 </head>
 <body>
@@ -367,6 +415,11 @@
                 <span class="post-number">Post 1/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-1">Kehilangan Pekerjaan Besok: Bisakah Bertahan 3 Bulan?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-1', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-1" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apa yang akan Anda lakukan jika besok pagi tiba-tiba kehilangan pekerjaan? Apakah keluarga Anda bisa bertahan hidup selama 3 bulan ke depan tanpa penghasilan sama sekali?&lt;/b&gt;
@@ -419,6 +472,11 @@ Dana darurat bukan kemewahan, bukan pula sesuatu yang bisa ditunda. Ini adalah f
                 <span class="post-number">Post 2/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-2">Memalukan dan Menyakitkan: Meminjam Uang Saat Darurat</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-2', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-2" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda terpaksa meminjam uang ke kerabat saat keadaan darurat? Pernahkah Anda merasakan betapa memalukan dan menyakitkannya harus mengetuk pintu saudara di tengah malam karena tidak punya uang untuk membayar rumah sakit?&lt;/b&gt;
@@ -472,6 +530,11 @@ Jangan tunggu sampai Anda mengalami apa yang dialami Bu Sari. Jangan tunggu samp
                 <span class="post-number">Post 3/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-3">Berapa Bulan Keluarga Bertahan Tanpa Penghasilan?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-3', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-3" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini, sebelum Anda tidur, coba hitung dengan jujur: berapa bulan keluarga Anda bisa bertahan jika seluruh penghasilan terhenti total mulai besok? Jawabannya mungkin akan membuat Anda sulit tidur.&lt;/b&gt;
@@ -526,6 +589,11 @@ Satu keputusan malam ini bisa menyelamatkan keluarga Anda di masa depan. Satu la
                 <span class="post-number">Post 4/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-4">Siapa Membiayai Anak-Anak Jika Anda Tidak Ada?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-4', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-4" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda membayangkan siapa yang akan membiayai anak-anak Anda jika Anda tidak ada? Siapa yang akan memastikan mereka tetap bersekolah, tetap makan dengan baik, dan tetap memiliki masa depan yang cerah?&lt;/b&gt;
@@ -583,6 +651,11 @@ Anak-anak tidak bisa memilih orangtuanya. Tapi kita bisa memilih untuk melindung
                 <span class="post-number">Post 5/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-5">Anak Putus Sekolah Karena Penghasilan Keluarga Hilang</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-5', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-5" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda yakin anak Anda masih bisa sekolah jika penghasilan keluarga tiba-tiba hilang? Apakah Anda sudah menghitung berapa total biaya pendidikan dari TK hingga universitas?&lt;/b&gt;
@@ -635,6 +708,11 @@ Jangan biarkan masa depan anak Anda bergantung pada keberuntungan. Jangan biarka
                 <span class="post-number">Post 6/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-6">Ketika Anak Bilang 'Aku Ingin Jadi Dokter'</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-6', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-6" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Ketika anak Anda berkata &quot;Ayah/Ibu, aku ingin jadi dokter,&quot; apa yang Anda rasakan? Bangga? Bahagia? Tapi di balik senyum itu, apakah ada kekhawatiran diam-diam tentang bagaimana membiayainya?&lt;/b&gt;
@@ -686,6 +764,11 @@ Malam ini, sebelum Anda tertidur, tataplah wajah anak Anda yang sedang terlelap.
                 <span class="post-number">Post 7/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-7">Setiap 1 Menit, 1 Orang Indonesia Didiagnosis Kanker</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-7', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-7" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Tahukah Anda bahwa setiap 1 menit, ada 1 orang Indonesia yang didiagnosis kanker? Tahukah Anda bahwa biaya pengobatan kanker bisa menghabiskan seluruh harta yang Anda kumpulkan seumur hidup, hanya dalam hitungan bulan?&lt;/b&gt;
@@ -738,6 +821,11 @@ Kanker tidak mengenal usia, tidak mengenal gaya hidup, tidak mengenal status sos
                 <span class="post-number">Post 8/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-8">Didiagnosis Kanker: Apa Rencana Pembiayaan Anda?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-8', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-8" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Jika hari ini Anda didiagnosis kanker, apa rencana Anda untuk membiayai pengobatan? Jual rumah? Pinjam ke bank? Galang dana online? Atau membiarkan penyakit itu menggerogoti Anda karena tidak punya biaya?&lt;/b&gt;
@@ -793,6 +881,11 @@ Jangan biarkan kanker merampas hidup DAN harta Anda sekaligus. Jangan biarkan ke
                 <span class="post-number">Post 9/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-9">Merasa Kebal dari Kanker? Pikirkan Lagi</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-9', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-9" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda berpikir: &quot;Kanker tidak mungkin terjadi pada saya&quot;? Pernahkah Anda merasa bahwa karena Anda masih muda, rajin olahraga, dan tidak merokok, maka Anda kebal dari penyakit ini?&lt;/b&gt;
@@ -849,6 +942,11 @@ Malam ini, jangan hanya berdoa untuk kesehatan. Doa itu penting, tapi tindakan n
                 <span class="post-number">Post 10/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-10">Janji Suci: Sudah Siap Melindungi di Kondisi Terburuk?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-10', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-10" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Anda baru saja mengucapkan janji suci di depan altar. Hati penuh bahagia, mata berbinar menatap masa depan bersama. Tapi pernahkah Anda berhenti sejenak dan bertanya: sudahkah saya benar-benar siap melindungi orang yang paling saya cintai ini, dalam kondisi terburuk sekalipun?&lt;/b&gt;
@@ -901,6 +999,11 @@ Pernikahan yang indah dimulai dengan cinta. Pernikahan yang kuat dibangun dengan
                 <span class="post-number">Post 11/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-11">Menikah Berarti Tanggungan Bertambah: Sudah Siap?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-11', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-11" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Setelah menikah, coba hitung: berapa orang yang kini bergantung pada penghasilan Anda? Satu? Dua? Tiga? Dan apakah perlindungan finansial Anda sudah sebanding dengan jumlah tanggungan itu?&lt;/b&gt;
@@ -953,6 +1056,11 @@ Semakin besar keluarga Anda, semakin besar tanggung jawab Anda. Dan semakin besa
                 <span class="post-number">Post 12/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-12">Surat Terakhir untuk Pasangan: Penyesalan atau Syukur?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-12', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-12" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini, bayangkan sejenak: jika Anda memiliki kesempatan terakhir untuk menulis surat kepada pasangan Anda, apa yang akan Anda tulis? Apakah isinya penyesalan karena tidak sempat mempersiapkan masa depan mereka? Atau ucapan syukur karena Anda sudah memastikan mereka akan baik-baik saja?&lt;/b&gt;
@@ -1007,6 +1115,11 @@ Malam ini, sebelum Anda memejamkan mata, ambil satu keputusan kecil yang dampakn
                 <span class="post-number">Post 13/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-13">Ibu Rumah Tangga Ingin Berpenghasilan? Ini Jalannya</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-13', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-13" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Ibu rumah tangga, pernahkah Anda merasa ingin berkontribusi secara finansial untuk keluarga, ingin memiliki penghasilan sendiri, tapi bingung bagaimana caranya tanpa harus meninggalkan anak-anak di rumah? Pernahkah perasaan itu membuat Anda merasa terjebak?&lt;/b&gt;
@@ -1060,6 +1173,11 @@ Anda tidak perlu memilih antara menjadi ibu yang hadir atau wanita yang mandiri.
                 <span class="post-number">Post 14/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-14">Membantu Keluarga Lain Sambil Menghasilkan Uang</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-14', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-14" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Bagaimana rasanya jika setiap hari Anda bisa membantu keluarga lain merasa aman dan terlindungi, sementara rekening Anda terus bertumbuh? Bagaimana jika pekerjaan Anda bukan hanya menghasilkan uang, tapi juga memberikan dampak nyata pada kehidupan banyak orang?&lt;/b&gt;
@@ -1111,6 +1229,11 @@ Ini bukan sekadar pekerjaan. Ini adalah misi hidup yang dibayar dengan sangat la
                 <span class="post-number">Post 15/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-15">Ibu yang Mandiri dan Menginspirasi Anak-Anaknya</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-15', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-15" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini, sebelum Anda tidur, pikirkan tentang ini: apa yang ingin anak-anak Anda ceritakan tentang ibu mereka kelak? Apakah Anda ingin mereka bercerita tentang ibu yang hanya menunggu di rumah, atau ibu yang berani mengambil langkah, mandiri, berprestasi, dan menginspirasi?&lt;/b&gt;
@@ -1165,6 +1288,11 @@ Malam ini, ambil keputusan yang akan mengubah cerita hidup Anda dan keluarga sel
                 <span class="post-number">Post 16/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-16">Tabungan Bank Membuat Uang Anda MENYUSUT Tiap Tahun</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-16', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-16" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Anda rajin menabung setiap bulan. Anda merasa disiplin dan bertanggung jawab. Tapi apakah Anda tahu bahwa tabungan bank biasa sebenarnya membuat uang Anda MENYUSUT setiap tahun tanpa Anda sadari? Apakah Anda siap mendengar kenyataan pahit ini?&lt;/b&gt;
@@ -1218,6 +1346,11 @@ Menabung itu baik. Tapi menabung SAJA tidak cukup untuk mengalahkan inflasi dan 
                 <span class="post-number">Post 17/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-17">Rahasia Orang Kaya: Bukan Soal Berapa Besar Gaji</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-17', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-17" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Mengapa orang kaya semakin kaya sementara orang yang hanya menabung tidak pernah mencapai kebebasan finansial? Rahasianya bukan pada berapa besar penghasilan mereka, melainkan pada bagaimana mereka MENEMPATKAN uang mereka. Apakah Anda sudah tahu rahasia ini?&lt;/b&gt;
@@ -1271,6 +1404,11 @@ Berhentilah membiarkan uang Anda tidur di tabungan biasa. &lt;b&gt;Bangunkan uan
                 <span class="post-number">Post 18/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-18">Dua Skenario Masa Depan: Mana Pilihan Anda?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-18', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-18" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini saya ingin Anda membayangkan dua skenario masa depan. Skenario pertama: 15 tahun dari sekarang, uang Anda habis tergerus inflasi dan Anda harus bekerja terus tanpa bisa pensiun. Skenario kedua: 15 tahun dari sekarang, investasi Anda sudah tumbuh cukup besar untuk memberikan kebebasan finansial. Skenario mana yang Anda pilih?&lt;/b&gt;
@@ -1324,6 +1462,11 @@ Malam ini, buat satu keputusan cerdas yang akan mengubah masa depan finansial ke
                 <span class="post-number">Post 19/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-19">Darurat di RS Tapi Terhambat Masalah Jaminan Bayar</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-19', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-19" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda atau keluarga datang ke rumah sakit dalam keadaan darurat, tapi justru harus menunggu berjam-jam karena masalah jaminan pembayaran? Pernahkah Anda merasakan kepanikan ganda: panik karena kondisi kesehatan, dan panik karena tidak tahu bagaimana membayar biayanya?&lt;/b&gt;
@@ -1377,6 +1520,11 @@ Kesehatan bisa datang dan pergi tanpa peringatan. Tapi kesiapan finansial mengha
                 <span class="post-number">Post 20/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-20">Biaya Rawat Inap 1 Minggu: Angka yang Mengejutkan</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-20', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-20" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Tahukah Anda berapa biaya sebenarnya jika Anda atau anggota keluarga harus dirawat di rumah sakit selama satu minggu? Angkanya mungkin akan membuat Anda terkejut dan bertanya: apakah saya sudah siap menghadapi ini?&lt;/b&gt;
@@ -1430,6 +1578,11 @@ Jangan pernah biarkan penyakit menghancurkan rencana keuangan Anda dan keluarga.
                 <span class="post-number">Post 21/21</span>
             </div>
             <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-21">Rangkuman Minggu 3: Sudah Ambil Langkah Nyata?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-21', this)">Copy Judul</button>
+                </div>
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
                     <textarea id="caption-21" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Di penghujung minggu ke-3 ini, izinkan saya merangkum perjalanan kita bersama. Selama 7 hari terakhir, kita telah membahas hal-hal yang sangat penting tentang perlindungan keluarga. Pertanyaan terakhir saya malam ini: sudahkah Anda mengambil satu langkah nyata untuk melindungi orang-orang yang Anda cintai?&lt;/b&gt;
@@ -1551,6 +1704,34 @@ Minggu ke-3 ini kita tutup dengan satu pesan yang sangat penting: &lt;b&gt;Cinta
                 localStorage.setItem('satuyangterpenting-week3-task-' + index, card.classList.contains('hidden-task'));
             });
         };
+
+        function copyTitle(id, button) {
+            const titleEl = document.getElementById(id);
+            const text = titleEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const range = document.createRange();
+                range.selectNode(titleEl);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html>
