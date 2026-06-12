@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastijaga - IG Content Day 2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.95); border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.2em; color: #2c3e50; margin-bottom: 10px; }
+        header p { color: #666; font-size: 1.1em; }
+        .schedule-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.2em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a { display: inline-block; padding: 8px 16px; background: linear-gradient(135deg, #2c3e50, #3498db); color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s; }
+        .nav-links a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); }
+        .post-card { background: rgba(255,255,255,0.97); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: transform 0.2s, opacity 0.3s; position: relative; }
+        .post-card.done-task { border-left: 5px solid #27ae60; opacity: 0.7; }
+        .post-card.done-task .post-header .post-time::after { content: ' ✓'; color: #27ae60; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #2c3e50; }
+        .post-number { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .section-label { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 600; margin-bottom: 12px; }
+        .label-caption { background: #eaf2f8; color: #1a5276; }
+        .label-prompt { background: #f4ecf7; color: #6c3483; }
+        .caption-box, .prompt-box { background: #f8f9ff; border-radius: 12px; padding: 16px; margin-bottom: 15px; position: relative; border: 1px solid #e8eaf6; }
+        .caption-box p, .prompt-box p { color: #333; line-height: 1.7; font-size: 0.95em; padding-right: 80px; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #2c3e50, #3498db); color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8em; font-weight: 600; transition: transform 0.2s, background 0.2s; }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #27ae60; }
+        .action-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .done-btn { flex: 1; padding: 10px 16px; background: #e8f8f5; border: 2px solid #1abc9c; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #0e6655; font-weight: 500; transition: background 0.2s; }
+        .done-btn:hover { background: #d1f2eb; }
+        .done-btn.is-done { background: #27ae60; color: white; border-color: #27ae60; }
+        .delete-btn { padding: 10px 16px; background: #fdedec; border: 2px solid #e74c3c; border-radius: 10px; cursor: pointer; font-size: 0.9em; color: #922b21; font-weight: 500; transition: background 0.2s; }
+        .delete-btn:hover { background: #f5b7b1; }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.8); font-size: 0.9em; }
+        .day-nav { background: rgba(255,255,255,0.95); border-radius: 15px; padding: 15px 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+        .day-nav a { padding: 8px 16px; background: #f0f0f0; color: #333; text-decoration: none; border-radius: 20px; font-size: 0.85em; font-weight: 500; transition: all 0.2s; }
+        .day-nav a:hover, .day-nav a.active { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; }
+        @media (max-width: 600px) { body { padding: 10px; } header h1 { font-size: 1.6em; } .post-card { padding: 18px; } .nav-links a { padding: 6px 12px; font-size: 0.8em; } .caption-box p, .prompt-box p { padding-right: 40px; } .action-buttons { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>@pastijaga - IG Content Day 2</h1>
+            <p>Full Day Content Schedule | Leads Nasabah & Rekrut Agen Asuransi</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Posting setiap 1 jam (06:00 - 22:00) | CTA: Klik Link di Bio</p>
+        </header>
+
+        <div class="day-nav">
+            <a href="pastijaga-IG-day1.html">Day 1</a>
+            <a href="pastijaga-IG-day2.html" class="active">Day 2</a>
+            <a href="pastijaga-IG-day3.html">Day 3</a>
+            <a href="pastijaga-IG-day4.html">Day 4</a>
+            <a href="pastijaga-IG-day5.html">Day 5</a>
+            <a href="pastijaga-IG-day6.html">Day 6</a>
+            <a href="pastijaga-IG-day7.html">Day 7</a>
+        </div>
+
+        <div class="schedule-nav">
+            <h3>Langsung ke Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a><a href="#post-0700">07:00</a><a href="#post-0800">08:00</a><a href="#post-0900">09:00</a><a href="#post-1000">10:00</a><a href="#post-1100">11:00</a><a href="#post-1200">12:00</a><a href="#post-1300">13:00</a><a href="#post-1400">14:00</a><a href="#post-1500">15:00</a><a href="#post-1600">16:00</a><a href="#post-1700">17:00</a><a href="#post-1800">18:00</a><a href="#post-1900">19:00</a><a href="#post-2000">20:00</a><a href="#post-2100">21:00</a><a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600" data-post-index="0">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-1">Bangun pagi. Ambil HP. Cek saldo.
+
+Masih sama kayak kemarin. Dan kemarin lusa. Dan minggu lalu.
+
+Ini pertanyaannya: kalau kamu terus lakuin hal yang SAMA, apa yang bikin kamu yakin hasilnya bakal BEDA?
+
+Ada pepatah: "Definisi kegilaan adalah melakukan hal yang sama berulang-ulang tapi mengharapkan hasil berbeda."
+
+Kalau kamu mau hasil BERBEDA, kamu harus melakukan sesuatu yang BERBEDA.
+
+Di @pastijaga, kami bantu kamu memulai langkah berbeda. Langkah menuju financial freedom yang sesungguhnya.
+
+Siap berubah? Klik link di bio.
+
+#PagiMotivasi #BeraniBeubah #FinancialFreedom #Pastijaga #HariBaruSemangat #MulaiHariIni #LangkahBerbeda #IndonesiaBangkit</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-1">Create a square 1:1 Instagram post image. Background: early morning sky gradient from dark blue to orange sunrise. Main visual: a person holding a phone showing a bank balance that stays flat (graph line flat), with a fork in the road ahead - one path loops back (same routine) and one path leads upward to light. Bold headline: "MAU HASIL BEDA? LAKUIN HAL BEDA!" in white bold with sunrise glow. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Morning motivation style, powerful typography.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-1', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700" data-post-index="1">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 2/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-2">Setiap hari kamu nukar 8-10 jam hidupmu untuk GAJI orang lain.
+
+8 jam itu kamu ga bisa sama anak.
+8 jam itu kamu ga bisa urus kesehatan.
+8 jam itu kamu ga bisa kejar mimpimu.
+
+Dan WEEKEND? Kamu cuma istirahat biar Senin bisa kerja lagi.
+
+Lingkaran setan.
+
+Tapi gimana kalau ada cara supaya 8 jam itu kamu kerja untuk DIRIMU SENDIRI? Bangun ASET sendiri? Hasilnya masuk ke kantong KAMU?
+
+Itulah yang ditawarkan karir di @pastijaga. Waktu yang kamu investasikan, hasilnya KAMU yang nikmati.
+
+Penasaran? Klik link di bio.
+
+#TradeTimeForMoney #WaktuBerharga #KerjaUntukDiri #Pastijaga #FreedomTime #KarirMandiri #KeluarDariRutinitas #WakeUp</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-2">Create a square 1:1 Instagram post image. Background: contrasting split - left grey/corporate, right colorful/free. Left side: clock showing 8 hours with chains around a person in office cubicle. Right side: same person free, with laptop at a cafe, clock showing flexible time. Center text: "8 JAM UNTUK SIAPA?" in bold white. Bottom comparison: "Gaji Orang Lain vs Income Sendiri" with arrows. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Impactful contrast design, modern style.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-2', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800" data-post-index="2">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 3/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-3">Ibu-ibu, pernah denger ini dari suami?
+
+"Udah di rumah aja, ga usah kerja."
+
+Niat baik. Tapi realitanya? Kadang kamu pengen punya UANG SENDIRI. Bukan karena suami kurang. Tapi karena kamu pengen MANDIRI.
+
+Pengen bisa beli sesuatu tanpa harus minta.
+Pengen bisa kasih hadiah dari HASIL SENDIRI.
+Pengen tunjukin ke anak: "Ibu juga BISA."
+
+Di @pastijaga, kamu bisa mulai dari rumah. 2-3 jam sehari. Sambil urus rumah tangga.
+
+Banyak ibu-ibu yang sudah membuktikan. Sekarang giliran kamu.
+
+Mau tau caranya? Klik link di bio.
+
+#IbuMandiri #PenghasilanSendiri #IbuBisaKerja #Pastijaga #DariRumah #WomenPower #IbuInspirasi #IncomeIbuRumahTangga</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-3">Create a square 1:1 Instagram post image. Background: soft pastel pink to cream gradient. Main visual: confident Indonesian mother (with hijab) holding both a baby on one arm and a tablet/phone showing income dashboard on the other hand, standing in a cozy living room. Expression: proud and empowered. Around her: icons of flexibility (clock, home, family, money). Headline: "IBU JUGA BISA MANDIRI FINANSIAL" in dark rose bold font. Subtitle: "2-3 Jam Sehari, Dari Rumah" in smaller text. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Empowering, warm, relatable design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-3', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900" data-post-index="3">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 4/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-4">Fresh graduate 2024, dengerin:
+
+Rata-rata gaji fresh grad di Indonesia: 4-5 juta/bulan.
+Rata-rata UMR Jakarta: 5 juta.
+Rata-rata biaya hidup single di Jakarta: 6-7 juta.
+
+Lihat masalahnya?
+
+BELUM mulai kerja aja sudah MINUS.
+
+Tapi di industri asuransi, first year income kamu bisa JAUH di atas UMR. Karena ini PERFORMANCE-BASED. Makin bagus kinerjamu, makin besar hasilnya.
+
+Ga ada ceiling. Ga ada "tunggu naik jabatan 3 tahun."
+
+Yang ada: kerja keras sekarang, hasil sekarang.
+
+Mau coba? @pastijaga buka pintu untuk fresh grad. Klik link di bio.
+
+#FreshGrad2024 #GajiPertama #IncomeAboveUMR #Pastijaga #KarirPertama #MudaBerpenghasilan #StartNow #GenZKarir</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-4">Create a square 1:1 Instagram post image. Background: youthful gradient from blue to teal. Main visual: calculator/math equation showing "Gaji 4-5jt" minus "Biaya Hidup 6-7jt" equals "MINUS" in red. Below it: alternative path showing "Karir Asuransi" with upward graph and "No Ceiling!" text. Young Indonesian professional (fresh grad look with blazer) pointing up at the growing graph confidently. Headline: "FRESH GRAD: JANGAN MAU MINUS!" in bold white. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Youthful, data-driven, motivational design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-4', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000" data-post-index="4">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 5/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-5">Buat para PENGUSAHA yang omzetnya sudah besar tapi BELUM punya proteksi:
+
+Coba bayangkan skenario ini:
+- Kamu kecelakaan dan harus bedrest 6 bulan
+- Biaya RS: 500 juta+
+- Bisnis tanpa kamu: perlahan turun
+- Karyawan mulai resign
+- Tagihan tetap jalan
+
+Semua ini BISA dicegah dengan 1 keputusan: PROTEKSI DIRI.
+
+Dan buat pengusaha yang mau DIVERSIFIKASI income, karir di bidang asuransi bisa jadi side business yang menguntungkan.
+
+Kamu sudah punya network besar. Tinggal leverage itu.
+
+Info: klik link di bio @pastijaga.
+
+#Pengusaha #ProteksiCEO #DiversifikasiIncome #Pastijaga #BusinessOwner #Asuransi #SmartBusiness #SideIncome</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-5">Create a square 1:1 Instagram post image. Background: dramatic dark gradient with gold accents. Main visual: domino effect illustration - first domino labeled "Sakit/Kecelakaan" pushing others: "Biaya RS 500jt+", "Bisnis Turun", "Karyawan Resign", "Tagihan Menumpuk". A golden shield stops the dominoes from falling. Shield labeled "PROTEKSI". Headline: "PENGUSAHA: 1 MUSIBAH BISA ROBOHKAN SEGALANYA" in white bold. Subtitle: "Kecuali kamu punya proteksi." in gold. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Executive, dramatic, high-stakes design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-5', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100" data-post-index="5">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 6/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-6">Tau ga kenapa orang Indonesia masih TAKUT asuransi?
+
+Karena pengalaman BURUK:
+- Agen yang cuma jualan, ga edukasi
+- Klaim ditolak karena ga dijelaskan detailnya
+- Merasa "dibohongi" oleh janji manis
+
+Aku paham. Dan aku ga mau jadi agen seperti itu.
+
+Di @pastijaga, kami approach-nya BERBEDA:
+- EDUKASI dulu, baru nawarin
+- TRANSPARAN soal manfaat DAN limitasi
+- DAMPINGI klien sampai klaim selesai
+
+Ini yang bikin kami beda. Dan ini yang bikin klien kami LOYAL.
+
+Mau jadi bagian dari tim yang BENAR? Klik link di bio.
+
+#AsuransiBeda #EdukasiDulu #TransparanSelalu #Pastijaga #AgenJujur #TrustBuilding #AsuransiTerpercaya #KlienPuas</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-6">Create a square 1:1 Instagram post image. Background: clean white with trust-building blue accents. Main visual: comparison chart with two columns. Left column (red tones, X marks): "Agen Lama" - "Cuma Jualan, Klaim Ditolak, Janji Palsu". Right column (green/teal tones, checkmarks): "Tim @pastijaga" - "Edukasi Dulu, Transparan, Dampingi Klaim". Center: handshake illustration symbolizing trust. Headline: "BEDA AGEN, BEDA HASIL" in bold dark blue. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Professional, trustworthy, comparison-style design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-6', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200" data-post-index="6">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 7/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-7">Lunch break thought:
+
+Kamu pebisnis jaringan yang sudah LAMA di industri tapi HASILNYA segitu-gitu aja?
+
+Mungkin bukan SKILL-mu yang kurang. Mungkin PRODUK-nya yang kurang dibutuhkan.
+
+Think about it:
+- Berapa orang yang BUTUH suplemen tiap bulan?
+- Berapa orang yang BUTUH asuransi SEUMUR HIDUP?
+
+Jawabannya jelas: SEMUA ORANG butuh proteksi.
+
+Market asuransi itu EVERGREEN. Ga ada tren yang naik turun. Ga ada produk expired. Ga ada stok yang harus dijual habis.
+
+Kalau kamu punya skill networking, kamu bisa MELEDAK di industri ini.
+
+Hubungi @pastijaga. Link di bio.
+
+#Networking #BisnisEvergreen #MarketLuas #Pastijaga #PebisnisJaringan #SwitchIndustry #AsuransiForever #NetworkerSukses</p>
+                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-7">Create a square 1:1 Instagram post image. Background: professional navy with geometric patterns. Main visual: comparison of two product shelves. Left shelf (fading): "Produk Tren" with supplement bottles, fashion items, showing "Expired, Stok Menumpuk, Tren Turun" in red. Right shelf (glowing): "Asuransi" with shield/protection icons showing "Evergreen, Selalu Dibutuhkan, No Stok" in green. Arrow from left to right saying "UPGRADE!". Headline: "NETWORKER: PRODUKMU MASIH RELEVAN?" in white bold. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Business comparison, analytical design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-7', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300" data-post-index="7">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 8/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-8">Buat kamu yang SUDAH jadi agen asuransi tapi merasa STUCK:
+
+Aku pernah di posisimu. Leads kering. Motivasi turun. Komisi ga sesuai ekspektasi.
+
+Yang aku pelajari: masalahnya bukan di INDUSTRINYA. Masalahnya di SISTEM dan SUPPORT.
+
+Di @pastijaga, yang beda:
+- Digital marketing training (bukan cuma door-to-door)
+- Leads dari online (bukan cuma warm market)
+- Weekly coaching session
+- Komunitas yang saling angkat
+
+Ga semua perusahaan asuransi punya ini. Dan itu yang bikin banyak agen frustrasi lalu quit.
+
+Jangan quit dari industri. Pindah ke tim yang BENAR.
+
+Info: klik link di bio @pastijaga.
+
+#AgenStuck #PindahTim #SistemBaru #Pastijaga #DigitalInsurance #CoachingMingguan #AgenBangkit #KomunitasAgen</p>
+                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-8">Create a square 1:1 Instagram post image. Background: gradient from grey (stuck) to bright blue (growth). Main visual: a plant growing through concrete, symbolizing breaking through limitations. The plant has leaves labeled: "Digital Marketing", "Online Leads", "Weekly Coaching", "Komunitas". The concrete is labeled "Sistem Lama". Headline: "AGEN STUCK? BUKAN KAMU YANG SALAH!" in bold white. Subtitle: "Sistemnya yang perlu diganti." in light blue. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Growth-oriented, hopeful design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-8', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400" data-post-index="8">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 9/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-9">Tau ga apa bedanya orang kaya dan orang biasa?
+
+Bukan soal gaji besar. Bukan soal lahir kaya.
+
+BEDANYA: orang kaya punya MULTIPLE INCOME STREAMS.
+
+Gaji = 1 stream.
+Bisnis = 1 stream.
+Investasi = 1 stream.
+Komisi asuransi = 1 stream.
+Renewal income = 1 stream.
+
+Orang biasa cuma punya 1. Orang kaya punya 5+.
+
+Kabar baiknya: kamu bisa MULAI nambah income stream HARI INI. Tanpa modal besar. Tanpa quit job.
+
+Caranya? Gabung @pastijaga sebagai agen. Mulai part-time. Grow full-time.
+
+Klik link di bio.
+
+#MultipleIncome #IncomeStreams #OrangKaya #Pastijaga #TambahPenghasilan #PartTimeBisnis #SmartMoney #GrowIncome</p>
+                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-9">Create a square 1:1 Instagram post image. Background: rich dark blue with gold accents (wealth theme). Main visual: river/stream diagram showing one thin stream labeled "Gaji Saja" on left (poor side) vs multiple streams flowing into a large river on right (wealthy side) - streams labeled "Gaji, Bisnis, Investasi, Komisi, Renewal". The multiple-stream side is golden and abundant. Headline: "ORANG KAYA vs ORANG BIASA" in white bold. Bottom text: "Berapa income stream-mu?" in gold. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Wealth-themed, educational infographic design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-9', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500" data-post-index="9">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 10/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-10">KARYAWAN: perusahaanmu kasih asuransi kesehatan?
+
+"Iya, sudah ada BPJS."
+"Iya, ada dari kantor."
+
+Bagus. Tapi CUKUP ga?
+
+Coba cek:
+- Limit rawat inapnya berapa?
+- Cover penyakit kritis ga?
+- Kalau PHK, masih ter-cover?
+- Keluargamu ikut ter-cover?
+
+Kebanyakan asuransi kantor itu BASIC. Dan kalau kamu resign atau di-PHK, proteksimu HILANG.
+
+Kamu butuh proteksi PRIBADI yang TETAP ada apapun status pekerjaanmu.
+
+Konsultasi gratis di @pastijaga. Klik link di bio.
+
+#AsuransiKaryawan #BPJSCukup #ProteksiPribadi #Pastijaga #HealthInsurance #PHKProtection #KaryawanSmart #CekAsuransi</p>
+                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-10">Create a square 1:1 Instagram post image. Background: clinical white with blue medical accents. Main visual: checklist infographic with 4 questions, each with an empty checkbox: "Limit Rawat Inap?", "Cover Penyakit Kritis?", "Cover Setelah PHK?", "Keluarga Ter-cover?" Below: a warning badge saying "Kalau jawabannya TIDAK, kamu butuh proteksi tambahan!" A medical cross icon with shield. Headline: "ASURANSI KANTORMU CUKUP?" in bold dark blue. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Medical/professional checklist design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-10', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600" data-post-index="10">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 11/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-11">Ada yang bilang: "Aku ga bisa jualan."
+
+Aku tanya balik: "Kamu pernah rekomendasiin restoran ke temen?"
+
+"Iya."
+
+"Pernah cerita soal film bagus ke orang?"
+
+"Iya."
+
+"Nah itu JUALAN. Cuma ga dibayar."
+
+Di @pastijaga, kamu melakukan hal yang SAMA. Cerita soal produk yang BERMANFAAT. Tapi kali ini, kamu DIBAYAR.
+
+Bedanya cuma itu.
+
+Jadi kalau kamu bilang "ga bisa jualan", kamu bohong ke diri sendiri. Yang benar: kamu BELUM pernah jualan yang DIBAYAR.
+
+Yuk mulai. Link di bio.
+
+#BisaJualan #MindsetShift #JualanItuMudah #Pastijaga #UbahMindset #RecommendAndEarn #KarirBaru #ClosingMudah</p>
+                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-11">Create a square 1:1 Instagram post image. Background: friendly light yellow to white gradient. Main visual: comic-style conversation bubbles. First bubble: person recommending a restaurant to friend (free). Second bubble: person recommending insurance to client (getting paid - money icon). Equals sign between them showing they're the same skill. Headline: "GA BISA JUALAN? BOHONG!" in bold playful dark font. Subtitle: "Kamu cuma belum dibayar untuk itu." Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Friendly, relatable, comic-style design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-11', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700" data-post-index="11">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 12/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-12">Jam 5 sore. Orang lain pulang kerja.
+
+Tapi untuk para agen di @pastijaga, ini BARU JAM EMAS.
+
+Kenapa? Karena jam 5-9 malam itu waktu PRIME TIME buat connect dengan calon nasabah. Mereka sudah selesai kerja, sudah santai, dan SIAP mendengarkan.
+
+Ini keuntungan jadi agen: kamu bisa ATUR jam kerjamu sendiri. Mau pagi? Boleh. Mau sore? Boleh. Mau gabungin dengan kerjaan kantor? BOLEH BANGET.
+
+Fleksibilitas ini yang bikin karir asuransi COCOK untuk siapapun. Full-timer, part-timer, ibu rumah tangga, mahasiswa.
+
+Semua bisa. Yang penting MAU.
+
+Klik link di bio.
+
+#JamEmas #FleksibilitasKerja #PrimeTime #Pastijaga #AgenFleksibel #PartTimeFullResult #WorkLifeBalance #AturWaktuSendiri</p>
+                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-12">Create a square 1:1 Instagram post image. Background: warm evening gradient from orange to purple (sunset vibes). Main visual: clock showing 5PM-9PM highlighted in gold as "JAM EMAS". Around the clock: different people in different settings all working as agents - one at home, one at cafe, one after office hours, one student. All happy and productive. Headline: "JAM 5 SORE: ORANG LAIN ISTIRAHAT, KAMU CUAN!" in white bold. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Warm, flexible-lifestyle, golden hour theme.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-12', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800" data-post-index="12">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 13/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-13">Percepatan income. Dua kata yang POWERFUL.
+
+Di kerjaan biasa, income naik PELAN:
+- Tahun 1: 5 juta
+- Tahun 3: 6 juta
+- Tahun 5: 7 juta
+- Tahun 10: 9 juta
+
+10 tahun cuma naik 4 juta? Itu bukan pertumbuhan. Itu STAGNASI.
+
+Di industri asuransi dengan @pastijaga:
+- Bulan 1-3: belajar dan mulai
+- Bulan 4-6: mulai closing, income bertambah
+- Tahun 1: bisa 2-3x lipat dari gaji awal
+- Tahun 3+: potensi income yang jauh melampaui korporat
+
+Ini bukan janji palsu. Ini REALITA yang sudah dibuktikan banyak agen kami.
+
+Mau percepatan? Klik link di bio.
+
+#PercepatanIncome #KenaikanGaji #CepatKaya #Pastijaga #IncomeGrowth #AkselerasiKarir #BukanStagnasi #LevUpIncome</p>
+                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-13">Create a square 1:1 Instagram post image. Background: dark blue with energy/speed lines. Main visual: two income growth graphs side by side. Left graph (slow, nearly flat): "Karir Korporat" showing minimal growth over 10 years. Right graph (steep exponential curve): "Karir @pastijaga" showing rapid acceleration. Speed lines and rocket on the right graph. Headline: "PERCEPATAN INCOME: 10 TAHUN vs 1 TAHUN" in white bold with speed effect. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Dynamic, speed-focused, data visualization design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-13', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900" data-post-index="13">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 14/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-14">Makan malam sama keluarga. Momen sederhana yang banyak orang KORBANKAN demi kerja lembur.
+
+Aku dulu juga gitu. Pulang jam 9 malam. Anak sudah tidur. Istri sudah capek nunggu.
+
+Sekarang? Aku bisa atur jadwal sendiri. Mau antar anak sekolah? Bisa. Mau makan siang bareng istri? Bisa. Mau libur dadakan? Bisa.
+
+Ini namanya FREEDOM TIME. Dan ini ga bisa dibeli dengan gaji berapapun.
+
+Tapi bisa DIBANGUN dengan keputusan yang tepat.
+
+@pastijaga memberi kamu jalan menuju freedom time sambil tetap punya income yang stabil.
+
+Tertarik? Klik link di bio.
+
+#FreedomTime #WorkLifeBalance #WaktuKeluarga #Pastijaga #FleksibilitasHidup #PresentDad #PresentMom #TimeIsPriceless</p>
+                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-14">Create a square 1:1 Instagram post image. Background: warm, cozy home evening setting with soft golden lighting. Main visual: happy Indonesian family having dinner together - father, mother, and children laughing at the dining table. Calendar/clock on wall showing "Freedom to Choose Your Time". Contrast small image in corner: same father alone at dark office at 9PM (crossed out). Headline: "FREEDOM TIME > GAJI BESAR" in warm white bold. Subtitle: "Waktu bersama keluarga itu tak ternilai." Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Warm, family-oriented, emotional design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-14', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000" data-post-index="14">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 15/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-15">MAHASISWA semester akhir, ini pesan untukmu:
+
+Semua temanmu sibuk cari MAGANG dan KERJA. Bagus. Normal.
+
+Tapi gimana kalau kamu JUGA memulai KARIR yang bisa kamu bawa SETELAH lulus?
+
+Di @pastijaga, banyak mahasiswa yang mulai part-time. Belajar skill yang ga diajarkan di kampus:
+- Komunikasi efektif
+- Financial literacy
+- Selling & negotiation
+- Personal branding
+- Leadership
+
+Dan sambil belajar, mereka SUDAH menghasilkan.
+
+Jadi pas lulus, mereka ga MULAI dari nol. Mereka sudah SELANGKAH lebih maju.
+
+Mau jadi yang selangkah lebih maju? Klik link di bio.
+
+#MahasiswaProduktif #SkillDilUarKampus #PartTimeMahasiswa #Pastijaga #HeadStart #KulialSambilCuan #SelangkahLebihMaju #StudentLife</p>
+                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-15">Create a square 1:1 Instagram post image. Background: campus/university vibe with blue and white. Main visual: Indonesian university student with backpack standing at a graduation stage, but already holding both a diploma AND a business portfolio/income chart. Around the student: floating skill badges - "Komunikasi", "Financial Literacy", "Selling", "Leadership", "Personal Branding". Headline: "LULUS KULIAH SUDAH SELANGKAH LEBIH MAJU" in bold blue. Subtitle: "Mulai dari sekarang." Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Academic meets entrepreneurial design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-15', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100" data-post-index="15">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 16/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-16">Malam ini, aku mau bahas soal STABILITAS INCOME.
+
+Banyak orang takut jadi agen asuransi karena: "Ga ada gaji tetap."
+
+Padahal realitanya:
+- Perusahaan asuransi besar kasih GAJI BULANAN untuk agen baru
+- Ada KOMISI dari setiap closing
+- Ada BONUS berkala
+- Ada RENEWAL income (income dari polis yang sudah berjalan)
+
+Jadi income-mu bukan cuma dari 1 sumber. BERLAPIS.
+
+Dan yang paling POWERFUL: renewal income itu PASIF. Masuk terus selama polis nasabah aktif.
+
+Bayangkan 5 tahun lagi: kamu punya ratusan nasabah aktif. Income masuk TANPA kamu kerja aktif.
+
+Itu STABILITAS sejati.
+
+Info lengkap: klik link di bio @pastijaga.
+
+#StabilitasIncome #GajiBulanan #RenewalIncome #Pastijaga #IncomeBerlapis #PassiveIncome #AgenAsuransi #StabilDanBerkembang</p>
+                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-16">Create a square 1:1 Instagram post image. Background: calming dark green to black gradient (stability theme). Main visual: layered cake/pyramid showing income layers stacking up: bottom layer "Gaji Bulanan" (solid, stable), next "Komisi" (growing), next "Bonus" (larger), top layer "Renewal Income" (golden, glowing, passive). Each layer gets more golden and bright. Text beside: "Income BERLAPIS, Bukan Cuma 1 Sumber". Headline: "STABILITAS + PERTUMBUHAN" in white and gold bold. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Layered, stable, growing wealth design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-16', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200" data-post-index="16">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Post 17/17</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <p id="caption-17">Sebelum tidur, satu pertanyaan terakhir:
+
+Kalau 1 tahun dari sekarang hidupmu MASIH SAMA seperti hari ini...
+
+Gaji sama. Rutinitas sama. Impian masih impian.
+
+Kamu bakal MENYESAL atau BERSYUKUR?
+
+Kalau jawabannya MENYESAL, berarti ada yang harus DIUBAH.
+
+Dan perubahan itu dimulai dari SATU keputusan kecil: TAKE THE FIRST STEP.
+
+@pastijaga siap jadi partner perubahanmu. Kami ga janji instan. Tapi kami janji PROSESNYA jelas dan HASILNYA nyata.
+
+Langkah pertamamu malam ini: klik link di bio. Isi form. 2 menit.
+
+Besok kamu akan bangun sebagai orang yang SUDAH memulai.
+
+Good night, future agent.
+
+#GoodNight #StepOne #MulaiMalamIni #Pastijaga #PerubahanDimulai #FutureAgent #NoRegret #TakeTheLeap</p>
+                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy Caption</button>
+                </div>
+                <span class="section-label label-prompt">Image Prompt</span>
+                <div class="prompt-box">
+                    <p id="prompt-17">Create a square 1:1 Instagram post image. Background: serene night sky full of stars with a crescent moon. Main visual: person standing at the edge looking at two paths diverging - one labeled "1 Tahun Sama Saja" (dark, looping back) and one labeled "1 Tahun Berubah" (lit with stars, going upward). The person is taking a step toward the bright path. Headline: "1 TAHUN LAGI: MENYESAL ATAU BANGGA?" in white bold with starlight effect. Bottom: "Langkah pertama: klik link di bio." in soft gold italic. Watermark "@pastijaga" centered in the middle of the image with 30% opacity. Contemplative, beautiful night motivation design.</p>
+                    <button class="copy-btn" onclick="copyText('prompt-17', this)">Copy Prompt</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="done-btn" onclick="toggleDone(this)">Tandai Selesai</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>@pastijaga Content Plan - Day 2 | Leads Nasabah & Rekrut Agen</p>
+            <p style="margin-top:5px;">Semua caption dan prompt bisa di-copy 1 klik. Happy posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'pastijaga-day2';
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => { const o = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied'); setTimeout(() => { button.innerText = o; button.classList.remove('copied'); }, 2000); }).catch(() => { const t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.left = '-9999px'; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); const o = button.innerText; button.innerText = 'Copied!'; button.classList.add('copied'); setTimeout(() => { button.innerText = o; button.classList.remove('copied'); }, 2000); });
+        }
+        function toggleDone(button) {
+            const card = button.closest('.post-card'); const index = card.getAttribute('data-post-index');
+            if (card.classList.contains('done-task')) { card.classList.remove('done-task'); button.innerText = 'Tandai Selesai'; button.classList.remove('is-done'); saveState(index, 'done', false); }
+            else { card.classList.add('done-task'); button.innerText = 'Sudah Selesai ✓'; button.classList.add('is-done'); saveState(index, 'done', true); }
+        }
+        function deleteTask(button) {
+            const card = button.closest('.post-card'); const index = card.getAttribute('data-post-index');
+            if (confirm('Yakin mau hapus task ini?')) { card.style.transition = 'all 0.3s ease'; card.style.opacity = '0'; card.style.transform = 'translateX(-100%)'; setTimeout(() => { card.style.display = 'none'; saveState(index, 'deleted', true); }, 300); }
+        }
+        function saveState(index, type, value) { const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); if (!s[index]) s[index] = {}; s[index][type] = value; localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+        function loadStates() { const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); document.querySelectorAll('.post-card').forEach(card => { const i = card.getAttribute('data-post-index'); if (s[i]) { if (s[i].deleted) card.style.display = 'none'; if (s[i].done) { card.classList.add('done-task'); const b = card.querySelector('.done-btn'); if (b) { b.innerText = 'Sudah Selesai ✓'; b.classList.add('is-done'); } } } }); }
+        document.addEventListener('DOMContentLoaded', loadStates);
+    </script>
+</body>
+</html>
