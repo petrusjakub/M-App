@@ -2,7 +2,7 @@
   "id": "FEAT-004",
   "type": "feat",
   "description": "Rewrite satuyangterpenting-week5.html and satuyangterpenting-week6.html with much longer, more substantive article content. Same expansion approach - each post grows from ~20 lines to ~50-60 lines.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "Read both /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week5.html and week6.html",
     "Rewrite BOTH files completely, keeping wrapper HTML but expanding all textarea content to be 3-4x longer",
@@ -30,5 +30,5 @@
     "Run: grep -c 'wa.me/+6287781896087' /projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week5.html - should be 21"
   ],
   "blocked_reason": null,
-  "findings": "Both week5 and week6 posts 1-12 (Days 1-4) expanded. Week5: all 21 posts expanded with 25-35 lines each in previous iterations. Week6 posts 1-12 now expanded with longer storytelling content. Day 1 (Tidak Bisa Bekerja/MiWealth Protection): stories of Pak Sugiarto (stroke), Bu Wulandari/Mas Hendra (kecelakaan kerja), Pak Ridwan (serangan jantung). Day 2 (Biaya RS Naik/MiUltimate HealthCare Plus): stories of Bu Kartini (pneumonia suami), Pak Santoso (infeksi paru), Mbak Ratih (anak sakit BPJS limit). Day 3 (Legacy/MiWealth Legacy): stories of Pak Dharma (sengketa warisan ayah), Pak Wirawan (shirtsleeves phenomenon), Bu Maharani (mertua meninggal tanpa perencanaan). Day 4 (Rekrutmen/Penghasilan Tanpa Batas): stories of Mas Anwar (karyawan bank), Mbak Nadia (mantan HRD), Pak Kurniawan (mantan guru). Quotes from Helen Keller, Charles Darwin, Albert Einstein, George Foreman, Buddha, Theophrastus, Warren Buffett, Peter Strople, William James, Franklin D. Roosevelt, Confucius, Robert Kiyosaki. CSS min-height updated to 500px/800px. File now 1323 lines. Week6 posts 13-21 (Days 5-7) still need expansion."
+  "findings": "Both week5 and week6 fully expanded. Week6 file now 1439 lines with all 21 posts containing 25-35+ lines each. Posts 13-21 (Days 5-7) expanded with emotional storytelling: Day 5 (Diabetes/MiEarly Critical Care): stories of Pak Bambang (warung kopi owner, retinopati+neuropati), Mbak Yuni (35yo startup worker diagnosed young), Pak Darmawan (freelance architect, gagal ginjal+cuci darah). Day 6 (Dana Darurat vs Asuransi/MiSave Pro+MiUltimate HealthCare): stories of Pak Hendro (manager, wife's cancer exhausted emergency fund), Bu Ratna (online shop owner, husband's appendix surgery wiped 2 years savings), Pak Gunawan (lecturer, heart attack bypass Rp380M vs premi). Day 7 (Cinta Sejati/MiWealth Protection): stories of Pak Wahyu (engineer, friend died without protection), Bu Sinta (husband killed in accident, struggled alone), recap/closing post. Quotes from Jim Rohn, Benjamin Franklin, Mahatma Gandhi, Warren Buffett, Dave Ramsey, Nat King Cole, Les Brown, Pablo Picasso. All 4 CTA URLs verified correct. No forbidden words (gue/gua/elo/elu). CSS min-height 500px/800px confirmed."
 }
