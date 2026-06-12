@@ -148,7 +148,6 @@
             color: #333;
             line-height: 1.7;
             font-size: 0.95em;
-            padding-right: 40px;
         }
 
         .caption-box blockquote {
@@ -207,10 +206,40 @@
             background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
 
+
+        .code-textarea {
+            width: 100%;
+            min-height: 200px;
+            max-height: 400px;
+            padding: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85em;
+            line-height: 1.6;
+            background: #1e1e2e;
+            color: #cdd6f4;
+            border: 2px solid #45475a;
+            border-radius: 12px;
+            resize: vertical;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            tab-size: 2;
+        }
+
+        .code-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .code-textarea::selection {
+            background: rgba(102, 126, 234, 0.3);
+        }
+
         .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
+            position: relative;
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
@@ -298,7 +327,7 @@
     <div class="container">
         <header>
             <h1>Satu Yang Terpenting - Week 3</h1>
-            <p>Konten Edukasi Asuransi Manulife | 7 Hari x 3 Postingan</p>
+            <p>Kode HTML Siap Copy | 7 Hari x 3 Postingan</p>
             <p style="margin-top:8px; font-size:0.9em; color:#888;">Pagi - Siang - Malam | Follow @petrusjakub</p>
         </header>
 
@@ -340,20 +369,20 @@
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-1"><b>Apa yang akan Anda lakukan jika besok pagi tiba-tiba kehilangan pekerjaan?</b>
+                    <textarea id="caption-1" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apa yang akan Anda lakukan jika besok pagi tiba-tiba kehilangan pekerjaan?&lt;/b&gt;
 
-Coba pikirkan: tagihan listrik, cicilan rumah, biaya makan keluarga, sekolah anak. <u>Semua itu tidak berhenti hanya karena penghasilan Anda berhenti</u>.
+Coba pikirkan: tagihan listrik, cicilan rumah, biaya makan keluarga, sekolah anak. &lt;u&gt;Semua itu tidak berhenti hanya karena penghasilan Anda berhenti&lt;/u&gt;.
 
-<span class="highlight">Survei menunjukkan 70% keluarga Indonesia tidak memiliki dana darurat yang cukup untuk bertahan 3 bulan tanpa penghasilan.</span>
+&lt;span class=&quot;highlight&quot;&gt;Survei menunjukkan 70% keluarga Indonesia tidak memiliki dana darurat yang cukup untuk bertahan 3 bulan tanpa penghasilan.&lt;/span&gt;
 
-<blockquote>"Jangan menabung dari sisa pengeluaran. Belanjalah dari sisa tabungan." - Warren Buffett</blockquote>
+&lt;blockquote&gt;&quot;Jangan menabung dari sisa pengeluaran. Belanjalah dari sisa tabungan.&quot; - Warren Buffett&lt;/blockquote&gt;
 
-<b>MiSave Pro dari Manulife</b> adalah solusi <i>tabungan berjangka dengan perlindungan asuransi jiwa. Dana Anda tumbuh pasti dengan bunga kompetitif, sekaligus keluarga terlindungi jika terjadi risiko meninggal dunia</i>.
+&lt;b&gt;MiSave Pro dari Manulife&lt;/b&gt; adalah solusi &lt;i&gt;tabungan berjangka dengan perlindungan asuransi jiwa. Dana Anda tumbuh pasti dengan bunga kompetitif, sekaligus keluarga terlindungi jika terjadi risiko meninggal dunia&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=MiSave+Pro+Dana+Darurat+Manulife" alt="MiSave Pro solusi dana darurat dari Manulife" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=MiSave+Pro+Dana+Darurat+Manulife&quot; alt=&quot;MiSave Pro solusi dana darurat dari Manulife&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Dana darurat bukan kemewahan, itu kebutuhan. <b>Mulai siapkan sekarang sebelum terlambat.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+Dana darurat bukan kemewahan, itu kebutuhan. &lt;b&gt;Mulai siapkan sekarang sebelum terlambat.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-1', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -374,20 +403,20 @@ Dana darurat bukan kemewahan, itu kebutuhan. <b>Mulai siapkan sekarang sebelum t
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-2"><b>Pernahkah Anda terpaksa meminjam uang ke kerabat saat keadaan darurat?</b>
+                    <textarea id="caption-2" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda terpaksa meminjam uang ke kerabat saat keadaan darurat?&lt;/b&gt;
 
-Rasanya tidak enak, bukan? Malu, sungkan, dan merasa berhutang budi. <u>Padahal semua itu bisa dihindari jika Anda memiliki cadangan dana yang siap digunakan kapan saja</u>.
+Rasanya tidak enak, bukan? Malu, sungkan, dan merasa berhutang budi. &lt;u&gt;Padahal semua itu bisa dihindari jika Anda memiliki cadangan dana yang siap digunakan kapan saja&lt;/u&gt;.
 
-<span class="highlight">Dana darurat ideal adalah 6-12 kali pengeluaran bulanan Anda. Sudahkah Anda memilikinya?</span>
+&lt;span class=&quot;highlight&quot;&gt;Dana darurat ideal adalah 6-12 kali pengeluaran bulanan Anda. Sudahkah Anda memilikinya?&lt;/span&gt;
 
-<blockquote>"Orang kaya berinvestasi pada waktu, orang miskin berinvestasi pada uang." - Jim Rohn</blockquote>
+&lt;blockquote&gt;&quot;Orang kaya berinvestasi pada waktu, orang miskin berinvestasi pada uang.&quot; - Jim Rohn&lt;/blockquote&gt;
 
-<b>MiSave Pro</b> membantu Anda <i>membangun dana darurat secara disiplin dengan setoran rutin yang ringan. Uang Anda dijamin tumbuh dan bisa dicairkan saat benar-benar dibutuhkan, plus mendapat manfaat perlindungan jiwa</i>.
+&lt;b&gt;MiSave Pro&lt;/b&gt; membantu Anda &lt;i&gt;membangun dana darurat secara disiplin dengan setoran rutin yang ringan. Uang Anda dijamin tumbuh dan bisa dicairkan saat benar-benar dibutuhkan, plus mendapat manfaat perlindungan jiwa&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Bangun+Dana+Darurat+Anda" alt="Membangun dana darurat dengan disiplin dan terencana" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Bangun+Dana+Darurat+Anda&quot; alt=&quot;Membangun dana darurat dengan disiplin dan terencana&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Jangan tunggu situasi darurat datang baru menyesal. <b>Persiapkan sekarang dengan cara yang cerdas.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+Jangan tunggu situasi darurat datang baru menyesal. &lt;b&gt;Persiapkan sekarang dengan cara yang cerdas.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-2', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -408,20 +437,20 @@ Jangan tunggu situasi darurat datang baru menyesal. <b>Persiapkan sekarang denga
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-3"><b>Malam ini, coba hitung: berapa bulan keluarga Anda bisa bertahan jika penghasilan terhenti total?</b>
+                    <textarea id="caption-3" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini, coba hitung: berapa bulan keluarga Anda bisa bertahan jika penghasilan terhenti total?&lt;/b&gt;
 
-Jika jawabannya kurang dari 6 bulan, <u>Anda sedang berjalan di atas tali tanpa jaring pengaman</u>.
+Jika jawabannya kurang dari 6 bulan, &lt;u&gt;Anda sedang berjalan di atas tali tanpa jaring pengaman&lt;/u&gt;.
 
-<span class="highlight">Hidup penuh ketidakpastian. Pandemi, PHK, kecelakaan, sakit mendadak. Semua itu nyata dan bisa terjadi pada siapa saja.</span>
+&lt;span class=&quot;highlight&quot;&gt;Hidup penuh ketidakpastian. Pandemi, PHK, kecelakaan, sakit mendadak. Semua itu nyata dan bisa terjadi pada siapa saja.&lt;/span&gt;
 
-<blockquote>"Bukan berapa banyak uang yang Anda hasilkan, tapi berapa banyak yang Anda simpan, dan seberapa keras uang itu bekerja untuk Anda." - Robert Kiyosaki</blockquote>
+&lt;blockquote&gt;&quot;Bukan berapa banyak uang yang Anda hasilkan, tapi berapa banyak yang Anda simpan, dan seberapa keras uang itu bekerja untuk Anda.&quot; - Robert Kiyosaki&lt;/blockquote&gt;
 
-Dengan <b>MiSave Pro</b>, Anda bisa <i>menabung mulai dari Rp 300 ribu per bulan dengan jaminan pertumbuhan dana. Setelah masa kontrak, Anda mendapat seluruh tabungan plus bonus, dan selama masa kontrak keluarga terlindungi asuransi jiwa</i>.
+Dengan &lt;b&gt;MiSave Pro&lt;/b&gt;, Anda bisa &lt;i&gt;menabung mulai dari Rp 300 ribu per bulan dengan jaminan pertumbuhan dana. Setelah masa kontrak, Anda mendapat seluruh tabungan plus bonus, dan selama masa kontrak keluarga terlindungi asuransi jiwa&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Jaring+Pengaman+Keuangan+Keluarga" alt="Dana darurat sebagai jaring pengaman keuangan keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Jaring+Pengaman+Keuangan+Keluarga&quot; alt=&quot;Dana darurat sebagai jaring pengaman keuangan keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Satu keputusan malam ini bisa menyelamatkan keluarga Anda di masa depan. <b>Jangan tunda lagi.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+Satu keputusan malam ini bisa menyelamatkan keluarga Anda di masa depan. &lt;b&gt;Jangan tunda lagi.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-3', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -444,20 +473,20 @@ Satu keputusan malam ini bisa menyelamatkan keluarga Anda di masa depan. <b>Jang
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-4"><b>Pernahkah Anda membayangkan siapa yang akan membiayai anak-anak Anda jika Anda tidak ada?</b>
+                    <textarea id="caption-4" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda membayangkan siapa yang akan membiayai anak-anak Anda jika Anda tidak ada?&lt;/b&gt;
 
-Anak-anak kita adalah makhluk paling rentan. Mereka <u>bergantung sepenuhnya pada kita untuk makan, berpakaian, bersekolah, dan tumbuh dengan baik</u>.
+Anak-anak kita adalah makhluk paling rentan. Mereka &lt;u&gt;bergantung sepenuhnya pada kita untuk makan, berpakaian, bersekolah, dan tumbuh dengan baik&lt;/u&gt;.
 
-<span class="highlight">Tanpa perlindungan yang tepat, masa depan mereka bisa runtuh dalam sekejap jika terjadi sesuatu pada pencari nafkah utama.</span>
+&lt;span class=&quot;highlight&quot;&gt;Tanpa perlindungan yang tepat, masa depan mereka bisa runtuh dalam sekejap jika terjadi sesuatu pada pencari nafkah utama.&lt;/span&gt;
 
-<blockquote>"Anak-anak adalah pesan hidup yang kita kirim ke masa yang tidak akan kita lihat." - John F. Kennedy</blockquote>
+&lt;blockquote&gt;&quot;Anak-anak adalah pesan hidup yang kita kirim ke masa yang tidak akan kita lihat.&quot; - John F. Kennedy&lt;/blockquote&gt;
 
-<b>MiWealth Protection + MiEducation dari Manulife</b> adalah kombinasi sempurna: <i>perlindungan jiwa yang menjamin keluarga tetap menerima santunan, plus dana pendidikan yang tetap tersedia di setiap jenjang meskipun orang tua sudah tiada</i>.
+&lt;b&gt;MiWealth Protection + MiEducation dari Manulife&lt;/b&gt; adalah kombinasi sempurna: &lt;i&gt;perlindungan jiwa yang menjamin keluarga tetap menerima santunan, plus dana pendidikan yang tetap tersedia di setiap jenjang meskipun orang tua sudah tiada&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Lindungi+Masa+Depan+Anak" alt="Perlindungan masa depan anak dengan MiWealth Protection dan MiEducation" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Lindungi+Masa+Depan+Anak&quot; alt=&quot;Perlindungan masa depan anak dengan MiWealth Protection dan MiEducation&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Anak-anak tidak bisa memilih orang tuanya. Tapi kita bisa memilih untuk melindungi mereka. <b>Lakukan sekarang.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+Anak-anak tidak bisa memilih orang tuanya. Tapi kita bisa memilih untuk melindungi mereka. &lt;b&gt;Lakukan sekarang.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-4', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -478,20 +507,20 @@ Anak-anak tidak bisa memilih orang tuanya. Tapi kita bisa memilih untuk melindun
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-5"><b>Apakah Anda yakin anak Anda masih bisa sekolah jika penghasilan keluarga tiba-tiba hilang?</b>
+                    <textarea id="caption-5" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda yakin anak Anda masih bisa sekolah jika penghasilan keluarga tiba-tiba hilang?&lt;/b&gt;
 
-Pendidikan berkualitas membutuhkan biaya yang tidak sedikit. <u>TK hingga universitas bisa menghabiskan ratusan juta rupiah</u>. Siapa yang akan membayar semua itu jika Anda tidak mampu lagi?
+Pendidikan berkualitas membutuhkan biaya yang tidak sedikit. &lt;u&gt;TK hingga universitas bisa menghabiskan ratusan juta rupiah&lt;/u&gt;. Siapa yang akan membayar semua itu jika Anda tidak mampu lagi?
 
-<span class="highlight">Setiap tahun, ribuan anak terpaksa putus sekolah karena orang tua mengalami musibah dan tidak ada persiapan finansial.</span>
+&lt;span class=&quot;highlight&quot;&gt;Setiap tahun, ribuan anak terpaksa putus sekolah karena orang tua mengalami musibah dan tidak ada persiapan finansial.&lt;/span&gt;
 
-<blockquote>"Warisan terbaik yang bisa diberikan orang tua kepada anaknya adalah pendidikan." - Napoleon Hill</blockquote>
+&lt;blockquote&gt;&quot;Warisan terbaik yang bisa diberikan orang tua kepada anaknya adalah pendidikan.&quot; - Napoleon Hill&lt;/blockquote&gt;
 
-Dengan <b>MiEducation</b>, dana pendidikan anak Anda <i>akan tetap tersedia sesuai jadwal kebutuhan, dari SD hingga perguruan tinggi. Jika terjadi risiko pada orang tua, premi dibebaskan dan manfaat tetap berjalan</i>.
+Dengan &lt;b&gt;MiEducation&lt;/b&gt;, dana pendidikan anak Anda &lt;i&gt;akan tetap tersedia sesuai jadwal kebutuhan, dari SD hingga perguruan tinggi. Jika terjadi risiko pada orang tua, premi dibebaskan dan manfaat tetap berjalan&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Jaminan+Pendidikan+Anak+Anda" alt="Dana pendidikan terjamin dengan MiEducation Manulife" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Jaminan+Pendidikan+Anak+Anda&quot; alt=&quot;Dana pendidikan terjamin dengan MiEducation Manulife&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Jangan biarkan masa depan anak Anda bergantung pada keberuntungan. <b>Rencanakan dengan pasti.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+Jangan biarkan masa depan anak Anda bergantung pada keberuntungan. &lt;b&gt;Rencanakan dengan pasti.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-5', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -512,20 +541,20 @@ Jangan biarkan masa depan anak Anda bergantung pada keberuntungan. <b>Rencanakan
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-6"><b>Ketika anak Anda berkata "Ayah/Ibu, aku ingin jadi dokter," apa yang Anda rasakan?</b>
+                    <textarea id="caption-6" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Ketika anak Anda berkata &quot;Ayah/Ibu, aku ingin jadi dokter,&quot; apa yang Anda rasakan?&lt;/b&gt;
 
-Bangga, pasti. Tapi di balik kebanggaan itu, ada kekhawatiran: <u>biaya kuliah kedokteran bisa mencapai Rp 1-2 miliar</u>. Bagaimana cara mempersiapkannya?
+Bangga, pasti. Tapi di balik kebanggaan itu, ada kekhawatiran: &lt;u&gt;biaya kuliah kedokteran bisa mencapai Rp 1-2 miliar&lt;/u&gt;. Bagaimana cara mempersiapkannya?
 
-<span class="highlight">Impian anak adalah tanggung jawab orang tua. Dan tanggung jawab itu perlu dipersiapkan sejak dini.</span>
+&lt;span class=&quot;highlight&quot;&gt;Impian anak adalah tanggung jawab orang tua. Dan tanggung jawab itu perlu dipersiapkan sejak dini.&lt;/span&gt;
 
-<blockquote>"Satu-satunya hal yang lebih mahal dari pendidikan adalah ketidaktahuan." - Albert Einstein</blockquote>
+&lt;blockquote&gt;&quot;Satu-satunya hal yang lebih mahal dari pendidikan adalah ketidaktahuan.&quot; - Albert Einstein&lt;/blockquote&gt;
 
-<b>MiWealth Protection + MiEducation</b> memberikan <i>double protection: jaminan bahwa keluarga tetap terlindungi secara finansial, sekaligus dana pendidikan anak yang pasti tersedia kapan pun dibutuhkan</i>.
+&lt;b&gt;MiWealth Protection + MiEducation&lt;/b&gt; memberikan &lt;i&gt;double protection: jaminan bahwa keluarga tetap terlindungi secara finansial, sekaligus dana pendidikan anak yang pasti tersedia kapan pun dibutuhkan&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Wujudkan+Cita-Cita+Anak" alt="Wujudkan cita-cita anak dengan perencanaan dana pendidikan" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Wujudkan+Cita-Cita+Anak&quot; alt=&quot;Wujudkan cita-cita anak dengan perencanaan dana pendidikan&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Malam ini, ambil satu langkah nyata untuk masa depan anak Anda. <b>Konsultasi gratis bersama kami.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+Malam ini, ambil satu langkah nyata untuk masa depan anak Anda. &lt;b&gt;Konsultasi gratis bersama kami.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-6', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -548,20 +577,20 @@ Malam ini, ambil satu langkah nyata untuk masa depan anak Anda. <b>Konsultasi gr
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-7"><b>Tahukah Anda bahwa setiap 1 menit, ada 1 orang Indonesia yang didiagnosis kanker?</b>
+                    <textarea id="caption-7" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Tahukah Anda bahwa setiap 1 menit, ada 1 orang Indonesia yang didiagnosis kanker?&lt;/b&gt;
 
-Ini bukan statistik untuk menakuti Anda. Ini kenyataan. <u>Kanker adalah pembunuh nomor 2 di Indonesia, dan biaya pengobatannya bisa menghabiskan seluruh tabungan seumur hidup dalam hitungan bulan</u>.
+Ini bukan statistik untuk menakuti Anda. Ini kenyataan. &lt;u&gt;Kanker adalah pembunuh nomor 2 di Indonesia, dan biaya pengobatannya bisa menghabiskan seluruh tabungan seumur hidup dalam hitungan bulan&lt;/u&gt;.
 
-<span class="highlight">Biaya kemoterapi per sesi: Rp 10-50 juta. Rata-rata dibutuhkan 6-8 sesi. Belum termasuk operasi, rawat inap, dan obat-obatan lainnya.</span>
+&lt;span class=&quot;highlight&quot;&gt;Biaya kemoterapi per sesi: Rp 10-50 juta. Rata-rata dibutuhkan 6-8 sesi. Belum termasuk operasi, rawat inap, dan obat-obatan lainnya.&lt;/span&gt;
 
-<blockquote>"Kesehatan bukanlah segalanya, tapi tanpa kesehatan, segalanya bukan apa-apa." - Arthur Schopenhauer</blockquote>
+&lt;blockquote&gt;&quot;Kesehatan bukanlah segalanya, tapi tanpa kesehatan, segalanya bukan apa-apa.&quot; - Arthur Schopenhauer&lt;/blockquote&gt;
 
-<b>MiEarly Critical Care dari Manulife</b> memberikan <i>santunan tunai sejak stadium awal kanker. Dana langsung cair tanpa perlu menunggu kondisi memburuk, sehingga Anda bisa segera mendapat pengobatan terbaik</i>.
+&lt;b&gt;MiEarly Critical Care dari Manulife&lt;/b&gt; memberikan &lt;i&gt;santunan tunai sejak stadium awal kanker. Dana langsung cair tanpa perlu menunggu kondisi memburuk, sehingga Anda bisa segera mendapat pengobatan terbaik&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Proteksi+Kanker+Sejak+Dini" alt="Proteksi kanker sejak stadium awal dengan MiEarly Critical Care" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Proteksi+Kanker+Sejak+Dini&quot; alt=&quot;Proteksi kanker sejak stadium awal dengan MiEarly Critical Care&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Kanker bisa datang tanpa peringatan. Tapi kesiapan finansial adalah pilihan. <b>Pilih untuk siap sekarang.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-7', this)">Copy</button>
+Kanker bisa datang tanpa peringatan. Tapi kesiapan finansial adalah pilihan. &lt;b&gt;Pilih untuk siap sekarang.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-7', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -582,20 +611,20 @@ Kanker bisa datang tanpa peringatan. Tapi kesiapan finansial adalah pilihan. <b>
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-8"><b>Jika hari ini Anda didiagnosis kanker, apa rencana Anda untuk membiayai pengobatan?</b>
+                    <textarea id="caption-8" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Jika hari ini Anda didiagnosis kanker, apa rencana Anda untuk membiayai pengobatan?&lt;/b&gt;
 
-Jual rumah? Pinjam ke bank? Galang dana online? <u>Tidak ada satupun dari opsi itu yang ideal ketika Anda sedang berjuang melawan penyakit</u>.
+Jual rumah? Pinjam ke bank? Galang dana online? &lt;u&gt;Tidak ada satupun dari opsi itu yang ideal ketika Anda sedang berjuang melawan penyakit&lt;/u&gt;.
 
-<span class="highlight">Fakta menyedihkan: banyak pasien kanker di Indonesia yang menghentikan pengobatan di tengah jalan karena kehabisan biaya.</span>
+&lt;span class=&quot;highlight&quot;&gt;Fakta menyedihkan: banyak pasien kanker di Indonesia yang menghentikan pengobatan di tengah jalan karena kehabisan biaya.&lt;/span&gt;
 
-<blockquote>"Persiapan hari ini menentukan kesuksesan esok hari." - Andrew Carnegie</blockquote>
+&lt;blockquote&gt;&quot;Persiapan hari ini menentukan kesuksesan esok hari.&quot; - Andrew Carnegie&lt;/blockquote&gt;
 
-<b>MiEarly Critical Care</b> membayar <i>santunan sekaligus saat Anda didiagnosis penyakit kritis, termasuk kanker stadium awal. Dana bisa digunakan bebas: untuk berobat, biaya hidup keluarga, atau pemulihan. Tidak ada batasan penggunaan</i>.
+&lt;b&gt;MiEarly Critical Care&lt;/b&gt; membayar &lt;i&gt;santunan sekaligus saat Anda didiagnosis penyakit kritis, termasuk kanker stadium awal. Dana bisa digunakan bebas: untuk berobat, biaya hidup keluarga, atau pemulihan. Tidak ada batasan penggunaan&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Biaya+Kanker+yang+Mencengangkan" alt="Biaya pengobatan kanker yang sangat tinggi di Indonesia" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Biaya+Kanker+yang+Mencengangkan&quot; alt=&quot;Biaya pengobatan kanker yang sangat tinggi di Indonesia&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Jangan biarkan kanker merampas hidup dan harta Anda sekaligus. <b>Lindungi diri Anda hari ini.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-8', this)">Copy</button>
+Jangan biarkan kanker merampas hidup dan harta Anda sekaligus. &lt;b&gt;Lindungi diri Anda hari ini.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-8', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -616,20 +645,20 @@ Jangan biarkan kanker merampas hidup dan harta Anda sekaligus. <b>Lindungi diri 
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-9"><b>Pernahkah Anda berpikir: "Kanker tidak mungkin terjadi pada saya"?</b>
+                    <textarea id="caption-9" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda berpikir: &quot;Kanker tidak mungkin terjadi pada saya&quot;?&lt;/b&gt;
 
-Justru itulah pikiran yang paling berbahaya. Karena <u>kanker tidak pandang bulu, usia, gender, atau gaya hidup</u>. Orang sehat sekalipun bisa terkena.
+Justru itulah pikiran yang paling berbahaya. Karena &lt;u&gt;kanker tidak pandang bulu, usia, gender, atau gaya hidup&lt;/u&gt;. Orang sehat sekalipun bisa terkena.
 
-<span class="highlight">Semakin cepat kanker terdeteksi, semakin besar peluang sembuh. Tapi deteksi dini membutuhkan biaya, dan pengobatan membutuhkan dana besar.</span>
+&lt;span class=&quot;highlight&quot;&gt;Semakin cepat kanker terdeteksi, semakin besar peluang sembuh. Tapi deteksi dini membutuhkan biaya, dan pengobatan membutuhkan dana besar.&lt;/span&gt;
 
-<blockquote>"Orang yang gagal merencanakan, merencanakan untuk gagal." - John D. Rockefeller</blockquote>
+&lt;blockquote&gt;&quot;Orang yang gagal merencanakan, merencanakan untuk gagal.&quot; - John D. Rockefeller&lt;/blockquote&gt;
 
-Dengan <b>MiEarly Critical Care</b>, Anda mendapat <i>pembayaran klaim di stadium awal penyakit kritis, bukan hanya stadium lanjut. Ini berarti Anda bisa langsung mendapatkan pengobatan terbaik saat peluang sembuh masih tinggi</i>.
+Dengan &lt;b&gt;MiEarly Critical Care&lt;/b&gt;, Anda mendapat &lt;i&gt;pembayaran klaim di stadium awal penyakit kritis, bukan hanya stadium lanjut. Ini berarti Anda bisa langsung mendapatkan pengobatan terbaik saat peluang sembuh masih tinggi&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Deteksi+Dini+Selamatkan+Nyawa" alt="Deteksi dini kanker dan proteksi keuangan keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Deteksi+Dini+Selamatkan+Nyawa&quot; alt=&quot;Deteksi dini kanker dan proteksi keuangan keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Malam ini, jangan hanya berdoa untuk kesehatan. <b>Ambil tindakan nyata untuk melindungi diri Anda.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-9', this)">Copy</button>
+Malam ini, jangan hanya berdoa untuk kesehatan. &lt;b&gt;Ambil tindakan nyata untuk melindungi diri Anda.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-9', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -652,20 +681,20 @@ Malam ini, jangan hanya berdoa untuk kesehatan. <b>Ambil tindakan nyata untuk me
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-10"><b>Anda baru menikah atau berencana menikah? Sudahkah Anda memikirkan perlindungan untuk pasangan?</b>
+                    <textarea id="caption-10" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Anda baru menikah atau berencana menikah? Sudahkah Anda memikirkan perlindungan untuk pasangan?&lt;/b&gt;
 
-Menikah bukan hanya soal cinta. Ini tentang <u>tanggung jawab baru yang sangat besar: menjamin kesejahteraan orang yang Anda cintai, dalam kondisi apapun</u>.
+Menikah bukan hanya soal cinta. Ini tentang &lt;u&gt;tanggung jawab baru yang sangat besar: menjamin kesejahteraan orang yang Anda cintai, dalam kondisi apapun&lt;/u&gt;.
 
-<span class="highlight">Banyak pasangan muda yang terlalu sibuk merencanakan pernikahan tapi lupa merencanakan perlindungan setelahnya.</span>
+&lt;span class=&quot;highlight&quot;&gt;Banyak pasangan muda yang terlalu sibuk merencanakan pernikahan tapi lupa merencanakan perlindungan setelahnya.&lt;/span&gt;
 
-<blockquote>"Cinta sejati bukan hanya soal perasaan. Ini tentang komitmen, tanggung jawab, dan pengorbanan." - Zig Ziglar</blockquote>
+&lt;blockquote&gt;&quot;Cinta sejati bukan hanya soal perasaan. Ini tentang komitmen, tanggung jawab, dan pengorbanan.&quot; - Zig Ziglar&lt;/blockquote&gt;
 
-<b>MiWealth Protection dari Manulife</b> memberikan <i>jaminan bahwa pasangan Anda akan tetap terlindungi secara finansial jika terjadi risiko meninggal dunia atau cacat tetap. Santunan hingga miliaran rupiah untuk menjaga kualitas hidup keluarga baru Anda</i>.
+&lt;b&gt;MiWealth Protection dari Manulife&lt;/b&gt; memberikan &lt;i&gt;jaminan bahwa pasangan Anda akan tetap terlindungi secara finansial jika terjadi risiko meninggal dunia atau cacat tetap. Santunan hingga miliaran rupiah untuk menjaga kualitas hidup keluarga baru Anda&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Proteksi+Untuk+Keluarga+Baru" alt="Perlindungan jiwa untuk pasangan dan keluarga baru" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Proteksi+Untuk+Keluarga+Baru&quot; alt=&quot;Perlindungan jiwa untuk pasangan dan keluarga baru&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Bukti cinta yang nyata adalah perlindungan. <b>Berikan yang terbaik untuk pasangan Anda.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-10', this)">Copy</button>
+Bukti cinta yang nyata adalah perlindungan. &lt;b&gt;Berikan yang terbaik untuk pasangan Anda.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-10', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -686,20 +715,20 @@ Bukti cinta yang nyata adalah perlindungan. <b>Berikan yang terbaik untuk pasang
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-11"><b>Setelah menikah, siapa yang bergantung pada penghasilan Anda? Satu orang? Dua? Tiga?</b>
+                    <textarea id="caption-11" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Setelah menikah, siapa yang bergantung pada penghasilan Anda? Satu orang? Dua? Tiga?&lt;/b&gt;
 
-Semakin banyak orang yang bergantung pada Anda, <u>semakin besar risiko finansial jika sesuatu terjadi</u>. Istri, anak, bahkan mertua yang kita bantu.
+Semakin banyak orang yang bergantung pada Anda, &lt;u&gt;semakin besar risiko finansial jika sesuatu terjadi&lt;/u&gt;. Istri, anak, bahkan mertua yang kita bantu.
 
-<span class="highlight">Ketika single, risiko hanya ditanggung sendiri. Setelah menikah, seluruh keluarga ikut menanggung akibatnya.</span>
+&lt;span class=&quot;highlight&quot;&gt;Ketika single, risiko hanya ditanggung sendiri. Setelah menikah, seluruh keluarga ikut menanggung akibatnya.&lt;/span&gt;
 
-<blockquote>"Tanggung jawab adalah harga yang harus kita bayar untuk kebebasan." - Oprah Winfrey</blockquote>
+&lt;blockquote&gt;&quot;Tanggung jawab adalah harga yang harus kita bayar untuk kebebasan.&quot; - Oprah Winfrey&lt;/blockquote&gt;
 
-<b>MiWealth Protection</b> bisa disesuaikan dengan <i>jumlah tanggungan Anda. Semakin besar tanggung jawab, semakin tinggi uang pertanggungan yang dibutuhkan. Konsultan kami akan membantu menghitung kebutuhan proteksi yang tepat untuk keluarga Anda</i>.
+&lt;b&gt;MiWealth Protection&lt;/b&gt; bisa disesuaikan dengan &lt;i&gt;jumlah tanggungan Anda. Semakin besar tanggung jawab, semakin tinggi uang pertanggungan yang dibutuhkan. Konsultan kami akan membantu menghitung kebutuhan proteksi yang tepat untuk keluarga Anda&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Tanggung+Jawab+Keluarga+Baru" alt="Tanggung jawab finansial setelah menikah" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Tanggung+Jawab+Keluarga+Baru&quot; alt=&quot;Tanggung jawab finansial setelah menikah&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Menikah adalah awal dari tanggung jawab baru. <b>Pastikan Anda siap menghadapinya.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-11', this)">Copy</button>
+Menikah adalah awal dari tanggung jawab baru. &lt;b&gt;Pastikan Anda siap menghadapinya.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-11', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -720,20 +749,20 @@ Menikah adalah awal dari tanggung jawab baru. <b>Pastikan Anda siap menghadapiny
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-12"><b>Jika Anda memiliki satu pesan untuk pasangan sebelum meninggal dunia, apa isinya?</b>
+                    <textarea id="caption-12" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Jika Anda memiliki satu pesan untuk pasangan sebelum meninggal dunia, apa isinya?&lt;/b&gt;
 
-Mungkin: "Maaf, aku tidak sempat mempersiapkan masa depan untukmu." <u>Jangan biarkan itu menjadi kenyataan</u>.
+Mungkin: &quot;Maaf, aku tidak sempat mempersiapkan masa depan untukmu.&quot; &lt;u&gt;Jangan biarkan itu menjadi kenyataan&lt;/u&gt;.
 
-<span class="highlight">Perlindungan jiwa adalah surat cinta terindah yang bisa Anda tulis untuk keluarga. Surat yang berbunyi: "Apapun yang terjadi, kalian akan baik-baik saja."</span>
+&lt;span class=&quot;highlight&quot;&gt;Perlindungan jiwa adalah surat cinta terindah yang bisa Anda tulis untuk keluarga. Surat yang berbunyi: &quot;Apapun yang terjadi, kalian akan baik-baik saja.&quot;&lt;/span&gt;
 
-<blockquote>"Hal-hal terbaik dalam hidup adalah orang-orang yang kita cintai, tempat-tempat yang pernah kita kunjungi, dan kenangan yang kita buat." - Richard Branson</blockquote>
+&lt;blockquote&gt;&quot;Hal-hal terbaik dalam hidup adalah orang-orang yang kita cintai, tempat-tempat yang pernah kita kunjungi, dan kenangan yang kita buat.&quot; - Richard Branson&lt;/blockquote&gt;
 
-Dengan <b>MiWealth Protection</b>, pasangan Anda akan <i>menerima santunan yang cukup untuk melunasi cicilan rumah, membiayai hidup sehari-hari, dan membesarkan anak-anak. Tanpa harus meminta bantuan orang lain</i>.
+Dengan &lt;b&gt;MiWealth Protection&lt;/b&gt;, pasangan Anda akan &lt;i&gt;menerima santunan yang cukup untuk melunasi cicilan rumah, membiayai hidup sehari-hari, dan membesarkan anak-anak. Tanpa harus meminta bantuan orang lain&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Cinta+Nyata+Untuk+Pasangan" alt="Proteksi jiwa sebagai bukti cinta nyata untuk pasangan" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Cinta+Nyata+Untuk+Pasangan&quot; alt=&quot;Proteksi jiwa sebagai bukti cinta nyata untuk pasangan&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Malam ini, berikan kado terbaik untuk pasangan Anda: ketenangan masa depan. <b>Hubungi kami sekarang.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-12', this)">Copy</button>
+Malam ini, berikan kado terbaik untuk pasangan Anda: ketenangan masa depan. &lt;b&gt;Hubungi kami sekarang.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-12', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -756,20 +785,20 @@ Malam ini, berikan kado terbaik untuk pasangan Anda: ketenangan masa depan. <b>H
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-13"><b>Ibu rumah tangga, pernahkah Anda merasa ingin berkontribusi secara finansial tanpa harus meninggalkan anak-anak?</b>
+                    <textarea id="caption-13" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Ibu rumah tangga, pernahkah Anda merasa ingin berkontribusi secara finansial tanpa harus meninggalkan anak-anak?&lt;/b&gt;
 
-Keinginan untuk mandiri secara finansial bukan berarti harus mengorbankan peran sebagai ibu. <u>Di era digital ini, ada banyak cara untuk menghasilkan uang dari rumah, salah satunya menjadi agen asuransi</u>.
+Keinginan untuk mandiri secara finansial bukan berarti harus mengorbankan peran sebagai ibu. &lt;u&gt;Di era digital ini, ada banyak cara untuk menghasilkan uang dari rumah, salah satunya menjadi agen asuransi&lt;/u&gt;.
 
-<span class="highlight">Banyak ibu rumah tangga yang kini berpenghasilan puluhan juta per bulan sebagai agen asuransi, sambil tetap mengurus keluarga.</span>
+&lt;span class=&quot;highlight&quot;&gt;Banyak ibu rumah tangga yang kini berpenghasilan puluhan juta per bulan sebagai agen asuransi, sambil tetap mengurus keluarga.&lt;/span&gt;
 
-<blockquote>"Wanita yang kuat tidak menunggu kesempatan. Mereka menciptakannya." - Oprah Winfrey</blockquote>
+&lt;blockquote&gt;&quot;Wanita yang kuat tidak menunggu kesempatan. Mereka menciptakannya.&quot; - Oprah Winfrey&lt;/blockquote&gt;
 
-Menjadi <b>Agen Asuransi Manulife</b> menawarkan <i>fleksibilitas waktu yang sempurna untuk ibu rumah tangga. Anda bisa bekerja dari rumah, mengatur jadwal sendiri, dan tetap mendapat penghasilan profesional dengan pelatihan lengkap dari perusahaan</i>.
+Menjadi &lt;b&gt;Agen Asuransi Manulife&lt;/b&gt; menawarkan &lt;i&gt;fleksibilitas waktu yang sempurna untuk ibu rumah tangga. Anda bisa bekerja dari rumah, mengatur jadwal sendiri, dan tetap mendapat penghasilan profesional dengan pelatihan lengkap dari perusahaan&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Karir+Agen+Untuk+Ibu+Rumah+Tangga" alt="Peluang karir agen asuransi untuk ibu rumah tangga" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Karir+Agen+Untuk+Ibu+Rumah+Tangga&quot; alt=&quot;Peluang karir agen asuransi untuk ibu rumah tangga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Menjadi ibu hebat sekaligus wanita mandiri. <b>Mulai perjalanan Anda hari ini.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-13', this)">Copy</button>
+Menjadi ibu hebat sekaligus wanita mandiri. &lt;b&gt;Mulai perjalanan Anda hari ini.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-13', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -790,20 +819,20 @@ Menjadi ibu hebat sekaligus wanita mandiri. <b>Mulai perjalanan Anda hari ini.</
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-14"><b>Bagaimana jika Anda bisa membantu keluarga lain sekaligus mendapatkan penghasilan yang layak?</b>
+                    <textarea id="caption-14" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Bagaimana jika Anda bisa membantu keluarga lain sekaligus mendapatkan penghasilan yang layak?&lt;/b&gt;
 
-Sebagai agen asuransi, Anda bukan sekadar menjual produk. <u>Anda membantu keluarga merencanakan masa depan mereka, melindungi orang-orang yang mereka cintai</u>.
+Sebagai agen asuransi, Anda bukan sekadar menjual produk. &lt;u&gt;Anda membantu keluarga merencanakan masa depan mereka, melindungi orang-orang yang mereka cintai&lt;/u&gt;.
 
-<span class="highlight">Ini adalah profesi mulia yang memberikan dampak nyata pada kehidupan banyak orang, sekaligus memberikan penghasilan tanpa batas untuk Anda.</span>
+&lt;span class=&quot;highlight&quot;&gt;Ini adalah profesi mulia yang memberikan dampak nyata pada kehidupan banyak orang, sekaligus memberikan penghasilan tanpa batas untuk Anda.&lt;/span&gt;
 
-<blockquote>"Cara terbaik untuk menemukan diri sendiri adalah dengan menyibukkan diri membantu orang lain." - Mahatma Gandhi</blockquote>
+&lt;blockquote&gt;&quot;Cara terbaik untuk menemukan diri sendiri adalah dengan menyibukkan diri membantu orang lain.&quot; - Mahatma Gandhi&lt;/blockquote&gt;
 
-Di Manulife, <b>ibu rumah tangga yang menjadi agen</b> mendapat <i>pelatihan profesional gratis, sistem kerja digital yang bisa dijalankan dari smartphone, komunitas sesama ibu yang saling mendukung, plus komisi dan bonus yang sangat menarik</i>.
+Di Manulife, &lt;b&gt;ibu rumah tangga yang menjadi agen&lt;/b&gt; mendapat &lt;i&gt;pelatihan profesional gratis, sistem kerja digital yang bisa dijalankan dari smartphone, komunitas sesama ibu yang saling mendukung, plus komisi dan bonus yang sangat menarik&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Profesi+Mulia+Membantu+Keluarga" alt="Menjadi agen asuransi profesi mulia membantu keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Profesi+Mulia+Membantu+Keluarga&quot; alt=&quot;Menjadi agen asuransi profesi mulia membantu keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Bukan sekadar pekerjaan. Ini misi mulia dengan penghasilan luar biasa. <b>Bergabunglah sekarang.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-14', this)">Copy</button>
+Bukan sekadar pekerjaan. Ini misi mulia dengan penghasilan luar biasa. &lt;b&gt;Bergabunglah sekarang.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-14', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -824,20 +853,20 @@ Bukan sekadar pekerjaan. Ini misi mulia dengan penghasilan luar biasa. <b>Bergab
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-15"><b>Apakah Anda ingin anak-anak Anda bangga dengan ibu yang mandiri dan berprestasi?</b>
+                    <textarea id="caption-15" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda ingin anak-anak Anda bangga dengan ibu yang mandiri dan berprestasi?&lt;/b&gt;
 
-Anak-anak belajar dari contoh. Ketika mereka melihat ibunya <u>bekerja keras, mandiri secara finansial, dan membantu banyak orang</u>, mereka akan tumbuh menjadi pribadi yang kuat dan berdaya.
+Anak-anak belajar dari contoh. Ketika mereka melihat ibunya &lt;u&gt;bekerja keras, mandiri secara finansial, dan membantu banyak orang&lt;/u&gt;, mereka akan tumbuh menjadi pribadi yang kuat dan berdaya.
 
-<span class="highlight">Tidak ada batasan usia atau latar belakang untuk memulai karir sebagai agen asuransi. Yang penting adalah semangat belajar dan kemauan membantu sesama.</span>
+&lt;span class=&quot;highlight&quot;&gt;Tidak ada batasan usia atau latar belakang untuk memulai karir sebagai agen asuransi. Yang penting adalah semangat belajar dan kemauan membantu sesama.&lt;/span&gt;
 
-<blockquote>"Anda tidak pernah terlalu tua untuk menetapkan tujuan baru atau memimpikan mimpi baru." - Jack Ma</blockquote>
+&lt;blockquote&gt;&quot;Anda tidak pernah terlalu tua untuk menetapkan tujuan baru atau memimpikan mimpi baru.&quot; - Jack Ma&lt;/blockquote&gt;
 
-Bergabung sebagai <b>Agen Manulife</b> berarti Anda akan <i>mendapat jenjang karir yang jelas, dari Financial Consultant hingga Agency Director. Reward perjalanan ke luar negeri, bonus tahunan, dan yang terpenting: kebanggaan diri sebagai wanita mandiri</i>.
+Bergabung sebagai &lt;b&gt;Agen Manulife&lt;/b&gt; berarti Anda akan &lt;i&gt;mendapat jenjang karir yang jelas, dari Financial Consultant hingga Agency Director. Reward perjalanan ke luar negeri, bonus tahunan, dan yang terpenting: kebanggaan diri sebagai wanita mandiri&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Ibu+Mandiri+Inspirasi+Keluarga" alt="Ibu rumah tangga yang mandiri dan menginspirasi keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Ibu+Mandiri+Inspirasi+Keluarga&quot; alt=&quot;Ibu rumah tangga yang mandiri dan menginspirasi keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Malam ini, ambil keputusan yang akan mengubah hidup Anda dan keluarga. <b>Daftar sekarang, gratis!</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-15', this)">Copy</button>
+Malam ini, ambil keputusan yang akan mengubah hidup Anda dan keluarga. &lt;b&gt;Daftar sekarang, gratis!&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-15', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -860,20 +889,20 @@ Malam ini, ambil keputusan yang akan mengubah hidup Anda dan keluarga. <b>Daftar
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-16"><b>Apakah Anda masih mengandalkan tabungan bank biasa untuk masa depan?</b>
+                    <textarea id="caption-16" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda masih mengandalkan tabungan bank biasa untuk masa depan?&lt;/b&gt;
 
-Coba cek bunga tabungan Anda: <u>rata-rata hanya 0,5-1% per tahun</u>. Sementara inflasi Indonesia 4-6% per tahun. Artinya? <span class="highlight">Uang Anda sebenarnya MENYUSUT setiap tahun meskipun jumlahnya bertambah.</span>
+Coba cek bunga tabungan Anda: &lt;u&gt;rata-rata hanya 0,5-1% per tahun&lt;/u&gt;. Sementara inflasi Indonesia 4-6% per tahun. Artinya? &lt;span class=&quot;highlight&quot;&gt;Uang Anda sebenarnya MENYUSUT setiap tahun meskipun jumlahnya bertambah.&lt;/span&gt;
 
 Rp 100 juta hari ini nilainya hanya sekitar Rp 67 juta dalam 10 tahun jika hanya ditabung biasa.
 
-<blockquote>"Jangan menabung setelah membelanjakan, tapi belanjakanlah setelah menabung." - Warren Buffett</blockquote>
+&lt;blockquote&gt;&quot;Jangan menabung setelah membelanjakan, tapi belanjakanlah setelah menabung.&quot; - Warren Buffett&lt;/blockquote&gt;
 
-<b>MiWealth Link dari Manulife</b> adalah solusi <i>unit link yang menggabungkan investasi di reksa dana profesional dengan perlindungan jiwa. Potensi return jauh di atas tabungan biasa, sambil tetap memberikan proteksi untuk keluarga</i>.
+&lt;b&gt;MiWealth Link dari Manulife&lt;/b&gt; adalah solusi &lt;i&gt;unit link yang menggabungkan investasi di reksa dana profesional dengan perlindungan jiwa. Potensi return jauh di atas tabungan biasa, sambil tetap memberikan proteksi untuk keluarga&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Tabungan+vs+Investasi+Proteksi" alt="Perbandingan tabungan biasa vs investasi dengan proteksi MiWealth Link" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Tabungan+vs+Investasi+Proteksi&quot; alt=&quot;Perbandingan tabungan biasa vs investasi dengan proteksi MiWealth Link&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Tabungan membuat Anda merasa aman. Investasi yang tepat membuat Anda benar-benar aman. <b>Pilih dengan bijak.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-16', this)">Copy</button>
+Tabungan membuat Anda merasa aman. Investasi yang tepat membuat Anda benar-benar aman. &lt;b&gt;Pilih dengan bijak.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-16', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -894,20 +923,20 @@ Tabungan membuat Anda merasa aman. Investasi yang tepat membuat Anda benar-benar
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-17"><b>Mengapa orang kaya semakin kaya, sementara yang menabung saja tidak pernah merdeka finansial?</b>
+                    <textarea id="caption-17" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Mengapa orang kaya semakin kaya, sementara yang menabung saja tidak pernah merdeka finansial?&lt;/b&gt;
 
-Rahasianya sederhana: <u>orang kaya membuat uang mereka bekerja melalui investasi, bukan membiarkannya tidur di tabungan</u>.
+Rahasianya sederhana: &lt;u&gt;orang kaya membuat uang mereka bekerja melalui investasi, bukan membiarkannya tidur di tabungan&lt;/u&gt;.
 
-<span class="highlight">Perbedaan antara Rp 1 juta per bulan di tabungan vs di investasi selama 20 tahun bisa mencapai ratusan juta rupiah!</span>
+&lt;span class=&quot;highlight&quot;&gt;Perbedaan antara Rp 1 juta per bulan di tabungan vs di investasi selama 20 tahun bisa mencapai ratusan juta rupiah!&lt;/span&gt;
 
-<blockquote>"Investasi terbaik yang bisa Anda buat adalah investasi pada diri Anda sendiri. Semakin banyak Anda belajar, semakin banyak Anda hasilkan." - Tony Robbins</blockquote>
+&lt;blockquote&gt;&quot;Investasi terbaik yang bisa Anda buat adalah investasi pada diri Anda sendiri. Semakin banyak Anda belajar, semakin banyak Anda hasilkan.&quot; - Tony Robbins&lt;/blockquote&gt;
 
-<b>MiWealth Link</b> menawarkan <i>berbagai pilihan dana investasi yang dikelola manajer investasi profesional dan berpengalaman. Dari konservatif hingga agresif, Anda bisa memilih sesuai profil risiko dan tujuan keuangan Anda</i>.
+&lt;b&gt;MiWealth Link&lt;/b&gt; menawarkan &lt;i&gt;berbagai pilihan dana investasi yang dikelola manajer investasi profesional dan berpengalaman. Dari konservatif hingga agresif, Anda bisa memilih sesuai profil risiko dan tujuan keuangan Anda&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Buat+Uang+Bekerja+Untuk+Anda" alt="Investasi membuat uang bekerja untuk masa depan Anda" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Buat+Uang+Bekerja+Untuk+Anda&quot; alt=&quot;Investasi membuat uang bekerja untuk masa depan Anda&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Berhenti membiarkan uang Anda tidur. <b>Bangunkan dan buat ia bekerja untuk Anda.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-17', this)">Copy</button>
+Berhenti membiarkan uang Anda tidur. &lt;b&gt;Bangunkan dan buat ia bekerja untuk Anda.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-17', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -928,20 +957,20 @@ Berhenti membiarkan uang Anda tidur. <b>Bangunkan dan buat ia bekerja untuk Anda
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-18"><b>Apakah Anda ingin kekayaan Anda bertumbuh sekaligus keluarga terlindungi?</b>
+                    <textarea id="caption-18" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda ingin kekayaan Anda bertumbuh sekaligus keluarga terlindungi?&lt;/b&gt;
 
-Kebanyakan orang berpikir investasi dan proteksi adalah dua hal yang terpisah. <u>Padahal keduanya bisa didapatkan dalam satu produk yang efisien</u>.
+Kebanyakan orang berpikir investasi dan proteksi adalah dua hal yang terpisah. &lt;u&gt;Padahal keduanya bisa didapatkan dalam satu produk yang efisien&lt;/u&gt;.
 
-<span class="highlight">Bayangkan: uang Anda bertumbuh setiap hari melalui investasi profesional, sementara keluarga Anda tetap terlindungi dengan uang pertanggungan jiwa.</span>
+&lt;span class=&quot;highlight&quot;&gt;Bayangkan: uang Anda bertumbuh setiap hari melalui investasi profesional, sementara keluarga Anda tetap terlindungi dengan uang pertanggungan jiwa.&lt;/span&gt;
 
-<blockquote>"Jangan menaruh semua telur dalam satu keranjang, dan pastikan keranjang Anda terlindungi dengan baik." - Mark Twain</blockquote>
+&lt;blockquote&gt;&quot;Jangan menaruh semua telur dalam satu keranjang, dan pastikan keranjang Anda terlindungi dengan baik.&quot; - Mark Twain&lt;/blockquote&gt;
 
-Dengan <b>MiWealth Link</b>, Anda mendapat <i>dual benefit: potensi pertumbuhan investasi yang optimal plus perlindungan jiwa. Ditambah fleksibilitas untuk menambah rider sesuai kebutuhan seperti proteksi kesehatan dan penyakit kritis</i>.
+Dengan &lt;b&gt;MiWealth Link&lt;/b&gt;, Anda mendapat &lt;i&gt;dual benefit: potensi pertumbuhan investasi yang optimal plus perlindungan jiwa. Ditambah fleksibilitas untuk menambah rider sesuai kebutuhan seperti proteksi kesehatan dan penyakit kritis&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Investasi+Plus+Proteksi+MiWealth+Link" alt="MiWealth Link investasi dan proteksi dalam satu paket" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Investasi+Plus+Proteksi+MiWealth+Link&quot; alt=&quot;MiWealth Link investasi dan proteksi dalam satu paket&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Malam ini, buat keputusan cerdas yang akan mengubah finansial Anda. <b>Konsultasi gratis sekarang.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-18', this)">Copy</button>
+Malam ini, buat keputusan cerdas yang akan mengubah finansial Anda. &lt;b&gt;Konsultasi gratis sekarang.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-18', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -964,20 +993,20 @@ Malam ini, buat keputusan cerdas yang akan mengubah finansial Anda. <b>Konsultas
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-19"><b>Pernahkah Anda atau keluarga ditolak rumah sakit karena masalah jaminan pembayaran?</b>
+                    <textarea id="caption-19" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda atau keluarga ditolak rumah sakit karena masalah jaminan pembayaran?&lt;/b&gt;
 
-Situasi yang sangat memalukan dan menyakitkan. <u>Di saat kondisi darurat, justru harus dipersulit oleh administrasi dan biaya</u>.
+Situasi yang sangat memalukan dan menyakitkan. &lt;u&gt;Di saat kondisi darurat, justru harus dipersulit oleh administrasi dan biaya&lt;/u&gt;.
 
-<span class="highlight">Dengan asuransi kesehatan yang tepat, Anda cukup menunjukkan kartu dan langsung mendapat perawatan. Tanpa uang muka, tanpa drama.</span>
+&lt;span class=&quot;highlight&quot;&gt;Dengan asuransi kesehatan yang tepat, Anda cukup menunjukkan kartu dan langsung mendapat perawatan. Tanpa uang muka, tanpa drama.&lt;/span&gt;
 
-<blockquote>"Sehat itu mahal, tapi sakit jauh lebih mahal." - Tony Robbins</blockquote>
+&lt;blockquote&gt;&quot;Sehat itu mahal, tapi sakit jauh lebih mahal.&quot; - Tony Robbins&lt;/blockquote&gt;
 
-<b>MiUltimate HealthCare dari Manulife</b> memberikan <i>fasilitas cashless di ratusan rumah sakit rekanan seluruh Indonesia dan luar negeri. Rawat inap, operasi, ICU, semuanya ditanggung tanpa perlu bayar di muka</i>.
+&lt;b&gt;MiUltimate HealthCare dari Manulife&lt;/b&gt; memberikan &lt;i&gt;fasilitas cashless di ratusan rumah sakit rekanan seluruh Indonesia dan luar negeri. Rawat inap, operasi, ICU, semuanya ditanggung tanpa perlu bayar di muka&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Rawat+Inap+Tanpa+Khawatir" alt="Rawat inap tanpa khawatir biaya dengan MiUltimate HealthCare" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Rawat+Inap+Tanpa+Khawatir&quot; alt=&quot;Rawat inap tanpa khawatir biaya dengan MiUltimate HealthCare&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Kesehatan tidak bisa ditunda. Perlindungan juga tidak boleh. <b>Pastikan keluarga Anda terlindungi sekarang.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-19', this)">Copy</button>
+Kesehatan tidak bisa ditunda. Perlindungan juga tidak boleh. &lt;b&gt;Pastikan keluarga Anda terlindungi sekarang.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-19', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -998,20 +1027,20 @@ Kesehatan tidak bisa ditunda. Perlindungan juga tidak boleh. <b>Pastikan keluarg
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-20"><b>Tahukah Anda berapa biaya satu malam rawat inap di rumah sakit swasta saat ini?</b>
+                    <textarea id="caption-20" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Tahukah Anda berapa biaya satu malam rawat inap di rumah sakit swasta saat ini?&lt;/b&gt;
 
-Kamar kelas 1: <u>Rp 1-3 juta per malam. Kamar VIP: Rp 3-7 juta per malam</u>. Belum termasuk dokter, obat, laboratorium, dan tindakan medis lainnya.
+Kamar kelas 1: &lt;u&gt;Rp 1-3 juta per malam. Kamar VIP: Rp 3-7 juta per malam&lt;/u&gt;. Belum termasuk dokter, obat, laboratorium, dan tindakan medis lainnya.
 
-<span class="highlight">Satu kali rawat inap selama 5-7 hari bisa menghabiskan Rp 20-50 juta. Apakah Anda siap dengan biaya sebesar itu secara mendadak?</span>
+&lt;span class=&quot;highlight&quot;&gt;Satu kali rawat inap selama 5-7 hari bisa menghabiskan Rp 20-50 juta. Apakah Anda siap dengan biaya sebesar itu secara mendadak?&lt;/span&gt;
 
-<blockquote>"Lebih baik punya dan tidak membutuhkan, daripada membutuhkan dan tidak punya." - Franz Kafka</blockquote>
+&lt;blockquote&gt;&quot;Lebih baik punya dan tidak membutuhkan, daripada membutuhkan dan tidak punya.&quot; - Franz Kafka&lt;/blockquote&gt;
 
-<b>MiUltimate HealthCare</b> menanggung <i>biaya rawat inap di seluruh jenis kamar, biaya dokter, obat-obatan, laboratorium, radiologi, hingga fisioterapi. Limit tahunan hingga miliaran rupiah memastikan Anda mendapat perawatan terbaik tanpa batasan</i>.
+&lt;b&gt;MiUltimate HealthCare&lt;/b&gt; menanggung &lt;i&gt;biaya rawat inap di seluruh jenis kamar, biaya dokter, obat-obatan, laboratorium, radiologi, hingga fisioterapi. Limit tahunan hingga miliaran rupiah memastikan Anda mendapat perawatan terbaik tanpa batasan&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Biaya+Rawat+Inap+Rumah+Sakit" alt="Biaya rawat inap rumah sakit yang terus meningkat" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Biaya+Rawat+Inap+Rumah+Sakit&quot; alt=&quot;Biaya rawat inap rumah sakit yang terus meningkat&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Jangan sampai sakit menguras seluruh tabungan Anda. <b>Proteksi kesehatan adalah kebutuhan, bukan kemewahan.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-20', this)">Copy</button>
+Jangan sampai sakit menguras seluruh tabungan Anda. &lt;b&gt;Proteksi kesehatan adalah kebutuhan, bukan kemewahan.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-20', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -1032,20 +1061,20 @@ Jangan sampai sakit menguras seluruh tabungan Anda. <b>Proteksi kesehatan adalah
             <div class="post-content">
                 <span class="section-label label-caption">Caption</span>
                 <div class="caption-box">
-                    <p id="caption-21"><b>Di penghujung minggu ke-3 ini, sudahkah Anda merasa lebih tenang tentang perlindungan kesehatan keluarga?</b>
+                    <textarea id="caption-21" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Di penghujung minggu ke-3 ini, sudahkah Anda merasa lebih tenang tentang perlindungan kesehatan keluarga?&lt;/b&gt;
 
-Minggu ini kita telah membahas: dana darurat, perlindungan anak, kanker, tanggung jawab pernikahan, peluang karir, investasi, dan rawat inap. <u>Semuanya bermuara pada satu hal: persiapan</u>.
+Minggu ini kita telah membahas: dana darurat, perlindungan anak, kanker, tanggung jawab pernikahan, peluang karir, investasi, dan rawat inap. &lt;u&gt;Semuanya bermuara pada satu hal: persiapan&lt;/u&gt;.
 
-<span class="highlight">Orang bijak bukan yang paling kaya, tapi yang paling siap menghadapi ketidakpastian hidup.</span>
+&lt;span class=&quot;highlight&quot;&gt;Orang bijak bukan yang paling kaya, tapi yang paling siap menghadapi ketidakpastian hidup.&lt;/span&gt;
 
-<blockquote>"Masa depan bergantung pada apa yang Anda lakukan hari ini." - Mahatma Gandhi</blockquote>
+&lt;blockquote&gt;&quot;Masa depan bergantung pada apa yang Anda lakukan hari ini.&quot; - Mahatma Gandhi&lt;/blockquote&gt;
 
-<b>MiUltimate HealthCare</b> adalah salah satu langkah terpenting: <i>perlindungan kesehatan komprehensif yang menanggung rawat inap, rawat jalan, gigi, mata, dan manfaat melahirkan. Satu polis untuk seluruh kebutuhan kesehatan keluarga</i>.
+&lt;b&gt;MiUltimate HealthCare&lt;/b&gt; adalah salah satu langkah terpenting: &lt;i&gt;perlindungan kesehatan komprehensif yang menanggung rawat inap, rawat jalan, gigi, mata, dan manfaat melahirkan. Satu polis untuk seluruh kebutuhan kesehatan keluarga&lt;/i&gt;.
 
-<img src="https://via.placeholder.com/600x400?text=Perlindungan+Kesehatan+Komprehensif" alt="Perlindungan kesehatan komprehensif untuk seluruh keluarga" style="width:100%;border-radius:12px;margin:15px 0;">
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Perlindungan+Kesehatan+Komprehensif&quot; alt=&quot;Perlindungan kesehatan komprehensif untuk seluruh keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
 
-Jangan tunggu minggu depan untuk bertindak. <b>Hubungi kami malam ini dan mulai lindungi keluarga Anda.</b></p>
-                    <button class="copy-btn" onclick="copyText('caption-21', this)">Copy</button>
+Jangan tunggu minggu depan untuk bertindak. &lt;b&gt;Hubungi kami malam ini dan mulai lindungi keluarga Anda.&lt;/b&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-21', this)">Copy HTML</button>
                 </div>
                 <div class="cta-buttons">
                     <a href="https://wa.me/+6287781896087" target="_blank" class="cta-btn cta-wa">WhatsApp Konsultasi</a>
@@ -1064,11 +1093,11 @@ Jangan tunggu minggu depan untuk bertindak. <b>Hubungi kami malam ini dan mulai 
     </div>
 
     <script>
-        function copyText(elementId, button) {
-            const element = document.getElementById(elementId);
-            const text = element.innerText;
+        function copyCode(elementId, button) {
+            const textarea = document.getElementById(elementId);
+            const htmlCode = textarea.value;
 
-            navigator.clipboard.writeText(text).then(() => {
+            navigator.clipboard.writeText(htmlCode).then(() => {
                 const originalText = button.innerText;
                 button.innerText = 'Copied!';
                 button.classList.add('copied');
@@ -1077,14 +1106,8 @@ Jangan tunggu minggu depan untuk bertindak. <b>Hubungi kami malam ini dan mulai 
                     button.classList.remove('copied');
                 }, 2000);
             }).catch(() => {
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                textArea.style.position = 'fixed';
-                textArea.style.left = '-9999px';
-                document.body.appendChild(textArea);
-                textArea.select();
+                textarea.select();
                 document.execCommand('copy');
-                document.body.removeChild(textArea);
                 const originalText = button.innerText;
                 button.innerText = 'Copied!';
                 button.classList.add('copied');
