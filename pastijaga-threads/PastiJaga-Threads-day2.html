@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PastiJaga - Threads Content Day 2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 700px; margin: 0 auto; }
+        header {
+            text-align: center; padding: 30px 20px;
+            background: rgba(255,255,255,0.97); border-radius: 20px;
+            margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        header h1 { font-size: 2em; color: #1a1a2e; margin-bottom: 10px; }
+        header p { color: #555; font-size: 1em; }
+        .day-badge {
+            display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; padding: 6px 18px; border-radius: 20px;
+            font-weight: 700; margin-top: 10px; font-size: 0.95em;
+        }
+        .schedule-nav {
+            background: rgba(255,255,255,0.97); border-radius: 15px;
+            padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .schedule-nav h3 { color: #333; margin-bottom: 15px; font-size: 1.1em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-links a {
+            display: inline-block; padding: 8px 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; text-decoration: none; border-radius: 20px;
+            font-size: 0.85em; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-links a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+        .post-card {
+            background: rgba(255,255,255,0.97); border-radius: 20px;
+            padding: 25px; margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1); transition: transform 0.2s;
+        }
+        .post-card:hover { transform: translateY(-2px); }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.3em; font-weight: 700; color: #667eea; }
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; padding: 5px 14px; border-radius: 20px;
+            font-size: 0.8em; font-weight: 600;
+        }
+        .caption-box {
+            background: #f8f9ff; border-radius: 12px; padding: 18px;
+            position: relative; border: 1px solid #e8eaf6;
+        }
+        .caption-box p {
+            color: #333; line-height: 1.8; font-size: 0.95em;
+            white-space: pre-line; padding-right: 45px;
+        }
+        .copy-btn {
+            position: absolute; top: 12px; right: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; border: none; padding: 8px 14px; border-radius: 8px;
+            cursor: pointer; font-size: 0.8em; font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.8); font-size: 0.9em; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            header h1 { font-size: 1.5em; }
+            .post-card { padding: 18px; }
+            .nav-links a { padding: 6px 10px; font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PastiJaga - Threads Content</h1>
+            <p>Konten Harian Threads | Lead Asuransi & Rekrut Agen</p>
+            <span class="day-badge">DAY 2</span>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Langsung ke Post:</h3>
+            <div class="nav-links">
+                <a href="#post-0500">05:00</a>
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0700">07:00</a>
+                <a href="#post-0800">08:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1000">10:00</a>
+                <a href="#post-1100">11:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1300">13:00</a>
+                <a href="#post-1400">14:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1600">16:00</a>
+                <a href="#post-1700">17:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-1900">19:00</a>
+                <a href="#post-2000">20:00</a>
+                <a href="#post-2100">21:00</a>
+                <a href="#post-2200">22:00</a>
+            </div>
+        </div>
+
+        <!-- POST 05:00 -->
+        <div class="post-card" id="post-0500">
+            <div class="post-header">
+                <span class="post-time">05:00 WIB</span>
+                <span class="post-number">Post 1/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-1">Pagi buta. Kamu sudah bangun untuk berangkat kerja.
+
+Tapi coba pikir: berapa persen dari gaji bulan ini yang benar-benar untuk masa depanmu?
+
+Kebanyakan dari kita bekerja keras setiap hari, tapi 90% penghasilan habis untuk kebutuhan bulan itu juga.
+
+Tidak ada yang tersisa untuk dana darurat.
+Tidak ada untuk proteksi keluarga.
+Tidak ada untuk investasi masa depan.
+
+Lingkaran ini akan terus berputar kalau kita tidak mengambil langkah berbeda.
+
+Langkah pertama? Pahami pentingnya proteksi finansial.
+
+Saya siap bantu jelaskan. Gratis. Link di bio.
+
+#PagiProduktif #ProteksiFinansial #KeuanganCerdas #PastiJaga #LangkahPertama</p>
+                <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 2/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-2">Situasi ekonomi sekarang tidak mudah. Harga naik terus, gaji segitu-gitu saja.
+
+Tapi ada satu hal yang lebih menyeramkan dari kenaikan harga:
+
+Tidak punya persiapan sama sekali ketika musibah datang.
+
+Biaya rumah sakit bisa menghabiskan tabungan bertahun-tahun dalam hitungan hari.
+
+Biaya pendidikan anak terus naik setiap tahun.
+
+Biaya hidup keluarga tetap jalan meskipun pencari nafkah tidak bisa bekerja.
+
+Solusinya bukan mengeluh. Solusinya adalah bertindak sekarang.
+
+Konsultasi gratis untuk perencanaan proteksimu: link di bio.
+
+#EkonomiSulit #SolusiBukanKeluhan #PastiJaga #ProteksiDini #BiayaHidup</p>
+                <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 07:00 -->
+        <div class="post-card" id="post-0700">
+            <div class="post-header">
+                <span class="post-time">07:00 WIB</span>
+                <span class="post-number">Post 3/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-3">Kamu punya asuransi dari kantor? Bagus.
+
+Tapi sudah pernah baca detailnya?
+
+Kebanyakan asuransi kantor hanya cover rawat inap dasar. Kalau butuh perawatan lebih, kamu tetap harus bayar sendiri.
+
+Dan yang paling penting: asuransi kantor HILANG begitu kamu tidak bekerja di sana lagi.
+
+Resign? Hilang.
+PHK? Hilang.
+Pensiun? Hilang.
+
+Proteksi pribadi berbeda. Itu milikmu selamanya, tidak tergantung pada perusahaan manapun.
+
+Mau tahu pilihan proteksi pribadi yang terbaik untuk kondisimu? Link di bio.
+
+#AsuransiKantor #ProteksiPribadi #JanganAndalkanKantor #PastiJaga #Mandiri</p>
+                <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 08:00 -->
+        <div class="post-card" id="post-0800">
+            <div class="post-header">
+                <span class="post-time">08:00 WIB</span>
+                <span class="post-number">Post 4/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-4">Untuk kamu yang berpikir "Saya masih muda, belum butuh asuransi":
+
+Justru di usia muda, premi paling murah. Semakin tua, semakin mahal. Semakin banyak riwayat kesehatan, semakin sulit diterima.
+
+Ini seperti membeli payung sebelum hujan. Jauh lebih murah dan mudah dibanding mencari payung di tengah badai.
+
+Usia 20-30 tahun adalah waktu emas untuk memulai proteksi.
+
+Jangan sampai menyesal karena menunda.
+
+Mau hitung estimasi premi untuk usiamu? Konsultasi gratis di link bio.
+
+#MasihMuda #PremiMurah #MulaiDini #PastiJaga #InvestasiMuda</p>
+                <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 5/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-5">Cerita nyata dari nasabah kami:
+
+Seorang ayah muda, usia 32 tahun, didiagnosis penyakit serius. Harus rawat inap berminggu-minggu.
+
+Karena sudah punya proteksi, semua biaya rumah sakit ditanggung penuh. Keluarganya tidak perlu menjual apapun. Anak-anaknya tetap sekolah.
+
+Bandingkan dengan yang tidak punya: rumah dijual, motor dijual, anak-anak terpaksa pindah sekolah.
+
+Ini bukan cerita karangan. Ini terjadi setiap hari di Indonesia.
+
+Yang membedakan hanya satu hal: persiapan.
+
+Sudah siap? Kalau belum, link di bio.
+
+#CeritaNyata #ProteksiItuNyata #PastiJaga #Persiapan #KeluargaAman</p>
+                <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 10:00 -->
+        <div class="post-card" id="post-1000">
+            <div class="post-header">
+                <span class="post-time">10:00 WIB</span>
+                <span class="post-number">Post 6/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-6">Kamu bosan dengan rutinitas? Merasa stuck di karir yang itu-itu saja?
+
+Mungkin kamu butuh sesuatu yang baru. Sesuatu yang menantang sekaligus bermakna.
+
+Menjadi bagian dari tim PastiJaga berarti:
+- Kamu belajar skill baru setiap hari
+- Kamu bertemu orang-orang baru
+- Kamu membantu orang lain sambil menghasilkan uang
+- Kamu punya komunitas yang suportif
+
+Dan yang paling penting: kamu punya kendali penuh atas waktu dan penghasilanmu.
+
+Tidak ada atasan yang mengatur jadwalmu. Tidak ada batasan penghasilan.
+
+Tertarik? Info lengkap di: https://pastijaga.petrusjakub.workers.dev/pages/bisnis
+
+#BoredAtWork #KarirBaru #PastiJaga #PeluangBisnis #KendaliFull</p>
+                <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 11:00 -->
+        <div class="post-card" id="post-1100">
+            <div class="post-header">
+                <span class="post-time">11:00 WIB</span>
+                <span class="post-number">Post 7/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-7">Pertanyaan untuk para suami:
+
+Kalau besok kamu tidak ada, apakah istrimu tahu harus bagaimana secara finansial?
+
+Apakah ada dana yang cukup untuk biaya hidup minimal 5 tahun ke depan?
+Apakah cicilan rumah sudah terlindungi?
+Apakah biaya sekolah anak sudah aman?
+
+Kalau jawabannya "belum", sekarang waktu terbaik untuk mempersiapkannya.
+
+Bukan soal pesimis. Ini soal tanggung jawab sebagai kepala keluarga.
+
+Saya bantu kamu merencanakan proteksi yang tepat. Konsultasi gratis, tanpa kewajiban.
+
+Link di bio.
+
+#TanggungJawab #KepalaKeluarga #PastiJaga #ProteksiKeluarga #SuamiSiaga</p>
+                <button class="copy-btn" onclick="copyText('caption-7', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 8/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-8">Jam makan siang. Sebentar saja.
+
+Kamu tahu berapa biaya operasi jantung di Indonesia?
+
+Bisa mencapai 300 hingga 800 juta rupiah.
+
+Berapa tabunganmu saat ini?
+
+Jangan dijawab di sini. Jawab di hatimu sendiri.
+
+Kalau angka tabunganmu belum cukup untuk menanggung risiko sebesar itu, maka proteksi kesehatan bukan lagi pilihan. Itu keharusan.
+
+Dan kabar baiknya: preminya jauh lebih terjangkau dari yang kamu bayangkan.
+
+Mau tahu berapa premi yang sesuai budgetmu? Link di bio.
+
+#BiayaKesehatan #FaktaMedis #PastiJaga #ProteksiKesehatan #Terjangkau</p>
+                <button class="copy-btn" onclick="copyText('caption-8', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 13:00 -->
+        <div class="post-card" id="post-1300">
+            <div class="post-header">
+                <span class="post-time">13:00 WIB</span>
+                <span class="post-number">Post 9/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-9">Banyak yang tanya: "Apa bedanya tim PastiJaga dengan agency lain?"
+
+Saya jawab dengan jujur:
+
+Di tempat lain, kamu direkrut lalu ditinggal sendiri.
+Di PastiJaga, kamu dibimbing sampai benar-benar bisa.
+
+Di tempat lain, kamu harus beli tools sendiri.
+Di PastiJaga, semua tools digital gratis.
+
+Di tempat lain, kamu harus bikin konten sendiri dari nol.
+Di PastiJaga, konten harian sudah disiapkan untukmu.
+
+Di tempat lain, tidak ada gaji tetap.
+Di PastiJaga, ada gaji bulanan sebagai penunjang.
+
+Agency kami nomor satu bukan karena klaim sepihak, tapi karena data hasil yang membuktikan.
+
+Buktikan sendiri: link di bio.
+
+#PastiJagaBeda #AgencyTerbaik #BuktikanSendiri #SystemTerbukti #GratisTools</p>
+                <button class="copy-btn" onclick="copyText('caption-9', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 14:00 -->
+        <div class="post-card" id="post-1400">
+            <div class="post-header">
+                <span class="post-time">14:00 WIB</span>
+                <span class="post-number">Post 10/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-10">Untuk kamu yang punya usaha kecil atau UMKM:
+
+Sudah pernah kepikiran apa yang terjadi kalau kamu sakit sebulan penuh dan usahamu harus tutup?
+
+Karyawan tetap butuh gaji.
+Sewa tempat tetap jalan.
+Cicilan tetap harus dibayar.
+Tapi pemasukan? Nol.
+
+Inilah kenapa banyak UMKM gulung tikar bukan karena persaingan, tapi karena pemiliknya sakit dan tidak punya proteksi.
+
+Jangan biarkan usaha yang sudah kamu bangun dengan keringat hancur dalam sekejap.
+
+Proteksi bisnis itu ada. Dan terjangkau.
+
+Info lengkap: link di bio.
+
+#UMKM #ProteksiBisnis #UsahaKecil #PastiJaga #BisnisTerlindungi</p>
+                <button class="copy-btn" onclick="copyText('caption-10', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 11/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-11">Roadmap kalau kamu bergabung di tim PastiJaga:
+
+Minggu 1-2: Pelatihan dasar secara online. Gratis. Bisa sambil kerja atau kuliah.
+
+Minggu 3-4: Praktik dengan dampingan mentor pribadi.
+
+Bulan 2: Target closing pertama dengan panduan lengkap.
+
+Bulan 3-6: Mulai membangun tim sendiri. Penghasilan semakin stabil.
+
+Bulan 6 ke atas: Passive income dari tim mulai berjalan.
+
+Tidak perlu resign dari pekerjaan saat ini. Bisa berjalan paralel.
+
+Yang penting: ambil langkah pertama. Jangan hanya membaca lalu scroll.
+
+Daftar sekarang: link di bio.
+
+#Roadmap #LangkahDemiLangkah #PastiJaga #KarirParalel #PassiveIncome</p>
+                <button class="copy-btn" onclick="copyText('caption-11', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 16:00 -->
+        <div class="post-card" id="post-1600">
+            <div class="post-header">
+                <span class="post-time">16:00 WIB</span>
+                <span class="post-number">Post 12/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-12">Fakta yang jarang dibahas:
+
+Di Indonesia, 6 dari 10 orang yang masuk rumah sakit harus berhutang untuk membayar biaya perawatan.
+
+Berhutang. Untuk biaya kesehatan.
+
+Padahal dengan premi yang lebih kecil dari biaya kopi harian, kamu bisa menghindari semua itu.
+
+Ini bukan soal kaya atau miskin. Ini soal prioritas.
+
+Yang prioritaskan proteksi akan tenang saat masalah datang. Yang menunda akan panik.
+
+Kamu mau yang mana?
+
+Konsultasi gratis: link di bio.
+
+#FaktaKesehatan #Prioritas #PastiJaga #JanganBerhutang #TenangDenganProteksi</p>
+                <button class="copy-btn" onclick="copyText('caption-12', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 17:00 -->
+        <div class="post-card" id="post-1700">
+            <div class="post-header">
+                <span class="post-time">17:00 WIB</span>
+                <span class="post-number">Post 13/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-13">Sore. Waktunya cerita inspiratif.
+
+Member kami yang seorang mahasiswa semester 5. Awalnya ragu karena merasa belum punya pengalaman.
+
+Tapi dia mencoba. Mengikuti pelatihan. Konsisten membuat konten edukasi.
+
+Bulan ke-4, penghasilannya sudah lebih dari cukup untuk biaya kuliah sendiri. Tidak lagi meminta uang ke orang tua untuk SPP.
+
+Sekarang dia sudah punya tim kecil sendiri. Masih kuliah, tapi sudah mandiri secara finansial.
+
+Usianya baru 21 tahun.
+
+Kalau dia bisa di usia segitu, kamu yang lebih berpengalaman pasti lebih cepat lagi.
+
+Mau mulai? Link di bio.
+
+#MahasiswaSukses #MandiriMuda #PastiJaga #Inspirasi #BesarDiUsiaMuda</p>
+                <button class="copy-btn" onclick="copyText('caption-13', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 14/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-14">Pertanyaan jujur:
+
+Kamu kerja untuk hidup, atau hidup untuk kerja?
+
+Kalau jawabannya yang kedua, mungkin sudah waktunya kamu mempertimbangkan alternatif.
+
+Bukan berarti harus berhenti bekerja. Tapi punya sumber penghasilan tambahan yang suatu hari bisa menggantikan gaji utamamu.
+
+Di PastiJaga, banyak member yang memulai sebagai pekerjaan sampingan. Tapi dalam 6-12 bulan, penghasilan sampingan itu melampaui gaji utama mereka.
+
+Bayangkan punya pilihan untuk bekerja karena INGIN, bukan karena HARUS.
+
+Itu kebebasan finansial yang sebenarnya.
+
+Info selengkapnya: link di bio.
+
+#KerjaUntukHidup #KebebasanFinansial #PastiJaga #PilihanHidup #PenghasilanTambahan</p>
+                <button class="copy-btn" onclick="copyText('caption-14', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 19:00 -->
+        <div class="post-card" id="post-1900">
+            <div class="post-header">
+                <span class="post-time">19:00 WIB</span>
+                <span class="post-number">Post 15/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-15">Malam ini saya mau bahas tentang "waktu yang tepat".
+
+Banyak yang bilang: "Nanti aja deh, belum waktunya."
+
+Tapi kapan waktu yang tepat itu?
+
+Ketika sudah sakit? Terlambat, karena premi jadi mahal atau bahkan ditolak.
+Ketika sudah tua? Terlambat, karena preminya berlipat ganda.
+Ketika sudah ada musibah? Jelas sudah terlambat.
+
+Waktu terbaik untuk memulai proteksi adalah SEKARANG. Saat kamu masih sehat. Saat premi masih terjangkau. Saat kamu masih bisa memilih.
+
+Jangan biarkan kata "nanti" merampas ketenangan hidupmu.
+
+Mulai sekarang: link di bio.
+
+#WaktunyaSekarang #JanganTunda #PastiJaga #MulaiHariIni #TerlambatItuMahal</p>
+                <button class="copy-btn" onclick="copyText('caption-15', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 20:00 -->
+        <div class="post-card" id="post-2000">
+            <div class="post-header">
+                <span class="post-time">20:00 WIB</span>
+                <span class="post-number">Post 16/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-16">Yang membuat agency PastiJaga berbeda:
+
+1. Gaji bulanan tetap untuk member aktif
+2. Website profesional gratis
+3. Tools digital canggih gratis
+4. Konten harian siap pakai gratis
+5. Pelatihan dan mentoring gratis
+6. Komunitas yang saling mendukung 24 jam
+
+Semua fasilitas ini nilainya jutaan rupiah per bulan. Tapi di PastiJaga, kamu mendapatkannya tanpa biaya.
+
+Kenapa? Karena kami percaya: kalau timnya sukses, agency-nya juga sukses.
+
+Ini bukan janji manis. Ini sistem yang sudah terbukti melahirkan banyak agen sukses.
+
+Gabung sekarang: https://pastijaga.petrusjakub.workers.dev/pages/bisnis
+
+#PastiJaga #FasilitasGratis #TimSukses #AgencyTerbaik #SistemTerbukti</p>
+                <button class="copy-btn" onclick="copyText('caption-16', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 17/17</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-17">Sebelum istirahat malam, saya ingin kamu merenung sebentar.
+
+Apa yang kamu lakukan hari ini untuk masa depanmu?
+
+Kalau jawabannya "belum ada yang berarti", tidak apa-apa. Masih ada besok.
+
+Tapi jangan biarkan besok menjadi alasan untuk terus menunda.
+
+Satu langkah kecil hari ini:
+- Konsultasi tentang proteksi yang tepat untukmu, atau
+- Tanya-tanya tentang peluang karir di PastiJaga
+
+Keduanya gratis. Keduanya bisa mengubah hidupmu.
+
+Pilih salah satu. Klik link di bio.
+
+Selamat malam. Istirahat yang cukup.
+
+#PastiJaga #Renungan #SatuLangkah #GratisKonsultasi #SelamatMalam</p>
+                <button class="copy-btn" onclick="copyText('caption-17', this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- POST 22:00 -->
+        <div class="post-card" id="post-2200">
+            <div class="post-header">
+                <span class="post-time">22:00 WIB</span>
+                <span class="post-number">Bonus Post</span>
+            </div>
+            <div class="caption-box">
+                <p id="caption-18">Pesan terakhir malam ini:
+
+Kamu tidak perlu menjadi sempurna untuk memulai. Kamu hanya perlu memulai untuk menjadi lebih baik.
+
+Entah itu memulai proteksi untuk keluargamu, atau memulai karir baru yang lebih bermakna.
+
+Keduanya tersedia di sini. Keduanya bisa dimulai besok pagi.
+
+Tim PastiJaga selalu terbuka untuk kamu yang serius ingin berubah.
+
+Sampai jumpa di hari ke-3.
+
+Link tetap terbuka di bio. Kapanpun kamu siap.
+
+#PastiJaga #Goodnight #SiapBerubah #BesokLebihBaik #HariKetiga</p>
+                <button class="copy-btn" onclick="copyText('caption-18', this)">Copy</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>PastiJaga - Threads Content Day 2</p>
+            <p style="margin-top:5px;">Klik tombol Copy untuk menyalin caption. Selamat posting!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
