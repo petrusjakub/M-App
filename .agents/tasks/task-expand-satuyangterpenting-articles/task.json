@@ -1,0 +1,7 @@
+{
+  "task_id": "task-expand-satuyangterpenting-articles",
+  "task_description": "Rewrite all 7 satuyangterpenting HTML files (week1-week7) to have much longer, more substantive article content. Expand each of the 147 posts from ~20 lines to ~50-60 lines with deeper storytelling, more paragraphs, more emotional hooks, more product details, and better narrative structure. Maintain all HTML structure and CTA buttons.",
+  "status": "completed",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003", "FEAT-004", "FEAT-005"],
+  "blocked_reason": null
+}

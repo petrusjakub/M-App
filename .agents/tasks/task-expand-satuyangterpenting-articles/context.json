@@ -1,0 +1,24 @@
+{
+  "project_type": "Standalone HTML content files for insurance marketing blog posts",
+  "language": "HTML (content within textarea elements is HTML-encoded blog post markup)",
+  "build_system": "None - standalone HTML files opened directly in browser",
+  "test_framework": "None - manual verification of file structure and content quality",
+  "build_command": "N/A",
+  "test_command": "N/A",
+  "verification_instructions": "1. Verify each file has 21 post-card divs with textarea content. 2. Verify no instances of gue/gua/elo/elu. 3. Verify all 4 CTA buttons present in every textarea. 4. Verify content is substantially longer than before (target: 3-4x the original length per post).",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - files are standalone HTML",
+  "environment_constraints": "Files are standalone HTML. No build system. Content inside textareas is HTML-encoded (uses &lt; &gt; &quot; entities). Each file is ~1183 lines currently and should grow to ~3000-4000 lines after expansion.",
+  "contribution_requirements": "Bahasa Indonesia sopan (no gue/gua/elo/elu). Emotional storytelling style. Must include bold, italic, underline, highlight, blockquote with famous quote, image placeholder, 4 CTA buttons with inline styles. CTA URLs: WhatsApp (wa.me/+6287781896087), Info Produk (pastijaga.petrusjakub.workers.dev/), Peluang Karir Agen (pastijaga.petrusjakub.workers.dev/pages/bisnis), Follow @petrusjakub (instagram.com/petrusjakub).",
+  "key_patterns": "Each HTML file has: (1) embedded CSS styles, (2) navigation links, (3) 21 post-card divs each containing a textarea with HTML-encoded blog content, (4) copy button per post, (5) hide/show functionality, (6) footer, (7) JavaScript for copy and toggle. Only the textarea content needs to change - the wrapper structure stays the same. The textarea min-height should be increased to 500px to accommodate longer content.",
+  "relevant_files": [
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week1.html",
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week2.html",
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week3.html",
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week4.html",
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week5.html",
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week6.html",
+    "/projects/sandbox/M-App/satuyangterpenting/satuyangterpenting-week7.html"
+  ],
+  "directory_structure": "satuyangterpenting/ folder contains 7 HTML files (week1-week7). Each file is self-contained with CSS, HTML content, and JavaScript."
+}
