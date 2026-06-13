@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satu Yang Terpenting - Week 7 | Konten Asuransi Manulife</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .schedule-nav {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .schedule-nav h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .post-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+
+        .post-card.hidden-task {
+            opacity: 0.3;
+            transform: scale(0.98);
+        }
+
+        .post-card.hidden-task .post-content {
+            display: none;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .post-time {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .post-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .label-caption {
+            background: #e8eaf6;
+            color: #283593;
+        }
+
+        .caption-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+
+        .caption-box p, .caption-box div {
+            color: #333;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .caption-box blockquote {
+            border-left: 4px solid #667eea;
+            padding: 12px 16px;
+            margin: 12px 0;
+            background: #f0f0ff;
+            border-radius: 8px;
+            font-style: italic;
+            color: #444;
+        }
+
+        .caption-box .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4a 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-wa {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+        }
+
+        .cta-web {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .cta-rekrut {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .cta-ig {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+
+        .code-textarea {
+            width: 100%;
+            min-height: 500px;
+            max-height: 800px;
+            padding: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85em;
+            line-height: 1.6;
+            background: #1e1e2e;
+            color: #cdd6f4;
+            border: 2px solid #45475a;
+            border-radius: 12px;
+            resize: vertical;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            tab-size: 2;
+        }
+
+        .code-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .code-textarea::selection {
+            background: rgba(102, 126, 234, 0.3);
+        }
+
+        .copy-btn {
+            position: relative;
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .hide-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .hide-btn:hover {
+            background: #eeeeee;
+            border-color: #999;
+        }
+
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.6em;
+            }
+            .post-card {
+                padding: 18px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .cta-btn {
+                width: 100%;
+            }
+        }
+
+        .title-section {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+            border-radius: 12px;
+            border: 1px solid #c8d8f0;
+        }
+
+        .title-section .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .title-text {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .copy-title-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #43a047, #2e7d32);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-title-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-title-btn.copied {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        }
+
+        .tags-section {
+            margin-top: 15px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+            border-radius: 12px;
+            border: 1px solid #ffe0b2;
+        }
+
+        .tags-section .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: #ffe0b2;
+            color: #e65100;
+        }
+
+        .tags-text {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+
+        .copy-tags-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9800, #e65100);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-tags-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-tags-btn.copied {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Satu Yang Terpenting - Week 7</h1>
+            <p>Kode HTML Siap Copy | 7 Hari x 3 Postingan</p>
+            <p style="margin-top:8px; font-size:0.9em; color:#888;">Pagi - Siang - Malam | Follow @petrusjakub</p>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Navigasi Postingan:</h3>
+            <div class="nav-links">
+                <a href="#post-h1-pagi">Hari 1 Pagi</a>
+                <a href="#post-h1-siang">Hari 1 Siang</a>
+                <a href="#post-h1-malam">Hari 1 Malam</a>
+                <a href="#post-h2-pagi">Hari 2 Pagi</a>
+                <a href="#post-h2-siang">Hari 2 Siang</a>
+                <a href="#post-h2-malam">Hari 2 Malam</a>
+                <a href="#post-h3-pagi">Hari 3 Pagi</a>
+                <a href="#post-h3-siang">Hari 3 Siang</a>
+                <a href="#post-h3-malam">Hari 3 Malam</a>
+                <a href="#post-h4-pagi">Hari 4 Pagi</a>
+                <a href="#post-h4-siang">Hari 4 Siang</a>
+                <a href="#post-h4-malam">Hari 4 Malam</a>
+                <a href="#post-h5-pagi">Hari 5 Pagi</a>
+                <a href="#post-h5-siang">Hari 5 Siang</a>
+                <a href="#post-h5-malam">Hari 5 Malam</a>
+                <a href="#post-h6-pagi">Hari 6 Pagi</a>
+                <a href="#post-h6-siang">Hari 6 Siang</a>
+                <a href="#post-h6-malam">Hari 6 Malam</a>
+                <a href="#post-h7-pagi">Hari 7 Pagi</a>
+                <a href="#post-h7-siang">Hari 7 Siang</a>
+                <a href="#post-h7-malam">Hari 7 Malam</a>
+            </div>
+        </div>
+
+        <!-- HARI 1: Mimpi anak yang bergantung pada keputusan kita hari ini - MiEducation + MiWealth Protection -->
+
+        <!-- POST Hari 1 Pagi -->
+        <div class="post-card" id="post-h1-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 1 - Pagi</span>
+                <span class="post-number">Post 1/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-1">Mimpi Anak Bergantung pada Keputusan Anda Hari Ini</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-1', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-1" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda benar-benar menyadari bahwa mimpi terbesar anak Anda, impian yang ia bisikkan setiap malam sebelum tidur, sepenuhnya bergantung pada satu keputusan yang Anda buat hari ini?&lt;/b&gt;
+
+Saya ingin bercerita tentang Pak Darmawan, seorang ayah dua anak di Surabaya. Putri sulungnya, Kirana, sejak kecil bermimpi menjadi dokter spesialis jantung. Setiap hari ia menggambar stetoskop di buku gambarnya. Pak Darmawan tersenyum bangga melihat semangat anaknya. Namun suatu hari, ia menghitung biaya kedokteran di universitas ternama dan nyaris pingsan. &lt;u&gt;Biaya masuk fakultas kedokteran saat ini sudah mencapai Rp 200-500 juta, belum termasuk biaya hidup selama 6-7 tahun kuliah&lt;/u&gt;.
+
+Yang lebih menakutkan, &lt;span class=&quot;highlight&quot;&gt;biaya pendidikan di Indonesia naik rata-rata 10-15% per tahun. Artinya, jika anak Anda berusia 5 tahun sekarang, biaya kuliahnya nanti bisa 3-4 kali lipat dari biaya saat ini. Tanpa persiapan sejak dini, mimpi dokter Kirana mungkin hanya akan tinggal gambar stetoskop di buku gambar yang menguning.&lt;/span&gt;
+
+Pernahkah Anda membayangkan betapa sakitnya hati seorang ayah atau ibu yang harus berkata kepada anaknya: &quot;Maaf, kita tidak mampu membiayai kuliahmu di sana&quot;? Pernahkah Anda merasakan rasa bersalah itu bahkan sebelum momen itu tiba?
+
+&lt;blockquote&gt;&quot;Children are the world&#x27;s most valuable resource and its best hope for the future.&quot; - John F. Kennedy&lt;/blockquote&gt;
+
+Pak Darmawan akhirnya menemukan solusinya. Ia memilih kombinasi &lt;b&gt;MiEducation + MiWealth Protection&lt;/b&gt; dari Manulife. MiEducation memastikan dana pendidikan cair tepat waktu di setiap jenjang, mulai dari SD, SMP, SMA, hingga perguruan tinggi. Dana ini sudah diperhitungkan dengan faktor inflasi sehingga nilainya tetap relevan saat dibutuhkan.
+
+Sementara &lt;b&gt;MiWealth Protection&lt;/b&gt; memberikan &lt;i&gt;jaminan bahwa jika sesuatu terjadi pada Pak Darmawan sebelum Kirana lulus, seluruh premi dibebaskan dan dana pendidikan tetap cair sesuai jadwal. Mimpi Kirana tidak akan pernah terancam apapun yang terjadi pada orang tuanya&lt;/i&gt;.
+
+Dengan premi mulai dari Rp 500 ribu per bulan, Pak Darmawan kini tidur nyenyak setiap malam. Ia tahu bahwa masa depan Kirana sudah terjamin, baik ia ada maupun tidak.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Mimpi+Anak+Dimulai+Dari+Keputusan+Anda+Hari+Ini&quot; alt=&quot;Mimpi anak bergantung pada keputusan orang tua hari ini&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Mimpi anak Anda terlalu berharga untuk diabaikan. Terlalu indah untuk dikorbankan hanya karena ketidaksiapan finansial. &lt;b&gt;Hari ini adalah hari terbaik untuk memulai persiapan. Semakin cepat dimulai, semakin ringan bebannya. Jangan biarkan mimpi anak Anda menjadi penyesalan terbesar dalam hidup Anda.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-1', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-1">mimpi anak, dana pendidikan, MiEducation, MiWealth Protection, Manulife, biaya kuliah, investasi pendidikan, masa depan anak, tabungan pendidikan, inflasi pendidikan, orang tua bijak, proteksi keluarga, universitas impian, perencanaan keuangan, beasiswa, sekolah favorit, premi pendidikan, jaminan masa depan, cita-cita anak, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-1', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 1 Siang -->
+        <div class="post-card" id="post-h1-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 1 - Siang</span>
+                <span class="post-number">Post 2/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-2">Ketika Anak Bertanya: Kenapa Tidak Disiapkan dari Dulu?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-2', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-2" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Bagaimana perasaan Anda jika suatu hari anak Anda menatap mata Anda dengan kecewa dan berkata: &quot;Kenapa Papa atau Mama tidak mempersiapkan ini dari dulu?&quot; Apakah Anda siap menghadapi pertanyaan itu?&lt;/b&gt;
+
+Izinkan saya menceritakan kisah Bu Ratna dari Bandung. Beliau seorang ibu tunggal yang bekerja keras sebagai pegawai administrasi di sebuah perusahaan swasta. Putranya, Adi, adalah anak yang brilian. Sejak SMP ia selalu juara kelas. Guru-gurunya mengatakan Adi punya potensi luar biasa di bidang teknik. Bu Ratna sangat bangga dan yakin Adi akan masuk ITB.
+
+Namun ketika Adi lulus SMA dengan nilai sempurna, &lt;u&gt;Bu Ratna harus menelan kenyataan pahit: biaya masuk jurusan Teknik di ITB sudah mencapai Rp 150 juta untuk uang pangkal, belum termasuk UKT sebesar Rp 20-30 juta per semester&lt;/u&gt;. Bu Ratna hanya punya tabungan Rp 40 juta. Malam itu, ia menangis diam-diam di kamarnya.
+
+&lt;span class=&quot;highlight&quot;&gt;Jika Bu Ratna memulai persiapan 15 tahun sebelumnya dengan menyisihkan hanya Rp 1 juta per bulan ke program MiEducation, ia akan memiliki dana lebih dari Rp 300 juta saat Adi lulus SMA. Angka yang ringan per bulan tapi hasilnya luar biasa dalam jangka panjang.&lt;/span&gt;
+
+Pertanyaan yang perlu Anda renungkan siang ini: Apakah Anda sedang mempersiapkan masa depan anak, atau hanya berharap entah bagaimana semuanya akan baik-baik saja? Apakah Anda ingin menjadi orang tua yang siap, atau yang menyesal?
+
+&lt;blockquote&gt;&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcolm X&lt;/blockquote&gt;
+
+&lt;b&gt;MiEducation dari Manulife&lt;/b&gt; dirancang khusus untuk orang tua yang ingin memastikan pendidikan terbaik bagi anak-anaknya. Program ini menyediakan &lt;i&gt;dana pendidikan yang cair otomatis di setiap jenjang: saat masuk SD, SMP, SMA, dan perguruan tinggi. Nilai dana sudah disesuaikan dengan proyeksi inflasi pendidikan&lt;/i&gt;.
+
+Ditambah &lt;b&gt;MiWealth Protection&lt;/b&gt;, yang memberikan jaminan bahwa &lt;i&gt;jika sesuatu terjadi pada Anda sebagai pencari nafkah sebelum anak menyelesaikan pendidikan, seluruh sisa premi dibebaskan dan dana pendidikan tetap cair sesuai jadwal tanpa terputus&lt;/i&gt;. Anak Anda tetap bisa kuliah di universitas impiannya, apapun yang terjadi.
+
+Kisah Bu Ratna tidak perlu menjadi kisah Anda. Dengan langkah kecil hari ini, Anda bisa mengubah seluruh masa depan anak Anda.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Persiapan+Pendidikan+Anak+Sejak+Dini&quot; alt=&quot;Mempersiapkan dana pendidikan anak sejak dini agar tidak menyesal&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Hari ini adalah hari terbaik untuk memulai. Bukan besok, bukan minggu depan, bukan tahun depan. &lt;b&gt;HARI INI. Karena setiap hari yang terlewat adalah kesempatan yang hilang dan beban yang bertambah. Jangan ulangi penyesalan Bu Ratna. Mulai sekarang.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-2', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-2">pendidikan anak, biaya sekolah, MiEducation, MiWealth Protection, Manulife, tabungan anak, masa depan cerah, perencanaan pendidikan, asuransi pendidikan, proteksi orang tua, inflasi biaya kuliah, persiapan dini, impian keluarga, dana kuliah, universitas terbaik, tanggung jawab orang tua, keputusan finansial, investasi anak, premi terjangkau, solusi pendidikan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-2', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 1 Malam -->
+        <div class="post-card" id="post-h1-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 1 - Malam</span>
+                <span class="post-number">Post 3/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-3">Janji untuk Masa Depan Anak: Sudah Dilindungi?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-3', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-3" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini, sebelum Anda memejamkan mata, lihat sejenak wajah anak Anda yang tertidur pulas. Lihat betapa damainya ia bermimpi. Apa yang ingin Anda janjikan untuk masa depannya? Dan yang lebih penting lagi, apakah janji itu sudah Anda lindungi dengan tindakan nyata?&lt;/b&gt;
+
+Ada sebuah kisah yang mungkin membuat hati Anda tersentuh. Pak Wahyu, seorang supir ojek online di Jakarta, memiliki seorang putri bernama Zahra yang berusia 7 tahun. Zahra sangat suka menggambar. Guru seninya mengatakan Zahra punya bakat luar biasa dan sebaiknya masuk sekolah seni terbaik.
+
+Setiap malam, sebelum tidur, Zahra selalu berkata: &quot;Papa, nanti Zahra mau jadi arsitek ya. Zahra mau bikin rumah yang cantik untuk Papa dan Mama.&quot; Pak Wahyu tersenyum, mencium kening Zahra, dan berkata: &quot;Pasti, sayang.&quot; Tapi di dalam hatinya, &lt;u&gt;ia tahu penghasilannya sebagai ojol hanya cukup untuk makan sehari-hari. Bagaimana caranya membiayai kuliah arsitektur yang biayanya ratusan juta?&lt;/u&gt;
+
+&lt;span class=&quot;highlight&quot;&gt;Anak-anak tidak pernah meminta untuk dilahirkan. Mereka tidak memilih orang tuanya. Tapi mereka berhak mendapatkan masa depan terbaik yang bisa kita berikan. Dan masa depan terbaik itu dimulai dari keputusan kecil yang kita buat malam ini.&lt;/span&gt;
+
+Suatu hari, Pak Wahyu bertemu dengan seorang penumpang yang ternyata adalah konsultan keuangan. Mereka berbincang tentang masa depan anak. Penumpang itu menjelaskan tentang MiEducation dari Manulife. Pak Wahyu terkejut. Ternyata, dengan menyisihkan hanya Rp 300 ribu per bulan, ia bisa membangun dana pendidikan yang cukup untuk Zahra kuliah nanti.
+
+&lt;blockquote&gt;&quot;We do not inherit the earth from our ancestors; we borrow it from our children.&quot; - Native American Proverb&lt;/blockquote&gt;
+
+Dengan kombinasi &lt;b&gt;MiEducation + MiWealth Protection&lt;/b&gt; dari Manulife, Pak Wahyu kini memberikan janji yang nyata dan terukur. &lt;i&gt;MiEducation menjamin dana pendidikan cair dari TK hingga universitas sesuai jadwal. Sementara MiWealth Protection memastikan bahwa jika suatu hari Pak Wahyu tidak bisa lagi mencari nafkah karena kecelakaan atau musibah, seluruh premi dibebaskan dan dana pendidikan Zahra tetap aman&lt;/i&gt;.
+
+Tidak perlu penghasilan besar untuk memulai. Yang dibutuhkan adalah &lt;b&gt;niat yang tulus dan langkah pertama yang berani&lt;/b&gt;. Pak Wahyu sudah membuktikannya. Dengan penghasilan yang pas-pasan, ia tetap bisa menjadi ayah yang mempersiapkan masa depan anaknya.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Janji+Nyata+Untuk+Masa+Depan+Anak+Tercinta&quot; alt=&quot;Janji nyata untuk masa depan anak yang dilindungi dengan tindakan&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Malam ini, saat Anda melihat wajah damai anak Anda yang terlelap, jadikan momen itu sebagai pengingat. Janji terbaik untuk anak bukan hanya kata-kata pengantar tidur. &lt;b&gt;Janji terbaik adalah tindakan nyata yang Anda ambil malam ini. Konsultasi gratis, tanpa kewajiban. Langkah pertama yang akan mengubah seluruh masa depan keluarga Anda.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-3', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-3">dana pendidikan, impian anak, MiEducation, MiWealth Protection, Manulife, biaya pendidikan, proteksi jiwa, warisan ilmu, tabungan masa depan, perencanaan anak, sekolah impian, beban finansial, asuransi pendidikan, perlindungan keluarga, investasi masa depan, inflasi tahunan, kuliah berkualitas, orang tua cerdas, ketenangan hati, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-3', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 2: Realita biaya hidup di masa pensiun - MiRetirement Booster -->
+
+        <!-- POST Hari 2 Pagi -->
+        <div class="post-card" id="post-h2-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 2 - Pagi</span>
+                <span class="post-number">Post 4/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-4">Biaya Pensiun: Angka yang Membuat Terjaga Semalaman</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-4', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-4" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Sudahkah Anda benar-benar duduk dan menghitung, dengan jujur dan tanpa ilusi, berapa biaya hidup yang Anda butuhkan setiap bulan saat pensiun nanti? Angkanya mungkin akan membuat Anda terjaga semalaman.&lt;/b&gt;
+
+Pak Bambang, mantan kepala cabang sebuah bank swasta di Semarang, pensiun di usia 56 tahun dengan uang pesangon Rp 800 juta. Ia merasa kaya dan tenang. Dalam benaknya, uang itu cukup untuk hidup nyaman selama puluhan tahun. Namun kenyataannya sangat berbeda.
+
+Tiga tahun setelah pensiun, Pak Bambang mulai panik. &lt;u&gt;Pengeluaran bulanannya tetap Rp 15 juta untuk kebutuhan rumah tangga, ditambah biaya pengobatan rutin yang mulai meningkat seiring usia. Uang pesangonnya yang terlihat besar itu ternyata menyusut dengan sangat cepat&lt;/u&gt;. Pada tahun kelima, saldo tabungannya sudah berkurang separuh.
+
+&lt;span class=&quot;highlight&quot;&gt;Faktanya, jika pengeluaran Anda saat ini Rp 10 juta per bulan, maka dengan inflasi rata-rata 6% per tahun, dalam 20 tahun Anda akan membutuhkan Rp 32 juta per bulan hanya untuk mempertahankan standar hidup yang sama. Artinya, Anda membutuhkan dana pensiun minimal Rp 5-8 miliar untuk hidup nyaman selama 20-25 tahun masa pensiun. Apakah tabungan Anda saat ini cukup untuk itu?&lt;/span&gt;
+
+Kebanyakan orang tidak pernah memikirkan ini sampai terlambat. Mereka mengandalkan uang pesangon yang ternyata hanya cukup untuk beberapa tahun. Atau berharap anak-anak akan menanggung biaya hidup mereka. Tapi apakah itu adil bagi anak-anak yang juga punya keluarga sendiri untuk ditanggung?
+
+&lt;blockquote&gt;&quot;Retirement is not the end of the road. It is the beginning of the open highway.&quot; - Oprah Winfrey&lt;/blockquote&gt;
+
+&lt;b&gt;MiRetirement Booster dari Manulife&lt;/b&gt; adalah solusi yang dirancang khusus untuk membangun dana pensiun secara bertahap dan terencana. Program ini menawarkan &lt;i&gt;pilihan investasi yang dikelola oleh manajer investasi profesional, dengan strategi pertumbuhan yang disesuaikan dengan profil risiko dan target pensiun Anda&lt;/i&gt;.
+
+Keunggulan utama MiRetirement Booster: &lt;b&gt;fleksibilitas&lt;/b&gt;. Anda bisa memilih kapan ingin pensiun, berapa dana yang ingin dicapai, dan berapa premi bulanan yang sanggup Anda bayar. Sistem akan menghitung dan menyesuaikan secara otomatis. Ditambah &lt;i&gt;bonus loyalitas yang semakin besar seiring lamanya Anda menjadi nasabah&lt;/i&gt;.
+
+Jika Pak Bambang memulai MiRetirement Booster sejak usia 30 tahun dengan menyisihkan Rp 2 juta per bulan, di usia 56 tahun ia bisa memiliki dana pensiun lebih dari Rp 2 miliar, terpisah dari pesangonnya.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=MiRetirement+Booster+Dana+Pensiun+Terencana&quot; alt=&quot;Perencanaan dana pensiun dengan MiRetirement Booster Manulife&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Masa pensiun yang nyaman, mandiri, dan bermartabat dimulai dari persiapan yang Anda lakukan hari ini. Bukan besok. Bukan tahun depan. &lt;b&gt;HARI INI. Semakin dini dimulai, semakin ringan preminya dan semakin besar hasilnya. Jangan biarkan cerita Pak Bambang menjadi cerita Anda.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-4', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-4">dana pensiun, biaya hidup pensiun, MiRetirement Booster, Manulife, hari tua, perencanaan pensiun, inflasi tahunan, tabungan pensiun, penghasilan pasif, kebebasan finansial, investasi jangka panjang, masa tua sejahtera, gaya hidup pensiun, jaminan hari tua, biaya kesehatan lansia, proteksi pensiun, kemandirian finansial, persiapan pensiun, pensiun dini, konsultasi pensiun</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-4', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 2 Siang -->
+        <div class="post-card" id="post-h2-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 2 - Siang</span>
+                <span class="post-number">Post 5/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-5">Jangan Jadi Beban Anak-Anak di Masa Tua</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-5', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-5" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda ingin menjadi beban bagi anak-anak di masa tua nanti? Apakah Anda rela melihat mereka berjuang menanggung biaya hidup Anda sementara mereka sendiri sedang membesarkan keluarga mereka? Pertanyaan ini mungkin terdengar keras, tapi inilah realita yang harus kita hadapi.&lt;/b&gt;
+
+Saya mengenal Bu Sumiati, seorang pensiunan guru SD di Yogyakarta. Selama 35 tahun mengajar, beliau tidak pernah memikirkan persiapan pensiun selain mengandalkan dana pensiun PNS. Ketika pensiun di usia 60 tahun, beliau menerima uang pensiun bulanan hanya Rp 3,5 juta. Sementara biaya hidupnya termasuk obat-obatan rutin untuk diabetes dan hipertensi sudah mencapai Rp 7 juta per bulan.
+
+&lt;u&gt;Selisih Rp 3,5 juta per bulan itu harus ditanggung oleh kedua anaknya yang sudah berkeluarga. Anak pertamanya yang bekerja sebagai karyawan swasta harus menyisihkan Rp 2 juta dari gajinya yang pas-pasan. Anak keduanya yang baru saja punya bayi harus mengurangi belanja susu dan popok anaknya demi membantu ibunya&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Survei dari Otoritas Jasa Keuangan menunjukkan bahwa 9 dari 10 orang Indonesia belum memiliki persiapan dana pensiun yang memadai. Mereka bergantung pada anak, keluarga, atau dana pensiun perusahaan yang ternyata tidak cukup. Hasilnya? Generasi sandwich yang terjebak menanggung orang tua dan anak sekaligus.&lt;/span&gt;
+
+Bu Sumiati sering menangis diam-diam karena merasa menjadi beban. Ia tidak pernah membayangkan masa tuanya akan seperti ini. Padahal, jika 20 tahun sebelumnya ia menyisihkan Rp 500 ribu per bulan untuk program pensiun, situasinya akan sangat berbeda.
+
+Apakah Anda ingin mengalami hal yang sama? Apakah Anda ingin melihat wajah anak Anda yang kelelahan karena harus menanggung dua keluarga sekaligus?
+
+&lt;blockquote&gt;&quot;The best time to plant a tree was 20 years ago. The second best time is now.&quot; - Chinese Proverb&lt;/blockquote&gt;
+
+Dengan &lt;b&gt;MiRetirement Booster&lt;/b&gt; dari Manulife, Anda bisa &lt;i&gt;menentukan sendiri berapa dana pensiun yang ingin Anda capai dan kapan Anda ingin pensiun. Sistem akan menghitung premi yang dibutuhkan sesuai target Anda, dengan fleksibilitas untuk menyesuaikan di tengah jalan jika ada perubahan kondisi keuangan&lt;/i&gt;.
+
+Program ini juga dilengkapi dengan &lt;b&gt;pilihan investasi beragam&lt;/b&gt;, mulai dari konservatif hingga agresif, sesuai profil risiko Anda. Dana Anda dikelola profesional dan bertumbuh optimal, sehingga saat pensiun tiba, Anda memiliki &lt;i&gt;penghasilan bulanan yang stabil layaknya gaji, tanpa bergantung pada siapapun&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Pensiun+Mandiri+Tanpa+Membebani+Anak&quot; alt=&quot;Pensiun mandiri dan bermartabat tanpa membebani anak-anak&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Mandiri di masa tua adalah hadiah terbesar yang bisa Anda berikan untuk diri sendiri dan untuk anak-anak Anda. Dengan kemandirian finansial di hari tua, Anda membebaskan anak dari beban tambahan dan membiarkan mereka fokus membangun masa depan keluarga mereka sendiri. &lt;b&gt;Rencanakan pensiun Anda sekarang. Langkah kecil hari ini akan menghasilkan ketenangan besar di masa depan.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-5', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-5">pensiun sejahtera, biaya hidup, MiRetirement Booster, Manulife, perencanaan hari tua, inflasi biaya hidup, tabungan masa tua, investasi pensiun, penghasilan pasif, kebebasan waktu, jaminan pensiun, dana hari tua, gaya hidup mandiri, proteksi finansial, ketenangan masa tua, persiapan dini, manfaat pensiun, premi terjangkau, hidup bermartabat, solusi pensiun</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-5', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 2 Malam -->
+        <div class="post-card" id="post-h2-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 2 - Malam</span>
+                <span class="post-number">Post 6/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-6">Pensiun Bermartabat atau Berjuang Bertahan Hidup?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-6', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-6" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Bayangkan masa pensiun Anda dua puluh tahun dari sekarang. Tutup mata sejenak dan visualisasikan: Apakah Anda menikmati hidup dengan tenang dan bermartabat, atau justru berjuang bertahan hidup dari hari ke hari dengan kecemasan yang tidak pernah berhenti?&lt;/b&gt;
+
+Mari saya ceritakan tentang dua orang yang pensiun di tahun yang sama. Pak Hartono dan Pak Sugiarto, keduanya pensiunan dari perusahaan yang sama. Mereka punya gaji yang sama, jabatan yang setara, dan pensiun di usia yang sama. Tapi kehidupan pensiun mereka sangat berbeda.
+
+Pak Hartono, yang selama bertahun-tahun menyisihkan sebagian gajinya untuk program pensiun tambahan, &lt;u&gt;kini menghabiskan hari-harinya berkebun, bermain dengan cucu, sesekali bepergian ke kampung halaman, dan aktif di komunitas pensiunan. Ia hidup dari penghasilan pasif yang mengalir setiap bulan tanpa harus bergantung pada siapapun&lt;/u&gt;.
+
+Pak Sugiarto, yang selalu menunda persiapan pensiun karena merasa &quot;masih ada waktu,&quot; kini tinggal di rumah anaknya. &lt;span class=&quot;highlight&quot;&gt;Ia tidak punya penghasilan sendiri. Setiap bulan ia harus meminta uang untuk membeli obat diabetes dan hipertensinya. Ia merasa tidak berguna, malu, dan sering berkata: &quot;Andai saja dulu saya mulai menyiapkan.&quot; Depresi mulai menghampirinya karena perasaan menjadi beban yang terus menghantuinya.&lt;/span&gt;
+
+Ada dua jenis pensiun di dunia ini: yang direncanakan dan yang dipaksakan. Yang direncanakan membawa kedamaian, kemandirian, dan kebahagiaan. Yang dipaksakan membawa kecemasan, ketergantungan, dan penyesalan mendalam.
+
+Anda ingin menjadi Pak Hartono atau Pak Sugiarto?
+
+&lt;blockquote&gt;&quot;You can be young without money, but you can&#x27;t be old without it.&quot; - Tennessee Williams&lt;/blockquote&gt;
+
+&lt;b&gt;MiRetirement Booster dari Manulife&lt;/b&gt; dirancang untuk memberikan &lt;i&gt;penghasilan bulanan yang stabil di masa pensiun, layaknya gaji yang terus mengalir meskipun Anda sudah tidak bekerja. Program ini menggabungkan perlindungan investasi jangka panjang dengan bonus loyalitas yang terus bertambah seiring waktu&lt;/i&gt;.
+
+Fitur unggulan MiRetirement Booster: dana pensiun cair secara berkala sesuai jadwal yang Anda tentukan sendiri, bisa sebagai lump sum atau penghasilan bulanan. &lt;b&gt;Tidak ada kata terlambat untuk memulai&lt;/b&gt;, tapi semakin cepat dimulai, semakin besar hasilnya berkat efek compounding yang bekerja selama puluhan tahun.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Masa+Pensiun+Bahagia+dan+Bermartabat&quot; alt=&quot;Menikmati masa pensiun bahagia dengan persiapan yang matang&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Malam ini, sebelum tidur, pikirkan masa pensiun seperti apa yang Anda inginkan. Apakah Anda ingin menghabiskan hari tua dengan tersenyum bersama cucu, atau dengan menghitung uang yang semakin menipis? Jawabannya bergantung pada keputusan yang Anda buat sekarang. &lt;b&gt;Hubungi kami malam ini untuk konsultasi perencanaan pensiun gratis. Masa depan Anda layak mendapat perhatian serius hari ini.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-6', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-6">masa pensiun, biaya kesehatan, MiRetirement Booster, Manulife, perencanaan keuangan, tabungan pensiun, inflasi medis, investasi aman, penghasilan terjamin, kemandirian hari tua, proteksi pensiun, dana darurat pensiun, gaya hidup sehat, biaya obat, jaminan masa tua, pensiun tenang, persiapan finansial, kebebasan finansial, manfaat asuransi, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-6', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 3: Kenapa orang kaya tetap beli asuransi? - MiWealth Legacy -->
+
+        <!-- POST Hari 3 Pagi -->
+        <div class="post-card" id="post-h3-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 3 - Pagi</span>
+                <span class="post-number">Post 7/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-7">Kenapa Miliarder Tetap Beli Asuransi Besar?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-7', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-7" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda bertanya-tanya dengan sungguh-sungguh: Kenapa orang kaya yang sudah memiliki miliaran bahkan triliunan rupiah, yang bisa membayar apapun dari kantong sendiri, tetap saja membeli polis asuransi dengan nilai pertanggungan yang sangat besar? Apakah mereka bodoh? Atau justru mereka tahu sesuatu yang tidak kita ketahui?&lt;/b&gt;
+
+Jawabannya akan mengubah cara pandang Anda tentang asuransi selamanya. Saya ingin menceritakan tentang mendiang Pak Hidayat, seorang pengusaha properti di Jakarta dengan aset ratusan miliar. Beliau memiliki beberapa polis asuransi jiwa dengan total nilai pertanggungan mencapai Rp 50 miliar. Banyak orang bertanya: &quot;Untuk apa? Beliau kan sudah sangat kaya?&quot;
+
+Ketika Pak Hidayat meninggal dunia, jawabannya menjadi jelas. &lt;u&gt;Asetnya yang berupa properti dan saham perusahaan membutuhkan waktu berbulan-bulan bahkan bertahun-tahun untuk dicairkan. Sementara itu, bisnis tetap harus berjalan, karyawan tetap harus digaji, dan pajak warisan harus segera dibayar. Tanpa likuiditas segera, kerajaan bisnisnya bisa runtuh&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Inilah rahasia yang dipahami oleh orang kaya: asuransi bukan tentang mengganti penghasilan yang hilang. Asuransi adalah instrumen perencanaan kekayaan dan estate planning. Warren Buffett, Bill Gates, dan seluruh konglomerat dunia memiliki polis asuransi bernilai besar sebagai bagian dari strategi pelestarian kekayaan lintas generasi.&lt;/span&gt;
+
+Uang klaim asuransi Pak Hidayat cair dalam 14 hari kerja, jauh sebelum proses pembagian warisan selesai. Dana itu digunakan untuk menjaga bisnis tetap berjalan, membayar pajak warisan, dan memastikan keluarga tetap hidup nyaman selama proses transisi.
+
+Apa pelajarannya bagi kita? Anda tidak perlu menjadi miliader untuk berpikir seperti miliarder.
+
+&lt;blockquote&gt;&quot;Risk comes from not knowing what you&#x27;re doing.&quot; - Warren Buffett&lt;/blockquote&gt;
+
+&lt;b&gt;MiWealth Legacy dari Manulife&lt;/b&gt; adalah produk yang &lt;i&gt;dirancang khusus untuk perencanaan warisan dan pelestarian kekayaan lintas generasi. Nilai polis bertumbuh setiap tahun secara konsisten, bebas pajak penghasilan, dan dapat diwariskan kepada ahli waris yang Anda tentukan dengan proses yang cepat dan transparan tanpa melalui pengadilan&lt;/i&gt;.
+
+Keunggulan utama MiWealth Legacy: &lt;b&gt;efisiensi pajak&lt;/b&gt;, pencairan klaim yang cepat tanpa proses hukum panjang, fleksibilitas dalam menentukan ahli waris dan porsi masing-masing, serta &lt;i&gt;perlindungan dari kreditur karena secara hukum manfaat asuransi jiwa tidak dapat disita&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=MiWealth+Legacy+Strategi+Orang+Kaya&quot; alt=&quot;Mengapa orang kaya dan bijak memilih asuransi untuk perencanaan warisan&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Orang bijak belajar dari pengalaman orang lain. Orang yang lebih bijak lagi meniru strategi orang-orang paling sukses di dunia. &lt;b&gt;Tiru strategi perencanaan warisan mereka sekarang. Konsultasi gratis untuk mengetahui bagaimana MiWealth Legacy bisa melindungi kekayaan keluarga Anda lintas generasi.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-7', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-7">orang kaya, asuransi, MiWealth Legacy, Manulife, warisan keluarga, wealth management, proteksi aset, perencanaan warisan, kekayaan lintas generasi, manajemen risiko, aset produktif, estate planning, pajak warisan, keluarga sejahtera, investasi cerdas, diversifikasi aset, perlindungan kekayaan, legacy planning, generasi penerus, konsultasi wealth</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-7', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 3 Siang -->
+        <div class="post-card" id="post-h3-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 3 - Siang</span>
+                <span class="post-number">Post 8/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-8">Kekayaan Tanpa Perencanaan Habis dalam 2 Generasi</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-8', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-8" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Tahukah Anda bahwa tanpa perencanaan warisan yang matang, kekayaan yang Anda bangun dengan susah payah selama puluhan tahun bisa habis dalam waktu hanya dua generasi? Ini bukan teori. Ini fakta yang terjadi pada jutaan keluarga di seluruh dunia.&lt;/b&gt;
+
+Saya ingin bercerita tentang keluarga Wirawan di Medan. Pak Wirawan Senior adalah seorang pengusaha kelapa sawit yang sangat sukses. Ia membangun kerajaan bisnisnya dari nol selama 40 tahun hingga asetnya mencapai Rp 200 miliar. Ketika beliau wafat di usia 72 tahun, beliau tidak meninggalkan rencana suksesi yang jelas.
+
+Yang terjadi kemudian adalah tragedi yang sering berulang. &lt;u&gt;Lima orang anaknya langsung berselisih tentang pembagian harta. Dua anak menggugat yang lain ke pengadilan. Proses hukum berlangsung selama 4 tahun dengan biaya pengacara miliaran rupiah. Bisnis tidak ada yang mengurus karena semua sibuk berkonflik. Karyawan yang berjumlah ratusan mulai resign karena perusahaan tidak stabil&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Pada akhirnya, setelah 4 tahun sengketa, aset keluarga Wirawan menyusut drastis. Dari Rp 200 miliar, yang tersisa hanya sekitar Rp 60 miliar setelah dikurangi biaya hukum, penurunan nilai bisnis, dan aset yang terpaksa dijual murah. Statistik global menunjukkan 70% kekayaan keluarga hilang di generasi kedua, dan 90% hilang di generasi ketiga jika tidak ada perencanaan warisan yang tepat.&lt;/span&gt;
+
+Bayangkan betapa sedihnya Pak Wirawan Senior jika ia bisa melihat dari atas sana. Keluarga yang dulu harmonis kini hancur berantakan. Bisnis yang dibangun dengan keringat dan air mata selama empat dekade lenyap begitu saja. Semua karena satu hal: tidak ada perencanaan warisan.
+
+Apakah Anda ingin cerita ini terulang pada keluarga Anda?
+
+&lt;blockquote&gt;&quot;Wealth consists not in having great possessions, but in having few wants.&quot; - Epictetus&lt;/blockquote&gt;
+
+&lt;b&gt;MiWealth Legacy dari Manulife&lt;/b&gt; memungkinkan Anda &lt;i&gt;menciptakan rencana warisan yang terstruktur dan berkekuatan hukum. Anda bisa menentukan siapa penerima manfaat, berapa bagian masing-masing, dan apakah dana dicairkan sekaligus atau bertahap&lt;/i&gt;.
+
+Fitur pembayaran bertahap sangat penting karena &lt;b&gt;mencegah ahli waris muda menghabiskan warisan sekaligus&lt;/b&gt;. Dana bisa diatur cair secara berkala sehingga &lt;i&gt;kekayaan tidak langsung habis, melainkan terus memberikan manfaat dan bertumbuh lintas generasi. Proses klaim pun cepat dan transparan, tidak memerlukan proses pengadilan yang panjang dan mahal&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Pelestarian+Kekayaan+Lintas+Generasi&quot; alt=&quot;Perencanaan warisan untuk pelestarian kekayaan lintas generasi&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Kekayaan yang bertahan bukan yang paling besar, melainkan yang paling terencana. Jangan biarkan hasil kerja keras seumur hidup Anda menjadi sumber perpecahan keluarga. &lt;b&gt;Rencanakan warisan Anda sekarang dengan MiWealth Legacy. Konsultasi gratis dan rahasia. Satu langkah hari ini bisa menyelamatkan kedamaian keluarga Anda selamanya.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-8', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-8">miliarder asuransi, proteksi kekayaan, MiWealth Legacy, Manulife, warisan lintas generasi, wealth protection, manajemen aset, perencanaan estate, orang kaya bijak, diversifikasi investasi, pajak warisan, trust fund, perlindungan aset, keluarga terjamin, legacy finansial, strategi kekayaan, asuransi premium, proteksi menyeluruh, investasi warisan, konsultasi legacy</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-8', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 3 Malam -->
+        <div class="post-card" id="post-h3-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 3 - Malam</span>
+                <span class="post-number">Post 9/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-9">Orang Kaya Bijak vs Ceroboh: Apa Bedanya?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-9', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-9" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apa yang membedakan orang kaya yang bijak dengan orang kaya yang ceroboh dalam urusan warisan? Jawabannya sederhana tapi mengejutkan: bukan soal berapa banyak harta yang ditinggalkan, melainkan bagaimana harta itu disiapkan untuk generasi selanjutnya.&lt;/b&gt;
+
+Malam ini saya ingin berbagi kisah yang mungkin membuat Anda tidak bisa tidur. Pak Surya, seorang pengusaha restoran sukses di Bali, meninggal mendadak karena serangan jantung di usia 58 tahun. Ia meninggalkan istri, tiga anak dewasa, dan aset berupa 5 restoran, 2 rumah, dan tabungan Rp 3 miliar.
+
+Karena Pak Surya tidak pernah membuat perencanaan warisan yang jelas, &lt;u&gt;keluarga yang selama ini hidup harmonis langsung terpecah belah. Anak sulung merasa berhak lebih banyak karena selama ini membantu bisnis ayahnya. Anak kedua yang tinggal di luar negeri menuntut bagian yang sama rata. Anak bungsu dan istrinya berbeda pendapat tentang rumah keluarga. Dalam waktu 6 bulan, tiga bersaudara yang dulu sangat dekat kini tidak saling bicara&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Di Indonesia, ribuan kasus sengketa warisan masuk ke pengadilan setiap tahun. Rata-rata proses penyelesaiannya memakan waktu 2-5 tahun dengan biaya hukum yang sangat besar. Dan yang paling menyedihkan: hubungan keluarga yang hancur karena sengketa warisan jarang bisa dipulihkan kembali. Uang bisa dicari lagi, tapi ikatan keluarga yang putus hampir tidak mungkin disambung.&lt;/span&gt;
+
+Bayangkan Pak Surya melihat dari surga, betapa hancur hatinya menyaksikan anak-anak yang dulu ia gendong dengan penuh kasih kini saling menggugat di meja pengadilan. Semua penderitaan itu bisa dicegah dengan satu langkah sederhana: perencanaan warisan.
+
+Apakah Anda ingin meninggalkan warisan berupa kedamaian atau konflik? Apakah Anda ingin dikenang sebagai orang tua yang bijaksana atau yang meninggalkan bom waktu?
+
+&lt;blockquote&gt;&quot;It&#x27;s not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for.&quot; - Robert Kiyosaki&lt;/blockquote&gt;
+
+&lt;b&gt;MiWealth Legacy dari Manulife&lt;/b&gt; memberikan solusi lengkap: &lt;i&gt;kejelasan hukum tentang siapa penerima manfaat dan berapa bagian masing-masing, yang sudah ditentukan sejak awal oleh Anda sendiri. Tidak ada ruang untuk perdebatan atau penafsiran yang berbeda. Proses klaim cepat, transparan, dan tidak memerlukan putusan pengadilan&lt;/i&gt;.
+
+Lebih dari itu, dengan MiWealth Legacy Anda juga bisa &lt;b&gt;mengatur jadwal pencairan&lt;/b&gt; untuk ahli waris. Misalnya, anak yang masih muda mendapat dana secara bertahap agar tidak boros. Atau dana dialokasikan khusus untuk pendidikan cucu. Semua bisa diatur sesuai keinginan Anda, &lt;i&gt;memastikan warisan Anda benar-benar bermanfaat dan tidak disalahgunakan&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Warisan+Terencana+Tanpa+Sengketa+Keluarga&quot; alt=&quot;Warisan yang terencana mencegah sengketa dan menjaga keharmonisan keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Malam ini, pikirkan warisan apa yang ingin Anda tinggalkan untuk keluarga tercinta. Bukan hanya warisan berupa harta, tapi juga warisan berupa kedamaian, keharmonisan, dan cinta. &lt;b&gt;Pilih meninggalkan kedamaian, bukan konflik. Satu percakapan hari ini bisa mencegah bertahun-tahun penderitaan di masa depan. Hubungi kami sekarang.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-9', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-9">warisan keluarga, kekayaan, MiWealth Legacy, Manulife, estate planning, proteksi generasi, asuransi warisan, wealth transfer, manajemen kekayaan, perencanaan legacy, aset keluarga, pajak warisan, investasi jangka panjang, keluarga sejahtera, perlindungan finansial, generasi berikutnya, warisan bermakna, strategi proteksi, kekayaan berkelanjutan, solusi warisan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-9', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 4: Menjadi agen: membangun tim dan passive income - Rekrutmen -->
+
+        <!-- POST Hari 4 Pagi -->
+        <div class="post-card" id="post-h4-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 4 - Pagi</span>
+                <span class="post-number">Post 10/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-10">Tim yang Menghasilkan Uang Bahkan Saat Anda Tidur</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-10', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-10" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Pernahkah Anda membayangkan memiliki sebuah tim yang bekerja keras menghasilkan uang untuk Anda, bahkan ketika Anda sedang tidur nyenyak, berlibur bersama keluarga, atau sekadar menikmati secangkir kopi di pagi hari? Kedengarannya terlalu indah? Tapi inilah realita yang dialami ribuan leader di Manulife.&lt;/b&gt;
+
+Izinkan saya memperkenalkan Mas Rizky, mantan karyawan bank swasta di Surabaya. Lima tahun lalu, Mas Rizky menghabiskan 12 jam sehari di kantor dengan gaji Rp 12 juta per bulan. Ia nyaris tidak pernah melihat anak-anaknya bangun tidur di pagi hari karena sudah berangkat terlalu dini, dan pulang terlalu larut saat mereka sudah terlelap.
+
+Suatu hari, seorang temannya mengajaknya bergabung sebagai agen asuransi di Manulife. Awalnya ia ragu, bahkan menolak. &lt;u&gt;Tapi setelah mempelajari sistem bisnis keagenan, ia menyadari bahwa ini bukan sekadar menjual asuransi. Ini adalah membangun bisnis dengan potensi passive income yang tidak terbatas. Ia bisa merekrut agen baru, membina mereka, dan mendapatkan overriding commission dari setiap produksi tim&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Dua tahun pertama, Mas Rizky fokus membangun timnya. Ia merekrut 15 agen dan membina mereka dengan tekun. Tahun ketiga, timnya sudah berkembang menjadi 45 agen aktif. Pendapatan overriding-nya saja sudah melebihi gaji lamanya di bank. Tahun kelima, dengan tim 80+ agen, penghasilannya mencapai Rp 80-100 juta per bulan. Dan yang terpenting: ia punya kebebasan waktu untuk hadir di setiap momen penting anak-anaknya.&lt;/span&gt;
+
+Ini bukan skema cepat kaya. Ini adalah model bisnis yang sudah terbukti selama puluhan tahun di industri asuransi global. Butuh kerja keras di awal, tapi hasilnya bisa dinikmati seumur hidup.
+
+Pernahkah Anda bertanya: Sampai kapan saya harus menukar waktu dengan uang? Sampai kapan penghasilan saya dibatasi oleh gaji bulanan?
+
+&lt;blockquote&gt;&quot;If you want to go fast, go alone. If you want to go far, go together.&quot; - African Proverb&lt;/blockquote&gt;
+
+Sebagai &lt;b&gt;agen Manulife&lt;/b&gt;, Anda tidak hanya menjual produk. Anda &lt;i&gt;membangun organisasi bisnis sendiri dengan merekrut dan membina tim agen. Setiap kali anggota tim Anda menjual polis, Anda mendapatkan overriding income. Semakin besar tim, semakin besar penghasilan pasif Anda. Dan yang luar biasa: penghasilan ini terus mengalir selama tim Anda aktif, bahkan ketika Anda sedang tidak bekerja&lt;/i&gt;.
+
+Manulife menyediakan &lt;b&gt;sistem dukungan lengkap&lt;/b&gt;: pelatihan profesional, tools digital canggih untuk manajemen tim, mentoring dari leader berpengalaman, dan jenjang karir yang jelas dari Agent hingga Agency Director dengan benefit yang semakin besar di setiap level.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Bangun+Tim+Raih+Passive+Income+Tanpa+Batas&quot; alt=&quot;Membangun tim agen Manulife untuk passive income tanpa batas&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Bisnis terbaik adalah bisnis yang terus menghasilkan bahkan ketika Anda tidak sedang bekerja. Mas Rizky memulai dari nol, tanpa pengalaman asuransi sebelumnya. Jika ia bisa, Anda juga bisa. &lt;b&gt;Mulai bangun tim Anda sekarang. Langkah pertama dimulai dari satu percakapan. Hubungi kami hari ini.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-10', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-10">agen asuransi, membangun tim, Manulife, rekrutmen agen, passive income, penghasilan tanpa batas, karir asuransi, bisnis asuransi, leadership, networking, pelatihan agen, komisi berulang, kebebasan finansial, potensi karir, tim solid, peluang bisnis, manajemen tim, bonus perjalanan, reward agen, bergabung sekarang</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-10', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 4 Siang -->
+        <div class="post-card" id="post-h4-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 4 - Siang</span>
+                <span class="post-number">Post 11/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-11">Rahasia Sukses: Bangun SISTEM, Bukan Kerja Sendiri</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-11', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-11" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apa yang benar-benar membedakan orang sukses dari mereka yang hidup biasa-biasa saja sepanjang hidupnya? Jawabannya bukan bakat, bukan keberuntungan, bukan koneksi. Jawabannya adalah: orang sukses membangun SISTEM yang bekerja untuk mereka, bukan sebaliknya.&lt;/b&gt;
+
+Pikirkan hal ini: seorang karyawan dibayar satu kali untuk setiap jam kerja yang dilakukan. Ketika ia berhenti bekerja, penghasilannya langsung berhenti. Itulah yang disebut &quot;menukar waktu dengan uang.&quot; Tidak peduli seberapa tinggi gajinya, ada batas maksimal jam kerja yang bisa dilakukan. Ada langit-langit yang tidak bisa ditembus.
+
+Sekarang bandingkan dengan Mbak Puspa, mantan customer service di sebuah operator telekomunikasi. &lt;u&gt;Tiga tahun lalu ia bergabung sebagai agen Manulife. Hari ini, ia memiliki tim 35 agen yang aktif berproduksi setiap bulan. Setiap kali salah satu anggota timnya closing, Mbak Puspa mendapat overriding commission. Penghasilannya bulan lalu? Rp 45 juta. Dan itu termasuk Rp 25 juta yang datang dari produksi timnya saat ia sedang menghadiri acara wisuda anaknya&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Di Manulife, Anda bukan sekadar agen asuransi. Anda adalah pemilik bisnis. Anda membangun organisasi, merekrut anggota tim, membina mereka menjadi agen profesional, dan mendapatkan penghasilan dari seluruh produksi organisasi Anda. Dengan dukungan pelatihan kelas dunia, teknologi digital terkini, dan mentoring dari leader berpengalaman, Anda memiliki semua yang dibutuhkan untuk sukses.&lt;/span&gt;
+
+Mbak Puspa bercerita: &quot;Dulu saya dibayar Rp 5 juta per bulan untuk melayani keluhan pelanggan selama 8 jam sehari. Sekarang saya membantu orang melindungi keluarga mereka, memiliki tim yang saling mendukung, dan penghasilan saya tidak ada batasnya. Yang paling saya syukuri adalah kebebasan waktu. Saya bisa hadir di setiap momen penting anak-anak saya.&quot;
+
+Apakah Anda juga ingin merasakan kebebasan seperti itu?
+
+&lt;blockquote&gt;&quot;The secret of getting ahead is getting started.&quot; - Mark Twain&lt;/blockquote&gt;
+
+Sebagai &lt;b&gt;agen Manulife&lt;/b&gt;, Anda mendapatkan akses ke &lt;i&gt;program pengembangan kepemimpinan yang komprehensif, tools digital canggih untuk manajemen prospek dan tim, bonus rekrutmen yang menarik, serta jenjang karir yang sangat jelas: dari Agent, Senior Agent, Unit Manager, Agency Manager, hingga Agency Director. Di setiap jenjang, benefit dan penghasilan Anda meningkat signifikan&lt;/i&gt;.
+
+Tidak ada batasan latar belakang pendidikan atau pengalaman kerja. &lt;b&gt;Yang dibutuhkan adalah kemauan belajar, konsistensi, dan keberanian untuk memulai&lt;/b&gt;. Mbak Puspa membuktikan bahwa siapapun bisa sukses di bisnis ini jika mau berkomitmen.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Bangun+Sistem+Bisnis+Agen+Manulife&quot; alt=&quot;Membangun sistem bisnis yang bekerja untuk Anda sebagai agen Manulife&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Sukses dimulai dari keputusan untuk berhenti menjadi penonton dan mulai menjadi pemain. Anda sudah membaca cerita Mbak Puspa. Sekarang pertanyaannya: kapan giliran Anda? &lt;b&gt;Bergabunglah hari ini. Tidak ada biaya pendaftaran yang besar. Yang ada hanya peluang tanpa batas yang menanti. Hubungi kami sekarang.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-11', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-11">rekrutmen agen, tim asuransi, Manulife, passive income, bisnis jaringan, penghasilan residual, karir tanpa batas, peluang bisnis, kepemimpinan, mentoring, pelatihan gratis, komisi override, kebebasan waktu, pertumbuhan tim, bisnis asuransi, reward internasional, potensi penghasilan, work life balance, membangun legacy, daftar agen</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-11', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 4 Malam -->
+        <div class="post-card" id="post-h4-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 4 - Malam</span>
+                <span class="post-number">Post 12/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-12">50 Agen Produktif = Puluhan Juta Transfer Tiap Bulan</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-12', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-12" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Bagaimana jika 2 tahun dari sekarang, Anda memiliki tim yang terdiri dari 50 agen produktif, yang masing-masing menghasilkan penjualan setiap bulan, dan Anda mendapatkan bagian dari setiap transaksi yang mereka lakukan? Bagaimana rasanya menerima transfer puluhan juta di awal bulan tanpa harus meninggalkan rumah?&lt;/b&gt;
+
+Ini bukan fantasi. Ini bukan mimpi di siang bolong. &lt;u&gt;Ini adalah realita nyata yang dialami oleh ratusan leader di Manulife Indonesia yang memulai perjalanan mereka dari titik nol, persis seperti posisi Anda saat ini. Mereka bukan orang-orang istimewa dengan bakat luar biasa. Mereka adalah orang biasa yang membuat keputusan luar biasa&lt;/u&gt;.
+
+Saya ingin Anda mengenal Pak Gunawan. Empat tahun lalu, beliau adalah seorang sales mobil yang frustrasi dengan tekanan target bulanan yang tidak pernah berhenti. Gajinya bergantung sepenuhnya pada closing bulan itu. Jika bulan ini tidak ada penjualan, bulan ini tidak ada penghasilan. Tidak ada akumulasi. Tidak ada yang tersisa dari kerja keras bulan lalu.
+
+Ketika diajak bergabung di Manulife, Pak Gunawan melihat sesuatu yang berbeda: &lt;span class=&quot;highlight&quot;&gt;di bisnis keagenan, setiap nasabah yang ia dapatkan memberikan komisi renewal setiap tahun selama polis aktif. Dan setiap agen yang ia rekrut memberikan overriding commission selama agen itu berproduksi. Artinya, setiap usaha yang dilakukan hari ini terus memberikan hasil di masa depan. Kerja kerasnya BERAKUMULASI.&lt;/span&gt;
+
+Hari ini, Pak Gunawan memiliki tim 55 agen aktif. Penghasilan overriding-nya saja mencapai Rp 35 juta per bulan, belum termasuk komisi dari penjualan pribadi dan renewal dari portofolio nasabahnya yang sudah besar. Total penghasilan bulanannya sering melampaui Rp 70 juta.
+
+Kuncinya? Sederhana: &lt;b&gt;rekrut, bina, duplikasi&lt;/b&gt;. Sistem di Manulife sudah teruji puluhan tahun. Anda tidak perlu menemukan roda baru. Yang perlu Anda lakukan hanyalah menjalankannya dengan konsisten.
+
+&lt;blockquote&gt;&quot;Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.&quot; - Albert Schweitzer&lt;/blockquote&gt;
+
+Di Manulife, Anda mendapat &lt;i&gt;dukungan penuh untuk membangun tim: program onboarding terstruktur untuk agen baru yang Anda rekrut, pelatihan berkala tentang penjualan dan kepemimpinan, contest dan reward yang memotivasi, serta teknologi canggih untuk memonitor performa setiap anggota tim Anda secara real-time&lt;/i&gt;.
+
+Investasi awal yang dibutuhkan sangat minimal. &lt;b&gt;Tidak ada biaya franchise atau modal besar&lt;/b&gt;. Yang Anda butuhkan hanyalah waktu, dedikasi, dan kemauan untuk belajar. Semua pelatihan disediakan GRATIS oleh Manulife.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Bangun+Tim+50+Agen+Produktif+di+Manulife&quot; alt=&quot;Membangun tim 50 agen produktif untuk passive income di Manulife&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Malam ini, tanyakan pada diri sendiri dengan jujur: Apakah Anda ingin terus bekerja sendirian selamanya, atau Anda ingin membangun sesuatu yang lebih besar dari diri Anda sendiri? Apakah Anda ingin penghasilan yang berhenti saat Anda berhenti, atau penghasilan yang terus mengalir karena tim Anda terus bergerak? &lt;b&gt;Keputusan ada di tangan Anda. Dan malam ini bisa menjadi titik balik kehidupan Anda. Hubungi kami sekarang untuk mengetahui langkah pertama yang perlu Anda ambil.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-12', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-12">karir agen, bisnis asuransi, Manulife, rekrutmen, membangun tim, penghasilan besar, passive income, peluang emas, kebebasan finansial, kepemimpinan, networking profesional, komisi tanpa batas, bonus tahunan, pelatihan profesional, sertifikasi AAJI, jenjang karir, bisnis menjanjikan, potensi pasar, kerja fleksibel, bergabung Manulife</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-12', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 5: Kesehatan mental dan finansial saling terkait - MiUltimate HealthCare + MiEarly Critical Care -->
+
+        <!-- POST Hari 5 Pagi -->
+        <div class="post-card" id="post-h5-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 5 - Pagi</span>
+                <span class="post-number">Post 13/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-13">Stres Finansial: Penyebab Utama Gangguan Mental</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-13', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-13" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Tahukah Anda bahwa stres finansial adalah penyebab utama gangguan kesehatan mental di Indonesia? Bahwa setiap malam, jutaan orang Indonesia tidak bisa tidur bukan karena insomnia medis, melainkan karena pikiran mereka dipenuhi ketakutan: "Bagaimana kalau besok saya sakit dan tidak punya uang untuk berobat?"&lt;/b&gt;
+
+Izinkan saya bercerita tentang Pak Anwar, seorang manajer pemasaran di sebuah perusahaan di Bekasi. Di mata rekan-rekannya, Pak Anwar adalah sosok yang sukses dan percaya diri. Gaji Rp 18 juta per bulan, mobil bagus, rumah di perumahan elite. Tapi di balik senyumnya, Pak Anwar menyimpan kecemasan yang menggerogoti jiwanya setiap hari.
+
+Tiga bulan lalu, adiknya didiagnosis kanker usus besar. Biaya pengobatan mencapai Rp 400 juta dan keluarga besar harus patungan. Sejak saat itu, Pak Anwar mulai bertanya pada dirinya sendiri: &lt;u&gt;"Bagaimana jika itu terjadi pada saya? Saya punya istri dan dua anak kecil. Tabungan saya hanya cukup untuk 4 bulan hidup tanpa gaji. Jika saya sakit parah, siapa yang akan menanggung semuanya?"&lt;/u&gt;
+
+Pertanyaan itu menjadi hantu yang mengikutinya ke mana pun. Di kantor, konsentrasinya buyar. Di rumah, ia mudah marah tanpa sebab. Tidurnya terganggu, tekanan darahnya naik, dan hubungannya dengan istri mulai tegang.
+
+&lt;span class=&quot;highlight&quot;&gt;WHO mencatat bahwa masalah keuangan berkontribusi pada 80% kasus depresi di negara berkembang. Data Kementerian Kesehatan RI menunjukkan bahwa 15% pekerja Indonesia mengalami gangguan kecemasan terkait ketidakpastian finansial. Kesehatan mental dan kesehatan finansial adalah dua sisi mata uang yang tidak bisa dipisahkan. Ketika satu sisi runtuh, sisi lainnya ikut terjatuh.&lt;/span&gt;
+
+Pernahkah Anda merasakan kecemasan serupa? Pernahkah pikiran tentang "bagaimana kalau sakit" mengganggu ketenangan Anda di pagi hari, saat seharusnya Anda menikmati sarapan bersama keluarga?
+
+&lt;blockquote&gt;&quot;The mind is everything. What you think you become.&quot; - Buddha&lt;/blockquote&gt;
+
+Pak Anwar akhirnya menemukan solusinya setelah berkonsultasi dengan seorang perencana keuangan. Ia memilih kombinasi &lt;b&gt;MiUltimate HealthCare + MiEarly Critical Care&lt;/b&gt; dari Manulife. MiUltimate HealthCare menanggung seluruh biaya rawat inap dan rawat jalan tanpa batas tahunan, sehingga ia tidak perlu lagi khawatir tentang tagihan rumah sakit yang menggunung.
+
+Sementara &lt;b&gt;MiEarly Critical Care&lt;/b&gt; memberikan &lt;i&gt;santunan tunai sejak stadium awal penyakit kritis didiagnosis. Artinya, jika suatu hari Pak Anwar didiagnosis penyakit serius, ia langsung menerima dana segar yang bisa digunakan untuk pengobatan alternatif, biaya hidup keluarga selama ia tidak bekerja, atau apapun yang ia butuhkan tanpa harus menunggu sampai kondisi memburuk&lt;/i&gt;.
+
+Sejak memiliki proteksi ini, perubahan pada diri Pak Anwar sangat nyata. Tidurnya kembali nyenyak, konsentrasi kerjanya pulih, dan hubungannya dengan istri membaik drastis. Ia kini hadir sepenuhnya untuk keluarganya karena beban kecemasan itu sudah terangkat.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Kesehatan+Mental+Dimulai+Dari+Kesiapan+Finansial&quot; alt=&quot;Hubungan kesehatan mental dan kesehatan finansial yang tidak terpisahkan&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Ketenangan pikiran bukan kemewahan. Ketenangan pikiran adalah kebutuhan dasar yang layak dimiliki setiap orang. Dan ketenangan itu dimulai dari satu langkah: memastikan bahwa apapun yang terjadi pada kesehatan Anda, keluarga Anda tidak akan jatuh miskin karenanya. &lt;b&gt;Jangan biarkan kecemasan mencuri kebahagiaan Anda setiap hari. Lindungi diri dan keluarga Anda sekarang. Konsultasi gratis, tanpa kewajiban.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-13', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-13">kesehatan mental, stres finansial, MiUltimate HealthCare, MiEarly Critical Care, Manulife, kecemasan keuangan, proteksi kesehatan, biaya psikolog, gangguan mental, burnout, depresi, asuransi kesehatan, rawat inap, penyakit kritis, deteksi dini, perlindungan menyeluruh, keseimbangan hidup, biaya terapi, kesejahteraan, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-13', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 5 Siang -->
+        <div class="post-card" id="post-h5-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 5 - Siang</span>
+                <span class="post-number">Post 14/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-14">Tidak Punya Dana Saat Keluarga Butuh Operasi Darurat</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-14', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-14" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apa yang Anda rasakan saat membayangkan anggota keluarga tercinta sakit parah dan Anda tidak punya dana untuk mengobatinya? Bayangkan momen itu: Anda berdiri di depan meja administrasi rumah sakit, dokter sudah menyatakan keluarga Anda butuh operasi segera, dan petugas bertanya: "Bapak atau Ibu, metode pembayarannya bagaimana?" Apakah Anda siap menghadapi momen itu?&lt;/b&gt;
+
+Saya ingin menceritakan kisah Mbak Dewi, seorang ibu muda berusia 34 tahun di Tangerang. Suaminya, Mas Eko, adalah seorang teknisi di sebuah pabrik elektronik. Suatu Jumat sore, Mas Eko tiba-tiba mengeluh nyeri dada yang sangat hebat. Mbak Dewi langsung membawanya ke IGD rumah sakit terdekat. Dokter menyatakan Mas Eko mengalami serangan jantung dan membutuhkan pemasangan ring segera.
+
+&lt;u&gt;Biaya operasi pemasangan ring jantung: Rp 150 juta. Biaya ICU per hari: Rp 8 juta. Total estimasi perawatan: Rp 250 juta. Tabungan mereka? Hanya Rp 30 juta. Mbak Dewi menangis di lorong rumah sakit sambil menelepon saudara satu per satu, meminjam uang dengan harga diri yang hancur&lt;/u&gt;.
+
+Yang tidak banyak orang sadari adalah dampak psikologis dari situasi ini. Mbak Dewi bukan hanya khawatir tentang kesehatan suaminya. Ia juga dihantui pertanyaan-pertanyaan yang menyiksa: Bagaimana membayar cicilan rumah bulan depan? Bagaimana biaya sekolah anak? Bagaimana jika Mas Eko tidak bisa bekerja lagi?
+
+&lt;span class=&quot;highlight&quot;&gt;Studi dari Universitas Indonesia menunjukkan bahwa orang yang memiliki proteksi kesehatan memadai memiliki tingkat kecemasan 60% lebih rendah dibandingkan yang tidak memiliki proteksi. Mereka tidur lebih nyenyak, hubungan keluarga lebih harmonis, dan produktivitas kerja lebih tinggi. Proteksi kesehatan bukan hanya melindungi tubuh, tapi juga melindungi jiwa dan keharmonisan rumah tangga.&lt;/span&gt;
+
+Bayangkan jika Mbak Dewi dan Mas Eko sudah memiliki proteksi yang tepat. Saat dokter menyatakan butuh operasi segera, yang mereka rasakan hanyalah kekhawatiran tentang kesehatan, bukan tentang uang. Mereka bisa fokus sepenuhnya pada pemulihan, bukan pada utang yang menumpuk.
+
+&lt;blockquote&gt;&quot;Peace of mind is not the absence of conflict, but the ability to cope with it.&quot; - Socrates&lt;/blockquote&gt;
+
+Dengan &lt;b&gt;MiUltimate HealthCare&lt;/b&gt; dari Manulife, biaya rumah sakit bukan lagi sumber kecemasan. Seluruh biaya rawat inap, operasi, obat-obatan, dan perawatan intensif ditanggung sepenuhnya tanpa batas tahunan. &lt;i&gt;Anda cukup menunjukkan kartu dan langsung ditangani. Tidak ada uang muka, tidak ada drama di meja administrasi, tidak ada telepon meminjam uang ke saudara&lt;/i&gt;.
+
+Dan jika yang terdiagnosis adalah penyakit kritis seperti kanker, jantung, atau stroke, &lt;b&gt;MiEarly Critical Care&lt;/b&gt; memberikan &lt;i&gt;santunan tunai sejak stadium awal. Dana ini bisa digunakan untuk pengobatan alternatif, second opinion ke luar negeri, atau sekadar memenuhi kebutuhan hidup keluarga selama Anda fokus pada pemulihan. Proteksi ganda yang memastikan tidak ada celah yang terlewat&lt;/i&gt;.
+
+Kisah Mbak Dewi tidak perlu terulang. Tidak perlu ada lagi ibu yang menangis di lorong rumah sakit karena bingung mencari uang.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Proteksi+Kesehatan+Untuk+Ketenangan+Keluarga&quot; alt=&quot;Proteksi kesehatan memberikan ketenangan pikiran bagi seluruh keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Investasi terbaik untuk kesehatan mental Anda adalah kepastian bahwa keluarga terlindungi. Siang ini, luangkan 5 menit untuk memikirkan: sudahkah keluarga Anda memiliki proteksi yang memadai? Jika belum, jangan tunda lagi. &lt;b&gt;Satu langkah hari ini bisa mencegah air mata di masa depan. Konsultasi gratis, tanpa paksaan, tanpa kewajiban. Hubungi kami sekarang.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-14', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-14">kesehatan mental finansial, proteksi jiwa, MiUltimate HealthCare, MiEarly Critical Care, Manulife, stres kerja, biaya pengobatan, asuransi kesehatan, penyakit kritis, rawat inap, deteksi dini, santunan tunai, risiko kesehatan, ketenangan pikiran, perlindungan keluarga, biaya rumah sakit, terapi kesehatan, pemulihan, premi terjangkau, solusi kesehatan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-14', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 5 Malam -->
+        <div class="post-card" id="post-h5-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 5 - Malam</span>
+                <span class="post-number">Post 15/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-15">Cemas Tiap Malam: Bagaimana Kalau Besok Sakit?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-15', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-15" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Malam ini, jujurlah pada diri sendiri: Apakah Anda sering cemas memikirkan "bagaimana kalau besok saya atau pasangan saya jatuh sakit?" Apakah pikiran itu menghantui Anda di saat-saat sepi, ketika lampu sudah dimatikan dan anak-anak sudah terlelap? Jika jawabannya ya, Anda tidak sendirian. Dan malam ini, saya ingin membantu Anda melepaskan beban itu.&lt;/b&gt;
+
+Bu Sari, seorang guru honorer di Depok, selama bertahun-tahun hidup dengan kecemasan yang ia simpan sendiri. Suaminya bekerja sebagai kurir pengiriman paket. Penghasilan mereka berdua pas-pasan untuk membiayai kehidupan sehari-hari dan sekolah dua anak mereka. Yang paling menakutkan bagi Bu Sari bukan soal makan atau tempat tinggal. Yang paling menakutkannya adalah satu pertanyaan yang terus berputar di kepalanya setiap malam: "Bagaimana kalau salah satu dari kami sakit?"
+
+Suatu malam, Bu Sari terjaga di jam 2 pagi. &lt;u&gt;Jantungnya berdebar kencang, nafasnya sesak, dan keringat dingin membasahi tubuhnya. Ia mengira sedang terkena serangan jantung. Suaminya panik dan membawanya ke UGD. Ternyata, yang dialami Bu Sari adalah serangan panik. Tubuhnya memberontak karena kecemasan kronis yang terlalu lama ia pendam tentang ketidaksiapan finansial menghadapi risiko kesehatan&lt;/u&gt;.
+
+Dokter yang menanganinya berkata dengan lembut: "Bu, tubuh Ibu sehat. Tapi pikiran Ibu yang sakit. Kecemasan kronis ini jika dibiarkan akan merusak kesehatan fisik Ibu secara nyata."
+
+&lt;span class=&quot;highlight&quot;&gt;Penelitian dari Harvard Medical School membuktikan bahwa kecemasan kronis meningkatkan risiko penyakit jantung hingga 26%, diabetes tipe 2 hingga 20%, dan gangguan autoimun hingga 36%. Jadi ironisnya, ketakutan akan sakit itu sendiri membuat Anda lebih rentan sakit. Ketidaksiapan finansial secara tidak langsung menjadi pemicu penyakit yang justru Anda takutkan.&lt;/span&gt;
+
+Lingkaran setan ini harus diputus. Dan cara memutusnya bukan dengan berpura-pura tidak takut. Cara memutusnya adalah dengan mengambil tindakan yang menghilangkan sumber ketakutan itu.
+
+&lt;blockquote&gt;&quot;Worry does not empty tomorrow of its sorrow, it empties today of its strength.&quot; - Corrie ten Boom&lt;/blockquote&gt;
+
+Bu Sari akhirnya mengambil keputusan terbaik dalam hidupnya. Dengan bantuan konsultan dari Manulife, ia dan suaminya memilih kombinasi &lt;b&gt;MiUltimate HealthCare + MiEarly Critical Care&lt;/b&gt;. Preminya hanya Rp 400 ribu per bulan untuk berdua. Angka yang bisa dijangkau bahkan dengan penghasilan mereka yang terbatas.
+
+&lt;b&gt;MiUltimate HealthCare&lt;/b&gt; memberikan &lt;i&gt;proteksi menyeluruh dari biaya rawat inap hingga rawat jalan, dari operasi ringan hingga yang paling kompleks, tanpa batasan tahunan yang berarti. Sementara MiEarly Critical Care siap memberikan santunan tunai jika salah satu dari mereka didiagnosis penyakit kritis, bahkan sejak stadium paling awal&lt;/i&gt;.
+
+Sejak malam itu, Bu Sari tidak pernah lagi mengalami serangan panik. Ia tidur nyenyak setiap malam karena tahu bahwa keluarganya sudah terlindungi. Bukan berarti risiko hilang. Tapi beban kekhawatiran sudah terangkat dari pundaknya.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Tidur+Nyenyak+Dengan+Proteksi+Lengkap&quot; alt=&quot;Tidur nyenyak tanpa kecemasan berkat proteksi kesehatan yang memadai&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Malam ini, sebelum Anda memejamkan mata, tanyakan pada diri sendiri: Apakah saya ingin terus hidup dengan kecemasan ini? Atau apakah saya siap mengambil satu langkah kecil yang bisa membebaskan pikiran saya selamanya? &lt;b&gt;Bebaskan diri dari kecemasan. Ambil langkah pertama malam ini. Cukup satu pesan WhatsApp, dan mulailah perjalanan menuju ketenangan pikiran yang sesungguhnya.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-15', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-15">kesehatan jiwa, keuangan sehat, MiUltimate HealthCare, MiEarly Critical Care, Manulife, proteksi menyeluruh, biaya kesehatan mental, asuransi lengkap, rawat jalan, penyakit kritis, kecemasan finansial, keseimbangan emosi, perawatan kesehatan, santunan penyakit, deteksi dini, biaya psikiater, perlindungan total, keluarga sehat, masa depan cerah, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-15', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 6: Perbedaan BPJS dan asuransi swasta - MiUltimate HealthCare Plus -->
+
+        <!-- POST Hari 6 Pagi -->
+        <div class="post-card" id="post-h6-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 6 - Pagi</span>
+                <span class="post-number">Post 16/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-16">BPJS Saja Cukup? Fakta yang Mengubah Perspektif</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-16', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-16" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apakah Anda masih mengandalkan BPJS saja untuk seluruh kebutuhan kesehatan keluarga? Apakah Anda yakin bahwa saat kondisi darurat datang, BPJS bisa memberikan kecepatan penanganan yang keluarga Anda butuhkan? Sebelum Anda menjawab, izinkan saya berbagi sebuah kisah nyata yang mungkin mengubah perspektif Anda.&lt;/b&gt;
+
+Pak Hendro, seorang wiraswasta berusia 45 tahun di Surabaya, selalu bangga bahwa ia rajin membayar iuran BPJS untuk seluruh keluarganya. "Untuk apa bayar asuransi swasta mahal-mahal? BPJS sudah cukup," katanya setiap kali ditawari asuransi tambahan. Hingga suatu pagi, putri bungsunya yang berusia 8 tahun, Nadia, demam tinggi dan kejang-kejang.
+
+Pak Hendro membawanya ke rumah sakit rujukan BPJS. Namun yang ia hadapi di sana membuatnya gemetar. &lt;u&gt;Antrian IGD penuh sesak. Ia harus menunggu 2 jam sebelum Nadia diperiksa. Setelah diperiksa, dokter mengatakan Nadia perlu rawat inap untuk observasi. Masalahnya, kamar kelas 1 dan 2 penuh. Yang tersedia hanya kelas 3 dengan 8 pasien dalam satu ruangan. Proses rujukan ke dokter spesialis anak membutuhkan waktu 3 hari lagi&lt;/u&gt;.
+
+Dalam kondisi panik melihat anaknya kesakitan, Pak Hendro akhirnya memutuskan naik kelas dan membayar sendiri selisihnya. Total biaya perawatan 5 hari: Rp 35 juta. Uang yang seharusnya untuk renovasi rumah, habis dalam sekejap. Dan ini baru demam. Bagaimana jika yang terjadi lebih serius?
+
+&lt;span class=&quot;highlight&quot;&gt;BPJS adalah program yang sangat baik dan wajib dimiliki setiap warga negara. Tapi ada keterbatasan yang perlu dipahami secara jujur: antrian yang panjang terutama di rumah sakit besar, sistem rujukan berjenjang yang memakan waktu, pilihan obat yang terbatas pada formularium nasional, kamar yang sering penuh terutama di kota besar, dan tidak ada pilihan dokter atau rumah sakit di luar jaringan. Untuk kondisi darurat yang membutuhkan penanganan dalam hitungan menit, keterbatasan ini bisa berarti perbedaan antara hidup dan mati.&lt;/span&gt;
+
+Setelah pengalaman dengan Nadia, Pak Hendro akhirnya memahami bahwa BPJS adalah fondasi, bukan keseluruhan bangunan. Ia membutuhkan pelengkap yang bisa memberikan kecepatan, kenyamanan, dan pilihan yang lebih luas.
+
+&lt;blockquote&gt;&quot;The greatest wealth is health.&quot; - Virgil&lt;/blockquote&gt;
+
+&lt;b&gt;MiUltimate HealthCare Plus&lt;/b&gt; dari Manulife dirancang untuk melengkapi BPJS, bukan menggantikannya. Produk ini memberikan &lt;i&gt;akses langsung ke dokter spesialis tanpa perlu rujukan berjenjang. Anda bisa memilih rumah sakit premium di seluruh Indonesia dan bahkan di luar negeri seperti Singapura, Malaysia, dan Jepang. Kamar VIP atau single room tersedia tanpa antri. Obat-obatan terbaru dan tercanggih tanpa batasan formularium. Sistem cashless tanpa uang muka yang memastikan Anda langsung ditangani&lt;/i&gt;.
+
+Pak Hendro kini memiliki keduanya: BPJS untuk kebutuhan rutin, dan MiUltimate HealthCare Plus untuk &lt;b&gt;situasi darurat dan kebutuhan premium&lt;/b&gt;. Kini, jika Nadia atau anggota keluarga lainnya membutuhkan penanganan cepat, ia cukup datang ke rumah sakit manapun dan langsung ditangani tanpa drama.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=BPJS+Fondasi+Asuransi+Swasta+Pelengkap&quot; alt=&quot;BPJS sebagai fondasi dan asuransi swasta sebagai pelengkap untuk proteksi maksimal&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+BPJS adalah fondasi yang kuat. Asuransi swasta adalah pelengkap yang menyempurnakan. Keduanya saling melengkapi, bukan saling menggantikan. &lt;b&gt;Miliki keduanya untuk proteksi kesehatan yang benar-benar komprehensif. Konsultasi gratis untuk mengetahui paket terbaik yang sesuai dengan kebutuhan dan anggaran Anda.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-16', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-16">BPJS vs asuransi swasta, MiUltimate HealthCare Plus, Manulife, perbedaan asuransi, proteksi kesehatan, kamar VIP, tanpa antrian, cashless, biaya rumah sakit, rawat inap, dokter spesialis, asuransi swasta, jaminan kesehatan, limit tinggi, pelayanan cepat, rumah sakit pilihan, kelas perawatan, premi asuransi, perlindungan ekstra, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-16', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 6 Siang -->
+        <div class="post-card" id="post-h6-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 6 - Siang</span>
+                <span class="post-number">Post 17/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-17">Butuh Operasi Darurat Tapi Kamar BPJS Penuh</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-17', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-17" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Apa yang terjadi saat Anda membutuhkan operasi darurat tetapi kamar BPJS di rumah sakit penuh dan daftar tunggu berhari-hari? Apakah Anda sanggup menunggu sementara rasa sakit menyiksa dan kondisi semakin memburuk setiap jamnya? Ini bukan skenario hipotetis. Ini terjadi setiap hari di rumah sakit-rumah sakit di seluruh Indonesia.&lt;/b&gt;
+
+Mari saya ceritakan kisah Pak Wahid, seorang guru SMA di Semarang berusia 52 tahun. Suatu malam, ia merasakan nyeri yang luar biasa di perut bagian kanan bawah. Keringat dingin membasahi seluruh tubuhnya. Istrinya langsung membawanya ke rumah sakit rujukan BPJS. Dokter jaga mendiagnosis usus buntu yang sudah di ambang pecah. Operasi harus dilakukan segera.
+
+Namun masalah muncul. &lt;u&gt;Kamar operasi untuk pasien BPJS sudah penuh. Antrian operasi non-darurat: 2 hari. Padahal dokter bilang kondisinya harus ditangani dalam 12 jam. Petugas administrasi menyarankan naik kelas ke VIP agar bisa langsung dioperasi, tapi biaya selisihnya Rp 25 juta yang harus dibayar sendiri. Pak Wahid tidak punya uang sebanyak itu dalam waktu singkat&lt;/u&gt;.
+
+Akhirnya, setelah menelepon saudara dan meminjam uang, operasi dilakukan. Tapi karena penundaan beberapa jam, usus buntu sudah pecah dan menyebabkan infeksi. Perawatan yang seharusnya hanya 3 hari menjadi 2 minggu. Total biaya membengkak menjadi Rp 60 juta. Sebagian ditanggung BPJS, tapi selisihnya tetap besar.
+
+&lt;span class=&quot;highlight&quot;&gt;Dalam dunia medis, ada istilah "golden hour" dimana penanganan cepat sangat menentukan hasil pengobatan. Untuk serangan jantung, golden hour-nya 60 menit. Untuk stroke, 3 jam. Untuk usus buntu yang pecah, setiap jam penundaan meningkatkan risiko komplikasi. Dengan asuransi swasta, Anda langsung ditangani tanpa menunggu. Tanpa negosiasi. Tanpa drama. Perbedaan antara menunggu 3 hari versus langsung ditangani saat itu juga bisa berarti perbedaan antara pemulihan sempurna dan komplikasi serius.&lt;/span&gt;
+
+Bayangkan jika Pak Wahid memiliki asuransi swasta. Ia bisa langsung masuk ke rumah sakit manapun, langsung ditangani oleh dokter bedah terbaik, tanpa antri, tanpa kekhawatiran tentang biaya. Pemulihan 3 hari, bukan 2 minggu. Tanpa infeksi tambahan. Tanpa utang.
+
+&lt;blockquote&gt;&quot;Time and health are two precious assets that we don&#x27;t recognize and appreciate until they have been depleted.&quot; - Denis Waitley&lt;/blockquote&gt;
+
+&lt;b&gt;MiUltimate HealthCare Plus&lt;/b&gt; dari Manulife memberikan keunggulan yang krusial di saat darurat: &lt;i&gt;koordinasi benefit dengan BPJS sehingga Anda bisa mengoptimalkan keduanya secara bersamaan. Bagian yang tidak di-cover oleh BPJS otomatis ditanggung oleh MiUltimate HealthCare Plus. Hasilnya: proteksi maksimal tanpa biaya ganda dan tanpa penundaan penanganan&lt;/i&gt;.
+
+Lebih dari itu, MiUltimate HealthCare Plus memberikan &lt;b&gt;kebebasan memilih&lt;/b&gt;: pilih rumah sakit manapun termasuk yang terbaik di Indonesia dan Asia, pilih dokter spesialis yang Anda percaya, pilih kamar yang nyaman untuk pemulihan, dan dapatkan obat-obatan terbaru tanpa batasan. &lt;i&gt;Semua dengan sistem cashless yang memastikan Anda tidak perlu mengeluarkan uang sepeser pun di muka&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Kecepatan+Penanganan+Menyelamatkan+Nyawa&quot; alt=&quot;Kecepatan penanganan medis yang bisa menyelamatkan nyawa berkat asuransi swasta&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Jangan pertaruhkan kesehatan dan nyawa keluarga Anda dengan waktu tunggu. Setiap menit berharga saat kondisi darurat datang. &lt;b&gt;Dapatkan proteksi premium yang memastikan Anda selalu mendapat penanganan tercepat dan terbaik. Hubungi kami sekarang untuk informasi lengkap tentang koordinasi manfaat BPJS dan asuransi swasta.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-17', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-17">asuransi swasta, BPJS kesehatan, MiUltimate HealthCare Plus, Manulife, pelayanan premium, tanpa rujukan, dokter pilihan, rumah sakit swasta, kamar perawatan, cashless claim, limit tahunan besar, rawat inap VIP, obat paten, biaya operasi, perlindungan menyeluruh, akses cepat, kualitas layanan, proteksi keluarga, premi fleksibel, solusi kesehatan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-17', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 6 Malam -->
+        <div class="post-card" id="post-h6-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 6 - Malam</span>
+                <span class="post-number">Post 18/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-18">Berapa Nilai Kesehatan Anda Sesungguhnya?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-18', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-18" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;Berapa nilai kesehatan Anda sesungguhnya? Apakah sepadan dengan beberapa ratus ribu rupiah per bulan untuk mendapatkan proteksi terbaik yang bisa menyelamatkan hidup Anda dan keluarga? Malam ini, saya ingin mengajak Anda merenung tentang prioritas hidup yang seringkali terbalik.&lt;/b&gt;
+
+Perkenalkan Mas Fajar, seorang profesional muda berusia 32 tahun di Jakarta. Penghasilannya Rp 15 juta per bulan. Setiap bulan ia menghabiskan Rp 1,5 juta untuk langganan streaming dan hiburan digital, Rp 2 juta untuk makan di restoran, Rp 800 ribu untuk kopi kekinian, dan Rp 3 juta untuk cicilan gadget terbaru. Tapi ketika ditawari asuransi kesehatan dengan premi Rp 500 ribu per bulan, jawabannya selalu sama: "Masih muda, belum perlu. Nanti saja kalau sudah berkeluarga."
+
+Enam bulan kemudian, Mas Fajar terbangun di tengah malam dengan &lt;u&gt;nyeri pinggang yang luar biasa. Ternyata ia menderita batu ginjal yang membutuhkan operasi laparoskopi. Biaya: Rp 45 juta. Ia tidak punya asuransi swasta, dan BPJS yang selama ini jarang ia urus ternyata nunggak 4 bulan. Ia harus membayar cash dari tabungannya yang langsung habis, plus utang kartu kredit yang ia cicil selama setahun ke depan&lt;/u&gt;.
+
+Ironinya, jika ia memilih membayar premi Rp 500 ribu per bulan selama 6 bulan itu (total Rp 3 juta), seluruh biaya operasi Rp 45 juta akan ditanggung sepenuhnya. Ia malah rugi 15 kali lipat karena "menghemat" premi asuransi.
+
+&lt;span class=&quot;highlight&quot;&gt;Banyak orang rela menghabiskan jutaan rupiah untuk gadget terbaru yang akan usang dalam 2 tahun, tapi ragu mengeluarkan ratusan ribu untuk asuransi kesehatan yang bisa menyelamatkan hidup mereka. Prioritas yang salah hari ini akan menjadi penyesalan besar di masa depan. Gadget bisa diganti kapan saja, tapi kesehatan yang hilang mungkin tidak bisa dikembalikan. Dan tagihan rumah sakit yang datang tiba-tiba bisa menghancurkan seluruh tabungan yang dikumpulkan bertahun-tahun.&lt;/span&gt;
+
+Sekarang Mas Fajar sudah memiliki MiUltimate HealthCare Plus. "Penyesalan terbesar saya adalah tidak memulai lebih awal," katanya. "Kalau saja saya tidak meremehkan risiko, saya tidak perlu kehilangan seluruh tabungan dan menanggung utang berbulan-bulan."
+
+&lt;blockquote&gt;&quot;Your body hears everything your mind says. Stay positive.&quot; - Naomi Judd&lt;/blockquote&gt;
+
+Dengan &lt;b&gt;MiUltimate HealthCare Plus&lt;/b&gt; dari Manulife, Anda mendapatkan &lt;i&gt;proteksi kesehatan terlengkap yang mencakup rawat inap di kamar terbaik, rawat jalan termasuk konsultasi spesialis, persalinan, perawatan gigi dan mata, fisioterapi, dan bahkan perawatan di rumah sakit luar negeri untuk kasus yang membutuhkan penanganan khusus. Semua dengan premi yang jika dihitung per hari, jauh lebih murah dari segelas kopi favorit Anda&lt;/i&gt;.
+
+Faktanya, premi MiUltimate HealthCare Plus per hari setara dengan harga satu gelas kopi. Tapi manfaatnya bisa bernilai ratusan juta saat Anda membutuhkannya. &lt;b&gt;Mana yang lebih berharga: kopi yang habis dalam 15 menit, atau proteksi yang menjaga keluarga Anda 24 jam sehari, 365 hari setahun?&lt;/b&gt;
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Prioritas+Yang+Tepat+Investasi+Kesehatan&quot; alt=&quot;Investasi terbaik adalah investasi untuk kesehatan dan proteksi keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Malam ini, pikirkan kembali prioritas pengeluaran Anda. Tinjau ulang apa yang benar-benar penting dan apa yang sebenarnya bisa dikurangi. Kesehatan adalah segalanya. Tanpa kesehatan, semua harta, karir, dan pencapaian tidak ada artinya. &lt;b&gt;Lindungi kesehatan Anda sekarang dengan investasi kecil yang memberikan ketenangan besar. Jangan tunggu sampai momen darurat datang. Hubungi kami malam ini.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-18', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-18">perbandingan asuransi, BPJS vs swasta, MiUltimate HealthCare Plus, Manulife, asuransi kesehatan, pelayanan eksklusif, tanpa antrian panjang, rawat inap nyaman, dokter spesialis pilihan, biaya ditanggung penuh, limit besar, cashless, proteksi lengkap, rumah sakit terbaik, kelas satu, pengobatan terbaik, perlindungan optimal, keluarga terlindungi, premi terjangkau, daftar sekarang</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-18', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- HARI 7: Ringkasan dan call-to-action kuat: saatnya bertindak - All Products + Rekrutmen -->
+
+        <!-- POST Hari 7 Pagi -->
+        <div class="post-card" id="post-h7-pagi">
+            <div class="post-header">
+                <span class="post-time">Hari 7 - Pagi</span>
+                <span class="post-number">Post 19/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-19">SAATNYA BERTINDAK: Kapan Anda Ambil Langkah Pertama?</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-19', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-19" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;SAATNYA BERTINDAK. Selama 7 minggu terakhir, Anda sudah membaca semua fakta, semua cerita, semua data, dan semua solusi yang tersedia. Anda sudah tahu risikonya. Anda sudah tahu akibat dari menunda. Sekarang, hanya ada satu pertanyaan yang tersisa: KAPAN Anda akan mengambil langkah pertama? Karena "nanti" mungkin tidak pernah datang.&lt;/b&gt;
+
+Saya ingin Anda mengingat kembali semua kisah yang telah kita bagikan. Ingat Pak Darmawan yang nyaris tidak bisa membiayai kuliah putrinya? Ingat Bu Ratna yang menangis karena tidak mampu mengirim anaknya ke ITB? Ingat Pak Bambang yang pesangon Rp 800 jutanya habis dalam 5 tahun? Ingat keluarga Wirawan yang pecah karena sengketa warisan? Ingat Mbak Dewi yang menangis di lorong rumah sakit?
+
+Semua penderitaan itu memiliki satu kesamaan: &lt;u&gt;semuanya bisa dicegah. Semuanya terjadi bukan karena takdir, melainkan karena penundaan. Semuanya adalah akibat dari satu kalimat berbahaya yang sering kita ucapkan: "Nanti saja, masih ada waktu." Faktanya, waktu tidak pernah menunggu. Dan setiap hari yang berlalu tanpa proteksi adalah hari di mana Anda bermain judi dengan masa depan keluarga tercinta&lt;/u&gt;.
+
+&lt;span class=&quot;highlight&quot;&gt;Mari kita bicara tentang angka yang tidak bisa dibantah. Biaya kesehatan naik 12% per tahun. Biaya pendidikan naik 15% per tahun. Inflasi umum 6% per tahun. Sementara kenaikan gaji rata-rata hanya 5-8% per tahun. Artinya, setiap tahun yang berlalu tanpa persiapan, kesenjangan antara kebutuhan dan kemampuan Anda semakin lebar. Menunda berarti mempermahal. Menunda berarti memperbesar risiko. HARI INI adalah hari termurah untuk memulai proteksi. Besok akan lebih mahal. Tahun depan akan jauh lebih mahal.&lt;/span&gt;
+
+Pernahkah Anda berpikir: "Bagaimana jika hari ini adalah kesempatan terakhir saya untuk mengambil keputusan ini?" Bukan berarti sesuatu yang buruk akan terjadi. Tapi hidup penuh ketidakpastian. Dan keputusan bijak adalah keputusan yang diambil saat kita masih bisa.
+
+&lt;blockquote&gt;&quot;The tragedy in life doesn&#x27;t lie in not reaching your goal. The tragedy lies in having no goal to reach.&quot; - Benjamin E. Mays&lt;/blockquote&gt;
+
+Manulife hadir dengan solusi lengkap untuk setiap kebutuhan perlindungan keluarga Anda. &lt;b&gt;MiUltimate HealthCare Plus&lt;/b&gt; untuk proteksi kesehatan premium tanpa batas. &lt;b&gt;MiWealth Protection&lt;/b&gt; untuk jaminan perlindungan jiwa yang memastikan keluarga tetap aman. &lt;b&gt;MiEducation&lt;/b&gt; untuk menjamin dana pendidikan anak dari TK hingga universitas. &lt;b&gt;MiRetirement Booster&lt;/b&gt; untuk membangun dana pensiun yang memerdekakan hari tua. &lt;b&gt;MiEarly Critical Care&lt;/b&gt; untuk santunan tunai sejak stadium awal penyakit kritis. Dan &lt;b&gt;MiWealth Legacy&lt;/b&gt; untuk perencanaan warisan yang menjaga keutuhan keluarga lintas generasi.
+
+&lt;i&gt;Semua produk ini bisa disesuaikan dengan kebutuhan dan kemampuan Anda. Tidak ada paket yang terlalu mahal karena semuanya bisa di-custom. Yang penting adalah memulai, sekecil apapun langkah pertamanya&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=SAATNYA+BERTINDAK+Mulai+Proteksi+Hari+Ini&quot; alt=&quot;Saatnya mengambil tindakan nyata untuk melindungi masa depan keluarga&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Tidak ada waktu yang lebih baik dari SEKARANG. Tidak ada momen yang lebih tepat dari PAGI INI. Setiap detik yang berlalu adalah detik dimana keluarga Anda belum terlindungi. &lt;b&gt;Hubungi kami hari ini untuk konsultasi gratis tanpa kewajiban apapun. Satu percakapan 15 menit bisa mengubah seluruh masa depan keluarga Anda. Jangan biarkan momen ini berlalu. Bertindaklah sekarang.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-19', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-19">ringkasan asuransi, semua produk Manulife, MiUltimate HealthCare, MiWealth Protection, MiEducation, MiRetirement Booster, MiEarly Critical Care, MiWealth Legacy, MiWealth Link, proteksi menyeluruh, perencanaan keuangan, keluarga terlindungi, investasi masa depan, dana pendidikan, dana pensiun, perlindungan jiwa, asuransi lengkap, konsultasi gratis, aksi sekarang, satu yang terpenting</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-19', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 7 Siang -->
+        <div class="post-card" id="post-h7-siang">
+            <div class="post-header">
+                <span class="post-time">Hari 7 - Siang</span>
+                <span class="post-number">Post 20/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-20">PERINGATAN: Setiap Hari Tanpa Proteksi Adalah Risiko Nyata</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-20', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-20" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;PERINGATAN PENTING: Setiap hari yang berlalu tanpa proteksi adalah hari dimana keluarga Anda berada dalam risiko yang nyata dan tidak terkendali. Ini bukan menakut-nakuti. Ini bukan taktik pemasaran. Ini adalah FAKTA KEHIDUPAN yang sudah dibuktikan oleh ribuan keluarga yang menyesal karena tidak mempersiapkan diri. Apakah Anda siap menanggung konsekuensinya jika Anda terus menunda?&lt;/b&gt;
+
+Izinkan saya membagikan satu statistik yang mungkin akan mengubah cara pandang Anda selamanya. Dari 100 orang yang membaca informasi tentang pentingnya asuransi, &lt;u&gt;hanya 3 orang yang benar-benar mengambil tindakan. 97 orang lainnya mengangguk setuju, berkata "ya, memang penting," lalu kembali ke rutinitas tanpa melakukan apapun. Dan dari 97 orang yang tidak bertindak itu, statistik menunjukkan bahwa dalam 10 tahun ke depan, setidaknya 30 di antara mereka akan menghadapi krisis finansial karena masalah kesehatan, kematian pencari nafkah, atau kebutuhan pendidikan yang tidak terencana&lt;/u&gt;.
+
+Pertanyaannya sederhana: Anda ingin menjadi bagian dari 3 orang yang bertindak, atau 97 orang yang menyesal?
+
+&lt;span class=&quot;highlight&quot;&gt;Orang yang membeli asuransi tidak lebih takut dari orang lain. Mereka tidak lebih pesimis tentang masa depan. Sebaliknya, mereka justru lebih BIJAK karena memahami bahwa risiko itu nyata dan tidak pandang bulu. Mereka lebih BERTANGGUNG JAWAB karena tidak mau membiarkan keluarga menderita jika sesuatu terjadi. Dan mereka lebih OPTIMIS karena dengan proteksi yang tepat, mereka bisa menjalani hidup dengan lebih tenang dan lebih berani bermimpi besar.&lt;/span&gt;
+
+Siang ini, saya ingin merangkum semua solusi yang Manulife tawarkan untuk setiap aspek kehidupan Anda:
+
+Apapun kebutuhan Anda, Manulife punya solusinya:
+- Khawatir biaya rumah sakit? &lt;b&gt;MiUltimate HealthCare Plus&lt;/b&gt; menanggung seluruh biaya kesehatan tanpa batas.
+- Ingin melindungi keluarga jika sesuatu terjadi? &lt;b&gt;MiWealth Protection&lt;/b&gt; memberikan jaminan finansial yang kuat.
+- Ingin menjamin pendidikan terbaik untuk anak? &lt;b&gt;MiEducation&lt;/b&gt; memastikan dana cair tepat waktu di setiap jenjang.
+- Ingin pensiun mandiri dan bermartabat? &lt;b&gt;MiRetirement Booster&lt;/b&gt; membangun dana pensiun yang optimal.
+- Takut penyakit kritis menguras tabungan? &lt;b&gt;MiEarly Critical Care&lt;/b&gt; memberikan santunan sejak stadium awal.
+- Ingin mewariskan kekayaan tanpa konflik? &lt;b&gt;MiWealth Legacy&lt;/b&gt; menjamin pelestarian harta lintas generasi.
+
+Dan jika Anda ingin PENGHASILAN TANPA BATAS sambil membantu orang lain mendapatkan proteksi yang mereka butuhkan, &lt;i&gt;bergabunglah sebagai agen Manulife. Bangun tim, bangun karir, bangun passive income yang akan mengalir bahkan saat Anda berlibur bersama keluarga. Ratusan leader Manulife sudah membuktikan bahwa ini bukan mimpi. Ini adalah realita yang bisa diraih oleh siapa saja yang memiliki tekad dan kerja keras&lt;/i&gt;.
+
+&lt;blockquote&gt;&quot;You may delay, but time will not.&quot; - Benjamin Franklin&lt;/blockquote&gt;
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=Solusi+Lengkap+Manulife+Untuk+Setiap+Kebutuhan&quot; alt=&quot;Solusi lengkap proteksi dan perencanaan keuangan dari Manulife Indonesia&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+JANGAN TUNGGU BESOK. Besok mungkin sudah terlambat. Premi akan lebih mahal. Kondisi kesehatan mungkin berubah. Risiko yang Anda takutkan mungkin sudah terjadi. &lt;b&gt;Waktu terbaik adalah SEKARANG. Satu pesan WhatsApp. Satu klik. Satu keputusan yang bisa mengubah seluruh nasib keluarga Anda. Ambil keputusan itu SEKARANG JUGA.&lt;/b&gt;
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-20', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-20">produk Manulife, proteksi lengkap, MiUltimate HealthCare Plus, MiWealth Protection, MiAccident Guard, MiSave Pro, rekrutmen agen, peluang karir, asuransi terbaik, perlindungan keluarga, investasi proteksi, dana darurat, kecelakaan, penyakit kritis, warisan, passive income, kebebasan finansial, masa depan cerah, bertindak sekarang, jangan tunda lagi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-20', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <!-- POST Hari 7 Malam -->
+        <div class="post-card" id="post-h7-malam">
+            <div class="post-header">
+                <span class="post-time">Hari 7 - Malam</span>
+                <span class="post-number">Post 21/21</span>
+            </div>
+            <div class="post-content">
+                <div class="title-section">
+                    <span class="section-label">Judul</span>
+                    <div class="title-text" id="title-21">PESAN TERAKHIR: Keputusan Ada di Tangan Anda</div>
+                    <button class="copy-title-btn" onclick="copyTitle('title-21', this)">Copy Judul</button>
+                </div>
+                <span class="section-label label-caption">Caption</span>
+                <div class="caption-box">
+                    <textarea id="caption-21" class="code-textarea" readonly onclick="this.select()">&lt;b&gt;INI ADALAH PESAN TERAKHIR DALAM SERI SATU YANG TERPENTING. Setelah malam ini, tidak akan ada lagi pengingat. Tidak akan ada lagi cerita. Tidak akan ada lagi data dan fakta yang kami bagikan. Setelah ini, KEPUTUSAN sepenuhnya ada di tangan Anda. Dan keputusan itu akan menentukan nasib keluarga Anda di tahun-tahun yang akan datang.&lt;/b&gt;
+
+Selama 7 minggu terakhir, kami telah berbagi tentang realita kehidupan yang tidak bisa dihindari. Tentang biaya kesehatan yang terus meroket dan bisa menghabiskan seluruh tabungan dalam sekejap. Tentang penyakit kritis yang datang tanpa undangan dan tanpa memandang usia. Tentang pendidikan anak yang semakin mahal setiap tahun. Tentang masa pensiun yang bisa menjadi mimpi indah atau mimpi buruk. Tentang warisan yang bisa menjadi berkah atau sumber perpecahan. Dan tentang peluang karir yang bisa mengubah kehidupan finansial Anda secara fundamental.
+
+&lt;u&gt;Semua informasi sudah Anda miliki. Semua fakta sudah tersaji di hadapan Anda. Semua cerita nyata sudah Anda baca. Semua solusi sudah kami jelaskan. Yang kurang sekarang hanyalah SATU HAL: TINDAKAN NYATA dari Anda. Tanpa tindakan, semua pengetahuan ini tidak ada artinya. Tanpa langkah pertama, tidak akan pernah ada perubahan&lt;/u&gt;.
+
+Malam ini, saya ingin Anda merenungkan satu pertanyaan terakhir. Lima tahun dari sekarang, ketika Anda melihat ke belakang, apakah Anda akan bersyukur karena hari ini Anda mengambil keputusan? Atau apakah Anda akan menyesal dan berkata: "Andai saja waktu itu saya tidak menunda"?
+
+&lt;span class=&quot;highlight&quot;&gt;Ada dua jenis orang di dunia ini: yang membaca lalu BERTINDAK, dan yang membaca lalu MELUPAKAN. Keduanya akan menghadapi risiko yang sama persis. Keduanya sama-sama bisa terkena penyakit kritis. Keduanya sama-sama akan menua dan pensiun. Keduanya sama-sama punya anak yang butuh pendidikan. Bedanya hanya satu: yang bertindak sudah SIAP menghadapi semua itu. Yang melupakan akan MENDERITA saat semuanya datang tanpa persiapan. Anda ingin menjadi yang mana?&lt;/span&gt;
+
+Ingatlah semua orang yang telah kita ceritakan dalam 7 minggu ini. Mereka yang menderita karena tidak mempersiapkan diri. Dan mereka yang tersenyum tenang karena sudah mengambil langkah yang tepat di waktu yang tepat. Perbedaan antara kedua kelompok itu bukanlah keberuntungan. Perbedaannya adalah KEPUTUSAN.
+
+&lt;blockquote&gt;&quot;In any moment of decision, the best thing you can do is the right thing, the next best thing is the wrong thing, and the worst thing you can do is nothing.&quot; - Theodore Roosevelt&lt;/blockquote&gt;
+
+Manulife siap mendampingi Anda dengan &lt;i&gt;konsultasi gratis, tanpa paksaan, tanpa kewajiban, tanpa tekanan apapun. Kami hanya ingin membantu Anda memahami pilihan yang tersedia, menghitung kebutuhan yang sesuai dengan kondisi Anda, dan membantu Anda membuat keputusan terbaik untuk masa depan keluarga tercinta&lt;/i&gt;.
+
+Tim konsultan kami akan mendengarkan kebutuhan Anda, menganalisis kondisi keuangan Anda, dan &lt;b&gt;merancang solusi yang benar-benar sesuai&lt;/b&gt;. Tidak ada pemaksaan. Tidak ada paket yang tidak Anda butuhkan. Hanya solusi yang tepat untuk situasi Anda.
+
+Dan jika selama 7 minggu ini Anda terinspirasi untuk &lt;b&gt;tidak hanya melindungi keluarga sendiri tetapi juga membantu orang lain mendapatkan proteksi yang mereka butuhkan&lt;/b&gt;, pintu kami selalu terbuka untuk Anda bergabung sebagai agen. &lt;i&gt;Bangun karir yang bermakna, dengan penghasilan tanpa batas, waktu yang fleksibel, dan kepuasan membantu ribuan keluarga Indonesia mendapatkan ketenangan finansial. Ratusan leader kami sudah membuktikannya&lt;/i&gt;.
+
+&lt;img src=&quot;https://via.placeholder.com/600x400?text=KEPUTUSAN+TERBAIK+Anda+Dimulai+Malam+Ini&quot; alt=&quot;Keputusan terbaik untuk masa depan keluarga dimulai dari malam ini&quot; style=&quot;width:100%;border-radius:12px;margin:15px 0;&quot;&gt;
+
+Ini adalah momen Anda. Momen yang mungkin tidak akan datang dua kali. Jangan biarkan ia berlalu seperti angin yang lewat tanpa bekas. &lt;b&gt;AMBIL TINDAKAN MALAM INI. Satu pesan WhatsApp. Lima belas menit konsultasi. Satu keputusan yang bisa mengubah segalanya. Hubungi kami SEKARANG JUGA.&lt;/b&gt;
+
+Terima kasih telah mengikuti seluruh seri Satu Yang Terpenting selama 7 minggu ini. Terima kasih telah membaca, merenungkan, dan semoga mengambil tindakan. Kami berdoa agar Anda dan keluarga selalu dilindungi, selalu sehat, dan selalu diberkati dalam setiap langkah kehidupan.
+
+&lt;div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;"&gt;
+  &lt;a href="https://wa.me/+6287781896087" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#25d366,#128c7e);text-align:center;"&gt;WhatsApp Konsultasi&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;"&gt;Info Produk&lt;/a&gt;
+  &lt;a href="https://pastijaga.petrusjakub.workers.dev/pages/bisnis" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f093fb,#f5576c);text-align:center;"&gt;Peluang Karir Agen&lt;/a&gt;
+  &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
+&lt;/div&gt;</textarea>
+                    <button class="copy-btn" onclick="copyCode('caption-21', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-21">saatnya bertindak, asuransi Manulife, proteksi keluarga, investasi masa depan, rekrutmen agen, semua produk, MiWealth Protection, MiUltimate HealthCare, MiEducation, MiRetirement Booster, perencanaan keuangan, keputusan bijak, masa depan terjamin, perlindungan menyeluruh, aksi nyata, jangan tunggu besok, konsultasi sekarang, satu yang terpenting, keluarga sejahtera, bergabung Manulife</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-21', this)">Copy Tags</button>
+                </div>
+                <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Satu Yang Terpenting - Week 7 | @petrusjakub</p>
+            <p style="margin-top:8px;">Konten Edukasi Asuransi Manulife Indonesia</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCode(elementId, button) {
+            const textarea = document.getElementById(elementId);
+            const htmlCode = textarea.value;
+
+            navigator.clipboard.writeText(htmlCode).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                textarea.select();
+                document.execCommand('copy');
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(button) {
+            const card = button.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                button.innerText = 'Sembunyikan (Sudah Selesai)';
+                button.classList.remove('show-btn');
+                button.classList.add('hide-btn');
+            } else {
+                card.classList.add('hidden-task');
+                button.innerText = 'Tampilkan Kembali';
+                button.classList.remove('hide-btn');
+                button.classList.add('show-btn');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                const isHidden = localStorage.getItem('satuyangterpenting-week7-task-' + index);
+                if (isHidden === 'true') {
+                    card.classList.add('hidden-task');
+                    const btn = card.querySelector('.hide-btn, .show-btn');
+                    if (btn) {
+                        btn.innerText = 'Tampilkan Kembali';
+                        btn.classList.remove('hide-btn');
+                        btn.classList.add('show-btn');
+                    }
+                }
+            });
+        });
+
+        const originalToggle = toggleTask;
+        toggleTask = function(button) {
+            originalToggle(button);
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                localStorage.setItem('satuyangterpenting-week7-task-' + index, card.classList.contains('hidden-task'));
+            });
+        };
+
+        function copyTitle(id, button) {
+            const titleEl = document.getElementById(id);
+            const text = titleEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const range = document.createRange();
+                range.selectNode(titleEl);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyTags(id, button) {
+            const tagsEl = document.getElementById(id);
+            const text = tagsEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const range = document.createRange();
+                range.selectNode(tagsEl);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
