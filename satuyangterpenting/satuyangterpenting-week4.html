@@ -369,6 +369,54 @@
         .copy-title-btn.copied {
             background: linear-gradient(135deg, #1b5e20, #2e7d32);
         }
+
+        .tags-section {
+            margin-top: 15px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+            border-radius: 12px;
+            border: 1px solid #ffe0b2;
+        }
+
+        .tags-section .section-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: #ffe0b2;
+            color: #e65100;
+        }
+
+        .tags-text {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+
+        .copy-tags-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9800, #e65100);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .copy-tags-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-tags-btn.copied {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+        }
     </style>
 </head>
 <body>
@@ -452,6 +500,11 @@ Jangan biarkan diri Anda terjebak tanpa solusi. Setiap hari yang berlalu tanpa p
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-1', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-1">sandwich generation, generasi terjepit, menanggung orang tua, biaya anak, MiWealth Protection, MiRetirement, Manulife, proteksi keluarga, asuransi jiwa, dana pensiun, beban finansial, pencari nafkah, keamanan keluarga, perencanaan keuangan, tanggungan dua generasi, risiko kematian, santunan meninggal, premi terjangkau, masa depan anak, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-1', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -500,6 +553,11 @@ Jangan menunggu sampai harus memilih antara orang tua dan anak. Jangan biarkan s
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-2', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-2">sandwich generation, biaya berobat orang tua, biaya sekolah anak, gagal ginjal, cuci darah, MiWealth Protection, MiRetirement, Manulife, proteksi finansial, asuransi keluarga, beban kesehatan, pendidikan anak, tekanan finansial, burnout, perencanaan masa depan, risiko kesehatan, premi asuransi, perlindungan jiwa, ketenangan pikiran, solusi keuangan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-2', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -547,6 +605,11 @@ Malam ini, putuskan untuk tidak mewariskan beban kepada generasi berikutnya. Put
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-3', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-3">sandwich generation, warisan beban, siklus kemiskinan, MiWealth Protection, MiRetirement, Manulife, kemandirian finansial, dana pensiun dini, proteksi jiwa, masa depan cerah, perencanaan pensiun, beban anak, orang tua mandiri, investasi masa depan, tabungan pensiun, asuransi jiwa, generasi produktif, tanggung jawab keluarga, premi bulanan, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-3', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -598,6 +661,11 @@ Usia muda bukan jaminan sehat selamanya. Jangan pernah berpikir bahwa ini tidak 
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-4', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-4">stroke usia muda, serangan jantung, penyakit kritis, MiEarly Critical Care, Manulife, usia produktif, risiko kardiovaskular, biaya pengobatan stroke, rehabilitasi, gaya hidup tidak sehat, deteksi dini, proteksi penyakit kritis, santunan lump sum, pemulihan stroke, karir terhenti, premi asuransi kritis, tekanan darah tinggi, kolesterol, pencegahan stroke, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-4', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -646,6 +714,11 @@ Jangan biarkan satu serangan menghancurkan segalanya yang telah Anda bangun deng
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-5', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-5">stroke di usia 30-an, karir runtuh, kelumpuhan, MiEarly Critical Care, Manulife, penyakit kritis muda, biaya rehabilitasi, fisioterapi, penghasilan terhenti, risiko stroke, asuransi penyakit kritis, proteksi dini, santunan tunai, pemulihan jangka panjang, keluarga terdampak, stres kerja, hipertensi, gaya hidup modern, premi terjangkau, perlindungan finansial</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-5', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -693,6 +766,11 @@ Malam ini, berhentilah berpikir "itu tidak akan terjadi pada saya." Mulailah ber
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-6', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-6">merasa muda sehat, asumsi berbahaya, serangan jantung mendadak, MiEarly Critical Care, Manulife, penyakit tanpa gejala, silent killer, usia muda kena stroke, check up rutin, proteksi sejak muda, asuransi kritis, pencegahan penyakit, biaya rumah sakit, premi murah usia muda, risiko tersembunyi, jantung koroner, diabetes muda, kebiasaan buruk, perlindungan dini, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-6', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -744,6 +822,11 @@ Impian anak Anda layak diperjuangkan, dan perjuangan itu dimulai dengan perencan
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-7', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-7">biaya kuliah, universitas impian, UI ITB UGM, kuliah luar negeri, MiEducation, Manulife, dana pendidikan anak, tabungan pendidikan, inflasi biaya kuliah, beasiswa, perencanaan pendidikan, investasi anak, masa depan anak, uang pangkal universitas, biaya hidup mahasiswa, proteksi pendidikan, premi pendidikan, persiapan kuliah, kampus favorit, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-7', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -792,6 +875,11 @@ Jangan biarkan uang menjadi penghalang antara anak Anda dan mimpi besarnya. Seti
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-8', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-8">anak diterima kampus impian, tidak mampu bayar, biaya kuliah mahal, MiEducation, Manulife, dana pendidikan, tabungan tidak cukup, beasiswa terbatas, uang kuliah tunggal, perencanaan sejak dini, investasi pendidikan, mimpi anak, universitas negeri, universitas swasta, biaya semester, proteksi masa depan, premi bulanan, pendidikan berkualitas, orang tua bijak, solusi pendidikan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-8', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -839,6 +927,11 @@ Malam ini, hitung kebutuhan dana pendidikan anak Anda dengan realistis. Jangan b
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-9', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-9">matematika menabung, dana kuliah, tabungan vs investasi, MiEducation, Manulife, inflasi pendidikan, perhitungan biaya kuliah, menabung tidak cukup, return investasi, perencanaan keuangan anak, dana pendidikan jangka panjang, biaya kuliah naik, proteksi plus investasi, disiplin finansial, target dana pendidikan, premi fleksibel, masa depan cerah, kalkulasi keuangan, solusi cerdas, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-9', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -890,6 +983,11 @@ Sakit sudah menyiksa fisik Anda, jangan biarkan juga menyiksa keuangan dan masa 
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-10', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-10">rawat inap, gaji berhenti, tagihan rumah sakit, MiUltimate HealthCare, Manulife, penghasilan terhenti, biaya perawatan, asuransi kesehatan, cashless, santunan harian, proteksi rawat inap, risiko sakit, karyawan sakit, biaya operasi, limit tahunan, kamar rumah sakit, dokter spesialis, pemulihan kesehatan, ketenangan finansial, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-10', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -938,6 +1036,11 @@ Kesehatan adalah investasi paling berharga, bukan pengeluaran yang harus dihemat
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-11', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-11">menunda berobat, khawatir biaya, penyakit makin parah, MiUltimate HealthCare, Manulife, konsekuensi menunda, biaya membengkak, deteksi terlambat, asuransi kesehatan, rawat inap mahal, proteksi dini, pencegahan penyakit, check up rutin, klaim mudah, rumah sakit rekanan, cashless card, risiko kesehatan, pengobatan terlambat, premi bulanan, solusi kesehatan</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-11', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -985,6 +1088,11 @@ Malam ini, berikan ketenangan untuk diri sendiri dan keluarga tercinta. Jangan b
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-12', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-12">pasangan di ICU, jual rumah, biaya ICU mahal, MiUltimate HealthCare, Manulife, perawatan intensif, tagihan fantastis, asuransi kesehatan keluarga, proteksi pasangan, biaya ventilator, operasi darurat, keluarga panik, tabungan habis, hutang rumah sakit, santunan rawat inap, limit tinggi, cashless, perlindungan menyeluruh, premi keluarga, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-12', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -1036,6 +1144,11 @@ Mulai dari side hustle hari ini, bertumbuh menjadi empire esok hari. Langkah per
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-13', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-13">side hustle, penghasilan tambahan, agen asuransi, karir Manulife, rekrutmen agen, bisnis sampingan, penghasilan utama, kebebasan finansial, waktu fleksibel, komisi agen, passive income, peluang bisnis, kerja dari rumah, financial planner, pelatihan gratis, bonus tahunan, jenjang karir, penghasilan tanpa batas, mentor bisnis, daftar agen</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-13', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -1084,6 +1197,11 @@ Peluang sebesar ini tidak datang dua kali dalam hidup. Pasar 97% yang belum ters
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-14', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-14">peluang agen asuransi, bisnis abad 21, kebutuhan proteksi, Manulife, rekrutmen, karir agen, pasar asuransi Indonesia, penetrasi rendah, potensi besar, penghasilan tidak terbatas, membantu orang lain, profesi mulia, training gratis, sertifikasi AAJI, bonus perjalanan, komunitas agen, pertumbuhan karir, fleksibilitas waktu, daftar sekarang, konsultasi karir</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-14', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -1129,6 +1247,11 @@ Malam ini, bayangkan hidup tanpa batasan yang selama ini membelenggu Anda. Bayan
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-15', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-15">bosan kerja kantoran, 9 to 5, bangun mimpi sendiri, agen Manulife, rekrutmen, kebebasan waktu, resign kerja, wirausaha, penghasilan sendiri, bos untuk diri sendiri, work life balance, karir impian, passive income, membangun tim, leadership, pelatihan profesional, motivasi karir, financial freedom, daftar agen, peluang emas</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-15', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -1180,6 +1303,11 @@ Inflasi tidak bisa dihentikan oleh siapapun, tapi dampaknya pada keuangan Anda b
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-16', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-16">inflasi, nilai uang turun, Rp 1 miliar menyusut, MiWealth Link, MiRetirement Booster, Manulife, inflasi Indonesia, daya beli menurun, tabungan tergerus, investasi proteksi, return di atas inflasi, unit link, dana pensiun, perencanaan keuangan, pertumbuhan aset, reksa dana, proteksi plus investasi, masa depan finansial, premi berkala, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-16', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -1228,6 +1356,11 @@ Berhenti menyimpan uang di tempat yang membuatnya menyusut perlahan-lahan. Setia
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-17', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-17">gaji naik hidup sulit, inflasi gaya hidup, lifestyle inflation, MiWealth Link, MiRetirement Booster, Manulife, pengeluaran naik, tabungan stagnan, investasi cerdas, disiplin keuangan, perencanaan pensiun, kenaikan gaji, biaya hidup naik, proteksi aset, pertumbuhan kekayaan, financial planning, alokasi dana, masa depan terjamin, premi terjangkau, solusi investasi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-17', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -1275,6 +1408,11 @@ Malam ini, hitung dengan jujur berapa yang Anda butuhkan untuk pensiun nyaman se
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-18', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-18">dana pensiun, hidup tanpa kerja, 20 tahun pensiun, MiRetirement Booster, MiWealth Link, Manulife, persiapan pensiun, tabungan pensiun tidak cukup, inflasi biaya hidup, usia pensiun, kemandirian finansial, investasi jangka panjang, passive income pensiun, perencanaan hari tua, BPJS tidak cukup, kualitas hidup pensiun, dana hari tua, premi pensiun, mulai sekarang, konsultasi pensiun</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-18', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -1326,6 +1464,11 @@ Cinta tanpa perlindungan hanyalah kata-kata kosong yang akan hilang bersama kepe
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-19', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-19">cinta sejati, bukti cinta nyata, kepastian masa depan, MiWealth Protection, Manulife, asuransi jiwa, proteksi keluarga, hadiah terbaik, jaminan hidup, pasangan tercinta, anak terlindungi, santunan meninggal, bukti tanggung jawab, cinta bukan kata, perlindungan jiwa, masa depan keluarga, premi cinta, ketenangan hati, warisan kasih sayang, konsultasi gratis</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-19', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -1374,6 +1517,11 @@ Warisan terbaik bukan apa yang Anda tinggalkan secara fisik, tapi apa yang Anda 
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-20', this)">Copy HTML</button>
                 </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-20">warisan berharga, jaminan hidup sejahtera, MiWealth Protection, Manulife, asuransi jiwa, warisan finansial, legacy keluarga, proteksi generasi, keluarga bahagia, masa depan terjamin, santunan jiwa, perencanaan warisan, ahli waris, cinta lintas generasi, bukti cinta abadi, perlindungan seumur hidup, premi warisan, keamanan finansial keluarga, tanggung jawab ayah, konsultasi asuransi</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-20', this)">Copy Tags</button>
+                </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
         </div>
@@ -1421,6 +1569,11 @@ Ini adalah malam terakhir minggu ke-4. Waktu tidak pernah menunggu siapapun. Set
   &lt;a href="https://instagram.com/petrusjakub" target="_blank" style="display:inline-block;padding:12px 24px;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:0.9em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);text-align:center;"&gt;Follow @petrusjakub&lt;/a&gt;
 &lt;/div&gt;</textarea>
                     <button class="copy-btn" onclick="copyCode('caption-21', this)">Copy HTML</button>
+                </div>
+                <div class="tags-section">
+                    <span class="section-label">Tags</span>
+                    <div class="tags-text" id="tags-21">tindakan nyata, minggu ke-4, saatnya bertindak, MiWealth Protection, Manulife, asuransi keluarga, proteksi sekarang, jangan tunda lagi, keputusan penting, masa depan keluarga, daftar asuransi, konsultasi gratis, premi terjangkau, perlindungan menyeluruh, bukti cinta keluarga, perencanaan keuangan, risiko hidup, keamanan finansial, langkah pertama, hubungi sekarang</div>
+                    <button class="copy-tags-btn" onclick="copyTags('tags-21', this)">Copy Tags</button>
                 </div>
                 <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan (Sudah Selesai)</button>
             </div>
@@ -1512,6 +1665,34 @@ Ini adalah malam terakhir minggu ke-4. Waktu tidak pernah menunggu siapapun. Set
             }).catch(() => {
                 const range = document.createRange();
                 range.selectNode(titleEl);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyTags(id, button) {
+            const tagsEl = document.getElementById(id);
+            const text = tagsEl.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const range = document.createRange();
+                range.selectNode(tagsEl);
                 window.getSelection().removeAllRanges();
                 window.getSelection().addRange(range);
                 document.execCommand('copy');
