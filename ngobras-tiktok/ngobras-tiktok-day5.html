@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngobras TikTok - Day 5 | Konten Asuransi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        header h1 { font-size: 2em; color: #1a1a2e; margin-bottom: 8px; }
+        header p { color: #555; font-size: 1em; }
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .schedule-nav {
+            background: rgba(255,255,255,0.97);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .schedule-nav h3 { color: #1a1a2e; margin-bottom: 15px; font-size: 1.1em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(233,69,96,0.4);
+        }
+        .post-card {
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+        .post-card.hidden-task { opacity: 0.3; transform: scale(0.98); }
+        .post-card.hidden-task .post-content { display: none; }
+        .post-card.deleted { display: none; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #e94560; }
+        .post-number {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .section-label {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .label-caption { background: #fff0f3; color: #e94560; }
+        .label-script { background: #f0f4ff; color: #0f3460; }
+        .content-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+        .content-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 0.93em;
+            padding-right: 80px;
+            white-space: pre-line;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .hide-btn, .delete-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.2s;
+            border: 2px dashed;
+        }
+        .hide-btn { background: #f5f5f5; border-color: #ccc; color: #666; }
+        .hide-btn:hover { background: #eee; border-color: #999; }
+        .delete-btn { background: #fff5f5; border-color: #ffcdd2; color: #c62828; }
+        .delete-btn:hover { background: #ffebee; border-color: #ef9a9a; }
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.85em; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            header h1 { font-size: 1.5em; }
+            .post-card { padding: 18px; }
+            .nav-links a { padding: 8px 14px; font-size: 0.85em; }
+            .content-box p { padding-right: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ngobras TikTok - Konten Asuransi</h1>
+            <p>Edukasi Perencanaan Keuangan &amp; Proteksi via TikTok</p>
+            <p style="margin-top:6px; font-size:0.85em; color:#888;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+            <p style="margin-top:6px; font-size:0.8em; color:#e94560; font-weight:600;">*Konten ini bersifat promosi layanan asuransi. Bukan nasihat keuangan profesional.</p>
+            <span class="day-badge">DAY 5 - Jumat</span>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Navigasi Jadwal Posting:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-2100">21:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-1">Jumat berkah! Yuk bahas: apa itu proteksi penyakit kritis?
+
+Proteksi penyakit kritis (critical illness) itu berbeda dari asuransi kesehatan biasa.
+
+Cara kerjanya: kalau kamu didiagnosis salah satu penyakit kritis yang tercantum di polis, kamu mendapat uang tunai langsung. Bisa digunakan untuk apapun: pengobatan, biaya hidup selama recovery, atau kebutuhan lainnya.
+
+Ini melengkapi asuransi kesehatan yang biasanya membayar biaya RS secara langsung.
+
+Mau tau lebih detail? Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-1">Hook (5 detik):
+"Apa itu proteksi penyakit kritis dan kenapa berbeda dari asuransi kesehatan biasa?"
+
+Isi:
+"Jumat berkah semuanya. Pagi ini aku mau jelasin satu jenis proteksi yang mungkin belum banyak orang tau: proteksi penyakit kritis atau critical illness.
+
+Bedanya dengan asuransi kesehatan biasa itu di cara pembayarannya.
+
+Asuransi kesehatan biasa: membayar biaya rumah sakit secara langsung atau reimburse setelah perawatan.
+
+Proteksi penyakit kritis: memberikan uang tunai lump sum begitu kamu didiagnosis salah satu penyakit yang tercantum di polis.
+
+Uang ini bisa kamu gunakan untuk apapun:
+- Biaya pengobatan tambahan
+- Biaya hidup selama masa recovery saat ga bisa kerja
+- Second opinion ke dokter lain
+- Atau kebutuhan keluarga lainnya
+
+Jadi keduanya saling melengkapi. Asuransi kesehatan cover biaya RS, proteksi penyakit kritis memberikan dana tambahan untuk kebutuhan di luar itu.
+
+Ini relevan karena saat seseorang mengalami penyakit serius, biaya yang dibutuhkan bukan hanya biaya RS. Ada biaya hidup, transportasi, dan kebutuhan lain yang tetap jalan.
+
+Mau tau lebih detail tentang proteksi ini? Klik link di bio."
+
+CTA (5 detik):
+"Pahami pilihanmu. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-1', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 2/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-2">Kenapa aku suka profesi sebagai agen asuransi?
+
+Disclaimer: ini perspektif dari pelaku industri.
+
+Karena aku bisa membantu orang memahami opsi proteksi yang tersedia. Dan aku percaya informasi keuangan yang baik itu penting.
+
+Tapi aku juga mau jujur: ini profesi berbasis komisi. Artinya aku punya kepentingan bisnis.
+
+Yang aku coba lakukan: tetap memberikan informasi yang jujur dan seimbang, supaya orang bisa membuat keputusan sendiri.
+
+Kalau kamu mau memahami opsi proteksi, aku siap bantu jelaskan.
+
+#promosilayanan
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-2">Hook (5 detik):
+"Disclaimer: aku agen asuransi. Ini kenapa aku memilih profesi ini."
+
+Isi:
+"Hai semuanya. Sebelum mulai, disclaimer dulu: aku bekerja di industri asuransi sebagai agen. Jadi perspektif ini dari pelaku industri.
+
+Kenapa aku memilih profesi ini?
+
+Karena aku tertarik dengan bidang perencanaan keuangan dan ingin membantu orang memahami opsi proteksi yang tersedia.
+
+Tapi aku juga mau jujur soal sisi bisnisnya: sebagai agen, aku mendapat komisi dari setiap polis yang terjual. Jadi ada kepentingan bisnis di sini.
+
+Yang aku coba lakukan: memberikan informasi yang jujur dan seimbang. Menjelaskan manfaat DAN risiko. Menjelaskan apa yang di-cover DAN apa yang tidak.
+
+Karena menurutku, orang yang membuat keputusan berdasarkan informasi lengkap akan lebih puas dengan pilihannya.
+
+Dan kalau mereka memutuskan tidak membutuhkan asuransi? Itu hak mereka dan aku respek.
+
+Kalau kamu tertarik memahami opsi yang tersedia, aku siap bantu jelaskan secara transparan.
+
+Klik link di bio."
+
+CTA (5 detik):
+"Informasi transparan. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-2', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 3/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-3">Yuk bahas soal prioritas pengeluaran.
+
+Kita semua punya pengeluaran rutin bulanan. Dan kadang di antara berbagai pengeluaran, proteksi belum masuk daftar prioritas.
+
+Padahal dengan menyisihkan sebagian kecil dari budget bulanan untuk proteksi, kamu bisa punya keamanan finansial jangka panjang.
+
+Ini bukan soal mengurangi kesenangan. Ini soal MENAMBAH satu pos penting dalam anggaran bulananmu: proteksi.
+
+Setiap orang punya cara berbeda mengatur prioritas. Yang penting, proteksi jadi salah satu pertimbangan.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-3">Hook (5 detik):
+"Proteksi sudah masuk budget bulananmu belum? Yuk bahas soal prioritas."
+
+Isi:
+"Siang semua. Aku mau ngobrol soal prioritas pengeluaran bulanan.
+
+Kita semua punya pos-pos pengeluaran: kebutuhan pokok, transportasi, hiburan, tabungan, dan lainnya.
+
+Nah, satu pos yang kadang belum masuk dalam perencanaan banyak orang: proteksi.
+
+Padahal dengan menyisihkan sebagian kecil dari budget bulanan untuk premi asuransi, kamu punya keamanan finansial kalau ada kebutuhan medis atau hal tidak terduga.
+
+Aku ga bilang kamu harus mengorbankan semua kesenangan ya. Tapi coba lihat apakah ada ruang di budget-mu untuk menambahkan pos proteksi.
+
+Banyak produk asuransi yang preminya bisa disesuaikan dengan kemampuan. Jadi kamu bisa mulai dari yang paling dasar dan upgrade seiring waktu.
+
+Intinya: perencanaan keuangan yang sehat itu mencakup pengeluaran, tabungan, investasi, DAN proteksi.
+
+Mau tau berapa kira-kira premi yang sesuai dengan budget-mu? Aku bisa bantu hitung.
+
+Klik link di bio."
+
+CTA (5 detik):
+"Susun prioritasmu. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-3', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 4/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-4">Khusus buat kamu yang masih muda dan baru mulai karir:
+
+Informasi yang perlu kamu tau soal asuransi di usia muda:
+- Secara umum, premi dihitung berdasarkan usia (lebih muda = premi lebih rendah)
+- Proses aplikasi cenderung lebih simpel kalau belum ada riwayat penyakit
+
+Apakah ini berarti semua anak muda wajib punya? Tidak. Ini tergantung prioritas dan situasi finansialmu.
+
+Kalau kamu masih membangun dana darurat atau bayar utang pendidikan, itu bisa jadi prioritas yang lebih tepat dulu.
+
+Setiap orang punya urutan prioritas berbeda. Yang penting: kamu punya informasi untuk membuat keputusan sendiri.
+
+#promosilayanan
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-4">Hook (5 detik):
+"Informasi soal asuransi untuk anak muda. Ini fakta-faktanya."
+
+Isi:
+"Sore semua. Video ini untuk kamu yang masih muda dan baru memulai karir.
+
+Aku mau share beberapa informasi tentang asuransi dari perspektif usia muda.
+
+Pertama, soal premi: secara umum di industri asuransi, premi dihitung berdasarkan usia dan kondisi kesehatan. Artinya mendaftar di usia muda biasanya berarti premi lebih rendah.
+
+Kedua, soal proses: kalau belum ada riwayat penyakit tertentu, proses aplikasi cenderung lebih simpel.
+
+Tapi, apakah ini berarti semua anak muda HARUS punya asuransi sekarang? Belum tentu.
+
+Kalau kamu masih punya prioritas lain seperti:
+- Membangun dana darurat
+- Membayar utang pendidikan
+- Menabung untuk kebutuhan mendesak
+
+Itu bisa jadi prioritas yang lebih tepat dulu.
+
+Setiap orang punya urutan prioritas yang berbeda, dan itu wajar.
+
+Yang aku ingin sampaikan: pahami opsi yang tersedia supaya kapan pun kamu siap, kamu sudah punya informasinya.
+
+Klik link di bio kalau mau tau lebih lanjut."
+
+CTA (5 detik):
+"Informasi lebih lanjut di link bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-4', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 5/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-5">Yuk bahas: hubungan antara dana darurat dan asuransi.
+
+Dana darurat: tabungan cair yang bisa diakses kapan saja untuk kebutuhan mendesak (idealnya 3-6 bulan pengeluaran).
+
+Asuransi: proteksi spesifik untuk risiko tertentu (kesehatan, jiwa, penyakit kritis).
+
+Keduanya saling melengkapi:
+- Dana darurat untuk kebutuhan mendesak jangka pendek
+- Asuransi untuk risiko besar yang melebihi kemampuan dana darurat
+
+Kalau dana daruratmu masih terbatas, asuransi bisa jadi pelengkap penting.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-5">Hook (5 detik):
+"Dana darurat vs asuransi: apa bedanya dan kenapa butuh keduanya?"
+
+Isi:
+"Sore semua. Aku mau bahas hubungan antara dana darurat dan asuransi. Dua hal yang sering dianggap sama padahal fungsinya berbeda.
+
+Dana darurat: ini tabungan cair yang bisa kamu akses kapan saja untuk kebutuhan mendesak. Idealnya 3-6 bulan pengeluaran. Bisa untuk perbaikan mobil mendadak, kehilangan pekerjaan, atau kebutuhan lain.
+
+Asuransi: ini proteksi spesifik untuk risiko-risiko tertentu yang biayanya bisa sangat besar. Seperti rawat inap, operasi, atau penyakit kritis.
+
+Nah, keduanya SALING MELENGKAPI.
+
+Dana darurat bagus untuk kebutuhan mendesak yang nominalnya relatif kecil sampai menengah. Tapi kalau ada kebutuhan medis yang nominalnya puluhan atau ratusan juta, dana darurat mungkin ga cukup.
+
+Di situlah asuransi berperan: untuk risiko-risiko besar yang melebihi kemampuan dana darurat.
+
+Jadi strategi yang ideal:
+1. Bangun dana darurat secara bertahap
+2. Sambil itu, punya asuransi untuk proteksi risiko besar
+
+Dengan kombinasi keduanya, kamu punya jaring pengaman yang komprehensif.
+
+Mau tau gimana menyeimbangkan keduanya? Klik link di bio."
+
+CTA (5 detik):
+"Rencanakan dengan cerdas. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-5', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 6/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-6">Malam Jumat. Waktunya refleksi.
+
+Minggu ini kamu sudah bekerja keras. Memenuhi tanggung jawab. Menjaga keluarga.
+
+Satu pertanyaan untuk refleksi: sudahkah perencanaan keuanganmu mencakup proteksi?
+
+Kalau sudah: bagus! Pastikan proteksimu masih relevan dengan kebutuhanmu saat ini.
+
+Kalau belum: ga apa-apa. Bisa mulai kapan saja. Yang penting, mulai cari informasi.
+
+Aku di sini untuk membantu kapan pun kamu siap.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-6">Hook (5 detik):
+"Refleksi Jumat malam: sudahkah perencanaan keuanganmu lengkap?"
+
+Isi:
+"Malam Jumat semua. Seminggu sudah berlalu. Kamu udah kerja keras, memenuhi tanggung jawab, dan menjaga orang-orang yang kamu sayangi.
+
+Sekarang aku mau ajak refleksi sebentar.
+
+Dalam perencanaan keuangan, ada beberapa komponen utama:
+- Penghasilan dan pengelolaan pengeluaran
+- Tabungan dan dana darurat
+- Investasi untuk pertumbuhan jangka panjang
+- Dan proteksi untuk mengamankan semuanya
+
+Kalau kamu sudah punya proteksi: mantap! Pertimbangkan untuk review secara berkala supaya masih sesuai dengan kebutuhanmu saat ini.
+
+Kalau belum: ga masalah. Setiap orang punya timeline masing-masing. Yang penting, kamu punya informasi yang cukup untuk membuat keputusan saat siap.
+
+Dan itulah yang aku coba berikan lewat konten-konten ini: informasi dan edukasi. Tanpa tekanan.
+
+Kalau kamu mau ngobrol lebih lanjut, aku ada. Kapan pun kamu siap.
+
+Klik link di bio."
+
+CTA (5 detik):
+"Kapan pun kamu siap. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-6', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Ngobras TikTok - Day 5 | Edukasi Asuransi &amp; Perencanaan Keuangan</p>
+            <p style="margin-top:5px;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(btn) {
+            const card = btn.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                btn.textContent = 'Sembunyikan Task';
+            } else {
+                card.classList.add('hidden-task');
+                const showBtn = document.createElement('button');
+                showBtn.className = 'show-btn';
+                showBtn.textContent = 'Tampilkan Kembali';
+                showBtn.onclick = function() {
+                    card.classList.remove('hidden-task');
+                    showBtn.remove();
+                };
+                card.appendChild(showBtn);
+            }
+        }
+
+        function deleteTask(btn) {
+            if (confirm('Yakin mau hapus task ini?')) {
+                const card = btn.closest('.post-card');
+                card.classList.add('deleted');
+            }
+        }
+    </script>
+</body>
+</html>

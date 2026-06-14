@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngobras TikTok - Day 3 | Konten Asuransi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        header h1 { font-size: 2em; color: #1a1a2e; margin-bottom: 8px; }
+        header p { color: #555; font-size: 1em; }
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .schedule-nav {
+            background: rgba(255,255,255,0.97);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .schedule-nav h3 { color: #1a1a2e; margin-bottom: 15px; font-size: 1.1em; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(233,69,96,0.4);
+        }
+        .post-card {
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: transform 0.2s, opacity 0.3s;
+            position: relative;
+        }
+        .post-card.hidden-task { opacity: 0.3; transform: scale(0.98); }
+        .post-card.hidden-task .post-content { display: none; }
+        .post-card.deleted { display: none; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .post-time { font-size: 1.4em; font-weight: 700; color: #e94560; }
+        .post-number {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .section-label {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .label-caption { background: #fff0f3; color: #e94560; }
+        .label-script { background: #f0f4ff; color: #0f3460; }
+        .content-box {
+            background: #f8f9ff;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #e8eaf6;
+        }
+        .content-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 0.93em;
+            padding-right: 80px;
+            white-space: pre-line;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .copy-btn:hover { transform: scale(1.05); }
+        .copy-btn.copied { background: #4caf50; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .hide-btn, .delete-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.2s;
+            border: 2px dashed;
+        }
+        .hide-btn { background: #f5f5f5; border-color: #ccc; color: #666; }
+        .hide-btn:hover { background: #eee; border-color: #999; }
+        .delete-btn { background: #fff5f5; border-color: #ffcdd2; color: #c62828; }
+        .delete-btn:hover { background: #ffebee; border-color: #ef9a9a; }
+        .show-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+        footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 0.85em; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            header h1 { font-size: 1.5em; }
+            .post-card { padding: 18px; }
+            .nav-links a { padding: 8px 14px; font-size: 0.85em; }
+            .content-box p { padding-right: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ngobras TikTok - Konten Asuransi</h1>
+            <p>Edukasi Perencanaan Keuangan &amp; Proteksi via TikTok</p>
+            <p style="margin-top:6px; font-size:0.85em; color:#888;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+            <p style="margin-top:6px; font-size:0.8em; color:#e94560; font-weight:600;">*Konten ini bersifat promosi layanan asuransi. Bukan nasihat keuangan profesional.</p>
+            <span class="day-badge">DAY 3 - Rabu</span>
+        </header>
+
+        <div class="schedule-nav">
+            <h3>Navigasi Jadwal Posting:</h3>
+            <div class="nav-links">
+                <a href="#post-0600">06:00</a>
+                <a href="#post-0900">09:00</a>
+                <a href="#post-1200">12:00</a>
+                <a href="#post-1500">15:00</a>
+                <a href="#post-1800">18:00</a>
+                <a href="#post-2100">21:00</a>
+            </div>
+        </div>
+
+        <!-- POST 06:00 -->
+        <div class="post-card" id="post-0600">
+            <div class="post-header">
+                <span class="post-time">06:00 WIB</span>
+                <span class="post-number">Post 1/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-1">Pagi ini yuk kita bahas: bagaimana cara mengestimasi kebutuhan asuransi jiwa?
+
+Konsepnya: kalau kamu punya keluarga yang bergantung pada penghasilanmu, asuransi jiwa bisa membantu menyediakan sumber dana untuk mereka dalam skenario terburuk.
+
+Cara mengestimasinya secara umum:
+- Berapa pengeluaran keluargamu per bulan?
+- Berapa tahun proteksi yang diinginkan?
+- Tambahkan cicilan dan kebutuhan khusus lainnya
+
+Ini hanya panduan kasar. Untuk analisis yang lebih akurat, konsultasi dengan profesional.
+
+#promosilayanan
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-1', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-1">Hook (5 detik):
+"Bagaimana cara mengestimasi kebutuhan asuransi jiwa? Yuk ngobrol."
+
+Isi:
+"Pagi semua. Hari ini aku mau bahas cara mengestimasi kebutuhan asuransi jiwa. Ini panduan umum, bukan nasihat keuangan profesional ya.
+
+Kalau kamu sudah berkeluarga, asuransi jiwa bisa jadi bagian dari perencanaan keuanganmu. Fungsinya: membantu menyediakan sumber dana untuk keluarga kalau terjadi hal yang tidak diinginkan.
+
+Cara mengestimasinya secara umum:
+
+Pertama, perkirakan pengeluaran bulanan keluargamu.
+
+Kedua, tentukan berapa lama kamu ingin keluargamu terlindungi.
+
+Ketiga, kalikan untuk mendapat estimasi kebutuhan.
+
+Ini hanya estimasi kasar ya. Angka pastinya tergantung banyak faktor yang perlu dianalisis lebih detail bersama profesional.
+
+Setiap keluarga punya situasi yang berbeda, jadi hasilnya juga akan berbeda.
+
+Kalau kamu tertarik untuk memahami lebih detail, bisa konsultasi untuk analisis yang lebih spesifik.
+
+Klik link di bio."
+
+CTA (5 detik):
+"Pahami kebutuhanmu. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-1', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 09:00 -->
+        <div class="post-card" id="post-0900">
+            <div class="post-header">
+                <span class="post-time">09:00 WIB</span>
+                <span class="post-number">Post 2/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-2">"Tapi kan udah ada tabungan..."
+
+Boleh aku kasih perspektif?
+
+Tabungan itu PENTING banget. Tapi tabungan dan asuransi punya fungsi yang berbeda:
+
+Tabungan = dana yang kamu kumpulkan secara bertahap
+Asuransi = proteksi yang langsung aktif sesuai polis
+
+Kalau butuh dana medis mendadak, tabungan yang masih sedikit mungkin belum cukup. Asuransi bisa mengisi gap itu.
+
+Jadi keduanya saling melengkapi, bukan saling menggantikan.
+
+Tabungan untuk membangun kekayaan. Asuransi untuk melindunginya.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-2', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-2">Hook (5 detik):
+"Tabungan vs asuransi: mana yang lebih penting? Jawabannya mungkin beda dari yang kamu kira."
+
+Isi:
+"Banyak orang bilang ke aku: Aku udah nabung kok. Ga butuh asuransi.
+
+Boleh aku kasih perspektif yang berbeda?
+
+Tabungan dan asuransi itu punya fungsi yang BERBEDA. Keduanya penting, tapi perannya beda.
+
+Tabungan: dana yang kamu bangun secara bertahap dari waktu ke waktu. Butuh waktu untuk terkumpul. Dan bisa terpakai untuk berbagai kebutuhan.
+
+Asuransi: proteksi yang langsung aktif begitu polismu berlaku. Kalau terjadi sesuatu, manfaatnya tersedia sesuai ketentuan polis.
+
+Nah, bayangkan kamu baru mulai nabung. Baru terkumpul beberapa juta. Lalu ada kebutuhan medis mendadak yang butuh dana besar. Tabunganmu belum cukup.
+
+Di situlah asuransi berperan: mengisi gap antara dana yang sudah kamu miliki dengan biaya yang dibutuhkan.
+
+Jadi konsepnya: tabungan untuk membangun kekayaan, asuransi untuk melindunginya.
+
+Keduanya harus jalan bareng. Bukan pilih salah satu.
+
+Mau tau bagaimana menyeimbangkan keduanya sesuai situasimu? Klik link di bio."
+
+CTA (5 detik):
+"Tabungan plus proteksi. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-2', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 12:00 -->
+        <div class="post-card" id="post-1200">
+            <div class="post-header">
+                <span class="post-time">12:00 WIB</span>
+                <span class="post-number">Post 3/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-3">Punya anak? Yuk ngobrol soal perencanaan pendidikan.
+
+Biaya pendidikan cenderung naik setiap tahun. Jadi biaya kuliah yang kita lihat sekarang kemungkinan akan lebih tinggi saat anak kita masuk kuliah nanti.
+
+Ada beberapa cara mempersiapkan dana pendidikan:
+- Tabungan pendidikan
+- Investasi jangka panjang
+- Asuransi dengan manfaat pendidikan
+
+Masing-masing punya kelebihan. Yang penting: mulai dari sekarang, karena makin awal mulai, makin ringan.
+
+Mau tau opsi yang cocok? Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-3', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-3">Hook (5 detik):
+"Biaya pendidikan naik setiap tahun. Gimana cara mempersiapkannya? Yuk bahas."
+
+Isi:
+"Siang semua. Kalau kamu punya anak, video ini relevan banget.
+
+Kita semua tau biaya pendidikan itu cenderung naik setiap tahun. Dari TK sampai kuliah, biayanya terus meningkat.
+
+Nah, pertanyaannya: gimana cara mempersiapkan dana pendidikan anak untuk jangka panjang?
+
+Ada beberapa opsi:
+
+Pertama, tabungan pendidikan. Simpel dan aman. Tapi pertumbuhannya mungkin ga secepat kenaikan biaya pendidikan.
+
+Kedua, investasi jangka panjang. Potensi return lebih besar, tapi ada risiko fluktuasi.
+
+Ketiga, asuransi dengan manfaat pendidikan. Ini menggabungkan proteksi dan perencanaan dana. Jadi kalau terjadi sesuatu pada kamu sebagai pencari nafkah, dana pendidikan anak tetap tersedia.
+
+Ga ada solusi yang one-size-fits-all. Tergantung situasi dan kemampuan masing-masing keluarga.
+
+Yang paling penting: mulai dari sekarang. Makin awal kamu mulai, makin ringan bebannya per bulan dan makin besar yang terkumpul nanti.
+
+Mau tau opsi mana yang paling cocok buat situasimu? Klik link di bio."
+
+CTA (5 detik):
+"Persiapkan pendidikan anak dari sekarang. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-3', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 15:00 -->
+        <div class="post-card" id="post-1500">
+            <div class="post-header">
+                <span class="post-time">15:00 WIB</span>
+                <span class="post-number">Post 4/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-4">5 tips supaya pengalaman asuransimu LANCAR:
+
+1. Daftar saat masih sehat (lebih mudah diterima)
+2. Baca manfaat dan pengecualian sebelum setuju
+3. Jujur saat mengisi data kesehatan
+4. Review polis secara berkala sesuai perubahan hidup
+5. Pilih produk berdasarkan kebutuhanmu, bukan ikut-ikutan
+
+Dengan memahami ini, kamu bisa memaksimalkan manfaat asuransi dan menghindari masalah saat klaim.
+
+Butuh bantuan memilih yang tepat? Aku siap edukasi.
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-4', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-4">Hook (5 detik):
+"5 tips supaya pengalaman asuransimu lancar dan klaimmu ga bermasalah."
+
+Isi:
+"Hai semuanya. Aku mau share 5 tips penting supaya pengalaman kamu dengan asuransi berjalan baik.
+
+Tips pertama: Daftar saat masih sehat. Ini waktu terbaik karena proses aplikasi lebih mudah dan pilihan produk lebih banyak.
+
+Tips kedua: Baca dan pahami manfaat serta pengecualian (exclusion). Setiap polis punya ketentuan soal apa yang di-cover dan apa yang tidak. Pahami ini di awal supaya ga ada kesalahpahaman nanti.
+
+Tips ketiga: Jujur saat mengisi data kesehatan. Ini penting banget. Kalau ada riwayat penyakit, informasikan dengan jujur. Karena ketidakjujuran bisa menjadi alasan klaim ditolak di kemudian hari.
+
+Tips keempat: Review polis secara berkala. Kebutuhan proteksimu bisa berubah. Waktu single beda dengan setelah menikah atau punya anak. Pastikan proteksimu selalu relevan.
+
+Tips kelima: Pilih berdasarkan kebutuhan, bukan ikut-ikutan. Produk yang cocok untuk temanmu belum tentu cocok untukmu. Setiap orang punya situasi yang unik.
+
+Dengan memahami 5 hal ini, kamu bisa memaksimalkan manfaat asuransi dan meminimalkan risiko masalah saat klaim.
+
+Dan kalau kamu butuh bantuan untuk memilih, itulah fungsi agen yang baik: mengedukasi dan membantu kamu memilih yang tepat.
+
+Klik link di bio. Aku siap bantu."
+
+CTA (5 detik):
+"Pilih yang tepat. Klik link di bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-4', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 18:00 -->
+        <div class="post-card" id="post-1800">
+            <div class="post-header">
+                <span class="post-time">18:00 WIB</span>
+                <span class="post-number">Post 5/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-5">Yuk bahas soal perencanaan keuangan secara keseluruhan.
+
+Secara umum, perencanaan keuangan mencakup beberapa komponen:
+- Tabungan untuk likuiditas dan dana darurat
+- Investasi untuk pertumbuhan jangka panjang
+- Proteksi untuk mengelola risiko finansial
+
+Masing-masing punya peran berbeda dan bisa saling melengkapi.
+
+Apakah semua orang harus punya ketiganya? Tidak harus. Prioritas tergantung situasi masing-masing.
+
+Yang penting: pahami opsi yang ada dan susun prioritas sesuai kebutuhanmu.
+
+#promosilayanan
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-5', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-5">Hook (5 detik):
+"Tabungan, investasi, asuransi: tiga komponen perencanaan keuangan. Yuk bahas."
+
+Isi:
+"Sore semua. Aku mau share soal komponen-komponen perencanaan keuangan.
+
+Secara umum, ada tiga pilar utama:
+1. Tabungan - untuk kebutuhan jangka pendek dan dana darurat
+2. Investasi - untuk pertumbuhan kekayaan jangka panjang
+3. Proteksi (asuransi) - untuk mengelola risiko finansial
+
+Ketiganya punya peran berbeda dan bisa saling melengkapi.
+
+Apakah semua orang harus punya ketiga-tiganya? Tidak selalu. Prioritas tergantung situasi masing-masing.
+
+Misalnya, kalau kamu baru mulai karir, mungkin prioritasnya membangun tabungan dan dana darurat dulu. Investasi dan proteksi bisa menyusul seiring bertambahnya kemampuan finansial.
+
+Kalau kamu sudah punya tabungan dan investasi yang berjalan, proteksi bisa jadi pelengkap untuk mengelola risiko.
+
+Disclaimer: aku bekerja di industri asuransi, jadi perspektifku mungkin lebih condong ke situ. Tapi aku berusaha memberikan gambaran yang seimbang.
+
+Kalau mau tau lebih lanjut soal opsi proteksi, klik link di bio."
+
+CTA (5 detik):
+"Informasi lebih lanjut di link bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-5', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST 21:00 -->
+        <div class="post-card" id="post-2100">
+            <div class="post-header">
+                <span class="post-time">21:00 WIB</span>
+                <span class="post-number">Post 6/6</span>
+            </div>
+            <div class="post-content">
+                <span class="section-label label-caption">Caption TikTok</span>
+                <div class="content-box">
+                    <p id="caption-6">Malam ini aku mau share tentang fungsi agen asuransi.
+
+Tugas agen yang baik bukan cuma membantu orang mendaftar. Tapi juga:
+- Membantu analisis kebutuhan proteksi
+- Menjelaskan manfaat dan pengecualian dengan transparan
+- Mendampingi saat proses klaim
+- Tetap bisa dihubungi setelah polis terbit
+
+Yang memotivasi aku di profesi ini adalah bisa membantu orang memahami opsi keuangan mereka.
+
+Disclaimer: aku bekerja di bidang ini dan mendapat komisi. Tapi aku berusaha memprioritaskan kebutuhan nasabah.
+
+Kalau kamu mau tau lebih lanjut, aku siap membantu.
+
+#promosilayanan
+
+Cek link di bio</p>
+                    <button class="copy-btn" onclick="copyText('caption-6', this)">Copy</button>
+                </div>
+
+                <span class="section-label label-script">Script Heygen (9:16 | 1-3 menit)</span>
+                <div class="content-box">
+                    <p id="script-6">Hook (5 detik):
+"Apa sih tugas agen asuransi yang baik? Ini penjelasannya."
+
+Isi:
+"Malam semua. Aku mau share tentang peran agen asuransi dan kenapa profesi ini penting.
+
+Disclaimer: aku sendiri bekerja di bidang ini, jadi ini perspektif dari pelaku industri.
+
+Tugas agen asuransi yang baik itu bukan cuma membantu orang mendaftar. Ada beberapa hal lain:
+
+Pertama: analisis kebutuhan. Sebelum merekomendasikan produk, agen harus memahami situasi dan kebutuhan calon nasabah.
+
+Kedua: edukasi. Menjelaskan dengan transparan apa yang di-cover, apa yang tidak, berapa waiting period, dan bagaimana proses klaim.
+
+Ketiga: pendampingan. Kalau nasabah perlu mengajukan klaim, agen yang baik membantu prosesnya.
+
+Keempat: review berkala. Kebutuhan proteksi bisa berubah seiring waktu, dan agen bisa membantu menyesuaikan.
+
+Ini yang aku coba lakukan sehari-hari. Apakah sempurna? Tentu tidak. Tapi aku berusaha memberikan layanan yang jujur dan bermanfaat.
+
+Kalau kamu tertarik memahami opsi proteksi yang tersedia, aku siap bantu jelaskan.
+
+Klik link di bio."
+
+CTA (5 detik):
+"Informasi lebih lanjut di link bio."</p>
+                    <button class="copy-btn" onclick="copyText('script-6', this)">Copy</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="hide-btn" onclick="toggleTask(this)">Sembunyikan Task</button>
+                    <button class="delete-btn" onclick="deleteTask(this)">Hapus Task</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Ngobras TikTok - Day 3 | Edukasi Asuransi &amp; Perencanaan Keuangan</p>
+            <p style="margin-top:5px;">Sumber: manulife.co.id | projectcuan.petrusjakub.workers.dev</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function toggleTask(btn) {
+            const card = btn.closest('.post-card');
+            if (card.classList.contains('hidden-task')) {
+                card.classList.remove('hidden-task');
+                btn.textContent = 'Sembunyikan Task';
+            } else {
+                card.classList.add('hidden-task');
+                const showBtn = document.createElement('button');
+                showBtn.className = 'show-btn';
+                showBtn.textContent = 'Tampilkan Kembali';
+                showBtn.onclick = function() {
+                    card.classList.remove('hidden-task');
+                    showBtn.remove();
+                };
+                card.appendChild(showBtn);
+            }
+        }
+
+        function deleteTask(btn) {
+            if (confirm('Yakin mau hapus task ini?')) {
+                const card = btn.closest('.post-card');
+                card.classList.add('deleted');
+            }
+        }
+    </script>
+</body>
+</html>
