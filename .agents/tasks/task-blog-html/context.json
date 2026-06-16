@@ -1,0 +1,16 @@
+{
+  "project_type": "React Vite app with standalone HTML content file",
+  "language": "TypeScript (main app), HTML (deliverable)",
+  "build_system": "vite",
+  "test_framework": "none",
+  "build_command": "N/A - deliverable is a standalone HTML file",
+  "test_command": "N/A - validate HTML file exists and is well-formed",
+  "verification_instructions": "Verify the HTML file exists at /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html, is valid HTML, contains 21 articles with accordion UI, copy buttons, and CTA links",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - creating a standalone HTML file",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external access, cannot fetch manulife.co.id. All content must be written from knowledge. No CDN links allowed - all CSS/JS must be inline.",
+  "contribution_requirements": "File must be self-contained HTML with inline CSS and JS. No external dependencies.",
+  "key_patterns": "Standalone HTML file, accordion UI pattern, clipboard API for copy functionality",
+  "relevant_files": ["/projects/sandbox/M-App/satuyangterpenting.wordpress.com.html"],
+  "directory_structure": "M-App/ is the root. The HTML file goes directly in the root alongside other project files."
+}

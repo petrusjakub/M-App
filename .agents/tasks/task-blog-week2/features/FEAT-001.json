@@ -1,0 +1,39 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Rewrite the entire HTML file with Week 2 articles 1-7 (Day 1 and Day 2, plus Day 3 morning). Includes: updated header with inline SVG icons on CTA buttons (info icon for web link, WhatsApp logo for WA), updated CSS to support text formatting preview, and the first 7 articles with new Week 2 content using emotional storytelling, text formatting (bold/italic/underline/mark), img tags, SVG-decorated CTA buttons in article HTML, and 20 tags each.",
+  "status": "completed",
+  "steps": [
+    "COMPLETELY REWRITE /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html from scratch",
+    "Keep the same overall structure: DOCTYPE, head with meta/styles, header, main with accordion articles, footer, scripts",
+    "In the site-header CTA buttons, add inline SVG: a small 'i' info circle icon before 'Pelajari Lebih Lanjut' text, and a WhatsApp SVG logo before 'WA 087781896087' text",
+    "Write articles 1-7 as WEEK 2 content (completely new topics, NOT the same as Week 1). Schedule: Day 1 (07:00, 12:00, 19:00), Day 2 (07:00, 12:00, 19:00), Day 3 (07:00). Topics to cover in these 7: MiUltimate Healthcare benefits, passive income opportunity, education planning for children, critical illness early detection, ProActive Plus advantages, digital innovation at Manulife, family protection importance.",
+    "Each article HTML code inside the pre/code block MUST include: (a) text formatting using <b>, <i>, <u>, and <mark> tags on key emotional phrases; (b) at least one <img> tag with src like 'https://images.unsplash.com/photo-XXXX?w=800' and descriptive alt text; (c) CTA section at the bottom with two styled buttons - web link button must have an inline SVG info/question icon and WA button must have inline SVG WhatsApp logo",
+    "Writing style: emotional storytelling in Indonesian (gue/lu casual), start with hook question like 'Pernahkah kamu...?', 'Bayangkan kalau...?', include personal anecdotes, reflective questions throughout",
+    "Each article MUST have exactly 20 tags, displayed as spans in tags-display div. Tags are single words with # prefix, comma-separated in the data-tags attribute of the copy button. Example format in data-tags: '#Asuransi,#Manulife,#Proteksi,...' (20 total)",
+    "Include ONLY articles 1-7 in this feature. End the main element with a comment placeholder: <!-- ARTICLES 8-21 CONTINUE HERE --> before closing </main>",
+    "Include the full footer and script sections after main"
+  ],
+  "acceptance_criteria": [
+    "File starts with valid HTML5 doctype and contains complete head section with styles",
+    "Header CTA buttons have inline SVG icons (info icon and WhatsApp logo)",
+    "Articles 1-7 are present with schedule badges (Day 1: pagi/siang/sore, Day 2: pagi/siang/sore, Day 3: pagi)",
+    "Each article code block contains <b>, <i>, <u>, or <mark> formatted text",
+    "Each article code block contains at least one <img> tag",
+    "Each article code block has CTA buttons with inline SVG icons",
+    "Each article has exactly 20 tags with # prefix",
+    "Content is emotional storytelling style with reflective questions",
+    "All content is WEEK 2 (new topics, not repeating Week 1)",
+    "File is valid HTML that can be opened in a browser"
+  ],
+  "verification": [
+    "Run: grep -c 'accordion-item' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should show 7",
+    "Run: grep -c '<mark>' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should be > 0 (formatting used)",
+    "Run: grep -c 'img' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should be >= 7",
+    "Run: grep -c 'svg' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should be > 0 (SVG icons)",
+    "Run: grep -c 'Hari 1' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should show 3",
+    "Run: grep -c 'Hari 2' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html - should show 3"
+  ],
+  "blocked_reason": null,
+  "findings": "Complete rewrite done with 7 articles for Week 2. All verification checks pass: 7 accordion-items, escaped mark/bold/italic/underline tags in code blocks, 7 img tags, SVG icons in header and CTA buttons, 20 tags per article. File is self-contained HTML with inline CSS/JS."
+}

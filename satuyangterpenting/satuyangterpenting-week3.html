@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Satu Yang Terpenting Week 3 - Tips Asuransi, Investasi, dan Peluang Bisnis Manulife bersama Petrus Jakub">
+    <meta name="keywords" content="asuransi manulife, unit link, asuransi kesehatan, bisnis manulife, agen asuransi, investasi, proteksi keluarga, week 3">
+    <meta name="author" content="Petrus Jakub">
+    <title>Satu Yang Terpenting - Week 3 - Blog Asuransi &amp; Bisnis Manulife</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.8; color: #333; background: #f8f9fa; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px 15px; }
+        .site-header { background: linear-gradient(135deg, #00a651 0%, #004d2b 100%); color: white; padding: 40px 20px; text-align: center; border-radius: 0 0 20px 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,77,43,0.3); }
+        .site-header h1 { font-size: 2.2em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .site-header .author-info { font-size: 1.1em; opacity: 0.95; margin-bottom: 5px; }
+        .site-header .author-ig { font-size: 0.95em; opacity: 0.85; }
+        .header-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        .header-cta a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.95em; transition: transform 0.2s, box-shadow 0.2s; }
+        .header-cta a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .btn-web { background: #fff; color: #00a651; }
+        .btn-wa { background: #25d366; color: white; }
+        .schedule-badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.5px; color: white; }
+        .schedule-badge.pagi { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .schedule-badge.siang { background: linear-gradient(135deg, #4facfe, #00f2fe); color: #003; }
+        .schedule-badge.sore { background: linear-gradient(135deg, #fa709a, #fee140); color: #333; }
+        .accordion-item { background: white; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; transition: box-shadow 0.3s; }
+        .accordion-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+        .accordion-header { padding: 20px; cursor: pointer; user-select: none; position: relative; }
+        .accordion-header h2 { font-size: 1.15em; color: #1a1a1a; padding-right: 30px; line-height: 1.4; }
+        .accordion-header::after { content: '+'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.5em; font-weight: 300; color: #00a651; transition: transform 0.3s; }
+        .accordion-item.active .accordion-header::after { content: '-'; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .accordion-item.active .accordion-content { max-height: 100000px; }
+        .accordion-body { padding: 0 20px 20px; }
+        .code-block { background: #1e1e1e; color: #d4d4d4; border-radius: 8px; padding: 16px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 0.82em; line-height: 1.6; margin: 12px 0; white-space: pre-wrap; word-wrap: break-word; max-height: 400px; overflow-y: auto; }
+        .code-block code { font-family: inherit; color: inherit; }
+        .copy-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
+        .copy-btn { display: inline-flex; align-items: center; gap: 6px; background: #f0f0f0; border: 1px solid #ddd; color: #555; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.2s; }
+        .copy-btn:hover { background: #e0e0e0; color: #333; }
+        .copy-btn.copied { background: #d4edda; border-color: #28a745; color: #155724; }
+        .copy-btn-title { background: #e8f4fd; border-color: #bee5eb; color: #0c5460; }
+        .copy-btn-article { background: #fff3cd; border-color: #ffc107; color: #856404; }
+        .copy-btn-tags { background: #e8f5e9; border-color: #81c784; color: #2e7d32; }
+        .section-label { font-size: 0.8em; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 15px; margin-bottom: 5px; }
+        .tags-display { margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 6px; border: 1px solid #e9ecef; }
+        .tags-display span { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 15px; font-size: 0.78em; margin: 3px 4px 3px 0; font-weight: 500; }
+        .site-footer { text-align: center; padding: 30px 20px; color: #666; font-size: 0.9em; margin-top: 30px; }
+        .site-footer a { color: #00a651; text-decoration: none; }
+        @media (max-width: 600px) { .site-header h1 { font-size: 1.6em; } .accordion-header h2 { font-size: 1em; } .header-cta { flex-direction: column; align-items: center; } .header-cta a { width: 80%; text-align: center; } .copy-buttons { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1>Satu Yang Terpenting - Week 3</h1>
+        <p class="author-info">Petrus Jakub - Partner Bisnis Manulife</p>
+        <p class="author-ig">IG: @petrusjakub</p>
+        <div class="header-cta">
+            <a href="https://projectcuan.petrusjakub.workers.dev/" class="btn-web" target="_blank">Pelajari Lebih Lanjut</a>
+            <a href="https://wa.me/6287781896087" class="btn-wa" target="_blank">WA 087781896087</a>
+        </div>
+    </header>
+    <main class="container">
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 1 - Jam 07:00</span>
+                <h2>Mengapa Orang Selalu Menunda Asuransi Sampai Terlambat?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Mengapa Orang Selalu Menunda Asuransi Sampai Terlambat?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;80% orang menunda asuransi karena merasa masih sehat dan muda.&lt;/b&gt; &lt;i&gt;Tapi tahukah Anda bahwa saat sakit datang, pintu asuransi sudah tertutup?&lt;/i&gt; &lt;mark&gt;Menunda satu hari bisa berarti kehilangan kesempatan seumur hidup.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Procrastination is the thief of time."&lt;/b&gt; - Charles Dickens&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apakah Anda akan menyesal jika besok terlambat untuk mendaftar asuransi?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#JanganTunda</span><span>#Manulife</span><span>#AsuransiSekarang</span><span>#Terlambat</span><span>#Proteksi</span><span>#WaktuTepat</span><span>#AntiTunda</span><span>#KeputusanBijak</span><span>#AsuransiWajib</span><span>#RisikoHidup</span><span>#SaatSehat</span><span>#JendelaPeluang</span><span>#Pencegahan</span><span>#MulaiSekarang</span><span>#DiniLebihBaik</span><span>#StartToday</span><span>#ProteksiDini</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Mengapa Orang Selalu Menunda Asuransi Sampai Terlambat?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#JanganTunda, #Manulife, #AsuransiSekarang, #Terlambat, #Proteksi, #WaktuTepat, #AntiTunda, #KeputusanBijak, #AsuransiWajib, #RisikoHidup, #SaatSehat, #JendelaPeluang, #Pencegahan, #MulaiSekarang, #DiniLebihBaik, #StartToday, #ProteksiDini, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 1 - Jam 12:00</span>
+                <h2>Bagaimana Seorang Agen Muda Bisa Sukses Besar di Manulife?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Bagaimana Seorang Agen Muda Bisa Sukses Besar di Manulife?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Usia bukan penghalang - semangat dan konsistensi adalah kuncinya.&lt;/b&gt; &lt;i&gt;Banyak agen muda Manulife berusia 20-an sudah memiliki penghasilan puluhan juta per bulan.&lt;/i&gt; &lt;mark&gt;Dengan sistem training terbaik, siapa pun bisa mencapai puncak.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Age is no barrier. It is a limitation you put on your mind."&lt;/b&gt; - Jackie Joyner-Kersee&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Jika agen muda usia 25 tahun bisa sukses, apa yang menghalangi Anda?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#AgenMuda</span><span>#Manulife</span><span>#SuksesMuda</span><span>#KarirAsuransi</span><span>#MudaSukses</span><span>#Konsisten</span><span>#TrainingTerbaik</span><span>#MilennialSukses</span><span>#GenZBisnis</span><span>#PenghasilanBesar</span><span>#AgenHebat</span><span>#YoungLeader</span><span>#Inspirasi</span><span>#SemangaMuda</span><span>#SuccessStory</span><span>#MudaBerkarya</span><span>#AgenBerprestasi</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Bagaimana Seorang Agen Muda Bisa Sukses Besar di Manulife?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#AgenMuda, #Manulife, #SuksesMuda, #KarirAsuransi, #MudaSukses, #Konsisten, #TrainingTerbaik, #MilennialSukses, #GenZBisnis, #PenghasilanBesar, #AgenHebat, #YoungLeader, #Inspirasi, #SemangatMuda, #SuccessStory, #MudaBerkarya, #AgenBerprestasi, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 1 - Jam 19:00</span>
+                <h2>Apakah Anda Sudah Menyiapkan Proteksi untuk Bayi yang Baru Lahir?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apakah Anda Sudah Menyiapkan Proteksi untuk Bayi yang Baru Lahir?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Proteksi terbaik untuk anak dimulai sejak hari pertama kehidupan mereka.&lt;/b&gt; &lt;i&gt;Premi di usia 0 tahun jauh lebih murah dibanding mendaftar saat dewasa.&lt;/i&gt; &lt;mark&gt;Hadiah terbaik untuk bayi bukan mainan - tapi jaminan masa depan.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Children are our greatest treasure. They are our future."&lt;/b&gt; - Nelson Mandela&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Hadiah terbaik apa yang bisa Anda berikan untuk bayi Anda sejak hari pertama?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#AsuransiBayi</span><span>#Manulife</span><span>#NewParents</span><span>#ProteksiAnak</span><span>#BayiSehat</span><span>#PremiMurah</span><span>#MasaDepanAnak</span><span>#HadiahTerbaik</span><span>#OrangtuaBijak</span><span>#ProteksiSejak0</span><span>#JaminanAnak</span><span>#AnakTerlindungi</span><span>#InvestasiAnak</span><span>#ParentingCerdas</span><span>#BayiBaru</span><span>#ProteksiDini</span><span>#AnakBahagia</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apakah Anda Sudah Menyiapkan Proteksi untuk Bayi yang Baru Lahir?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#AsuransiBayi, #Manulife, #NewParents, #ProteksiAnak, #BayiSehat, #PremiMurah, #MasaDepanAnak, #HadiahTerbaik, #OrangtuaBijak, #ProteksiSejak0, #JaminanAnak, #AnakTerlindungi, #InvestasiAnak, #ParentingCerdas, #BayiBaru, #ProteksiDini, #AnakBahagia, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 2 - Jam 07:00</span>
+                <h2>Tahukah Anda Bisa Mendapat Double Claim di Rumah Sakit?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Tahukah Anda Bisa Mendapat Double Claim di Rumah Sakit?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Dengan polis yang tepat, Anda bisa mengajukan klaim dari dua sumber sekaligus.&lt;/b&gt; &lt;i&gt;Asuransi kantor plus asuransi pribadi - double proteksi, double manfaat.&lt;/i&gt; &lt;mark&gt;Biaya RS yang tidak tercover satu polis, bisa ditanggung polis lainnya.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"The art of being wise is knowing what to overlook."&lt;/b&gt; - William James&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Sudahkah Anda memanfaatkan potensi double claim untuk proteksi maksimal?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#DoubleClaim</span><span>#Manulife</span><span>#KlaimGanda</span><span>#DuaPolis</span><span>#ManfaatGanda</span><span>#RawatInap</span><span>#ProteksiMaksimal</span><span>#SmartClaim</span><span>#AsuransiKantor</span><span>#AsuransiPribadi</span><span>#DoubleBenefit</span><span>#ProtecsiBiaya</span><span>#CoverageGanda</span><span>#PerlindunganExtra</span><span>#BiayaRS</span><span>#Optimal</span><span>#ClaimSmart</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Tahukah Anda Bisa Mendapat Double Claim di Rumah Sakit?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#DoubleClaim, #Manulife, #KlaimGanda, #DuaPolis, #ManfaatGanda, #RawatInap, #ProteksiMaksimal, #SmartClaim, #AsuransiKantor, #AsuransiPribadi, #DoubleBenefit, #ProtecsiBiaya, #CoverageGanda, #PerlindunganExtra, #BiayaRS, #Optimal, #ClaimSmart, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 2 - Jam 12:00</span>
+                <h2>Ingin Punya Bisnis dengan Jam Kerja Fleksibel?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Ingin Punya Bisnis dengan Jam Kerja Fleksibel?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Di Manulife, Anda menentukan sendiri kapan dan di mana Anda bekerja.&lt;/b&gt; &lt;i&gt;Tidak ada bos yang mengatur jam masuk, tidak ada absensi.&lt;/i&gt; &lt;mark&gt;Kebebasan waktu plus penghasilan tanpa batas - itulah bisnis Manulife.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Time is more valuable than money. You can get more money, but you cannot get more time."&lt;/b&gt; - Jim Rohn&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apakah Anda rela terus diikat jam kerja 9-to-5 tanpa kebebasan waktu?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#BisnisFleksibel</span><span>#Manulife</span><span>#KebebasanWaktu</span><span>#NoAbsensi</span><span>#KerjaDariManaSaja</span><span>#WorkFreedom</span><span>#BisnisOnline</span><span>#FlexibleWork</span><span>#TanpaBos</span><span>#KarirBebas</span><span>#TimeFlexibility</span><span>#WorkLifeBalance</span><span>#EntrepreneurFreedom</span><span>#PenghasilanTanpaBatas</span><span>#BisnisMudah</span><span>#FlexibleBusiness</span><span>#KerjaFleksibel</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Ingin Punya Bisnis dengan Jam Kerja Fleksibel?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#BisnisFleksibel, #Manulife, #KebebasanWaktu, #NoAbsensi, #KerjaDariManaSaja, #WorkFreedom, #BisnisOnline, #FlexibleWork, #TanpaBos, #KarirBebas, #TimeFlexibility, #WorkLifeBalance, #EntrepreneurFreedom, #PenghasilanTanpaBatas, #BisnisMudah, #FlexibleBusiness, #KerjaFleksibel, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 2 - Jam 19:00</span>
+                <h2>Apakah Pencari Nafkah Utama Keluarga Sudah Terlindungi?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apakah Pencari Nafkah Utama Keluarga Sudah Terlindungi?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Jika pencari nafkah utama jatuh sakit atau meninggal, siapa yang akan menghidupi keluarga?&lt;/b&gt; &lt;i&gt;Cicilan rumah, biaya sekolah, kebutuhan harian - semua tetap harus dibayar.&lt;/i&gt; &lt;mark&gt;Income protection memastikan keluarga tetap hidup layak apapun yang terjadi.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Family is not an important thing. It is everything."&lt;/b&gt; - Michael J. Fox&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Jika pencari nafkah utama tidak bisa bekerja selama 6 bulan, apa yang terjadi?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#IncomeProtection</span><span>#Manulife</span><span>#PencariNafkah</span><span>#ProteksiPenghasilan</span><span>#AsuransiJiwa</span><span>#KeluargaAman</span><span>#GajiTetapJalan</span><span>#ProteksiIncome</span><span>#KeluargaTerlindungi</span><span>#CicilAman</span><span>#BiayaHidup</span><span>#SantunanBulanan</span><span>#ProteksiKeluarga</span><span>#DisabilityProtection</span><span>#TulangPunggung</span><span>#PerlindunganKeluarga</span><span>#IncomeSafe</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apakah Pencari Nafkah Utama Keluarga Sudah Terlindungi?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#IncomeProtection, #Manulife, #PencariNafkah, #ProteksiPenghasilan, #AsuransiJiwa, #KeluargaAman, #GajiTetapJalan, #ProteksiIncome, #KeluargaTerlindungi, #CicilAman, #BiayaHidup, #SantunanBulanan, #ProteksiKeluarga, #DisabilityProtection, #TulangPunggung, #PerlindunganKeluarga, #IncomeSafe, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 3 - Jam 07:00</span>
+                <h2>Apa yang Membuat Rider Critical Illness Begitu Penting?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apa yang Membuat Rider Critical Illness Begitu Penting?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Rider critical illness memberikan santunan tunai langsung saat diagnosis - bukan reimbursement.&lt;/b&gt; &lt;i&gt;Uang langsung cair tanpa perlu rawat inap dulu.&lt;/i&gt; &lt;mark&gt;Untuk biaya pengobatan, biaya hidup keluarga, atau apapun yang Anda butuhkan.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Health is like money, we never have a true idea of its value until we lose it."&lt;/b&gt; - Josh Billings&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Mengapa menunggu vonis penyakit kritis untuk baru memikirkan proteksi?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#RiderCriticalIllness</span><span>#Manulife</span><span>#SantunanTunai</span><span>#PenyakitKritis</span><span>#LangsungCair</span><span>#TanpaReimbursement</span><span>#BayarLangsung</span><span>#Diagnosis</span><span>#DanaTunai</span><span>#ProteksiKritis</span><span>#CriticalIllness</span><span>#ManfaatLangsung</span><span>#BebasDigunakan</span><span>#KlaimCepat</span><span>#ProteksiTotal</span><span>#AsuransiKritis</span><span>#SafetyNet</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apa yang Membuat Rider Critical Illness Begitu Penting?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#RiderCriticalIllness, #Manulife, #SantunanTunai, #PenyakitKritis, #LangsungCair, #TanpaReimbursement, #BayarLangsung, #Diagnosis, #DanaTunai, #ProteksiKritis, #CriticalIllness, #ManfaatLangsung, #BebasDigunakan, #KlaimCepat, #ProteksiTotal, #AsuransiKritis, #SafetyNet, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 3 - Jam 12:00</span>
+                <h2>Bagaimana Sistem Komisi dan Bonus Agen Manulife Bekerja?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Bagaimana Sistem Komisi dan Bonus Agen Manulife Bekerja?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Komisi overriding dari tim, bonus produksi, dan berbagai insentif menanti agen berprestasi.&lt;/b&gt; &lt;i&gt;Semakin besar tim dan produksi Anda, semakin besar pula penghasilannya.&lt;/i&gt; &lt;mark&gt;Transparansi penuh - Anda tahu persis berapa yang akan Anda dapatkan.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1553729459-afe8f2e2ed65?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Success is not the key to happiness. Happiness is the key to success."&lt;/b&gt; - Albert Schweitzer&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apakah Anda ingin tahu persis berapa potensi penghasilan di bisnis ini?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#KomisiAgen</span><span>#Manulife</span><span>#BonusAgen</span><span>#Overriding</span><span>#InsentifAgen</span><span>#PenghasilanAgen</span><span>#TransparanKomisi</span><span>#SistemBonus</span><span>#RewardAgen</span><span>#ProduksiTinggi</span><span>#KomisiBesar</span><span>#IncomeClarity</span><span>#TimBesar</span><span>#EarnMore</span><span>#BonusProduksi</span><span>#AgenProduktif</span><span>#RewardSystem</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Bagaimana Sistem Komisi dan Bonus Agen Manulife Bekerja?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#KomisiAgen, #Manulife, #BonusAgen, #Overriding, #InsentifAgen, #PenghasilanAgen, #TransparanKomisi, #SistemBonus, #RewardAgen, #ProduksiTinggi, #KomisiBesar, #IncomeClarity, #TimBesar, #EarnMore, #BonusProduksi, #AgenProduktif, #RewardSystem, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 3 - Jam 19:00</span>
+                <h2>Pasangan Muda, Sudahkah Kalian Memikirkan Proteksi Bersama?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Pasangan Muda, Sudahkah Kalian Memikirkan Proteksi Bersama?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Pasangan muda sering merasa belum butuh asuransi karena masih sehat.&lt;/b&gt; &lt;i&gt;Tapi justru saat sehat inilah waktu terbaik mendapatkan proteksi terbaik.&lt;/i&gt; &lt;mark&gt;Lindungi cinta Anda berdua dengan proteksi yang saling melengkapi.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"A successful marriage requires falling in love many times, always with the same person."&lt;/b&gt; - Mignon McLaughlin&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Pasangan muda, apa rencana Anda jika salah satu jatuh sakit dalam waktu dekat?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#PasanganMuda</span><span>#Manulife</span><span>#NewlyWed</span><span>#ProteksiBersama</span><span>#CintaDanProteksi</span><span>#PasanganBaru</span><span>#AsuransiPasangan</span><span>#MasaDepanBersama</span><span>#ProteksiCinta</span><span>#RumahTanggaBaru</span><span>#SalingMelindungi</span><span>#KeluargaBaru</span><span>#StartTogether</span><span>#LoveProtection</span><span>#PasanganCerdas</span><span>#DuaSejoli</span><span>#ProtecsiBerdua</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Pasangan Muda, Sudahkah Kalian Memikirkan Proteksi Bersama?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#PasanganMuda, #Manulife, #NewlyWed, #ProteksiBersama, #CintaDanProteksi, #PasanganBaru, #AsuransiPasangan, #MasaDepanBersama, #ProteksiCinta, #RumahTanggaBaru, #SalingMelindungi, #KeluargaBaru, #StartTogether, #LoveProtection, #PasanganCerdas, #DuaSejoli, #ProtecsiBerdua, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 4 - Jam 07:00</span>
+                <h2>Tahukah Anda Manulife Memberikan Medical Check Up Gratis?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Tahukah Anda Manulife Memberikan Medical Check Up Gratis?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Sebagai nasabah Manulife, Anda berkesempatan mendapat medical check up berkala gratis.&lt;/b&gt; &lt;i&gt;Deteksi dini penyakit bisa menyelamatkan nyawa dan menghemat biaya pengobatan.&lt;/i&gt; &lt;mark&gt;Pencegahan selalu lebih baik dan lebih murah daripada pengobatan.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Prevention is better than cure."&lt;/b&gt; - Desiderius Erasmus&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Kapan terakhir kali Anda melakukan pemeriksaan kesehatan menyeluruh?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#MedicalCheckUp</span><span>#Manulife</span><span>#DeteksiDini</span><span>#CheckUpGratis</span><span>#Pencegahan</span><span>#KesehatanAdalahSegalanya</span><span>#PeriksaKesehatan</span><span>#PreventifCare</span><span>#ManfaatNasabah</span><span>#SehatSelalu</span><span>#LabGratis</span><span>#HealthCheck</span><span>#ProteksiPreventif</span><span>#Kesehatan</span><span>#AntiSakit</span><span>#CegahSakitBerat</span><span>#NasabahBenefit</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Tahukah Anda Manulife Memberikan Medical Check Up Gratis?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#MedicalCheckUp, #Manulife, #DeteksiDini, #CheckUpGratis, #Pencegahan, #KesehatanAdalahSegalanya, #PeriksaKesehatan, #PreventifCare, #ManfaatNasabah, #SehatSelalu, #LabGratis, #HealthCheck, #ProteksiPreventif, #Kesehatan, #AntiSakit, #CegahSakitBerat, #NasabahBenefit, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 4 - Jam 12:00</span>
+                <h2>Bagaimana Career Path dari Agen Menjadi Agency Manager?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Bagaimana Career Path dari Agen Menjadi Agency Manager?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Dari agen, naik ke unit manager, branch manager, hingga agency director.&lt;/b&gt; &lt;i&gt;Setiap jenjang membawa penghasilan dan tanggung jawab yang lebih besar.&lt;/i&gt; &lt;mark&gt;Career path yang jelas - Anda tahu ke mana Anda akan melangkah.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"The only way to do great work is to love what you do."&lt;/b&gt; - Steve Jobs&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apakah Anda ingin karir dengan jenjang jelas dan penghasilan terus bertumbuh?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#CareerPath</span><span>#Manulife</span><span>#AgencyManager</span><span>#JenjangKarir</span><span>#NaikLevel</span><span>#AgenKeManager</span><span>#KarirJelas</span><span>#PromotionPath</span><span>#GrowCareer</span><span>#LeadershipPath</span><span>#SuksesKarir</span><span>#ManagerSukses</span><span>#CareerGrowth</span><span>#JenjangJelas</span><span>#NaikPangkat</span><span>#KarirImpian</span><span>#AgenToLeader</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Bagaimana Career Path dari Agen Menjadi Agency Manager?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#CareerPath, #Manulife, #AgencyManager, #JenjangKarir, #NaikLevel, #AgenKeManager, #KarirJelas, #PromotionPath, #GrowCareer, #LeadershipPath, #SuksesKarir, #ManagerSukses, #CareerGrowth, #JenjangJelas, #NaikPangkat, #KarirImpian, #AgenToLeader, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 4 - Jam 19:00</span>
+                <h2>Apakah Dana Darurat Anak Anda Sudah Disiapkan?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apakah Dana Darurat Anak Anda Sudah Disiapkan?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Dana darurat anak berbeda dari dana pendidikan - ini untuk kebutuhan tak terduga.&lt;/b&gt; &lt;i&gt;Apa yang terjadi jika anak sakit mendadak dan biayanya di luar perkiraan?&lt;/i&gt; &lt;mark&gt;Proteksi kesehatan anak sejak dini adalah dana darurat terbaik.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"It is easier to build strong children than to repair broken men."&lt;/b&gt; - Frederick Douglass&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Bagaimana jika anak Anda butuh perawatan darurat dan dana tidak tersedia?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#DanaDaruratAnak</span><span>#Manulife</span><span>#ProteksiAnak</span><span>#DaruratMedis</span><span>#AnakSakit</span><span>#BiayaDarurat</span><span>#ProteksiKesehatan</span><span>#PersiapanDana</span><span>#AnakSehat</span><span>#OrangtuaSiap</span><span>#EmergencyChild</span><span>#HealthProtection</span><span>#AnakTerlindungi</span><span>#DanaSiaga</span><span>#ProteksiMaksimal</span><span>#SiagaDarurat</span><span>#ChildCare</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apakah Dana Darurat Anak Anda Sudah Disiapkan?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#DanaDaruratAnak, #Manulife, #ProteksiAnak, #DaruratMedis, #AnakSakit, #BiayaDarurat, #ProteksiKesehatan, #PersiapanDana, #AnakSehat, #OrangtuaSiap, #EmergencyChild, #HealthProtection, #AnakTerlindungi, #DanaSiaga, #ProteksiMaksimal, #SiagaDarurat, #ChildCare, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 5 - Jam 07:00</span>
+                <h2>Pernahkah Anda Merasakan Kemudahan Cashless Claim?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Pernahkah Anda Merasakan Kemudahan Cashless Claim?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Cashless claim berarti Anda tidak perlu keluar uang sepeser pun saat rawat inap.&lt;/b&gt; &lt;i&gt;Cukup tunjukkan kartu, dan semua ditangani langsung oleh asuransi.&lt;/i&gt; &lt;mark&gt;Di saat sakit, yang Anda butuhkan adalah fokus pada pemulihan - bukan urusan biaya.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Peace of mind is the ultimate luxury."&lt;/b&gt; - Unknown&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Bukankah kemudahan cashless claim adalah standar yang layak Anda dapatkan?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#CashlessClaim</span><span>#Manulife</span><span>#TanpaUangMuka</span><span>#RawatInap</span><span>#KartuAsuransi</span><span>#MudahSekali</span><span>#TanpaCash</span><span>#RSRekanan</span><span>#ClaimMudah</span><span>#NoAdvance</span><span>#FokusSehat</span><span>#Hassle Free</span><span>#CepatProses</span><span>#KartuManulife</span><span>#CashlessHospital</span><span>#NonTunai</span><span>#PeaceOfMind</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Pernahkah Anda Merasakan Kemudahan Cashless Claim?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#CashlessClaim, #Manulife, #TanpaUangMuka, #RawatInap, #KartuAsuransi, #MudahSekali, #TanpaCash, #RSRekanan, #ClaimMudah, #NoAdvance, #FokusSehat, #HasseFree, #CepatProses, #KartuManulife, #CashlessHospital, #NonTunai, #PeaceOfMind, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 5 - Jam 12:00</span>
+                <h2>Apa Bedanya Network Marketing dan MLM yang Sebenarnya?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apa Bedanya Network Marketing dan MLM yang Sebenarnya?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Network marketing di Manulife membangun bisnis melalui relasi dan edukasi finansial.&lt;/b&gt; &lt;i&gt;Tidak ada stok barang, tidak ada tutup poin, tidak ada biaya bulanan.&lt;/i&gt; &lt;mark&gt;Bisnis yang berdampak positif - membantu orang sambil menghasilkan.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Your network is your net worth."&lt;/b&gt; - Porter Gale&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Masih bingung antara MLM dan network marketing - mau dijelaskan perbedaannya?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#NetworkMarketing</span><span>#Manulife</span><span>#BukanMLM</span><span>#BisnisRelasi</span><span>#EdukasiFinansial</span><span>#TanpaStok</span><span>#TanpaTutupPoin</span><span>#BisnisPositif</span><span>#MembantuOrang</span><span>#BisnisBerdampak</span><span>#NetworkBisnis</span><span>#EthicalBusiness</span><span>#HalalBisnis</span><span>#BisnisBaik</span><span>#PositiveImpact</span><span>#HelpOthers</span><span>#GoodBusiness</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apa Bedanya Network Marketing dan MLM yang Sebenarnya?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#NetworkMarketing, #Manulife, #BukanMLM, #BisnisRelasi, #EdukasiFinansial, #TanpaStok, #TanpaTutupPoin, #BisnisPositif, #MembantuOrang, #BisnisBerdampak, #NetworkBisnis, #EthicalBusiness, #HalalBisnis, #BisnisBaik, #PositiveImpact, #HelpOthers, #GoodBusiness, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 5 - Jam 19:00</span>
+                <h2>Apakah Orangtua Lansia Anda Masih Bisa Mendapat Proteksi?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apakah Orangtua Lansia Anda Masih Bisa Mendapat Proteksi?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Manulife memiliki produk khusus untuk usia lanjut dengan persyaratan yang disesuaikan.&lt;/b&gt; &lt;i&gt;Orangtua Anda layak mendapat perlindungan di masa rentannya.&lt;/i&gt; &lt;mark&gt;Tidak ada kata terlambat untuk memberikan proteksi kepada orang yang kita cintai.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Honor your father and mother, that your days may be long."&lt;/b&gt; - Exodus 20:12&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Siapa yang akan menanggung biaya kesehatan orangtua Anda di masa tua mereka?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#AsuransiLansia</span><span>#Manulife</span><span>#OrangTua</span><span>#ProteksiLansia</span><span>#UsiaLanjut</span><span>#SeniorCare</span><span>#KesehatanOrangTua</span><span>#AsuransiSenior</span><span>#CintaOrangTua</span><span>#BiayaLansia</span><span>#ProteksiSenior</span><span>#LayakDilindungi</span><span>#ElderCare</span><span>#MasaRentan</span><span>#OrangTuaSehat</span><span>#ProteksiUsia</span><span>#LansiaSehat</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apakah Orangtua Lansia Anda Masih Bisa Mendapat Proteksi?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#AsuransiLansia, #Manulife, #OrangTua, #ProteksiLansia, #UsiaLanjut, #SeniorCare, #KesehatanOrangTua, #AsuransiSenior, #CintaOrangTua, #BiayaLansia, #ProteksiSenior, #LayakDilindungi, #ElderCare, #MasaRentan, #OrangTuaSehat, #ProteksiUsia, #LansiaSehat, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 6 - Jam 07:00</span>
+                <h2>Investasi atau Asuransi - Haruskah Memilih Salah Satu?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Investasi atau Asuransi - Haruskah Memilih Salah Satu?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Investasi untuk pertumbuhan dana, asuransi untuk proteksi risiko - keduanya saling melengkapi.&lt;/b&gt; &lt;i&gt;Mengapa harus memilih jika bisa memiliki keduanya?&lt;/i&gt; &lt;mark&gt;Perencanaan keuangan yang sehat mencakup investasi DAN proteksi.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Do not put all your eggs in one basket."&lt;/b&gt; - Warren Buffett&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Mengapa harus memilih antara investasi dan proteksi jika bisa memiliki keduanya?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#InvestasiDanAsuransi</span><span>#Manulife</span><span>#DuaManfaat</span><span>#PerencanaanKeuangan</span><span>#SmartFinance</span><span>#ProteksiInvestasi</span><span>#KeduanyaPenting</span><span>#SalingMelengkapi</span><span>#FinancialPlanning</span><span>#PortofolioCerdas</span><span>#InvestasiAman</span><span>#AsetTerlindungi</span><span>#KeuanganSehat</span><span>#Diversifikasi</span><span>#BalancedFinance</span><span>#SmartMoney</span><span>#BothMatters</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Investasi atau Asuransi - Haruskah Memilih Salah Satu?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#InvestasiDanAsuransi, #Manulife, #DuaManfaat, #PerencanaanKeuangan, #SmartFinance, #ProteksiInvestasi, #KeduanyaPenting, #SalingMelengkapi, #FinancialPlanning, #PortofolioCerdas, #InvestasiAman, #AsetTerlindungi, #KeuanganSehat, #Diversifikasi, #BalancedFinance, #SmartMoney, #BothMatters, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 6 - Jam 12:00</span>
+                <h2>Bagaimana Perjalanan dari Nol Menjadi Top Leader Manulife?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Bagaimana Perjalanan dari Nol Menjadi Top Leader Manulife?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Seorang ibu rumah tangga memulai dari nol, kini memimpin ratusan agen.&lt;/b&gt; &lt;i&gt;Bukan karena bakat luar biasa, tapi karena konsistensi dan sistem yang mendukung.&lt;/i&gt; &lt;mark&gt;Jika mereka bisa, mengapa Anda tidak?&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"She believed she could, so she did."&lt;/b&gt; - R.S. Grey&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Jika orang lain bisa dari nol menjadi leader, apa yang menghalangi langkah Anda?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/pages/bisnis" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#SuksesStory</span><span>#Manulife</span><span>#DariNolKeTop</span><span>#IbuRTSukses</span><span>#Konsisten</span><span>#TopLeader</span><span>#Inspirasi</span><span>#BisaKamuJuga</span><span>#SistemSukses</span><span>#SuccessStory</span><span>#PerjalananSukses</span><span>#NeverGiveUp</span><span>#DreamBig</span><span>#Motivasi</span><span>#BuktiNyata</span><span>#WomenLeader</span><span>#Transformasi</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Bagaimana Perjalanan dari Nol Menjadi Top Leader Manulife?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#SuksesStory, #Manulife, #DariNolKeTop, #IbuRTSukses, #Konsisten, #TopLeader, #Inspirasi, #BisaKamuJuga, #SistemSukses, #SuccessStory, #PerjalananSukses, #NeverGiveUp, #DreamBig, #Motivasi, #BuktiNyata, #WomenLeader, #Transformasi, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 6 - Jam 19:00</span>
+                <h2>Tahukah Anda Manulife Punya Jaringan RS di Seluruh Indonesia?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Tahukah Anda Manulife Punya Jaringan RS di Seluruh Indonesia?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Lebih dari 1000 rumah sakit rekanan Manulife tersebar di seluruh Indonesia.&lt;/b&gt; &lt;i&gt;Di mana pun Anda berada, akses pelayanan kesehatan terbaik selalu tersedia.&lt;/i&gt; &lt;mark&gt;Jaringan luas berarti kemudahan akses kapan pun dan di mana pun.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Access to healthcare is a basic human right."&lt;/b&gt; - Kofi Annan&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apakah jangkauan RS rekanan bukan faktor penting dalam memilih asuransi?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#RSRekananManulife</span><span>#Manulife</span><span>#1000RS</span><span>#JaringanLuas</span><span>#AksesKesehatan</span><span>#RSSeluruhIndonesia</span><span>#CoverageNasional</span><span>#RumahSakitRekanan</span><span>#MudahDiakses</span><span>#DiManaSaja</span><span>#NetworkRS</span><span>#AksesMudah</span><span>#RSPartner</span><span>#NationwideAccess</span><span>#HealthAccess</span><span>#RSTermdkt</span><span>#JaringanRS</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Tahukah Anda Manulife Punya Jaringan RS di Seluruh Indonesia?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#RSRekananManulife, #Manulife, #1000RS, #JaringanLuas, #AksesKesehatan, #RSSeluruhIndonesia, #CoverageNasional, #RumahSakitRekanan, #MudahDiakses, #DiManaSaja, #NetworkRS, #AksesMudah, #RSPartner, #NationwideAccess, #HealthAccess, #RSTermdkt, #JaringanRS, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge pagi">Hari 7 - Jam 07:00</span>
+                <h2>Apakah Produk Syariah Manulife Cocok untuk Keluarga Anda?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apakah Produk Syariah Manulife Cocok untuk Keluarga Anda?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Produk syariah Manulife mengelola dana sesuai prinsip Islam - tanpa riba, transparan.&lt;/b&gt; &lt;i&gt;Proteksi yang sesuai nilai-nilai keyakinan Anda tanpa mengorbankan manfaat.&lt;/i&gt; &lt;mark&gt;Pilihan proteksi yang berkah dan bermanfaat dunia akhirat.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"The best investment is in the tools of one own trade."&lt;/b&gt; - Benjamin Franklin&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apakah proteksi yang sesuai nilai-nilai Islam adalah yang Anda cari?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#ManulifeSyariah</span><span>#Manulife</span><span>#AsuransiSyariah</span><span>#TanpaRiba</span><span>#HalalProteksi</span><span>#IslamicInsurance</span><span>#Takaful</span><span>#SyariahCompliant</span><span>#NilaiIslam</span><span>#Transparan</span><span>#BerkahProteksi</span><span>#HalalDanBaik</span><span>#ProdukSyariah</span><span>#MuslimFriendly</span><span>#DuniaAkhirat</span><span>#AsuransiHalal</span><span>#SyariahManulife</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apakah Produk Syariah Manulife Cocok untuk Keluarga Anda?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#ManulifeSyariah, #Manulife, #AsuransiSyariah, #TanpaRiba, #HalalProteksi, #IslamicInsurance, #Takaful, #SyariahCompliant, #NilaiIslam, #Transparan, #BerkahProteksi, #HalalDanBaik, #ProdukSyariah, #MuslimFriendly, #DuniaAkhirat, #AsuransiHalal, #SyariahManulife, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge siang">Hari 7 - Jam 12:00</span>
+                <h2>Apa Pelajaran Keuangan Terpenting untuk Keluarga?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Apa Pelajaran Keuangan Terpenting untuk Keluarga?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Pelajaran keuangan terpenting: proteksi dulu, baru investasi dan tabungan.&lt;/b&gt; &lt;i&gt;Tanpa pondasi proteksi, investasi apapun bisa hancur oleh satu musibah.&lt;/i&gt; &lt;mark&gt;Fondasi keuangan keluarga yang kuat dimulai dari proteksi yang tepat.&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"A penny saved is a penny earned."&lt;/b&gt; - Benjamin Franklin&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Sudahkah pondasi keuangan keluarga Anda dibangun di atas proteksi yang kuat?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#PelajaranKeuangan</span><span>#Manulife</span><span>#ProteksiDulu</span><span>#FondasiKeuangan</span><span>#FinancialLiteracy</span><span>#KeuanganSehat</span><span>#SmartFinance</span><span>#PrioritasProteksi</span><span>#KeuanganKeluarga</span><span>#PondasiKuat</span><span>#AturanKeuangan</span><span>#FinansialCerdas</span><span>#MoneyRules</span><span>#ProteksiFirst</span><span>#SmartMoney</span><span>#WealthRules</span><span>#KeluargaAman</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Apa Pelajaran Keuangan Terpenting untuk Keluarga?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#PelajaranKeuangan, #Manulife, #ProteksiDulu, #FondasiKeuangan, #FinancialLiteracy, #KeuanganSehat, #SmartFinance, #PrioritasProteksi, #KeuanganKeluarga, #PondasiKuat, #AturanKeuangan, #FinansialCerdas, #MoneyRules, #ProteksiFirst, #SmartMoney, #WealthRules, #KeluargaAman, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="accordion-item">
+            <div class="accordion-header">
+                <span class="schedule-badge sore">Hari 7 - Jam 19:00</span>
+                <h2>Sudah Sejauh Mana Perjalanan Proteksi Anda di Minggu Ketiga?</h2>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <p class="section-label">HTML Code Artikel:</p>
+                    <pre class="code-block"><code>&lt;h2&gt;Sudah Sejauh Mana Perjalanan Proteksi Anda di Minggu Ketiga?&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Tiga minggu sudah berlalu - setiap hari tanpa proteksi adalah hari penuh risiko.&lt;/b&gt; &lt;i&gt;Apakah Anda sudah lebih dekat dengan keputusan untuk melindungi keluarga?&lt;/i&gt; &lt;mark&gt;Refleksi minggu ini: apa satu langkah nyata yang sudah Anda ambil?&lt;/mark&gt;&lt;/p&gt;
+&lt;img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600" alt="Ilustrasi artikel"&gt;
+&lt;blockquote&gt;&lt;b&gt;"Progress is impossible without change."&lt;/b&gt; - George Bernard Shaw&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;Apa satu keputusan yang akan Anda ambil sebelum minggu keempat dimulai?&lt;/u&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="https://projectcuan.petrusjakub.workers.dev/" style="display:inline-block;background:#00a651;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Info Selengkapnya&lt;/a&gt; &lt;a href="https://wa.me/6287781896087" style="display:inline-block;background:#25d366;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;"&gt;Chat WhatsApp&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-style:italic;color:#555;"&gt;Salam proteksi, Petrus Jakub - Partner Bisnis Manulife | IG: @petrusjakub&lt;/p&gt;</code></pre>
+                    <p class="section-label">Tags:</p>
+                    <div class="tags-display"><span>#RefleksiMinggu3</span><span>#Manulife</span><span>#PerjalananProteksi</span><span>#Evaluasi</span><span>#Progres</span><span>#LangkahNyata</span><span>#TigaMinggu</span><span>#Proteksi</span><span>#KeputusanBijak</span><span>#Refleksi</span><span>#SelfReview</span><span>#Motivasi</span><span>#AksiNyata</span><span>#KeputusanHidup</span><span>#MajuTerus</span><span>#TakeAction</span><span>#MilestoneCheck</span><span>#SatuYangTerpenting</span><span>#PetrusJakub</span><span>#Week3</span></div>
+                    <div class="copy-buttons">
+                        <button class="copy-btn copy-btn-title" onclick="copyTitle(this)" data-title="Sudah Sejauh Mana Perjalanan Proteksi Anda di Minggu Ketiga?">Copy Judul</button>
+                        <button class="copy-btn copy-btn-article" onclick="copyArticle(this)">Copy Artikel HTML</button>
+                        <button class="copy-btn copy-btn-tags" onclick="copyTags(this)" data-tags="#RefleksiMinggu3, #Manulife, #PerjalananProteksi, #Evaluasi, #Progres, #LangkahNyata, #TigaMinggu, #Proteksi, #KeputusanBijak, #Refleksi, #SelfReview, #Motivasi, #AksiNyata, #KeputusanHidup, #MajuTerus, #TakeAction, #MilestoneCheck, #SatuYangTerpenting, #PetrusJakub, #Week3">Copy Tags</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    <footer class="site-footer">
+        <p>&copy; <span id="currentYear"></span> Satu Yang Terpenting - Petrus Jakub | <a href="https://projectcuan.petrusjakub.workers.dev/">projectcuan.petrusjakub.workers.dev</a></p>
+    </footer>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+            document.body.appendChild(ta); ta.focus(); ta.select();
+            try { document.execCommand('copy'); return true; } catch(e) { return false; }
+            finally { document.body.removeChild(ta); }
+        }
+        function copyTitle(btn) {
+            const t = btn.getAttribute('data-title');
+            const ok = () => { btn.classList.add('copied'); btn.textContent='Copied!'; setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copy Judul';},2000); };
+            if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok).catch(()=>{if(fallbackCopy(t))ok();});
+            else if(fallbackCopy(t))ok();
+        }
+        function copyArticle(btn) {
+            const code = btn.closest('.accordion-body').querySelector('code').textContent;
+            const ok = () => { btn.classList.add('copied'); btn.textContent='Copied!'; setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copy Artikel HTML';},2000); };
+            if(navigator.clipboard) navigator.clipboard.writeText(code).then(ok).catch(()=>{if(fallbackCopy(code))ok();});
+            else if(fallbackCopy(code))ok();
+        }
+        function copyTags(btn) {
+            const t = btn.getAttribute('data-tags');
+            const ok = () => { btn.classList.add('copied'); btn.textContent='Copied!'; setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copy Tags';},2000); };
+            if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok).catch(()=>{if(fallbackCopy(t))ok();});
+            else if(fallbackCopy(t))ok();
+        }
+    </script>
+</body>
+</html>

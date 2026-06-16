@@ -1,0 +1,32 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Add articles 8-14 (Day 3 remaining + Day 4 + Day 5 morning) to the existing HTML file. Continue the blog content with varied Manulife insurance topics.",
+  "status": "completed",
+  "steps": [
+    "Open existing /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html and add articles before the closing tags",
+    "Write Article 8 (Hari 3, 12:00 Siang) - topic: how to start as Manulife agent, step by step recruiting story",
+    "Write Article 9 (Hari 3, 19:00 Sore) - topic: critical illness rider, real emotional story about cancer diagnosis",
+    "Write Article 10 (Hari 4, 07:00 Pagi) - topic: passive income from insurance business, financial freedom story",
+    "Write Article 11 (Hari 4, 12:00 Siang) - topic: whole life vs term life insurance comparison through family scenario",
+    "Write Article 12 (Hari 4, 19:00 Sore) - topic: Manulife digital innovation, app features, ease of claim",
+    "Write Article 13 (Hari 5, 07:00 Pagi) - topic: why young people need insurance NOW, urgency story",
+    "Write Article 14 (Hari 5, 12:00 Siang) - topic: team building in insurance business, leadership story",
+    "Each article must follow same format: clickbait title, schedule badge, accordion wrapper, long-form content (400+ words), emotional storytelling, CTA, copy button, hashtags"
+  ],
+  "acceptance_criteria": [
+    "Articles 8-14 are added to the HTML file",
+    "Total article count in file is now 14",
+    "New articles maintain same styling and functionality as first 7",
+    "Each new article has unique topic, clickbait title, emotional story",
+    "Accordion and copy functionality works for all 14 articles",
+    "Mix of topics includes: recruiting, products, company, business opportunity"
+  ],
+  "verification": [
+    "Run: grep -c 'class=\"accordion' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm 14+ accordion elements",
+    "Run: grep -c 'Hari [45]' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm Day 4-5 articles present",
+    "Run: wc -l /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm file has grown substantially"
+  ],
+  "blocked_reason": null,
+  "findings": "Successfully added 7 articles (8-14). File grew from 730 to 1083 lines. All 14 accordion items verified. The <!-- ARTICLES CONTINUE HERE --> marker is preserved for FEAT-003. Topics covered: recruiting story, critical illness rider, passive income, whole vs term life, digital innovation, youth urgency, team building/leadership."
+}

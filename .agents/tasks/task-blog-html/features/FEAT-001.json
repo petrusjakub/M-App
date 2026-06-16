@@ -1,0 +1,43 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the first part of the standalone HTML file with the document structure, all CSS styles, JavaScript functionality (accordion toggle, copy-to-clipboard), header section with author info, and the first 7 blog articles (Day 1 and Day 2 morning). Articles cover Manulife insurance topics mixing products, business opportunity, and company credibility.",
+  "status": "completed",
+  "steps": [
+    "Create /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html with complete HTML5 structure",
+    "Add inline CSS for: modern blog styling, accordion components (collapsible panels), copy buttons, CTA buttons, responsive design, schedule badges (Pagi/Siang/Sore), hashtag styling",
+    "Add inline JavaScript for: accordion toggle functionality (click to expand/collapse), click-to-copy using Clipboard API with visual feedback, smooth animations",
+    "Add header section with: blog title 'Satu Yang Terpenting', author bio (Petrus Jakub, Partner Bisnis Manulife, IG @petrusjakub), CTA to https://projectcuan.petrusjakub.workers.dev/ and WA 087781896087",
+    "Write Article 1 (Hari 1, 07:00 Pagi) - topic: emotional story about why health insurance matters, strong clickbait title, long-form storytelling style, SEO hashtags",
+    "Write Article 2 (Hari 1, 12:00 Siang) - topic: Manulife business opportunity/recruiting, why become an agent, income potential story",
+    "Write Article 3 (Hari 1, 19:00 Sore) - topic: unit-link investment insurance product explanation through personal story",
+    "Write Article 4 (Hari 2, 07:00 Pagi) - topic: real-life claim story showing importance of life insurance",
+    "Write Article 5 (Hari 2, 12:00 Siang) - topic: Manulife company credibility, history, awards, financial strength",
+    "Write Article 6 (Hari 2, 19:00 Sore) - topic: education insurance planning for children's future",
+    "Write Article 7 (Hari 3, 07:00 Pagi) - topic: retirement planning with Manulife products",
+    "Each article must have: clickbait title, schedule badge, accordion wrapper, long-form content (400+ words), emotional storytelling, CTA button to projectcuan link or WA, copy button, SEO tags/hashtags at bottom"
+  ],
+  "acceptance_criteria": [
+    "HTML file exists at /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html",
+    "File has valid HTML5 structure with DOCTYPE, head with meta tags, and body",
+    "All CSS is inline in a <style> tag - no external stylesheets",
+    "All JS is inline in a <script> tag - no external scripts",
+    "Header shows author info: Petrus Jakub, partner bisnis Manulife, IG @petrusjakub",
+    "CTA links point to https://projectcuan.petrusjakub.workers.dev/ and WA 087781896087",
+    "7 articles are present with accordion UI (click to expand/collapse)",
+    "Each article has a copy button that copies article text",
+    "Each article has schedule information (day + time)",
+    "Articles use emotional, human-like storytelling - not robotic AI writing",
+    "Articles have strong clickbait titles/hooks in first sentences",
+    "Articles include SEO-friendly hashtags"
+  ],
+  "verification": [
+    "Run: test -f /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html && echo 'File exists'",
+    "Run: grep -c 'class=\"accordion' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm accordion elements (expect 7+)",
+    "Run: grep -c 'copyToClipboard' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm copy functionality",
+    "Run: grep 'projectcuan.petrusjakub.workers.dev' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm CTA link",
+    "Run: grep '087781896087' /projects/sandbox/M-App/satuyangterpenting.wordpress.com.html to confirm WA number"
+  ],
+  "blocked_reason": null,
+  "findings": "HTML file created successfully with all 7 articles. The accordion-item class is used per article, and the comment marker <!-- ARTICLES CONTINUE HERE --> is placed before closing </main> for easy appending in FEAT-002 and FEAT-003. Each article is 400+ words with emotional storytelling in Bahasa Indonesia. CTA buttons link to both projectcuan web and WA."
+}

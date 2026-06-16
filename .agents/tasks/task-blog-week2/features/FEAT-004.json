@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-004",
+  "type": "fix",
+  "description": "Post-review fixes: add clipboard fallback for insecure contexts, change tag separators to comma-separated format, and use semantic <article> elements instead of <div> for accordion items.",
+  "status": "completed",
+  "steps": [
+    "Add a fallbackCopy helper function using document.execCommand('copy') with a textarea element",
+    "Update copyTitle, copyArticle, and copyTags to try navigator.clipboard first with .catch() fallback to the textarea approach",
+    "Change all 21 data-tags attributes from space-separated (#Word1 #Word2) to comma+space separated (#Word1, #Word2, #Word3)",
+    "Change all 21 <div class=\"accordion-item\"> to <article class=\"accordion-item\">",
+    "Update JS querySelectorAll('.accordion-item') references (should still work with class selector regardless of element type)",
+    "Verify all changes work together"
+  ],
+  "acceptance_criteria": [
+    "fallbackCopy function exists using textarea + execCommand('copy')",
+    "All 3 copy functions have .catch() handlers that call fallbackCopy",
+    "All 21 data-tags attributes use comma+space as separator between tags",
+    "All 21 accordion items use <article> element instead of <div>",
+    "JavaScript still functions correctly with <article> elements"
+  ],
+  "verification": [
+    "Run: grep -c 'fallbackCopy' satuyangterpenting.wordpress.com.html - should be >= 4 (1 definition + 3 calls)",
+    "Run: grep -c '.catch' satuyangterpenting.wordpress.com.html - should be >= 3",
+    "Run: grep -c 'execCommand' satuyangterpenting.wordpress.com.html - should be >= 1",
+    "Run: grep 'data-tags' satuyangterpenting.wordpress.com.html | grep -c ', #' - should be 21",
+    "Run: grep -c '<article class=\"accordion-item\">' satuyangterpenting.wordpress.com.html - should be 21",
+    "Run: grep -c '<div class=\"accordion-item\">' satuyangterpenting.wordpress.com.html - should be 0"
+  ],
+  "blocked_reason": null,
+  "findings": "All 3 post-review fixes applied successfully. fallbackCopy function added with 7 references (1 definition + 6 uses in 3 if/else branches). All 21 data-tags now use comma+space separator. All 21 accordion items changed from div to article with matching closing tags. CSS class selectors continue to work with article elements."
+}
