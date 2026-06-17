@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Rewrite all TikTok captions and HeyGen scripts across all 7 days (42 posts total) to: (1) comply with Meta/TikTok community guidelines by removing income claims/guarantees, specific income numbers, MLM comparisons, fear-mongering, and misleading claims while keeping strong hooks, emotional questions, urgency, and relatability for Indonesian audience; (2) upgrade HeyGen scripts with professional video production formatting including timeline markers [00:00-00:05], B-roll descriptions [B-ROLL: ...], text-on-screen instructions [TEXT ON SCREEN: '...'], and layered text/highlighted text instructions",
+  "status": "completed",
+  "steps": [
+    "For each of the 7 HTML files in pastijaga-tiktok/, rewrite all 6 TikTok captions to remove: exact income numbers (e.g. '25 juta/bulan', '10 juta', '20-30 juta'), income guarantees ('unlimited income', 'tanpa batas'), misleading claims ('PASTI berhasil'), specific MLM comparisons ('bukan MLM abal-abal'), fear-mongering ('BANGKRUT', 'MENGERIKAN', 'BAHAYA'). Replace with: aspirational but compliant language, questions that engage without making promises, focus on learning/growth opportunity, soft CTA language. Keep: strong hooks, emotional questions, urgency, relatability for Indonesian audience needing extra income. Keep all captions ending with 'cek link di bio'. Keep hashtags updated to use #PastiJaga",
+    "For each of the 7 HTML files, rewrite all 6 HeyGen scripts with professional video production format. Each script should include: (a) Timeline markers in brackets like [00:00-00:05] HOOK, [00:05-00:15] PROBLEM STATEMENT, etc. (b) B-roll descriptions like [B-ROLL: Footage of busy Jakarta morning commute] or [B-ROLL: Person scrolling phone on couch]. (c) Text-on-screen instructions like [TEXT ON SCREEN: 'Siap Berubah?'] or [HIGHLIGHT TEXT: 'Recurring Income']. (d) Clear scene structure: HOOK -> PROBLEM -> AGITATION -> SOLUTION -> CTA. (e) Keep duration guidance 1-3 minutes. (f) Keep the persuasive Indonesian tone but compliant with guidelines",
+    "Ensure content theme remains: insurance business recruitment targeting Indonesians who need side income, people stuck in routine, emotional hooks, urgent questions. Sources: manulife.co.id and pastijaga.petrusjakub.workers.dev",
+    "Verify no remaining non-compliant content: no specific income numbers as guarantees, no 'unlimited/tanpa batas' income claims, no fear-mongering about death/bankruptcy framed as scare tactics"
+  ],
+  "acceptance_criteria": [
+    "All 42 TikTok captions (6 per day x 7 days) are rewritten without income guarantees or specific income numbers used as promises",
+    "All 42 HeyGen scripts include timeline markers in [00:00-00:05] format",
+    "All 42 HeyGen scripts include at least 2 B-roll descriptions each",
+    "All 42 HeyGen scripts include at least 2 text-on-screen or highlight-text instructions each",
+    "All content still uses strong hooks and emotional/persuasive Indonesian language",
+    "All captions still end with 'cek link di bio'",
+    "No grep matches for exact patterns like 'income TANPA BATAS', 'penghasilan UNLIMITED', 'PASTI berhasil' (guaranteed success claims)",
+    "All hashtags use #PastiJaga (not #ProjectCuan)"
+  ],
+  "verification": [
+    "Run: grep -ri 'ProjectCuan' /projects/sandbox/M-App/pastijaga-tiktok/ (should return nothing)",
+    "Run: grep -c '\\[.*:.*\\]' /projects/sandbox/M-App/pastijaga-tiktok/pastijaga-tiktok-day1.html (should show multiple timeline/b-roll markers per file)",
+    "Run: grep -i 'B-ROLL' /projects/sandbox/M-App/pastijaga-tiktok/pastijaga-tiktok-day1.html (should show B-roll instructions)",
+    "Run: grep -i 'TEXT ON SCREEN\\|HIGHLIGHT TEXT' /projects/sandbox/M-App/pastijaga-tiktok/pastijaga-tiktok-day1.html (should show text overlay instructions)",
+    "Run: grep -i 'cek link di bio' /projects/sandbox/M-App/pastijaga-tiktok/pastijaga-tiktok-day1.html (should show 6 matches, one per post)"
+  ],
+  "blocked_reason": null,
+  "findings": "Days 5-7 content rewrite completed successfully. All 18 posts (6 per day x 3 days) rewritten with compliant captions and professional HeyGen scripts. Removed all specific income numbers, guarantees (PASTI berhasil, TANPA BATAS, UNLIMITED), fear-mongering (BANGKRUT, MENGERIKAN, MAKIN MISKIN), and exact percentage claims (50-100% per TAHUN). HeyGen scripts formatted with timeline markers, B-roll descriptions (30+ per file), TEXT ON SCREEN and HIGHLIGHT TEXT instructions (30+ per file). All captions maintain strong hooks, end with cek link di bio, and include #PastiJaga hashtag. Combined with the earlier Days 1-4 rewrite, all 42 posts across 7 days are now compliant and professionally formatted."
+}
